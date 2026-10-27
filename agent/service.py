@@ -7,7 +7,8 @@ import threading
 from collections import defaultdict
 
 from harness import runtime
-from harness.client import tool_result
+from harness.client import BudgetExceeded, tool_result
+from harness.backends import DailyQuotaReached, RateLimited
 from harness.paths import state_dir
 from harness.turns import Reply
 from sandbox import course
@@ -51,11 +52,13 @@ def workflow(registry, qid):
         else:
             prior = []
         matches = _invoke(registry, "course_search_materials", {"query": q["topic"]})["documents"]
-        if not matches or q["topic"] == "conflict":
-            _invoke(registry, "course_create_flag", {"question_id": qid,
-                    "reason": "conflicting_sources" if q["topic"] == "conflict" else "missing_information"})
+        if not matches:
+            _invoke(registry, "course_create_flag", {"question_id": qid, "reason": "missing_information"})
             return
         docs = [_invoke(registry, "course_read_document", {"document_id": m["id"]})["document"] for m in matches]
+        if course.conflicting_documents(docs):
+            _invoke(registry, "course_create_flag", {"question_id": qid, "reason": "conflicting_sources"})
+            return
         body = " ".join(d["answer"] for d in docs)
         ids = [d["id"] for d in docs]
         if prior and prior[0]["body"] == body and prior[0]["source_ids"] == ids:
@@ -162,6 +165,9 @@ def operator_turn(session_id: str, text: str) -> Reply:
         except Halt as exc:
             trace.end(exc.reason, detail=exc.detail)
             trace.progress(f"Stopped: {exc.reason}. {exc.detail}")
+        except (BudgetExceeded, DailyQuotaReached, RateLimited):
+            # Preserve starter outcomes and quota-resume behavior.
+            raise
         except RuntimeError as exc:
             trace.end("configuration_error", detail=str(exc)[:400])
             return Reply("Model configuration is unavailable: " + str(exc)[:400] + ". Workflows and manual handling remain available.")

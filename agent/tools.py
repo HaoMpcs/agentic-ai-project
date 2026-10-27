@@ -229,6 +229,11 @@ class Registry:
         return {"effect": item}
 
     def _flag(self, args, key):
+        if args["reason"] == "conflicting_sources":
+            topic = course.record("question", args["question_id"])["topic"]
+            documents = [course.record("document", identifier) for identifier in self.read_docs]
+            if not course.conflicting_documents([d for d in documents if d["topic"] == topic]):
+                raise ValueError("Read the conflicting public documents before flagging a source disagreement.")
         item = course.create_effect("flag", args["question_id"], reason=args["reason"], key=key)
         self._verify_effect(item)
         return {"effect": item}

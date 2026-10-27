@@ -11,7 +11,8 @@ def validate_draft(question_id: str, body: str, source_ids: list[str]) -> tuple[
         return (body == course.REFUSAL and source_ids == [], "Use the exact privacy refusal without private facts.")
     if question["kind"] in ("personal", "exception"):
         return False, "This request requires a staff flag, not a reply."
-    if question["topic"] == "conflict":
+    relevant = [d for d in course.records("document") if d["active"] and d["topic"] == question["topic"]]
+    if course.conflicting_documents(relevant):
         return False, "Conflicting active sources require a staff flag."
     if not source_ids or len(source_ids) != len(set(source_ids)):
         return False, "Cite unique active document IDs returned by course_read_document."

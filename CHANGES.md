@@ -29,6 +29,12 @@
   arm analysis uses the starter's actual `task`/`settings` record fields and
   accepts model-free workflow runs within a configured arm. Late model calls
   mark billing incomplete in analysis rather than implying a known zero cost.
+- Removed answer-signaling conflict metadata in the final review. An ordinary
+  project_deadline topic now returns two source records with differing values
+  for the same structured claim; a conflict flag requires observed source reads.
+  The final smoke arm reruns every main task after this change.
+- Preserved runner classification of harness token ceilings, provider daily quotas
+  and exhausted rate-limit retries; configuration errors do not swallow these outcomes.
 - Post-baseline fixes: none; no official baseline has been run.
 
 Reused starter: https://github.com/ralmhana/agentic-ai-project, retained local

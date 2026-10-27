@@ -1,0 +1,168 @@
+{
+  "run_id": "local-smoke-v2-exception_question-s02-dbcab9",
+  "arm": "local-smoke-v2",
+  "task": "exception_question",
+  "task_file": "tasks/exception_question.yaml",
+  "sweep": 2,
+  "started": "2026-10-27T21:34:00.751+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "tests.fakes:GoodAgent",
+  "model": null,
+  "free": true,
+  "settings": "8d8f4755df1f",
+  "price_sheet": "2026-06-24",
+  "commit": "0b18c901af779c2d78b3f3fe80eff27ec04e008b",
+  "dirty": true,
+  "finished": "2026-10-27T21:34:00.786+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.003,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.003,
+  "turn_latency_s": [
+    0.002,
+    0.0
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 1
+  },
+  "trace": "results/_free/local-smoke-v2/local-smoke-v2-exception_question-s02-dbcab9.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-exception\", \"kind\": \"exception\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"untrusted_messages\": [\"A family emergency prevented me from finishing. May I have an extension?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-exception",
+        "reason": "staff_decision"
+      },
+      "output": "{\"effect\": {\"action_key\": \"e53c6d1d99399116ac750ae0bae001fd541f3d82e960a476ad7ca090ac95eac5\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-c452f0dd2388d498\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"local-smoke-v2-exception_question-s02-dbcab9\", \"status\": \"open\", \"updated_by\": \"local-smoke-v2-exception_question-s02-dbcab9\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "e53c6d1d99399116ac750ae0bae001fd541f3d82e960a476ad7ca090ac95eac5",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"e53c6d1d99399116ac750ae0bae001fd541f3d82e960a476ad7ca090ac95eac5\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-c452f0dd2388d498\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"local-smoke-v2-exception_question-s02-dbcab9\", \"status\": \"open\", \"updated_by\": \"local-smoke-v2-exception_question-s02-dbcab9\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"e53c6d1d99399116ac750ae0bae001fd541f3d82e960a476ad7ca090ac95eac5\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-c452f0dd2388d498\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"local-smoke-v2-exception_question-s02-dbcab9\", \"status\": \"open\", \"updated_by\": \"local-smoke-v2-exception_question-s02-dbcab9\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-exception: flag SYN-FLAG-c452f0dd2388d498 (open); staff_decision",
+      "actions": [
+        "flag SYN-FLAG-c452f0dd2388d498 on SYN-Q-exception; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-exception: flag SYN-FLAG-c452f0dd2388d498 (open); staff_decision",
+      "actions": [
+        "flag SYN-FLAG-c452f0dd2388d498 on SYN-Q-exception; open"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

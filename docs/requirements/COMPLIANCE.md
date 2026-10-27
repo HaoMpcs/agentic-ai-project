@@ -7,7 +7,7 @@ approval. `make check` checks starter structure, not the full academic rubric.
 
 | Criterion | Points | Status | Implementation / documentation | Verification evidence | Remaining issue |
 |---|---:|---|---|---|---|
-| Clean checkout, make app, runner, make check | 3 | Local verification; final checkout pending | Makefile, app/, agent/service.py | 44 starter tests; runner smoke; fresh clone log below | Real-model console and final submission commit |
+| Clean checkout, make app, runner, make check | 3 | Verified locally | Makefile, app/, agent/service.py | 77 tests; runner smoke; VERIFICATION.md and clean-checkout-http.json | Real-model console and final submission commit |
 | Three properties, channel, console, product page | 4 | Implemented/tested locally | sandbox/, channel/, app/product.py, home.html | CourseTests + ProductTests; manual operator send and uncertain-send tests | Official spec cross-check |
 | Test tasks and independent checks | 4 | Implemented/tested | 10 main +2 dev YAML; checks/course.py | Every task via ScratchTest.run_task; negative controls via run_check | Real-model task performance |
 | Routing, agent/workflows, traces, bounds | 5 | Implemented/tested locally | service.py, bounds.py, grouped switches | Misrouting, NeverStops, HugeUsage, SlowAgent; end reasons in records | Real latency; last response can cross token threshold; in-flight billing limitation |
@@ -17,7 +17,7 @@ approval. `make check` checks starter structure, not the full academic rubric.
 | Rewritten tools and repairable errors | 4 | Implemented/tested locally | tools.py, docs/TOOLS.md, first_draft.json | Malformed calls, unknown tools, scopes, output bounds, fixed-order tests | Real-model failure taxonomy and measured definition benefit |
 | Baseline measurements | 3 | Blocked | run.py and analysis script ready | 0 real runs; 30 fake smoke runs explicitly excluded | Provider/model/key and clean committed code |
 | Improvement experiment and verdict | 11 | Blocked | PROTOCOL.md; pending Pass 1 in LEDGER | 0 off-arm, 0 on-arm real runs; no invented hypothesis/verdict | Baseline evidence, owner, numeric prediction, commit and authorized push before arms |
-| Reproducible analysis script | 3 | Implemented/tested locally | experiments/analysis/summarize.py | AnalysisTests; local-smoke.json recomputed from original records | Recompute actual baseline and both arms |
+| Reproducible analysis script | 3 | Implemented/tested locally | experiments/analysis/summarize.py | AnalysisTests; local-smoke-v2.json recomputed from original records | Recompute actual baseline and both arms |
 | Real task, use cases, independent criteria | 5 | Documented/implemented | M1 Part 1; original eight-case design retained | Tasks and environment checks | Official assignment confirmation |
 | Baseline failures with IDs and trace lines | 6 | Blocked | M1 Part 4 has separately labeled free diagnostics | Real failures unavailable; retained fake failure lines cited accurately | Real baseline traces and diagnosis |
 | Four gates and cost evidence | 9 | Partial | M1 four gates, symbolic break-even | Formula derivation; no numeric values invented | Actual Assignment 1 m/f/c/r; mistake value; real latency |
@@ -40,10 +40,12 @@ blocked or pending.
 - Dependencies: `make setup` first failed because the restricted shell could not
   reach the package index; installing declared requirements with network access
   succeeded. No project dependency was added.
-- Expanded suite and final clean-clone verification are recorded below after the
-  last code checks. Free diagnostic runs use the pre-commit code with dirty=true.
+- Expanded suite: **77 passed, 0 failed**. Fresh clone at 0b18c90 completed
+  make setup, 77 tests, make check, actual make app/HTTP console/manual-send
+  verification and make serve persistence. See VERIFICATION.md. Free diagnostic
+  arm records use the pre-commit code with dirty=true.
 - Retained smoke: 30/30 free runs over ten tasks x3. Backend tests.fakes:GoodAgent.
-  Recorded tokens are fake placeholders (3,300 input, 660 output); scripted
+  Recorded tokens are fake placeholders (3,900 input, 780 output); scripted
   price is $0. Median turn 0.002s, maximum 0.009s. These figures cannot establish
   real performance, token overhead, costs or routing economics.
 - Additional retained free probes: revision pass 1/1, bad plan expected fail 0/1,

@@ -58,14 +58,19 @@ class GoodAgent:
         searches = [r["documents"] for r in results if "documents" in r]
         if not searches:
             return self.response(name="course_search_materials", args={"query": q["topic"]})
-        if not searches[-1] or q["topic"] == "conflict":
-            return self.response(name="course_create_flag", args={"question_id": qid,
-                       "reason": "conflicting_sources" if q["topic"] == "conflict" else "missing_information"})
+        if not searches[-1]:
+            return self.response(name="course_create_flag", args={"question_id": qid, "reason": "missing_information"})
         docs = [r["document"] for r in results if "document" in r]
         read_ids = {x["id"] for x in docs}
         for doc in searches[-1]:
             if doc["id"] not in read_ids:
                 return self.response(name="course_read_document", args={"document_id": doc["id"]})
+        claims = {}
+        for doc in docs:
+            for name, value in doc.get("claims", {}).items():
+                claims.setdefault(name, set()).add(value)
+        if any(len(values) > 1 for values in claims.values()):
+            return self.response(name="course_create_flag", args={"question_id": qid, "reason": "conflicting_sources"})
         body = " ".join(d["answer"] for d in docs)
         body = self.draft(body, results)
         return self.response(name="course_create_reply", args={"question_id": qid, "body": body,
@@ -131,3 +136,21 @@ class SlowAgent(GoodAgent):
     def create(self, **kwargs):
         time.sleep(0.15)
         return super().create(**kwargs)
+
+
+class HarnessCeiling(GoodAgent):
+    def create(self, **kwargs):
+        from harness.client import BudgetExceeded
+        raise BudgetExceeded("scripted harness ceiling")
+
+
+class QuotaReached(GoodAgent):
+    def create(self, **kwargs):
+        from harness.backends import DailyQuotaReached
+        raise DailyQuotaReached("scripted daily quota")
+
+
+class RateLimitReached(GoodAgent):
+    def create(self, **kwargs):
+        from harness.backends import RateLimited
+        raise RateLimited("scripted exhausted retries")

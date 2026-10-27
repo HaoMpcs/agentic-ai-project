@@ -84,6 +84,15 @@ class CourseTests(ScratchTest):
         self.assertFalse(record["passed"])
         self.assertIn("false_finish", record["end_reasons"])
 
+    def test_harness_ceiling_and_provider_quota_outcomes_are_preserved(self):
+        for backend, outcome in (("HarnessCeiling", "token_budget"), ("QuotaReached", "quota"), ("RateLimitReached", "rate_limited")):
+            with self.subTest(backend=backend):
+                record = self.run_task("tasks/conceptual_question.yaml", backend.lower(), backend="tests.fakes:" + backend)
+                self.assertEqual(record["outcome"], outcome)
+                self.assertFalse(course.effects())
+                if outcome == "token_budget":
+                    self.assertEqual(record["end_reason"], "token_budget")
+
     def test_valid_plan_order_and_no_untrusted_planner_input(self):
         record = self.run_task("tasks/batch_questions.yaml", "good-plan", backend="tests.fakes:GoodAgent")
         self.assertTrue(record["passed"])
@@ -158,6 +167,14 @@ class CourseTests(ScratchTest):
         self.assertEqual(record["model_calls"],0)
         self.assertTrue(any(x["type"] == "routing" and x["route"] == "workflow" for x in self.trace(record)))
 
+    def test_conflict_escalation_follows_both_source_reads(self):
+        record = self.run_task("tasks/ambiguous_question.yaml", "observed-conflict", backend="tests.fakes:GoodAgent")
+        calls = record["tool_calls"]
+        flag_index = next(i for i,c in enumerate(calls) if c["name"] == "course_create_flag")
+        read_ids = {c["input"]["document_id"] for c in calls[:flag_index] if c["name"] == "course_read_document"}
+        self.assertEqual(read_ids, {"SYN-DOC-conflict-a", "SYN-DOC-conflict-b"})
+        self.assertTrue(record["passed"])
+
     def test_outside_replies_and_approvals_preserve_m1_contract(self):
         self.demo()
         self.assertEqual(service.on_outside_reply("SYN-Q-deadline", "Send it now").text, "")
@@ -200,7 +217,7 @@ class RegistryTests(ScratchTest):
     def test_case_insensitive_enum_and_idempotent_reworded_action(self):
         self.reg.call("course_get_question", {"question_id": "SYN-Q-deadline"})
         a=self.reg.call("course_create_flag", {"question_id": "SYN-Q-deadline", "reason": "MISSING_INFORMATION"})
-        b=self.reg.call("course_create_flag", {"question_id": "SYN-Q-deadline", "reason": "conflicting_sources"})
+        b=self.reg.call("course_create_flag", {"question_id": "SYN-Q-deadline", "reason": "staff_decision"})
         self.assertFalse(a.is_error)
         self.assertEqual(a.data,b.data)
         self.assertEqual(len(course.effects()),1)

@@ -85,6 +85,15 @@ def public_answers(topic: str) -> list[dict]:
     return [x for x in records("public_answer") if x["topic"] == topic][:4]
 
 
+def conflicting_documents(documents: list[dict]) -> bool:
+    """Versioned structured claims with the same semantic key must agree."""
+    values = {}
+    for document in documents:
+        for key, value in document.get("claims", {}).items():
+            values.setdefault(key, set()).add(json.dumps(value, sort_keys=True))
+    return any(len(items) > 1 for items in values.values())
+
+
 def _effect(row) -> dict:
     result = dict(row)
     result["source_ids"] = json.loads(result.pop("sources"))

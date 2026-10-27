@@ -1,0 +1,10 @@
+{
+  "commit": "0b18c90",
+  "session": "s-20261027-163105-fd85",
+  "workflow_and_agent_console": "passed",
+  "effects": 3,
+  "manual_sends": 1,
+  "pages": 6,
+  "api_backend": "tests.fakes:GoodAgent",
+  "restart_persistence": "passed"
+}

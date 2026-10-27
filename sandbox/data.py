@@ -3,9 +3,9 @@
 NOW = "2026-10-27T09:00:00-05:00"
 
 
-def document(identifier, topic, title, facts, *, active=True, version=1):
+def document(identifier, topic, title, facts, *, active=True, version=1, claims=None):
     return {"id": identifier, "topic": topic, "title": title, "facts": facts,
-            "answer": " ".join(facts), "active": active, "version": version, "visibility": "public"}
+            "answer": " ".join(facts), "active": active, "version": version, "visibility": "public", "claims": claims or {}}
 
 
 DOCUMENTS = [
@@ -27,10 +27,10 @@ DOCUMENTS = [
     document("SYN-DOC-syllabus", "schedule", "Syllabus and lecture schedule",
              ["The synthetic course meets Mondays and Wednesdays from 10:30 AM to 11:50 AM America/Chicago.",
               "Week 4 covers planning, and Week 5 covers tool contracts."]),
-    document("SYN-DOC-conflict-a", "conflict", "Project deadline in syllabus",
-             ["The synthetic project deadline in the syllabus is November 1, 2026."]),
-    document("SYN-DOC-conflict-b", "conflict", "Project deadline in announcement",
-             ["The synthetic project deadline in the announcement is November 3, 2026."]),
+    document("SYN-DOC-conflict-a", "project_deadline", "Project deadline in syllabus",
+             ["The synthetic project deadline in the syllabus is November 1, 2026."], claims={"project_due_date": "2026-11-01"}),
+    document("SYN-DOC-conflict-b", "project_deadline", "Project deadline in announcement",
+             ["The synthetic project deadline in the announcement is November 3, 2026."], claims={"project_due_date": "2026-11-03"}),
     document("SYN-DOC-old", "late_policy", "Superseded late policy",
              ["Late submissions are never accepted."], active=False),
 ]
