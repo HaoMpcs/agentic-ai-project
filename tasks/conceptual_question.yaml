@@ -1,0 +1,26 @@
+id: conceptual_question
+input:
+  thread: SYN-Q-concept
+  from: SYN-STUDENT-001
+  kind: conceptual
+  topic: search
+  text: Why can greedy best-first search miss an optimal solution? Compare uniform-cost
+    search.
+  expected:
+    kind: reply
+    source_ids:
+    - SYN-DOC-search
+    - SYN-DOC-optimal
+    required:
+    - Greedy best-first search chooses the frontier node with the lowest heuristic
+      estimate.
+    - It can ignore path cost and therefore does not guarantee an optimal solution.
+    - Uniform-cost search orders the frontier by accumulated path cost.
+    - With nonnegative edge costs and suitable duplicate handling, it finds an optimal
+      solution.
+operator:
+- Process SYN-Q-concept
+- What did you do, and is anything still open?
+outside: []
+check: checks/course.py
+approvals: []

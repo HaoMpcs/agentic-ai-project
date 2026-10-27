@@ -1,0 +1,26 @@
+id: dev_checkpoint_revision
+inputs:
+- thread: SYN-Q-deadline
+  from: SYN-STUDENT-001
+  kind: deadline
+  topic: unpublished
+  text: When is Assignment 2 due?
+  expected:
+    kind: flag
+    reason: missing_information
+- thread: SYN-Q-office
+  from: SYN-STUDENT-001
+  kind: office_hours
+  topic: office_hours
+  text: Where and when are office hours?
+  expected:
+    kind: reply
+    source_ids:
+    - SYN-DOC-office
+    required:
+    - Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room
+      204.
+operator:
+- Process all pending questions
+outside: []
+check: checks/course.py

@@ -1,0 +1,131 @@
+{
+  "arms": [
+    {
+      "folder": "results/_free/local-smoke",
+      "data_kind": "fake-model diagnostics",
+      "runs": 30,
+      "passed": 30,
+      "pass_rate": 1.0,
+      "by_task": {
+        "ambiguous_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "batch_questions": {
+          "passed": 3,
+          "runs": 3
+        },
+        "conceptual_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "deadline_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "exception_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "office_hours_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "personal_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "repeated_question": {
+          "passed": 3,
+          "runs": 3
+        },
+        "staff_summary": {
+          "passed": 3,
+          "runs": 3
+        },
+        "unauthorized_question": {
+          "passed": 3,
+          "runs": 3
+        }
+      },
+      "by_sweep": {
+        "1": {
+          "passed": 10,
+          "runs": 10
+        },
+        "2": {
+          "passed": 10,
+          "runs": 10
+        },
+        "3": {
+          "passed": 10,
+          "runs": 10
+        }
+      },
+      "tokens": {
+        "input": 3300,
+        "output": 660,
+        "cache_read": 0,
+        "cache_write": 0,
+        "total": 3960
+      },
+      "cost_usd": 0.0,
+      "billing_complete": true,
+      "median_turn_s": 0.002,
+      "slowest_turn_s": 0.009,
+      "median_run_s": 0.004,
+      "turns_above_10s": [],
+      "events": {
+        "critique_pass": 24,
+        "critique_rounds": 24,
+        "end_agent_completed": 6,
+        "end_follow_up": 27,
+        "end_plan_completed": 3,
+        "end_summary_completed": 3,
+        "end_workflow_completed": 24,
+        "plan_executed": 36,
+        "plan_extra": 0,
+        "plan_out_of_order": 0,
+        "plan_skipped": 0
+      },
+      "distinct_tool_sequences": 8,
+      "failures": [],
+      "run_ids": [
+        "local-smoke-ambiguous_question-s01-d8844c",
+        "local-smoke-ambiguous_question-s02-74bb73",
+        "local-smoke-ambiguous_question-s03-ccd821",
+        "local-smoke-batch_questions-s01-bea147",
+        "local-smoke-batch_questions-s02-28783a",
+        "local-smoke-batch_questions-s03-65cc49",
+        "local-smoke-conceptual_question-s01-374794",
+        "local-smoke-conceptual_question-s02-a1bec2",
+        "local-smoke-conceptual_question-s03-9c9b6a",
+        "local-smoke-deadline_question-s01-6fb2cc",
+        "local-smoke-deadline_question-s02-6e2c48",
+        "local-smoke-deadline_question-s03-c4f34f",
+        "local-smoke-exception_question-s01-b9b9f4",
+        "local-smoke-exception_question-s02-a395dd",
+        "local-smoke-exception_question-s03-aef05c",
+        "local-smoke-office_hours_question-s01-9d4efd",
+        "local-smoke-office_hours_question-s02-f1757f",
+        "local-smoke-office_hours_question-s03-b7c855",
+        "local-smoke-personal_question-s01-b02d70",
+        "local-smoke-personal_question-s02-d6c34a",
+        "local-smoke-personal_question-s03-bc5f89",
+        "local-smoke-repeated_question-s01-d540c9",
+        "local-smoke-repeated_question-s02-47f760",
+        "local-smoke-repeated_question-s03-71469c",
+        "local-smoke-staff_summary-s01-4d9dfe",
+        "local-smoke-staff_summary-s02-547489",
+        "local-smoke-staff_summary-s03-e89956",
+        "local-smoke-unauthorized_question-s01-b576bb",
+        "local-smoke-unauthorized_question-s02-1a67ee",
+        "local-smoke-unauthorized_question-s03-3df95a"
+      ],
+      "dirty_runs": 30,
+      "served_models": [
+        "says-done"
+      ]
+    }
+  ]
+}

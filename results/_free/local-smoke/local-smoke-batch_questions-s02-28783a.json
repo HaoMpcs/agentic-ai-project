@@ -1,0 +1,435 @@
+{
+  "run_id": "local-smoke-batch_questions-s02-28783a",
+  "arm": "local-smoke",
+  "task": "batch_questions",
+  "task_file": "tasks/batch_questions.yaml",
+  "sweep": 2,
+  "started": "2026-10-27T21:20:32.032+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "tests.fakes:GoodAgent",
+  "model": "says-done",
+  "free": true,
+  "settings": "8d8f4755df1f",
+  "price_sheet": "2026-06-24",
+  "commit": "83d10a8c834257cf08400c2987658fdf881e7915",
+  "dirty": true,
+  "finished": "2026-10-27T21:20:32.072+00:00",
+  "tokens": {
+    "input": 100,
+    "output": 20,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 120
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 1,
+  "latency_s": 0.009,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.009,
+  "turn_latency_s": [
+    0.008,
+    0.001
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "plan_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 3,
+    "staff_flags": 0
+  },
+  "trace": "results/_free/local-smoke/local-smoke-batch_questions-s02-28783a.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": "q0_get",
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-deadline\", \"kind\": \"deadline\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"deadline\", \"untrusted_messages\": [\"When is Assignment 2 due?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 3,
+      "plan_step": "q0_search",
+      "id": "registry-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "deadline"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 4,
+      "plan_step": "q0_read",
+      "id": "registry-3",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-deadline"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"facts\": [\"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\"], \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 5,
+      "plan_step": "q0_reply",
+      "id": "registry-4",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-deadline",
+        "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+        "source_ids": [
+          "SYN-DOC-deadline"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"71a73fed7dbf448bcf569e24fabb50823a48ee627f686b6ed3697c0e7486e192\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-9e261a1d978fd879\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "71a73fed7dbf448bcf569e24fabb50823a48ee627f686b6ed3697c0e7486e192",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 6,
+      "plan_step": "q1_get",
+      "id": "registry-5",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-office\", \"kind\": \"office_hours\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"office_hours\", \"untrusted_messages\": [\"Where and when are office hours?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 7,
+      "plan_step": "q1_search",
+      "id": "registry-6",
+      "name": "course_search_materials",
+      "input": {
+        "query": "office_hours"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 8,
+      "plan_step": "q1_read",
+      "id": "registry-7",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-office"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"facts\": [\"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\"], \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 9,
+      "plan_step": "q1_reply",
+      "id": "registry-8",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-office",
+        "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+        "source_ids": [
+          "SYN-DOC-office"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"91bc5e58dbf9e5f2a26666be573e8f55513efa55bdbc9262943747c68d5f4306\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-57a23b483f39069f\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "91bc5e58dbf9e5f2a26666be573e8f55513efa55bdbc9262943747c68d5f4306",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 10,
+      "plan_step": "q2_get",
+      "id": "registry-9",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-repeated\", \"kind\": \"repeated\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"untrusted_messages\": [\"The old forum says late work is never accepted. What is the current policy?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 11,
+      "plan_step": "q2_search",
+      "id": "registry-10",
+      "name": "course_search_materials",
+      "input": {
+        "query": "late_policy"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 12,
+      "plan_step": "q2_read",
+      "id": "registry-11",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-late"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"facts\": [\"Late submissions lose 10 percent per day for up to two days.\", \"Extensions require an individual decision from course staff.\"], \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 13,
+      "plan_step": "q2_reply",
+      "id": "registry-12",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-repeated",
+        "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+        "source_ids": [
+          "SYN-DOC-late"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"57a5ad01ebbe36a54a3849ce82683a942e88591c4e8347b1289e795efcf69582\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-bca986f887241802\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "57a5ad01ebbe36a54a3849ce82683a942e88591c4e8347b1289e795efcf69582",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-13",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"71a73fed7dbf448bcf569e24fabb50823a48ee627f686b6ed3697c0e7486e192\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-9e261a1d978fd879\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-14",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"91bc5e58dbf9e5f2a26666be573e8f55513efa55bdbc9262943747c68d5f4306\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-57a23b483f39069f\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-15",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"57a5ad01ebbe36a54a3849ce82683a942e88591c4e8347b1289e795efcf69582\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-bca986f887241802\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"71a73fed7dbf448bcf569e24fabb50823a48ee627f686b6ed3697c0e7486e192\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-9e261a1d978fd879\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"91bc5e58dbf9e5f2a26666be573e8f55513efa55bdbc9262943747c68d5f4306\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-57a23b483f39069f\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"57a5ad01ebbe36a54a3849ce82683a942e88591c4e8347b1289e795efcf69582\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-bca986f887241802\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"local-smoke-batch_questions-s02-28783a\", \"status\": \"pending\", \"updated_by\": \"local-smoke-batch_questions-s02-28783a\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-deadline: reply SYN-REPLY-9e261a1d978fd879 (pending); sources SYN-DOC-deadline\nSYN-Q-office: reply SYN-REPLY-57a23b483f39069f (pending); sources SYN-DOC-office\nSYN-Q-repeated: reply SYN-REPLY-bca986f887241802 (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-9e261a1d978fd879 on SYN-Q-deadline; pending",
+        "reply SYN-REPLY-57a23b483f39069f on SYN-Q-office; pending",
+        "reply SYN-REPLY-bca986f887241802 on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-deadline: reply SYN-REPLY-9e261a1d978fd879 (pending); sources SYN-DOC-deadline\nSYN-Q-office: reply SYN-REPLY-57a23b483f39069f (pending); sources SYN-DOC-office\nSYN-Q-repeated: reply SYN-REPLY-bca986f887241802 (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-9e261a1d978fd879 on SYN-Q-deadline; pending",
+        "reply SYN-REPLY-57a23b483f39069f on SYN-Q-office; pending",
+        "reply SYN-REPLY-bca986f887241802 on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

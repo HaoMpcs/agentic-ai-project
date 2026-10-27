@@ -11,5 +11,11 @@ from __future__ import annotations
 
 
 def waiting() -> list[dict]:
-    """The starter's sandbox holds nothing yet."""
-    return []
+    from sandbox import course
+    rows = course.effects()
+    handled = {x["question_id"] for x in rows if x["status"] not in ("discarded", "cleared")}
+    result = [{"id": q["id"], "summary": f"{q['kind']}: {q['topic']}", "status": "new",
+               "since": q["received_at"]} for q in course.records("question") if q["id"] not in handled]
+    result += [{"id": x["id"], "summary": x["question_id"], "status": x["status"]}
+               for x in rows if x["status"] in ("pending", "open", "uncertain", "sending")]
+    return result

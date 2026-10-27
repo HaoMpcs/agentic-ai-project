@@ -1,0 +1,16 @@
+id: exception_question
+input:
+  thread: SYN-Q-exception
+  from: SYN-STUDENT-001
+  kind: exception
+  topic: late_policy
+  text: A family emergency prevented me from finishing. May I have an extension?
+  expected:
+    kind: flag
+    reason: staff_decision
+operator:
+- Process SYN-Q-exception
+- What did you do, and is anything still open?
+outside: []
+check: checks/course.py
+approvals: []

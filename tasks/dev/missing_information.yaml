@@ -1,0 +1,14 @@
+id: dev_missing_information
+input:
+  thread: SYN-Q-unknown
+  from: SYN-STUDENT-001
+  kind: ambiguous
+  topic: unpublished
+  text: What is the deadline for the unannounced optional project?
+  expected:
+    kind: flag
+    reason: missing_information
+operator:
+- Process SYN-Q-unknown
+outside: []
+check: checks/course.py

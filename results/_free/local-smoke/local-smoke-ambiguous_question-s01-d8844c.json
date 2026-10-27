@@ -1,0 +1,186 @@
+{
+  "run_id": "local-smoke-ambiguous_question-s01-d8844c",
+  "arm": "local-smoke",
+  "task": "ambiguous_question",
+  "task_file": "tasks/ambiguous_question.yaml",
+  "sweep": 1,
+  "started": "2026-10-27T21:20:31.610+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "tests.fakes:GoodAgent",
+  "model": "says-done",
+  "free": true,
+  "settings": "8d8f4755df1f",
+  "price_sheet": "2026-06-24",
+  "commit": "83d10a8c834257cf08400c2987658fdf881e7915",
+  "dirty": true,
+  "finished": "2026-10-27T21:20:31.651+00:00",
+  "tokens": {
+    "input": 400,
+    "output": 80,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 480
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 4,
+  "latency_s": 0.007,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.007,
+  "turn_latency_s": [
+    0.004,
+    0.0
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "agent_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 1
+  },
+  "trace": "results/_free/local-smoke/local-smoke-ambiguous_question-s01-d8844c.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": null,
+      "id": "fake-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-ambiguous\", \"kind\": \"ambiguous\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"conflict\", \"untrusted_messages\": [\"Is the project due November 1 or November 3? The sources disagree.\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 4,
+      "plan_step": null,
+      "id": "fake-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "conflict"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-conflict-a\", \"title\": \"Project deadline in syllabus\", \"topic\": \"conflict\", \"version\": 1}, {\"active\": true, \"id\": \"SYN-DOC-conflict-b\", \"title\": \"Project deadline in announcement\", \"topic\": \"conflict\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 6,
+      "plan_step": null,
+      "id": "fake-3",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-ambiguous",
+        "reason": "conflicting_sources"
+      },
+      "output": "{\"effect\": {\"action_key\": \"43ad2367d8e442a34fb6c5342854ad9e4bbde00cd14ecd1d8f05cd9c9fc2b40c\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7ac1e53c6841e8ce\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"local-smoke-ambiguous_question-s01-d8844c\", \"status\": \"open\", \"updated_by\": \"local-smoke-ambiguous_question-s01-d8844c\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "43ad2367d8e442a34fb6c5342854ad9e4bbde00cd14ecd1d8f05cd9c9fc2b40c",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-4",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"43ad2367d8e442a34fb6c5342854ad9e4bbde00cd14ecd1d8f05cd9c9fc2b40c\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7ac1e53c6841e8ce\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"local-smoke-ambiguous_question-s01-d8844c\", \"status\": \"open\", \"updated_by\": \"local-smoke-ambiguous_question-s01-d8844c\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"43ad2367d8e442a34fb6c5342854ad9e4bbde00cd14ecd1d8f05cd9c9fc2b40c\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7ac1e53c6841e8ce\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"local-smoke-ambiguous_question-s01-d8844c\", \"status\": \"open\", \"updated_by\": \"local-smoke-ambiguous_question-s01-d8844c\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-ambiguous: flag SYN-FLAG-7ac1e53c6841e8ce (open); conflicting_sources",
+      "actions": [
+        "flag SYN-FLAG-7ac1e53c6841e8ce on SYN-Q-ambiguous; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-ambiguous: flag SYN-FLAG-7ac1e53c6841e8ce (open); conflicting_sources",
+      "actions": [
+        "flag SYN-FLAG-7ac1e53c6841e8ce on SYN-Q-ambiguous; open"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

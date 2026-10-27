@@ -1,9 +1,45 @@
 {% extends "base.html" %}
+{% block title %}Course Q&amp;A Assistant{% endblock %}
 {% block content %}
-<h1>Your product</h1>
-<p>This page is yours. Put your product's own features here: the records your
-agent works on, and a way to do the core task by hand, with no agent at all.</p>
-<p class="muted">Edit <code>app/product.py</code> and <code>app/templates/home.html</code>.
-The pages in the menu are the operator's: the console, the queue, the threads,
-the approvals and the traces.</p>
+<h1>Course Q&amp;A Assistant</h1>
+<p class="notice">Synthetic course sandbox. Review drafts here before sending. The console can process a question ID or all pending questions.</p>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<h2>Incoming questions</h2>
+{% for q in questions %}
+<details open><summary><strong>{{ q.id }}</strong> · {{ q.kind }} · {{ q.student_id }}</summary>
+{% for text in q.untrusted_messages %}<div class="line outside">{{ text }}</div>{% endfor %}
+<form method="post" action="/course/draft">
+<input type="hidden" name="question_id" value="{{ q.id }}">
+<label>Manual reply draft<textarea name="body" required maxlength="2500"></textarea></label>
+<label>Active source IDs (comma separated)<input type="text" name="sources"></label>
+<button>Save pending draft</button>
+</form>
+<form method="post" action="/course/flag">
+<input type="hidden" name="question_id" value="{{ q.id }}">
+<label>Staff flag <select name="reason"><option>private_request</option><option>staff_decision</option><option>missing_information</option><option>conflicting_sources</option></select></label>
+<button>Create flag</button></form></details>
+{% else %}<p>No questions.</p>{% endfor %}
+<h2>Replies and staff escalations</h2>
+{% for e in effects %}
+<details open><summary>{{ e.id }} · {{ e.question_id }} · {{ e.status }}</summary>
+<p>Created by {{ e.stamp }}; updated by {{ e.updated_by }}</p>
+{% if e.kind == 'reply' %}<div class="line">{{ e.body }}</div><p>Sources: {{ e.source_ids | join(', ') }}</p>
+{% if e.status == 'pending' %}
+<form method="post" action="/course/send"><input type="hidden" name="effect_id" value="{{ e.id }}">
+<label><input type="checkbox" name="reviewed" value="yes" required> I reviewed the recipient, content, privacy and sources.</label>
+<button>Send as operator</button></form>
+<form method="post" action="/course/status"><input type="hidden" name="effect_id" value="{{ e.id }}"><input type="hidden" name="status" value="discarded"><button>Discard draft</button></form>
+{% elif e.status == 'discarded' %}
+<form method="post" action="/course/status"><input type="hidden" name="effect_id" value="{{ e.id }}"><input type="hidden" name="status" value="pending"><button>Restore draft</button></form>
+{% elif e.status in ['uncertain', 'sending'] %}<p class="error">Staff must inspect Threads. Do not retry this send automatically.</p>{% endif %}
+{% else %}<p>{{ e.reason }}</p>
+<form method="post" action="/course/status"><input type="hidden" name="effect_id" value="{{ e.id }}"><input type="hidden" name="status" value="{{ 'cleared' if e.status == 'open' else 'open' }}"><label>Reason<input type="text" name="note" required></label><button>{{ 'Clear' if e.status == 'open' else 'Reopen' }} flag</button></form>
+{% endif %}</details>
+{% else %}<p>No effects yet.</p>{% endfor %}
+<h2>Course sources</h2>
+{% for d in documents %}<details><summary>{{ d.id }} · {{ d.title }} · v{{ d.version }} · {{ 'active' if d.active else 'superseded' }}</summary><p>{{ d.answer }}</p></details>{% endfor %}
+<h2>Prior public answers</h2>
+{% for a in public_answers %}<p>{{ a.id }}: {{ a.body }}</p>{% endfor %}
+<details><summary>Staff-only synthetic student records</summary><p>These records are excluded from agent tools.</p>
+{% for s in students %}<p>{{ s.id }} · synthetic grade {{ s.grade }} · {{ s.private_note }}</p>{% endfor %}</details>
 {% endblock %}

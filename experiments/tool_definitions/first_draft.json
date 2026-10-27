@@ -1,0 +1,154 @@
+[
+  {
+    "name": "course_get_question",
+    "description": "Get question.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "question_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_search_materials",
+    "description": "Search materials.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_read_document",
+    "description": "Read document.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "document_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_search_public_answers",
+    "description": "Search public answers.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "topic"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_create_reply",
+    "description": "Create reply.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2500
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 6
+        }
+      },
+      "required": [
+        "question_id",
+        "body",
+        "source_ids"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_create_flag",
+    "description": "Create flag.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "private_request",
+            "staff_decision",
+            "missing_information",
+            "conflicting_sources"
+          ]
+        }
+      },
+      "required": [
+        "question_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "course_status",
+    "description": "Status.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "question_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+]

@@ -1,0 +1,20 @@
+id: office_hours_question
+input:
+  thread: SYN-Q-office
+  from: SYN-STUDENT-001
+  kind: office_hours
+  topic: office_hours
+  text: Where and when are office hours?
+  expected:
+    kind: reply
+    source_ids:
+    - SYN-DOC-office
+    required:
+    - Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room
+      204.
+operator:
+- Process SYN-Q-office
+- What did you do, and is anything still open?
+outside: []
+check: checks/course.py
+approvals: []

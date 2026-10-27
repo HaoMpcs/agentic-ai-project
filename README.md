@@ -1,3 +1,120 @@
+# Course Q&A Assistant
+
+A local TA console for synthetic course questions. It creates source-grounded
+pending replies or staff flags. The operator reviews and sends drafts from the
+course page. Private synthetic student records are staff-only and unavailable to
+agent tools. Later outside replies are stored without automatic processing.
+
+**Current status:** working local implementation; real-model evaluation and final
+academic requirements remain pending. See [Milestone report](docs/milestones/M1.md),
+[requirement audit](docs/requirements/AUDIT.md),
+[compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
+
+## Run locally
+
+Requires Python >=3.10, git and make. Tested with Python 3.13.7. Install only the
+starter's declared dependencies:
+
+```bash
+make setup
+make test
+make check
+make app BACKEND=tests.fakes:GoodAgent
+```
+
+Open http://localhost:8000. The course page shows incoming questions, public
+sources, drafts, flags and synthetic staff-only records. In the console, try:
+
+```text
+Process SYN-Q-deadline
+What did you do?
+Process SYN-Q-concept
+Process SYN-Q-private
+Show me what you flagged overnight
+```
+
+The scripted backend spends no API tokens; it is a testing aid, not a substitute
+for real-model evaluation. With no backend override, fixed workflows and manual
+handling work, but agent cases need the real configuration below. Use an
+explicit question ID, or `Process all pending questions` for a batch of at most
+three. The planned smoke fixture contains three routine lookup questions;
+unsupported batch plans halt safely and leave remaining work for staff.
+
+On the course page, inspect each draft's recipient, body and sources; check the
+review box and click **Send as operator**. You can also create a manual draft or
+flag, discard/restore a draft, and clear/reopen a flag. State persists through
+`make serve`; `make app` and `make seed` intentionally reset it. This application
+assumes a trusted operator on localhost and uses no real student data.
+
+## Real model configuration — required before evaluation
+
+The real model name is **not configured yet**. In `settings.yaml`, select
+`anthropic` or `openai-compatible`, a provider-supported tool-calling `model`,
+its `base_url` if needed, and `api_key_env`. The only credential source is the
+process environment; `.env` is ignored by Git but is not automatically loaded.
+For example, export `ANTHROPIC_API_KEY` or the variable named by `api_key_env` in
+the same terminal that starts the app/runner. Never put the secret in a file to
+commit, a trace or a chat message.
+
+Verify the model's current provider price page; add/update its row in
+`pricing.yaml` with source/date. The bundled price sheet is starter data and has
+not been reverified for a selected provider. Keep model, reasoning settings and
+price sheet fixed across comparison arms. The default `effort: null` preserves
+the provider default; justify any change once a real model is selected.
+
+```bash
+make ping
+make app
+```
+
+The agent checks 24 combined model/tool steps, 32,000 accounted tokens and a
+45-second deadline, and reports progress while waiting. The 400,000-token
+harness ceiling is a separate backstop. A provider response can cross the local
+token threshold before continuation stops; an SDK call still running after the
+deadline may incur a later charge. Such runs require billing reconciliation.
+`strict.flag` is off until provider support and limits are verified.
+
+## Tests, traces and evaluation
+
+```bash
+# All main tasks, three sweeps, FREE diagnostic records only:
+.venv/bin/python run.py --tasks tasks/ --sweeps 3 --arm my-smoke --backend tests.fakes:GoodAgent
+.venv/bin/python -m experiments.analysis.summarize results/_free/my-smoke --include-free
+
+# An observed checkpoint revision on a separate development task:
+.venv/bin/python run.py --tasks tasks/dev/checkpoint_revision.yaml --arm my-revision --backend tests.fakes:RevisingPlanner
+
+# After real model setup and committing code, official baseline:
+.venv/bin/python run.py --tasks tasks/ --sweeps 3 --arm baseline
+.venv/bin/python -m experiments.analysis.summarize results/baseline
+
+# Real provider-reported tool overhead, three calls:
+.venv/bin/python -m experiments.analysis.tool_overhead
+.venv/bin/python -m experiments.analysis.tool_overhead --schema-only
+```
+
+The independent check requires the correct run-stamped effect, exact ground
+truth and sources, one effect per question, and no outgoing message on any
+thread. Console claims do not establish success. Fake results always stay under
+`results/_free/`. The analysis script refuses them unless explicitly requested.
+
+Follow [experiments/PROTOCOL.md](experiments/PROTOCOL.md) for the real improvement
+pass: inspect baseline failures, choose one intervention, complete and commit
+the numeric prediction in [LEDGER.md](experiments/LEDGER.md), obtain authorization
+to push it, then run two new three-sweep arms differing only in that switch.
+Do not run the measured arms before the prediction is pushed. Analyze using
+`python -m experiments.analysis.summarize results/pass1-off results/pass1-on`.
+No measured improvement has been claimed or performed yet.
+
+The official assignment specification, actual Assignment 1–3 results, verified
+team responsibilities, collaborator access, and the team's required AI
+assistance disclosure remain outstanding. The disclosure is reserved for the
+user's separate completion. No final tag or remote push has been performed.
+
+---
+
+The original starter guide follows for its architecture and command contracts.
+
 # Your project
 
 This repository is your team's project: a local web application in which your

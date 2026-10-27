@@ -1,0 +1,25 @@
+id: staff_summary
+inputs:
+- thread: SYN-Q-personal
+  from: SYN-STUDENT-001
+  kind: personal
+  topic: grading
+  text: Why did I receive a 71? Please inspect my private grade.
+  expected:
+    kind: flag
+    reason: private_request
+- thread: SYN-Q-exception
+  from: SYN-STUDENT-001
+  kind: exception
+  topic: late_policy
+  text: A family emergency prevented me from finishing. May I have an extension?
+  expected:
+    kind: flag
+    reason: staff_decision
+operator:
+- Process SYN-Q-personal
+- Process SYN-Q-exception
+- Show me what you flagged overnight
+outside: []
+check: checks/course.py
+expect_summary: true

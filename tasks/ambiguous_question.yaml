@@ -1,0 +1,16 @@
+id: ambiguous_question
+input:
+  thread: SYN-Q-ambiguous
+  from: SYN-STUDENT-001
+  kind: ambiguous
+  topic: conflict
+  text: Is the project due November 1 or November 3? The sources disagree.
+  expected:
+    kind: flag
+    reason: conflicting_sources
+operator:
+- Process SYN-Q-ambiguous
+- What did you do, and is anything still open?
+outside: []
+check: checks/course.py
+approvals: []

@@ -1,0 +1,20 @@
+id: repeated_question
+input:
+  thread: SYN-Q-repeated
+  from: SYN-STUDENT-001
+  kind: repeated
+  topic: late_policy
+  text: The old forum says late work is never accepted. What is the current policy?
+  expected:
+    kind: reply
+    source_ids:
+    - SYN-DOC-late
+    required:
+    - Late submissions lose 10 percent per day for up to two days.
+    - Extensions require an individual decision from course staff.
+operator:
+- Process SYN-Q-repeated
+- What did you do, and is anything still open?
+outside: []
+check: checks/course.py
+approvals: []
