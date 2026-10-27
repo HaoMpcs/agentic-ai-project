@@ -38,3 +38,8 @@ Implementation order:
 7. Add analysis and model-overhead scripts, report, compliance and setup instructions.
 8. Run full checks and clean-snapshot app test. Real evidence remains conditional
    on the external inputs above; never substitute fake runs for measured arms.
+
+Final local evidence: see [COMPLIANCE.md](COMPLIANCE.md) for current row status
+and [VERIFICATION.md](VERIFICATION.md) for 77 passing tests, both clean-clone
+checks, real HTTP app operations and retained diagnostic traces. All model
+quality/cost claims and the official-spec comparison remain pending.

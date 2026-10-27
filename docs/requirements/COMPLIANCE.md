@@ -40,7 +40,7 @@ blocked or pending.
 - Dependencies: `make setup` first failed because the restricted shell could not
   reach the package index; installing declared requirements with network access
   succeeded. No project dependency was added.
-- Expanded suite: **77 passed, 0 failed**. Fresh clone at 0b18c90 completed
+- Expanded suite: **77 passed, 0 failed**. Fresh clone at aefe416 completed
   make setup, 77 tests, make check, actual make app/HTTP console/manual-send
   verification and make serve persistence. See VERIFICATION.md. Free diagnostic
   arm records use the pre-commit code with dirty=true.
