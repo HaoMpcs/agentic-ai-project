@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from harness import runtime, schema
 from harness.client import ToolCall
 from sandbox import course
-from agent.critique import validate_draft
+from agent.critique import DRAFT_CHECKPOINT, MAX_CRITIQUE_ROUNDS, DraftRejected, validate_draft
 from agent.bounds import Halt
 
 
@@ -168,6 +168,11 @@ class Registry:
             result = Result(output)
         except Halt:
             raise
+        except DraftRejected as exc:
+            # Only the deterministic source critic produces this checkpoint.
+            # Other errors, especially uncertain writes, cannot trigger revision.
+            result = Result({"error": str(exc)[:450], "repairable": not exc.exhausted,
+                             "checkpoint": DRAFT_CHECKPOINT}, True, "permanent")
         except (ValueError, LookupError, PermissionError) as exc:
             result = Result({"error": str(exc)[:450], "repairable": not isinstance(exc, PermissionError)}, True,
                             "protocol" if isinstance(exc, LookupError) else "permanent")
@@ -213,8 +218,9 @@ class Registry:
         if runtime.switch("critique.reply", "external") == "external":
             count = self.critique_rounds.get(q["id"], 0) + 1
             self.critique_rounds[q["id"]] = count
-            if count > 3:
-                raise ValueError("Critique bound reached; draft held for staff. No pending write allowed.")
+            if count > MAX_CRITIQUE_ROUNDS:
+                raise DraftRejected("Critique bound reached; draft held for staff. No pending write allowed.",
+                                    exhausted=True)
             passed, reason = validate_draft(q["id"], args["body"], args["source_ids"])
             previous = self.previous_drafts.get(q["id"])
             self.previous_drafts[q["id"]] = args["body"]
@@ -223,7 +229,9 @@ class Registry:
                              previous_body_hash=hashlib.sha256(previous.encode()).hexdigest() if previous else None,
                              body_hash=hashlib.sha256(args["body"].encode()).hexdigest())
             if not passed:
-                raise ValueError(("Critique bound reached; draft held. " if count == 3 else "Revise draft. ") + reason)
+                exhausted = count >= MAX_CRITIQUE_ROUNDS
+                prefix = "Critique bound reached; draft held. " if exhausted else "Revise draft. "
+                raise DraftRejected(prefix + reason, exhausted=exhausted)
         item = course.create_effect("reply", q["id"], body=args["body"], source_ids=args["source_ids"], key=key)
         self._verify_effect(item)
         return {"effect": item}

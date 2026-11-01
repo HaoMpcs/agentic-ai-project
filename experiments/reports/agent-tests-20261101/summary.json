@@ -1,0 +1,4554 @@
+{
+  "generated_at": "2026-11-01T18:45:05.228105+00:00",
+  "scope": "Responsibility 2: routing, agent bounds, planning, critique and detectors",
+  "kind": "free mechanism tests; not an official baseline or improvement pass",
+  "source": {
+    "commit": "66d2e6a2d8b7928049dcf3829d21a841afd173d5",
+    "dirty": true
+  },
+  "source_files_sha256": {
+    "agent/__init__.py": "7d59e6ab3f7358ad61c2809af3728e38145b50389b43349db503e8944802b17e",
+    "agent/bounds.py": "e3bf8d7d0e99d55e235d48257bb6b5115dd16725b1a626bd02c2aa473eaa4815",
+    "agent/critique.py": "ee5e260999c3a18676c4493110148110700a55b1c5abad256c8b7eb3144f5198",
+    "agent/planning.py": "19473da4428715095db5771d4289f705c714ade924e089876ccf9f7294459231",
+    "agent/service.py": "c4cfecf2fd0c0af483c3dbd9e2d93e85346e23e256ca51bf4c3bdca7feac2c4b",
+    "agent/tools.py": "8b3c211fd4de74c15bc7d97b88ce931fcef93848e69ed2c8621ba015468d5dc4",
+    "channel/__init__.py": "051e03a436cbe144dde39326b592239e832292f1891eb237066a422639589242",
+    "checks/__init__.py": "f68fb6ad59c5ac31601b03f729d4bf8f1de2f332580230b7b213222d2744cf12",
+    "checks/course.py": "df6da6af49e395c68cb6d8a198e09de9cca86d9e30a89edd4803c33f3bae7037",
+    "checks/example.py": "12db5a1a7fc243454faf33676933bdf6360a66f1fbdda3ea24866b833097aab3",
+    "checks/helpers.py": "2fccae6c985dad32390df2e5e20308f1d789cb7f6e2a8ebddf0a4f7510316e56",
+    "experiments/analysis/agent_test_report.py": "da762697af66714658a0382f9d820edd20076243dca974ca2556126313ed2610",
+    "experiments/analysis/summarize.py": "46fd6771fc7d15b1c7ba05732928bbb61afb3ab3f432b9e6964d4afe9c69aeb3",
+    "experiments/analysis/tool_overhead.py": "0f8483fdca5b06c2e23ef4097567926becf006d8a32b5efdc6c3ed86288a985b",
+    "harness/__init__.py": "e5ece49a2e56f4dce4e62a3bdc7bdc2c33e4d00e38ff476903a72db9e1284b8a",
+    "harness/backends.py": "63548c76f3b7d64c2e57eec660d74a8c45cea2de16e990272ce2f751c86c7833",
+    "harness/check.py": "714926a2e9f4c50235372c47f84f33c057e60e454d1e6ee67f3b123034b6964d",
+    "harness/client.py": "5df57bfec53c31be623b0d303d5a21dfe58e9f282179c1250b93739baeb201c6",
+    "harness/formats.py": "3c92a6ea4da3426c7a3147a307f92487cc1682fd10e082e8574ea6740da171d8",
+    "harness/paths.py": "86b38734caefb90c8972ba4e3b8b3ceea5bbe5cfc75a8ca0564880c8882f96e7",
+    "harness/ping.py": "d9fa7bf666e7b7e45cdff6994f4230d933d82f1d9b6e26e6c4ffbdcd39175575",
+    "harness/pricing.py": "f44d8c3d4176cacb8a1618e92012b9af23446db57233f3ea08080eeccf60cf40",
+    "harness/records.py": "c1125896f078cfef889a3369c152e488b65fbb5e2cad445669aaff651314c650",
+    "harness/runner.py": "e38f7fa9205079fe612c392263dad33193a4b376cdcd3c860662b959feae8fb6",
+    "harness/runtime.py": "c209761dab0006c058095f959ded3fb2bff20474782aad871e1d6058dc24cf34",
+    "harness/schema.py": "7ef29d225716af9d7dfe57b268a935f81c0d800c5a1cbe44ba1d45d28a2a6a75",
+    "harness/scripted.py": "ee1b361b975a3c27005b649fdf79c0c8bbb7507eb52e2c10a04f99f772fe5536",
+    "harness/seed.py": "3ccdf5595ee4c5ad2b267e311923646eb1d8018b91750041ce54bf2a6cf7027f",
+    "harness/settings.py": "804901fe2cb2157845796f9d000d343088cc707092d5f2e2bbf4ac7ae0918a60",
+    "harness/summarize.py": "9e088a29e474aa3c9ca8ee2d5ae31e02e7e4acf3a6e95fdcaeaf5c1ef114c79d",
+    "harness/switches.py": "d8184b1dfe0f8e9857b5656758a096f81b6cea38deb57ffcb5dc03dd3346d3a7",
+    "harness/tasks.py": "c379ee1fdfd08d870df7dc8cb9ba2eb324284603450fdc47dd2217c362979e26",
+    "harness/trace.py": "b02b54c762dfcd5e1727586e55741b5e6738a74484af79325aa1eda654709b09",
+    "harness/turns.py": "a269283b833f1511e9159e008b01f78d614b89dafc3fd541423708541d304087",
+    "pricing.yaml": "294fdd8ccaea1152b29c0e89b899d2c9cf0adb38022b18ea824b2ceb5c2ad51b",
+    "run.py": "bdd3604af8c236f67957b63326d28a79ab9118a737b215e32ea9277b87f33170",
+    "sandbox/__init__.py": "98e2d85f3df3dba22303223838ed431493f37d8ba20b016382b52281f53211b0",
+    "sandbox/course.py": "95edfbf1a4d8f9a22bbacf292b6b12497aae8ccbde7b77b91507861f3fa36e7b",
+    "sandbox/data.py": "e07b507c6d8425adcc25d384e2c12033134ccb5e8a6930bdeaee57f99e1ba678",
+    "sandbox/queue.py": "5850bd74688e416937e3f521e47a712174ba2e2e4920fba35d7f51508bd6bebb",
+    "sandbox/seed.py": "f950cd5e0c7808012b1b2793fb7ac5917e425150df648be3e170a42ec5fe8c8f",
+    "settings.yaml": "825ee89e79988f345adb93c038adaf53939fe003a7cd5adc14961d664a80fdbb",
+    "switches.yaml": "f79ca7fe04aeb22ed475df8e2f7ca7fbcd20532a01ac7c181d5a6e1f83fd0feb",
+    "tasks/ambiguous_question.yaml": "ec36c062992b2c99d20b0c0c4abdd30f5262aa3fdd90fe627d8f9f4df775e748",
+    "tasks/batch_questions.yaml": "39278994713c86edfa9af8caf023d19fc4cd0db94ee5f4ad105f5174ff28f070",
+    "tasks/conceptual_question.yaml": "10d4252bbf62425bf27df2e7dadef6a3781bdd46e9d6271960cc9584865971d1",
+    "tasks/deadline_question.yaml": "04bd658a5676971018a661be5c1f5eeba0102eb5f5a25600929c692081583413",
+    "tasks/dev/checkpoint_revision.yaml": "017cc39c12a2369bd839fc177dde5fcc78311565ef33551a25842d412d4a109a",
+    "tasks/dev/missing_information.yaml": "517fea760bae7c984ec23b6a9c41df74fa906bc5f60efd4802711efc6f5276ff",
+    "tasks/exception_question.yaml": "dcb0e1f06d530d5774ac5b0018926184f7befdd96b6c2421752aaf6f94681ea1",
+    "tasks/office_hours_question.yaml": "b5df1845e15dd913e99b332408ac021809c9d8a09a7fe6b7e2f7e069d7fdf999",
+    "tasks/personal_question.yaml": "a9bdc4cd216af6cdad833ea05aacdcfaa2c6ac12e40dfa8188b63bb9dffdfe1d",
+    "tasks/repeated_question.yaml": "52e43f69a897b10b24c30d97196261930655dbe405e34ce418b75a8adcef7015",
+    "tasks/staff_summary.yaml": "aba68a69ae6900faa84eba50623ffb2c51b3a1ab1eb5ed973bc3c9fa78965411",
+    "tasks/unauthorized_question.yaml": "981b48ecf06f52b1e861664539dae648480359fef1329f4ead066a8daae38e89",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/fakes.py": "a5a2b2a73d10fa1fe31cdff4ba13bd98addafe5a1191371d51d8ad179240f84b",
+    "tests/fixtures/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/fixtures/checks.py": "fc8379b8016a6029bba91f6ced1a8cdccf6ad806bd672f1fe192273d704c5ba6",
+    "tests/fixtures/task.yaml": "bbc77224c842c54ea9e1d1490d3705afc62481f49b9d24b1159ea4f988d689b8",
+    "tests/support.py": "67fef4599714a265eece8c482b488fb63dce1fe5108231b31ec93dffe5eb802d",
+    "tests/test_agent_contracts.py": "5e6dc658611a26b9658a974b76ba82165d12fbaf7578f37c434b5ed53cfb9229",
+    "tests/test_analysis.py": "f1b4528de9a0cb2cc379ecb72b14acd40f581d6efd972a6d9a89be74da816e8e",
+    "tests/test_app.py": "e2e6c677276e4ebe379ca1b43b82c5d7fc2e6751790437c2fe7ac9e42ba49cd8",
+    "tests/test_course.py": "7fd98a895573393e4e761b15709a3ed1d34797fbdf42602d504c02e8aaf53226",
+    "tests/test_harness.py": "5cc272e0144de08d572bea0731459b1d41f12ef94e1d9b3b1de5f157f18940dc",
+    "tests/test_one_path.py": "26b15a3d15758310a1250fb77579e0770b4f23493bba5bf0b1cd9e62a2b0ce9b",
+    "tests/test_planning.py": "4ad336f056d4c85602224174232427a31e9677a00069db677ff9cc636c40c4b7",
+    "tests/test_product.py": "91e5fc3c203be188eb3aaf5333f45a63a49033f34ff56ad90beae9907b280783"
+  },
+  "source_unchanged_during_test": true,
+  "passed": true,
+  "tests_run": 43,
+  "statuses": {
+    "passed": 43
+  },
+  "tests": [
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.6202
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_ambiguous_student_text_does_not_override_trusted_routing",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0491
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_bound_never_stopping_agent",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0584
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_conflict_escalation_follows_both_source_reads",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0791
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_ablation_is_independently_scored",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0652
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_correct_revised_and_bound",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.175
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_follow_up_and_repeated_request_never_duplicate",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0365
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.3079
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_independent_check_negative_controls",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1149
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_invalid_plan_replan_bound_and_no_writes",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0632
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_invalid_revision_never_executes_and_labels_skipped",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0592
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_outside_replies_and_approvals_preserve_m1_contract",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0381
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_planner_tool_call_refused",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0805
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_reset_seed_deterministic_and_private_synthetic",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0357
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_revision_only_on_observed_failed_checkpoint",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.061
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_says_done_does_not_satisfy_effect_check",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0554
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_token_and_wall_bounds",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1385
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_valid_plan_order_and_no_untrusted_planner_input",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0722
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_critique_limit_still_applies_with_more_revision_budget",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1147
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_draft_revision_preserves_prefix_and_persists_once",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0788
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_generic_error_is_not_a_draft_checkpoint",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0531
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1089
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_later_draft_revision_preserves_completed_write",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0588
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_outcome_must_belong_to_its_tool",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0004
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_repeated_bad_draft_stops_at_shared_revision_limit",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0537
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_replaced_rejected_step_is_not_an_extra_call",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0595
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1778
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_source_and_draft_checkpoints_share_revision_budget",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0673
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_uncertain_write_never_revises_or_retries",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0718
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_unknown_outcome_rejected_before_execution",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0685
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_critique_repair_feedback_precedes_one_pending_write",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0659
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 1.0156
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_executed_arguments_resolve_fills_and_match_plan_order",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0857
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_initial_and_revised_planner_contexts_exclude_untrusted_text",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.2036
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.5829
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_over_budget_model_response_cannot_dispatch_tools",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0563
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_plan_off_batch_still_stops_at_the_external_step_limit",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.065
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_revision_cannot_change_an_executed_step_to_another_authorized_id",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0701
+    },
+    {
+      "test": "tests.test_course.RegistryTests.test_orphan_repeat_out_of_order_and_extra_detectors",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.019
+    },
+    {
+      "test": "tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.0185
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_recomputes_plan_outcomes_and_draft_checkpoint",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1762
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.3493
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_strict_schema_metrics",
+      "status": "passed",
+      "problems": [],
+      "duration_s": 0.1018
+    }
+  ],
+  "project_checks": [
+    {
+      "command": [
+        "make",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/agent-tests-20261101/make-test.log"
+    },
+    {
+      "command": [
+        "make",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/agent-tests-20261101/make-check.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/agent-tests-20261101/git-diff-check.log"
+    }
+  ],
+  "runs": [
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "ambiguous_question-ambiguous_question-s01-f773cf",
+      "task": "ambiguous_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/ambiguous_question/ambiguous_question-ambiguous_question-s01-f773cf.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/ambiguous_question/ambiguous_question-ambiguous_question-s01-f773cf.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "write_verification"
+        },
+        {
+          "line": 24,
+          "type": "end"
+        },
+        {
+          "line": 28,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "batch_questions-batch_questions-s01-636d54",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/batch_questions/batch_questions-batch_questions-s01-636d54.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/batch_questions/batch_questions-batch_questions-s01-636d54.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 44,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 46,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 48,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 50,
+          "type": "draft_critique"
+        },
+        {
+          "line": 51,
+          "type": "write_verification"
+        },
+        {
+          "line": 53,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 55,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 56,
+          "type": "end"
+        },
+        {
+          "line": 62,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "conceptual_question-conceptual_question-s01-bd82ff",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/conceptual_question/conceptual_question-conceptual_question-s01-bd82ff.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/conceptual_question/conceptual_question-conceptual_question-s01-bd82ff.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 25,
+          "type": "end"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "deadline_question-deadline_question-s01-3dc269",
+      "task": "deadline_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/deadline_question/deadline_question-deadline_question-s01-3dc269.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/deadline_question/deadline_question-deadline_question-s01-3dc269.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 8,
+          "type": "draft_critique"
+        },
+        {
+          "line": 9,
+          "type": "write_verification"
+        },
+        {
+          "line": 11,
+          "type": "end"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "checkpoint_revision-dev_checkpoint_revision-s01-4fc325",
+      "task": "dev_checkpoint_revision",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/checkpoint_revision/checkpoint_revision-dev_checkpoint_revision-s01-4fc325.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/checkpoint_revision/checkpoint_revision-dev_checkpoint_revision-s01-4fc325.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 19,
+          "type": "plan"
+        },
+        {
+          "line": 20,
+          "type": "plan_validation"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 40,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 41,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "missing_information-dev_missing_information-s01-6ec8a9",
+      "task": "dev_missing_information",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed"
+      ],
+      "model_calls": 4,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/missing_information/missing_information-dev_missing_information-s01-6ec8a9.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/missing_information/missing_information-dev_missing_information-s01-6ec8a9.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 14,
+          "type": "write_verification"
+        },
+        {
+          "line": 18,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "exception_question-exception_question-s01-718787",
+      "task": "exception_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/exception_question/exception_question-exception_question-s01-718787.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/exception_question/exception_question-exception_question-s01-718787.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "office_hours_question-office_hours_question-s01-cc174a",
+      "task": "office_hours_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/office_hours_question/office_hours_question-office_hours_question-s01-cc174a.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/office_hours_question/office_hours_question-office_hours_question-s01-cc174a.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 8,
+          "type": "draft_critique"
+        },
+        {
+          "line": 9,
+          "type": "write_verification"
+        },
+        {
+          "line": 11,
+          "type": "end"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "personal_question-personal_question-s01-fcd310",
+      "task": "personal_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/personal_question/personal_question-personal_question-s01-fcd310.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/personal_question/personal_question-personal_question-s01-fcd310.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "repeated_question-repeated_question-s01-6c5723",
+      "task": "repeated_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/repeated_question/repeated_question-repeated_question-s01-6c5723.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/repeated_question/repeated_question-repeated_question-s01-6c5723.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 9,
+          "type": "draft_critique"
+        },
+        {
+          "line": 10,
+          "type": "write_verification"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        },
+        {
+          "line": 16,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "staff_summary-staff_summary-s01-df4726",
+      "task": "staff_summary",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "workflow_completed",
+        "summary_completed"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/staff_summary/staff_summary-staff_summary-s01-df4726.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/staff_summary/staff_summary-staff_summary-s01-df4726.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "routing"
+        },
+        {
+          "line": 14,
+          "type": "write_verification"
+        },
+        {
+          "line": 16,
+          "type": "end"
+        },
+        {
+          "line": 21,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner",
+      "run_id": "unauthorized_question-unauthorized_question-s01-5dedf5",
+      "task": "unauthorized_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/unauthorized_question/unauthorized_question-unauthorized_question-s01-5dedf5.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner/unauthorized_question/unauthorized_question-unauthorized_question-s01-5dedf5.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "draft_critique"
+        },
+        {
+          "line": 7,
+          "type": "write_verification"
+        },
+        {
+          "line": 9,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_ambiguous_student_text_does_not_override_trusted_routing",
+      "run_id": "misrouting-unauthorized_question-s01-72bcc9",
+      "task": "unauthorized_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_ambiguous_student_text_does_not_override_trusted_routing/misrouting/misrouting-unauthorized_question-s01-72bcc9.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_ambiguous_student_text_does_not_override_trusted_routing/misrouting/misrouting-unauthorized_question-s01-72bcc9.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "draft_critique"
+        },
+        {
+          "line": 7,
+          "type": "write_verification"
+        },
+        {
+          "line": 9,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_bound_never_stopping_agent",
+      "run_id": "step-bound-conceptual_question-s01-d94d50",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_step_limit",
+        "follow_up"
+      ],
+      "model_calls": 12,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_bound_never_stopping_agent/step-bound/step-bound-conceptual_question-s01-d94d50.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_bound_never_stopping_agent/step-bound/step-bound-conceptual_question-s01-d94d50.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 11,
+          "type": "repeat_call"
+        },
+        {
+          "line": 15,
+          "type": "repeat_call"
+        },
+        {
+          "line": 19,
+          "type": "repeat_call"
+        },
+        {
+          "line": 23,
+          "type": "repeat_call"
+        },
+        {
+          "line": 27,
+          "type": "repeat_call"
+        },
+        {
+          "line": 31,
+          "type": "repeat_call"
+        },
+        {
+          "line": 35,
+          "type": "repeat_call"
+        },
+        {
+          "line": 39,
+          "type": "repeat_call"
+        },
+        {
+          "line": 43,
+          "type": "repeat_call"
+        },
+        {
+          "line": 47,
+          "type": "repeat_call"
+        },
+        {
+          "line": 51,
+          "type": "repeat_call"
+        },
+        {
+          "line": 53,
+          "type": "end"
+        },
+        {
+          "line": 58,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_conflict_escalation_follows_both_source_reads",
+      "run_id": "observed-conflict-ambiguous_question-s01-322008",
+      "task": "ambiguous_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_conflict_escalation_follows_both_source_reads/observed-conflict/observed-conflict-ambiguous_question-s01-322008.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_conflict_escalation_follows_both_source_reads/observed-conflict/observed-conflict-ambiguous_question-s01-322008.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "write_verification"
+        },
+        {
+          "line": 24,
+          "type": "end"
+        },
+        {
+          "line": 28,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_ablation_is_independently_scored",
+      "run_id": "critic-off-conceptual_question-s01-0f9457",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_ablation_is_independently_scored/critic-off/critic-off-conceptual_question-s01-0f9457.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_ablation_is_independently_scored/critic-off/critic-off-conceptual_question-s01-0f9457.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "write_verification"
+        },
+        {
+          "line": 24,
+          "type": "end"
+        },
+        {
+          "line": 28,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_correct_revised_and_bound",
+      "run_id": "goodagent-conceptual_question-s01-f14995",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/goodagent/goodagent-conceptual_question-s01-f14995.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/goodagent/goodagent-conceptual_question-s01-f14995.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 25,
+          "type": "end"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_correct_revised_and_bound",
+      "run_id": "correctingagent-conceptual_question-s01-a8b8bd",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 7,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/correctingagent/correctingagent-conceptual_question-s01-a8b8bd.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/correctingagent/correctingagent-conceptual_question-s01-a8b8bd.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 24,
+          "type": "draft_critique"
+        },
+        {
+          "line": 25,
+          "type": "write_verification"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        },
+        {
+          "line": 33,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_critique_correct_revised_and_bound",
+      "run_id": "nevercorrect-conceptual_question-s01-14a243",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "critique_limit",
+        "follow_up"
+      ],
+      "model_calls": 7,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/nevercorrect/nevercorrect-conceptual_question-s01-14a243.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_critique_correct_revised_and_bound/nevercorrect/nevercorrect-conceptual_question-s01-14a243.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 24,
+          "type": "repeat_call"
+        },
+        {
+          "line": 25,
+          "type": "draft_critique"
+        },
+        {
+          "line": 29,
+          "type": "repeat_call"
+        },
+        {
+          "line": 30,
+          "type": "draft_critique"
+        },
+        {
+          "line": 32,
+          "type": "end"
+        },
+        {
+          "line": 37,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved",
+      "run_id": "harnessceiling-conceptual_question-s01-6763ff",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "token_budget"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/harnessceiling/harnessceiling-conceptual_question-s01-6763ff.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/harnessceiling/harnessceiling-conceptual_question-s01-6763ff.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved",
+      "run_id": "quotareached-conceptual_question-s01-00ab02",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/quotareached/quotareached-conceptual_question-s01-00ab02.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/quotareached/quotareached-conceptual_question-s01-00ab02.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved",
+      "run_id": "ratelimitreached-conceptual_question-s01-9bcc53",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/ratelimitreached/ratelimitreached-conceptual_question-s01-9bcc53.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved/ratelimitreached/ratelimitreached-conceptual_question-s01-9bcc53.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_invalid_plan_replan_bound_and_no_writes",
+      "run_id": "bad-plan-batch_questions-s01-fd7929",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_invalid_plan_replan_bound_and_no_writes/bad-plan/bad-plan-batch_questions-s01-fd7929.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_invalid_plan_replan_bound_and_no_writes/bad-plan/bad-plan-batch_questions-s01-fd7929.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_invalid_revision_never_executes_and_labels_skipped",
+      "run_id": "bad-revision-dev_checkpoint_revision-s01-b743d5",
+      "task": "dev_checkpoint_revision",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_rejected"
+      ],
+      "model_calls": 3,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_invalid_revision_never_executes_and_labels_skipped/bad-revision/bad-revision-dev_checkpoint_revision-s01-b743d5.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_invalid_revision_never_executes_and_labels_skipped/bad-revision/bad-revision-dev_checkpoint_revision-s01-b743d5.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 19,
+          "type": "plan_validation"
+        },
+        {
+          "line": 22,
+          "type": "plan_validation"
+        },
+        {
+          "line": 23,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 30,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_planner_tool_call_refused",
+      "run_id": "off-plan-batch_questions-s01-0b6933",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_planner_tool_call_refused/off-plan/off-plan-batch_questions-s01-0b6933.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_planner_tool_call_refused/off-plan/off-plan-batch_questions-s01-0b6933.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "off_plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "off_plan"
+        },
+        {
+          "line": 13,
+          "type": "plan_validation"
+        },
+        {
+          "line": 14,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        },
+        {
+          "line": 22,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_revision_only_on_observed_failed_checkpoint",
+      "run_id": "revision-dev_checkpoint_revision-s01-9b892b",
+      "task": "dev_checkpoint_revision",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_revision_only_on_observed_failed_checkpoint/revision/revision-dev_checkpoint_revision-s01-9b892b.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_revision_only_on_observed_failed_checkpoint/revision/revision-dev_checkpoint_revision-s01-9b892b.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 19,
+          "type": "plan"
+        },
+        {
+          "line": 20,
+          "type": "plan_validation"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 40,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 41,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_says_done_does_not_satisfy_effect_check",
+      "run_id": "false-finish-conceptual_question-s01-cc9c75",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "false_finish",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_says_done_does_not_satisfy_effect_check/false-finish/false-finish-conceptual_question-s01-cc9c75.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_says_done_does_not_satisfy_effect_check/false-finish/false-finish-conceptual_question-s01-cc9c75.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_token_and_wall_bounds",
+      "run_id": "token-bound-conceptual_question-s01-b53d4e",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_token_budget",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_token_and_wall_bounds/token-bound/token-bound-conceptual_question-s01-b53d4e.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_token_and_wall_bounds/token-bound/token-bound-conceptual_question-s01-b53d4e.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_token_and_wall_bounds",
+      "run_id": "wall-bound-conceptual_question-s01-4607cb",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_wall_clock",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_token_and_wall_bounds/wall-bound/wall-bound-conceptual_question-s01-4607cb.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_token_and_wall_bounds/wall-bound/wall-bound-conceptual_question-s01-4607cb.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "model_inflight_timeout"
+        },
+        {
+          "line": 9,
+          "type": "end"
+        },
+        {
+          "line": 14,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.CourseTests.test_valid_plan_order_and_no_untrusted_planner_input",
+      "run_id": "good-plan-batch_questions-s01-956ccf",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_valid_plan_order_and_no_untrusted_planner_input/good-plan/good-plan-batch_questions-s01-956ccf.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_valid_plan_order_and_no_untrusted_planner_input/good-plan/good-plan-batch_questions-s01-956ccf.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 44,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 46,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 48,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 50,
+          "type": "draft_critique"
+        },
+        {
+          "line": 51,
+          "type": "write_verification"
+        },
+        {
+          "line": 53,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 55,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 56,
+          "type": "end"
+        },
+        {
+          "line": 62,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_critique_limit_still_applies_with_more_revision_budget",
+      "run_id": "planning-batch_questions-s01-f08f71",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "critique_limit",
+        "follow_up"
+      ],
+      "model_calls": 3,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_critique_limit_still_applies_with_more_revision_budget/planning/planning-batch_questions-s01-f08f71.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_critique_limit_still_applies_with_more_revision_budget/planning/planning-batch_questions-s01-f08f71.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "repeat_call"
+        },
+        {
+          "line": 29,
+          "type": "draft_critique"
+        },
+        {
+          "line": 32,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 35,
+          "type": "plan"
+        },
+        {
+          "line": 36,
+          "type": "plan_validation"
+        },
+        {
+          "line": 37,
+          "type": "repeat_call"
+        },
+        {
+          "line": 38,
+          "type": "draft_critique"
+        },
+        {
+          "line": 41,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 42,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 52,
+          "type": "end"
+        },
+        {
+          "line": 59,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_draft_revision_preserves_prefix_and_persists_once",
+      "run_id": "planning-batch_questions-s01-b1b878",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_draft_revision_preserves_prefix_and_persists_once/planning/planning-batch_questions-s01-b1b878.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_draft_revision_preserves_prefix_and_persists_once/planning/planning-batch_questions-s01-b1b878.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "draft_critique"
+        },
+        {
+          "line": 29,
+          "type": "write_verification"
+        },
+        {
+          "line": 31,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 34,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 37,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 39,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 43,
+          "type": "draft_critique"
+        },
+        {
+          "line": 44,
+          "type": "write_verification"
+        },
+        {
+          "line": 46,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 49,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 52,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 54,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 56,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 58,
+          "type": "draft_critique"
+        },
+        {
+          "line": 59,
+          "type": "write_verification"
+        },
+        {
+          "line": 61,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 63,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 64,
+          "type": "end"
+        },
+        {
+          "line": 70,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_generic_error_is_not_a_draft_checkpoint",
+      "run_id": "planning-batch_questions-s01-41a660",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_tool_error",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_generic_error_is_not_a_draft_checkpoint/planning/planning-batch_questions-s01-41a660.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_generic_error_is_not_a_draft_checkpoint/planning/planning-batch_questions-s01-41a660.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 21,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 30,
+          "type": "end"
+        },
+        {
+          "line": 37,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs",
+      "run_id": "planning-batch_questions-s01-8df0bb",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_rejected",
+        "follow_up"
+      ],
+      "model_calls": 3,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs/planning/planning-batch_questions-s01-8df0bb.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs/planning/planning-batch_questions-s01-8df0bb.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan_validation"
+        },
+        {
+          "line": 29,
+          "type": "plan_validation"
+        },
+        {
+          "line": 30,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 40,
+          "type": "end"
+        },
+        {
+          "line": 47,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs",
+      "run_id": "planning-batch_questions-s01-711809",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_rejected",
+        "follow_up"
+      ],
+      "model_calls": 3,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs/planning/planning-batch_questions-s01-711809.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs/planning/planning-batch_questions-s01-711809.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan_validation"
+        },
+        {
+          "line": 29,
+          "type": "plan_validation"
+        },
+        {
+          "line": 30,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 40,
+          "type": "end"
+        },
+        {
+          "line": 47,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_later_draft_revision_preserves_completed_write",
+      "run_id": "planning-batch_questions-s01-e070de",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_later_draft_revision_preserves_completed_write/planning/planning-batch_questions-s01-e070de.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_later_draft_revision_preserves_completed_write/planning/planning-batch_questions-s01-e070de.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 38,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 41,
+          "type": "plan"
+        },
+        {
+          "line": 42,
+          "type": "plan_validation"
+        },
+        {
+          "line": 43,
+          "type": "draft_critique"
+        },
+        {
+          "line": 44,
+          "type": "write_verification"
+        },
+        {
+          "line": 46,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 49,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 52,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 54,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 56,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 58,
+          "type": "draft_critique"
+        },
+        {
+          "line": 59,
+          "type": "write_verification"
+        },
+        {
+          "line": 61,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 63,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 64,
+          "type": "end"
+        },
+        {
+          "line": 70,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_repeated_bad_draft_stops_at_shared_revision_limit",
+      "run_id": "planning-batch_questions-s01-dcbe9c",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_limit",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_repeated_bad_draft_stops_at_shared_revision_limit/planning/planning-batch_questions-s01-dcbe9c.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_repeated_bad_draft_stops_at_shared_revision_limit/planning/planning-batch_questions-s01-dcbe9c.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "repeat_call"
+        },
+        {
+          "line": 29,
+          "type": "draft_critique"
+        },
+        {
+          "line": 32,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 43,
+          "type": "end"
+        },
+        {
+          "line": 50,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_replaced_rejected_step_is_not_an_extra_call",
+      "run_id": "planning-batch_questions-s01-6c1dc0",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_replaced_rejected_step_is_not_an_extra_call/planning/planning-batch_questions-s01-6c1dc0.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_replaced_rejected_step_is_not_an_extra_call/planning/planning-batch_questions-s01-6c1dc0.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "draft_critique"
+        },
+        {
+          "line": 29,
+          "type": "write_verification"
+        },
+        {
+          "line": 31,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 34,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 37,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 39,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 43,
+          "type": "draft_critique"
+        },
+        {
+          "line": 44,
+          "type": "write_verification"
+        },
+        {
+          "line": 46,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 49,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 52,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 54,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 56,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 58,
+          "type": "draft_critique"
+        },
+        {
+          "line": 59,
+          "type": "write_verification"
+        },
+        {
+          "line": 61,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 63,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 64,
+          "type": "end"
+        },
+        {
+          "line": 70,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step",
+      "run_id": "planning-batch_questions-s01-c5e605",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_outcome_mismatch",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-c5e605.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-c5e605.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 24,
+          "type": "end"
+        },
+        {
+          "line": 31,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step",
+      "run_id": "planning-batch_questions-s01-0f33b2",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_outcome_mismatch",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-0f33b2.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-0f33b2.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 19,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        },
+        {
+          "line": 36,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step",
+      "run_id": "planning-batch_questions-s01-84ccdf",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_outcome_mismatch",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-84ccdf.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step/planning/planning-batch_questions-s01-84ccdf.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 24,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 33,
+          "type": "end"
+        },
+        {
+          "line": 40,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_source_and_draft_checkpoints_share_revision_budget",
+      "run_id": "shared-budget-dev_checkpoint_revision-s01-213219",
+      "task": "dev_checkpoint_revision",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_limit"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_source_and_draft_checkpoints_share_revision_budget/shared-budget/shared-budget-dev_checkpoint_revision-s01-213219.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_source_and_draft_checkpoints_share_revision_budget/shared-budget/shared-budget-dev_checkpoint_revision-s01-213219.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 19,
+          "type": "plan"
+        },
+        {
+          "line": 20,
+          "type": "plan_validation"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 38,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 39,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 41,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_uncertain_write_never_revises_or_retries",
+      "run_id": "planning-batch_questions-s01-02c3fe",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "ambiguous_tool",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_uncertain_write_never_revises_or_retries/planning/planning-batch_questions-s01-02c3fe.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_uncertain_write_never_revises_or_retries/planning/planning-batch_questions-s01-02c3fe.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 22,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 31,
+          "type": "end"
+        },
+        {
+          "line": 38,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_planning.PlanningTests.test_unknown_outcome_rejected_before_execution",
+      "run_id": "planning-batch_questions-s01-b681ae",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_unknown_outcome_rejected_before_execution/planning/planning-batch_questions-s01-b681ae.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_planning.PlanningTests.test_unknown_outcome_rejected_before_execution/planning/planning-batch_questions-s01-b681ae.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_critique_repair_feedback_precedes_one_pending_write",
+      "run_id": "critique-feedback-conceptual_question-s01-d24070",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 7,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_critique_repair_feedback_precedes_one_pending_write/critique-feedback/critique-feedback-conceptual_question-s01-d24070.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_critique_repair_feedback_precedes_one_pending_write/critique-feedback/critique-feedback-conceptual_question-s01-d24070.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 24,
+          "type": "draft_critique"
+        },
+        {
+          "line": 25,
+          "type": "write_verification"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        },
+        {
+          "line": 33,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-deadline_question-s01-c1f2e7",
+      "task": "deadline_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-deadline_question-s01-c1f2e7.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-deadline_question-s01-c1f2e7.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 8,
+          "type": "draft_critique"
+        },
+        {
+          "line": 9,
+          "type": "write_verification"
+        },
+        {
+          "line": 11,
+          "type": "end"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-office_hours_question-s01-7d9e91",
+      "task": "office_hours_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-office_hours_question-s01-7d9e91.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-office_hours_question-s01-7d9e91.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 8,
+          "type": "draft_critique"
+        },
+        {
+          "line": 9,
+          "type": "write_verification"
+        },
+        {
+          "line": 11,
+          "type": "end"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-conceptual_question-s01-b08f0e",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-conceptual_question-s01-b08f0e.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-conceptual_question-s01-b08f0e.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 25,
+          "type": "end"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-repeated_question-s01-667121",
+      "task": "repeated_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-repeated_question-s01-667121.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-repeated_question-s01-667121.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 9,
+          "type": "draft_critique"
+        },
+        {
+          "line": 10,
+          "type": "write_verification"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        },
+        {
+          "line": 16,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-personal_question-s01-a12dbe",
+      "task": "personal_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-personal_question-s01-a12dbe.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-personal_question-s01-a12dbe.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-exception_question-s01-547bce",
+      "task": "exception_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-exception_question-s01-547bce.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-exception_question-s01-547bce.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-unauthorized_question-s01-591fab",
+      "task": "unauthorized_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-unauthorized_question-s01-591fab.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-unauthorized_question-s01-591fab.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "draft_critique"
+        },
+        {
+          "line": 7,
+          "type": "write_verification"
+        },
+        {
+          "line": 9,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-ambiguous_question-s01-ae020f",
+      "task": "ambiguous_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-ambiguous_question-s01-ae020f.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-ambiguous_question-s01-ae020f.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "write_verification"
+        },
+        {
+          "line": 24,
+          "type": "end"
+        },
+        {
+          "line": 28,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-batch_questions-s01-316bcb",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-batch_questions-s01-316bcb.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-batch_questions-s01-316bcb.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 44,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 46,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 48,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 50,
+          "type": "draft_critique"
+        },
+        {
+          "line": 51,
+          "type": "write_verification"
+        },
+        {
+          "line": 53,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 55,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 56,
+          "type": "end"
+        },
+        {
+          "line": 62,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path",
+      "run_id": "routing-staff_summary-s01-cffa05",
+      "task": "staff_summary",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "workflow_completed",
+        "summary_completed"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-staff_summary-s01-cffa05.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path/routing/routing-staff_summary-s01-cffa05.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "write_verification"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 12,
+          "type": "routing"
+        },
+        {
+          "line": 14,
+          "type": "write_verification"
+        },
+        {
+          "line": 16,
+          "type": "end"
+        },
+        {
+          "line": 21,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_executed_arguments_resolve_fills_and_match_plan_order",
+      "run_id": "contracts-batch_questions-s01-73fbdc",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_executed_arguments_resolve_fills_and_match_plan_order/contracts/contracts-batch_questions-s01-73fbdc.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_executed_arguments_resolve_fills_and_match_plan_order/contracts/contracts-batch_questions-s01-73fbdc.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 23,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 26,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 29,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 31,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 33,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 35,
+          "type": "draft_critique"
+        },
+        {
+          "line": 36,
+          "type": "write_verification"
+        },
+        {
+          "line": 38,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 44,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 46,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 48,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 50,
+          "type": "draft_critique"
+        },
+        {
+          "line": 51,
+          "type": "write_verification"
+        },
+        {
+          "line": 53,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 55,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 56,
+          "type": "end"
+        },
+        {
+          "line": 62,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_initial_and_revised_planner_contexts_exclude_untrusted_text",
+      "run_id": "planner-isolation-batch_questions-s01-c2c721",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_initial_and_revised_planner_contexts_exclude_untrusted_text/planner-isolation/planner-isolation-batch_questions-s01-c2c721.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_initial_and_revised_planner_contexts_exclude_untrusted_text/planner-isolation/planner-isolation-batch_questions-s01-c2c721.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "draft_critique"
+        },
+        {
+          "line": 29,
+          "type": "write_verification"
+        },
+        {
+          "line": 31,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 34,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 37,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 39,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 43,
+          "type": "draft_critique"
+        },
+        {
+          "line": 44,
+          "type": "write_verification"
+        },
+        {
+          "line": 46,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 49,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 52,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 54,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 56,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 58,
+          "type": "draft_critique"
+        },
+        {
+          "line": 59,
+          "type": "write_verification"
+        },
+        {
+          "line": 61,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 63,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 64,
+          "type": "end"
+        },
+        {
+          "line": 70,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-5be9b5",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-5be9b5.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-5be9b5.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-b68f17",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-b68f17.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-b68f17.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-93c7f2",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-93c7f2.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-93c7f2.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-0b3f9d",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-0b3f9d.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-0b3f9d.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-b659ca",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-b659ca.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-b659ca.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes",
+      "run_id": "contracts-batch_questions-s01-703612",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "plan_rejected",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-703612.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes/contracts/contracts-batch_questions-s01-703612.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_validation"
+        },
+        {
+          "line": 12,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 20,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_over_budget_model_response_cannot_dispatch_tools",
+      "run_id": "token-dispatch-conceptual_question-s01-e4b82d",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_token_budget",
+        "follow_up"
+      ],
+      "model_calls": 1,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_over_budget_model_response_cannot_dispatch_tools/token-dispatch/token-dispatch-conceptual_question-s01-e4b82d.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_over_budget_model_response_cannot_dispatch_tools/token-dispatch/token-dispatch-conceptual_question-s01-e4b82d.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_plan_off_batch_still_stops_at_the_external_step_limit",
+      "run_id": "batch-bound-batch_questions-s01-68ece1",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "agent_step_limit",
+        "follow_up"
+      ],
+      "model_calls": 12,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_plan_off_batch_still_stops_at_the_external_step_limit/batch-bound/batch-bound-batch_questions-s01-68ece1.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_plan_off_batch_still_stops_at_the_external_step_limit/batch-bound/batch-bound-batch_questions-s01-68ece1.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 11,
+          "type": "repeat_call"
+        },
+        {
+          "line": 15,
+          "type": "repeat_call"
+        },
+        {
+          "line": 19,
+          "type": "repeat_call"
+        },
+        {
+          "line": 23,
+          "type": "repeat_call"
+        },
+        {
+          "line": 27,
+          "type": "repeat_call"
+        },
+        {
+          "line": 31,
+          "type": "repeat_call"
+        },
+        {
+          "line": 35,
+          "type": "repeat_call"
+        },
+        {
+          "line": 39,
+          "type": "repeat_call"
+        },
+        {
+          "line": 43,
+          "type": "repeat_call"
+        },
+        {
+          "line": 47,
+          "type": "repeat_call"
+        },
+        {
+          "line": 51,
+          "type": "repeat_call"
+        },
+        {
+          "line": 53,
+          "type": "end"
+        },
+        {
+          "line": 60,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_agent_contracts.AgentContractTests.test_revision_cannot_change_an_executed_step_to_another_authorized_id",
+      "run_id": "contracts-batch_questions-s01-98d925",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": false,
+      "end_reasons": [
+        "revision_rejected",
+        "follow_up"
+      ],
+      "model_calls": 3,
+      "record": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_revision_cannot_change_an_executed_step_to_another_authorized_id/contracts/contracts-batch_questions-s01-98d925.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_agent_contracts.AgentContractTests.test_revision_cannot_change_an_executed_step_to_another_authorized_id/contracts/contracts-batch_questions-s01-98d925.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan_validation"
+        },
+        {
+          "line": 29,
+          "type": "plan_validation"
+        },
+        {
+          "line": 30,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 40,
+          "type": "end"
+        },
+        {
+          "line": 47,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_recomputes_plan_outcomes_and_draft_checkpoint",
+      "run_id": "plan-analysis-batch_questions-s01-558d21",
+      "task": "batch_questions",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "plan_completed",
+        "follow_up"
+      ],
+      "model_calls": 2,
+      "record": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_plan_outcomes_and_draft_checkpoint/plan-analysis/plan-analysis-batch_questions-s01-558d21.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_plan_outcomes_and_draft_checkpoint/plan-analysis/plan-analysis-batch_questions-s01-558d21.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 8,
+          "type": "plan"
+        },
+        {
+          "line": 9,
+          "type": "plan_validation"
+        },
+        {
+          "line": 11,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 14,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 16,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 18,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 23,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 26,
+          "type": "plan"
+        },
+        {
+          "line": 27,
+          "type": "plan_validation"
+        },
+        {
+          "line": 28,
+          "type": "draft_critique"
+        },
+        {
+          "line": 29,
+          "type": "write_verification"
+        },
+        {
+          "line": 31,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 34,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 37,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 39,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 41,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 43,
+          "type": "draft_critique"
+        },
+        {
+          "line": 44,
+          "type": "write_verification"
+        },
+        {
+          "line": 46,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 49,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 52,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 54,
+          "type": "plan_checkpoint"
+        },
+        {
+          "line": 56,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 58,
+          "type": "draft_critique"
+        },
+        {
+          "line": 59,
+          "type": "write_verification"
+        },
+        {
+          "line": 61,
+          "type": "plan_outcome"
+        },
+        {
+          "line": 63,
+          "type": "plan_execution_diff"
+        },
+        {
+          "line": 64,
+          "type": "end"
+        },
+        {
+          "line": 70,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence",
+      "run_id": "analysis-deadline_question-s01-c7ed09",
+      "task": "deadline_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "workflow_completed",
+        "follow_up"
+      ],
+      "model_calls": 0,
+      "record": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence/analysis/analysis-deadline_question-s01-c7ed09.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence/analysis/analysis-deadline_question-s01-c7ed09.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 8,
+          "type": "draft_critique"
+        },
+        {
+          "line": 9,
+          "type": "write_verification"
+        },
+        {
+          "line": 11,
+          "type": "end"
+        },
+        {
+          "line": 15,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence",
+      "run_id": "analysis-conceptual_question-s01-311427",
+      "task": "conceptual_question",
+      "free": true,
+      "task_check_passed": true,
+      "end_reasons": [
+        "agent_completed",
+        "follow_up"
+      ],
+      "model_calls": 6,
+      "record": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence/analysis/analysis-conceptual_question-s01-311427.json",
+      "trace": "results/_free/agent-tests-20261101/tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence/analysis/analysis-conceptual_question-s01-311427.trace.jsonl",
+      "events": [
+        {
+          "line": 4,
+          "type": "routing"
+        },
+        {
+          "line": 5,
+          "type": "agent_bounds"
+        },
+        {
+          "line": 20,
+          "type": "draft_critique"
+        },
+        {
+          "line": 21,
+          "type": "write_verification"
+        },
+        {
+          "line": 25,
+          "type": "end"
+        },
+        {
+          "line": 29,
+          "type": "end"
+        }
+      ]
+    }
+  ],
+  "session_traces": [
+    {
+      "test": "tests.test_course.CourseTests.test_follow_up_and_repeated_request_never_duplicate",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.CourseTests.test_follow_up_and_repeated_request_never_duplicate/sessions/S-test.jsonl",
+      "events": [
+        {
+          "line": 2,
+          "type": "routing"
+        },
+        {
+          "line": 6,
+          "type": "draft_critique"
+        },
+        {
+          "line": 7,
+          "type": "write_verification"
+        },
+        {
+          "line": 9,
+          "type": "end"
+        },
+        {
+          "line": 13,
+          "type": "end"
+        },
+        {
+          "line": 17,
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.RegistryTests.test_orphan_repeat_out_of_order_and_extra_detectors",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.RegistryTests.test_orphan_repeat_out_of_order_and_extra_detectors/sessions/registry.jsonl",
+      "events": [
+        {
+          "line": 2,
+          "type": "repeat_call"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order/sessions/executor.jsonl",
+      "events": [
+        {
+          "line": 1,
+          "type": "agent_bounds"
+        }
+      ]
+    },
+    {
+      "test": "tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order",
+      "trace": "results/_free/agent-tests-20261101/tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order/sessions/registry.jsonl",
+      "events": [
+        {
+          "line": 1,
+          "type": "off_plan"
+        },
+        {
+          "line": 2,
+          "type": "off_plan"
+        }
+      ]
+    }
+  ],
+  "retained_run_count": 69,
+  "all_retained_runs_free": true,
+  "limitations": [
+    "Fake usage, costs and timings do not measure real model performance.",
+    "Negative task checks can be expected successes of refusal tests.",
+    "Real baseline, a pushed prediction and measured pass arms remain separate work."
+  ]
+}

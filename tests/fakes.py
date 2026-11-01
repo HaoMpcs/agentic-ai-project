@@ -1,13 +1,16 @@
 """Scripted free backends for branch and failure tests; never evaluation evidence."""
 from __future__ import annotations
 
+import copy
 import json
 import time
+from agent.planning import EXPECTED_OUTCOMES
 from harness.client import Usage
 
 
-def step(sid, tool, args, deps, expected):
-    return {"id": sid, "tool": tool, "arguments": args, "dependencies": deps, "expected": expected}
+def step(sid, tool, args, deps):
+    return {"id": sid, "tool": tool, "arguments": args, "dependencies": deps,
+            "expected": EXPECTED_OUTCOMES[tool]}
 
 
 def valid_plan(metadata):
@@ -15,11 +18,11 @@ def valid_plan(metadata):
     for i, q in enumerate(metadata):
         prefix = f"q{i}"
         get, search, read, reply = [f"{prefix}_{s}" for s in ("get", "search", "read", "reply")]
-        steps += [step(get, "course_get_question", {"question_id": q["id"]}, [], "question.id exists"),
-                  step(search, "course_search_materials", {"query": q["topic"]}, [get], "documents count observed"),
-                  step(read, "course_read_document", {"document_id": f"$fill:{search}.documents.0.id"}, [search], "document facts available"),
+        steps += [step(get, "course_get_question", {"question_id": q["id"]}, []),
+                  step(search, "course_search_materials", {"query": q["topic"]}, [get]),
+                  step(read, "course_read_document", {"document_id": f"$fill:{search}.documents.0.id"}, [search]),
                   step(reply, "course_create_reply", {"question_id": q["id"], "body": f"$fill:{read}.document.answer",
-                       "source_ids": [f"$fill:{read}.document.id"]}, [get, read], "effect.status is pending")]
+                       "source_ids": [f"$fill:{read}.document.id"]}, [get, read])]
     return {"steps": steps}
 
 
@@ -101,7 +104,7 @@ class RevisingPlanner(GoodAgent):
         qid = plan["steps"][index + 1]["arguments"]["question_id"]
         get_id = previous["dependencies"][0]
         plan["steps"][index:index + 2] = [step(previous["id"] + "_flag", "course_create_flag",
-            {"question_id": qid, "reason": "missing_information"}, [get_id, previous["id"]], "staff flag exists")]
+            {"question_id": qid, "reason": "missing_information"}, [get_id, previous["id"]])]
         return plan
 
 
@@ -111,6 +114,72 @@ class BadRevision(RevisingPlanner):
         if "previous_plan" in context:
             plan["steps"][0]["arguments"]["question_id"] = "SYN-Q-other"
         return plan
+
+
+class WrongOutcomePlanner(GoodAgent):
+    def plan(self, context):
+        plan = valid_plan(context["questions"])
+        plan["steps"][0]["expected"] = "The result must contain impossible_field=true."
+        return plan
+
+
+class CorrectingPlanner(GoodAgent):
+    draft_index = 3
+
+    def plan(self, context):
+        if "previous_plan" not in context:
+            plan = valid_plan(context["questions"])
+            plan["steps"][self.draft_index]["arguments"]["body"] = "The assignment is due tomorrow."
+            return plan
+        checkpoint = context["checkpoint"]
+        assert checkpoint["name"] == "draft_supported"
+        assert "Unsupported text" in checkpoint["feedback"]
+        plan = copy.deepcopy(context["previous_plan"])
+        draft = next(s for s in plan["steps"] if s["id"] == checkpoint["step_id"])
+        read = next(s for s in plan["steps"] if s["tool"] == "course_read_document"
+                    and s["id"] in draft["dependencies"])
+        draft["arguments"]["body"] = f"$fill:{read['id']}.document.answer"
+        return plan
+
+
+class NeverCorrectPlanner(CorrectingPlanner):
+    def plan(self, context):
+        plan = super().plan(context)
+        plan["steps"][self.draft_index]["arguments"]["body"] = "The assignment is due tomorrow."
+        return plan
+
+
+class LateCorrectingPlanner(CorrectingPlanner):
+    draft_index = 7
+
+
+class RenamingCorrectingPlanner(CorrectingPlanner):
+    def plan(self, context):
+        plan = super().plan(context)
+        if "previous_plan" in context:
+            plan["steps"][self.draft_index]["id"] = "repaired_reply"
+        return plan
+
+
+class MixedCheckpointPlanner(RevisingPlanner):
+    def plan(self, context):
+        plan = super().plan(context)
+        if "previous_plan" not in context:
+            plan["steps"][-1]["arguments"]["body"] = "Office hours are tomorrow."
+        return plan
+
+
+class BadDraftRevision(CorrectingPlanner):
+    def plan(self, context):
+        plan = super().plan(context)
+        if "previous_plan" in context:
+            plan["steps"][0]["arguments"]["question_id"] = "SYN-Q-other"
+        return plan
+
+
+class MalformedDraftRevision(CorrectingPlanner):
+    def plan(self, context):
+        return [] if "previous_plan" in context else super().plan(context)
 
 
 class CorrectingAgent(GoodAgent):

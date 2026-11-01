@@ -1,0 +1,418 @@
+{
+  "run_id": "batch-bound-batch_questions-s01-68ece1",
+  "arm": "batch-bound",
+  "task": "batch_questions",
+  "task_file": "tasks/batch_questions.yaml",
+  "sweep": 1,
+  "started": "2026-11-01T18:44:57.918+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [
+    "control.batch=agent",
+    "plan.batch=off"
+  ],
+  "backend": "never-stops",
+  "model": "never-stops",
+  "free": true,
+  "settings": "8d8f4755df1f",
+  "price_sheet": "2026-06-24",
+  "commit": "66d2e6a2d8b7928049dcf3829d21a841afd173d5",
+  "dirty": true,
+  "finished": "2026-11-01T18:44:57.968+00:00",
+  "tokens": {
+    "input": 21612,
+    "output": 360,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 21972
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 12,
+  "latency_s": 0.006,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.006,
+  "turn_latency_s": [
+    0.005,
+    0.001
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "agent_step_limit",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": false,
+    "reason": "Expected exactly one current-run effect for SYN-Q-deadline; got 0"
+  },
+  "passed": false,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 0
+  },
+  "trace": "/var/folders/25/vrtwwwk11zz1yh2tj4wg878c0000gn/T/tmpj0b7m9c0/results/_free/batch-bound/batch-bound-batch_questions-s01-68ece1.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": null,
+      "id": "toolu_scripted_0001",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 4,
+      "plan_step": null,
+      "id": "toolu_scripted_0002",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 6,
+      "plan_step": null,
+      "id": "toolu_scripted_0003",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 8,
+      "plan_step": null,
+      "id": "toolu_scripted_0004",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 10,
+      "plan_step": null,
+      "id": "toolu_scripted_0005",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 12,
+      "plan_step": null,
+      "id": "toolu_scripted_0006",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 14,
+      "plan_step": null,
+      "id": "toolu_scripted_0007",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 16,
+      "plan_step": null,
+      "id": "toolu_scripted_0008",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 18,
+      "plan_step": null,
+      "id": "toolu_scripted_0009",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 20,
+      "plan_step": null,
+      "id": "toolu_scripted_0010",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 22,
+      "plan_step": null,
+      "id": "toolu_scripted_0011",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 24,
+      "plan_step": null,
+      "id": "toolu_scripted_0012",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "x"
+      },
+      "output": "{\"error\": \"Question ID is outside this operator request; use an authorized question ID.\", \"repairable\": false}",
+      "is_error": true,
+      "latency_s": 0.0,
+      "error_class": "permanent",
+      "idempotency_key": null,
+      "attempts": 0,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "agent"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-13",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-14",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-15",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "No effect is recorded for the selected questions. Inspect the trace for the termination reason.",
+      "actions": [],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "No effect is recorded for the selected questions. Inspect the trace for the termination reason.",
+      "actions": [],
+      "waiting_for": null
+    }
+  ]
+}

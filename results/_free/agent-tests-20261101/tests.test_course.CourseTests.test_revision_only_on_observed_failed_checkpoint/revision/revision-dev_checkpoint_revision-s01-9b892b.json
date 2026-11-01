@@ -1,0 +1,253 @@
+{
+  "run_id": "revision-dev_checkpoint_revision-s01-9b892b",
+  "arm": "revision",
+  "task": "dev_checkpoint_revision",
+  "task_file": "tasks/dev/checkpoint_revision.yaml",
+  "sweep": 1,
+  "started": "2026-11-01T18:44:54.665+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "tests.fakes:RevisingPlanner",
+  "model": "says-done",
+  "free": true,
+  "settings": "8d8f4755df1f",
+  "price_sheet": "2026-06-24",
+  "commit": "66d2e6a2d8b7928049dcf3829d21a841afd173d5",
+  "dirty": true,
+  "finished": "2026-11-01T18:44:54.713+00:00",
+  "tokens": {
+    "input": 200,
+    "output": 40,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 240
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 2,
+  "latency_s": 0.007,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.007,
+  "turn_latency_s": [
+    0.007
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "plan_completed"
+  ],
+  "end_reason": "plan_completed",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 1,
+    "staff_flags": 1
+  },
+  "trace": "/var/folders/25/vrtwwwk11zz1yh2tj4wg878c0000gn/T/tmpdogp9lcw/results/_free/revision/revision-dev_checkpoint_revision-s01-9b892b.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": "q0_get",
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-deadline\", \"kind\": \"deadline\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"unpublished\", \"untrusted_messages\": [\"When is Assignment 2 due?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 3,
+      "plan_step": "q0_search",
+      "id": "registry-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "unpublished"
+      },
+      "output": "{\"documents\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 5,
+      "plan_step": "q0_search_flag",
+      "id": "registry-3",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-deadline",
+        "reason": "missing_information"
+      },
+      "output": "{\"effect\": {\"action_key\": \"e4ebb2657cab66e46cd1adaddb1faaa2b5a47b09dd0ca508f5aa688a7427d3aa\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-eeddbfa30100a65e\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"missing_information\", \"source_ids\": [], \"stamp\": \"revision-dev_checkpoint_revision-s01-9b892b\", \"status\": \"open\", \"updated_by\": \"revision-dev_checkpoint_revision-s01-9b892b\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "e4ebb2657cab66e46cd1adaddb1faaa2b5a47b09dd0ca508f5aa688a7427d3aa",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 6,
+      "plan_step": "q1_get",
+      "id": "registry-4",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-office\", \"kind\": \"office_hours\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"office_hours\", \"untrusted_messages\": [\"Where and when are office hours?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 7,
+      "plan_step": "q1_search",
+      "id": "registry-5",
+      "name": "course_search_materials",
+      "input": {
+        "query": "office_hours"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 8,
+      "plan_step": "q1_read",
+      "id": "registry-6",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-office"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"claims\": {}, \"facts\": [\"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\"], \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 9,
+      "plan_step": "q1_reply",
+      "id": "registry-7",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-office",
+        "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+        "source_ids": [
+          "SYN-DOC-office"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"0d179dda469bb09995528bdb33884cfe4bca6da52cd3ba269aade4bd3334610b\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-76cd755b23dde59b\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"revision-dev_checkpoint_revision-s01-9b892b\", \"status\": \"pending\", \"updated_by\": \"revision-dev_checkpoint_revision-s01-9b892b\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "0d179dda469bb09995528bdb33884cfe4bca6da52cd3ba269aade4bd3334610b",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "executor"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-8",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"e4ebb2657cab66e46cd1adaddb1faaa2b5a47b09dd0ca508f5aa688a7427d3aa\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-eeddbfa30100a65e\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"missing_information\", \"source_ids\": [], \"stamp\": \"revision-dev_checkpoint_revision-s01-9b892b\", \"status\": \"open\", \"updated_by\": \"revision-dev_checkpoint_revision-s01-9b892b\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-9",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"0d179dda469bb09995528bdb33884cfe4bca6da52cd3ba269aade4bd3334610b\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-76cd755b23dde59b\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"revision-dev_checkpoint_revision-s01-9b892b\", \"status\": \"pending\", \"updated_by\": \"revision-dev_checkpoint_revision-s01-9b892b\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-deadline: flag SYN-FLAG-eeddbfa30100a65e (open); missing_information\nSYN-Q-office: reply SYN-REPLY-76cd755b23dde59b (pending); sources SYN-DOC-office",
+      "actions": [
+        "flag SYN-FLAG-eeddbfa30100a65e on SYN-Q-deadline; open",
+        "reply SYN-REPLY-76cd755b23dde59b on SYN-Q-office; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

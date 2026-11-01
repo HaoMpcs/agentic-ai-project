@@ -1,0 +1,2 @@
+{"at": "2026-11-01T18:44:58.077+00:00", "session_id": "registry", "type": "off_plan", "step_id": "q0_get", "name": "course_get_question", "input": {"question_id": "SYN-Q-private"}}
+{"at": "2026-11-01T18:44:58.077+00:00", "session_id": "registry", "type": "off_plan", "step_id": "q0_search", "name": "course_search_materials", "input": {"query": "deadline"}}

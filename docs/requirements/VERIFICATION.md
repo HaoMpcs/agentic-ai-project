@@ -55,3 +55,29 @@ checkout repeated setup, all **77 tests**, structural checks, actual HTTP
 console/manual-send operations and restart persistence. The newer smoke arm is
 `local-smoke-v2`: 30/30 pass, 3,900 input plus 780 output placeholder tokens.
 The original local-smoke arm remains as historical free diagnostic data.
+
+## Execution corrections, November 1, 2026
+
+The working-tree update adds executable plan outcome contracts and the bounded
+`draft_supported` revision checkpoint. The historical results above were not
+rewritten and are not evidence for this update.
+
+- `make test`: **90 tests passed**, including 13 added tests. New coverage uses
+  free models in `ScratchTest` folders for wrong outcomes, successful and rejected
+  draft revisions, preserved writes and idempotency keys, shared revision limits,
+  unchanged privacy boundaries, uncertain-write refusal and trace recomputation.
+- `make check`: all four structural checks passed.
+- `git diff --check`: passed.
+- No real provider calls, official baseline/arms, remote push, or final tag were
+  performed. This update has no real-model performance or cost measurement.
+
+## Responsibility-2 test report, November 1, 2026
+
+The [scoped report](AGENT_TEST_REPORT.md) records 43/43 tests for routing,
+Agent bounds, planning/checkpoints/diff, critique and related analysis. Eight
+new contract tests bring the full suite to **98 passed**. `make check` and
+`git diff --check` pass. The report command retains 69 free runner records with
+their original traces and four direct session traces, plus the original logs
+and working-source fingerprints. Negative task checks are expected refusal and
+fault-injection observations, not failed unit tests. These are working-tree
+results, not a new clean-clone check or a real-model improvement experiment.

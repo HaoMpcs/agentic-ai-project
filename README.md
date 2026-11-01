@@ -76,6 +76,12 @@ deadline may incur a later charge. Such runs require billing reconciliation.
 
 ## Tests, traces and evaluation
 
+For responsibility-2 routing, bounds, planning and critique verification, run
+`.venv/bin/python -m experiments.analysis.agent_test_report`. It creates a new
+machine report, retains free scratch-run evidence, and runs the full suite and
+structural checks. See the [scoped test report](docs/requirements/AGENT_TEST_REPORT.md).
+This command does not run a real-model baseline or improvement pass.
+
 ```bash
 # All main tasks, three sweeps, FREE diagnostic records only:
 .venv/bin/python run.py --tasks tasks/ --sweeps 3 --arm my-smoke --backend tests.fakes:GoodAgent

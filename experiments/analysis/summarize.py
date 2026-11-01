@@ -52,18 +52,24 @@ def summarize(folder: Path, *, include_free=False):
                 if 'Orphan' in x.get('reason',''):events['orphan_rejections'] += 1
             elif kind == 'plan' and x.get('revision'):
                 events['plan_revisions'] += 1
+            elif kind == 'plan_outcome':
+                events['plan_outcome_pass' if x['passed'] else 'plan_outcome_fail'] += 1
+            elif kind == 'plan_checkpoint':
+                events['checkpoint_' + x['name'] + ('_pass' if x['passed'] else '_fail')] += 1
             elif kind == 'draft_critique':
                 events['critique_rounds'] += 1
                 events['critique_pass' if x['passed'] else 'critique_fail'] += 1
             elif kind == 'plan_execution_diff':
                 for field in ('executed','skipped','extra','out_of_order'):
                     events['plan_' + field] += len(x[field])
+                events['plan_rejected_attempts'] += len(x.get('rejected', []))
             elif kind == 'end':
                 events['end_' + x['terminal_reason']] += 1
             if first_problem is None and (x.get('is_error') or (kind == 'plan_validation' and not x['accepted']) or
+                                         (kind == 'plan_outcome' and not x['passed']) or
                                          (kind == 'draft_critique' and not x['passed']) or
                                          (kind == 'end' and x['terminal_reason'] in ('false_finish','agent_step_limit','agent_token_budget','agent_wall_clock'))):
-                first_problem = {'trace': str(trace_path), 'line': number, 'event': kind, 'detail': x.get('reason') or x.get('output') or x.get('detail')}
+                first_problem = {'trace': str(trace_path), 'line': number, 'event': kind, 'detail': x.get('reason') or x.get('output') or x.get('detail') or x.get('expected')}
         sequences.add(tuple(sequence))
         if not r['passed']:
             failures.append({'run_id':r['run_id'],'task':r['task'],'first_problem':first_problem,

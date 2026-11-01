@@ -13,6 +13,7 @@ from harness.paths import state_dir
 from harness.turns import Reply
 from sandbox import course
 from agent.bounds import Bounds, Halt
+from agent.critique import DRAFT_CHECKPOINT
 from agent.planning import Executor
 from agent.tools import Registry
 
@@ -87,7 +88,7 @@ def agent_loop(registry, bounds, request, question_ids):
             bounds.tick()
             result = registry.call(call.name, call.input, step=bounds.steps, call_id=call.id)
             results.append(tool_result(call, result.content, result.is_error))
-            if any(count >= 3 for count in registry.critique_rounds.values()) and result.is_error:
+            if result.data.get("checkpoint") == DRAFT_CHECKPOINT and not result.data["repairable"]:
                 raise Halt("critique_limit", result.data.get("error", "Draft held."))
             if result.error_class == "ambiguous":
                 raise Halt("ambiguous_tool", result.data["error"])

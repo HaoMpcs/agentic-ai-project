@@ -40,6 +40,15 @@ recovery. Public model backends retain the starter retry policy; the independent
 45-second application deadline stops further tool dispatch even if an SDK is
 still waiting. Late provider billing cannot be considered a complete measure.
 
+Source-critic rejections before persistence are permanent execution errors with
+`checkpoint: draft_supported`. Their capped error text is the deterministic
+critic's repair fact; `repairable` becomes false at its three-attempt bound.
+The ordinary loop repairs from that result. The planned path may revise only at
+this named checkpoint, preserving completed steps and validating/logging the new
+plan first. It shares one revision per run with `sources_available`; generic
+errors and ambiguous writes never trigger it. Successful plan calls also have a
+traced executable outcome check for the requested record, source or write state.
+
 Keys are `sha256(JSON([run_id or session_id or manual, tool_name, question_id]))`.
 The model never chooses them. Generated body, tool-call ID and plan version do
 not enter identity. The first persisted action wins, including a reworded retry.

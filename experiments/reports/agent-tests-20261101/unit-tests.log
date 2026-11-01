@@ -1,0 +1,48 @@
+test_all_main_and_development_tasks_through_runner (tests.test_course.CourseTests.test_all_main_and_development_tasks_through_runner) ... ok
+test_ambiguous_student_text_does_not_override_trusted_routing (tests.test_course.CourseTests.test_ambiguous_student_text_does_not_override_trusted_routing) ... ok
+test_bound_never_stopping_agent (tests.test_course.CourseTests.test_bound_never_stopping_agent) ... ok
+test_conflict_escalation_follows_both_source_reads (tests.test_course.CourseTests.test_conflict_escalation_follows_both_source_reads) ... ok
+test_critique_ablation_is_independently_scored (tests.test_course.CourseTests.test_critique_ablation_is_independently_scored) ... ok
+test_critique_correct_revised_and_bound (tests.test_course.CourseTests.test_critique_correct_revised_and_bound) ... ok
+test_follow_up_and_repeated_request_never_duplicate (tests.test_course.CourseTests.test_follow_up_and_repeated_request_never_duplicate) ... ok
+test_harness_ceiling_and_provider_quota_outcomes_are_preserved (tests.test_course.CourseTests.test_harness_ceiling_and_provider_quota_outcomes_are_preserved) ... ok
+test_independent_check_negative_controls (tests.test_course.CourseTests.test_independent_check_negative_controls) ... ok
+test_invalid_plan_replan_bound_and_no_writes (tests.test_course.CourseTests.test_invalid_plan_replan_bound_and_no_writes) ... ok
+test_invalid_revision_never_executes_and_labels_skipped (tests.test_course.CourseTests.test_invalid_revision_never_executes_and_labels_skipped) ... ok
+test_outside_replies_and_approvals_preserve_m1_contract (tests.test_course.CourseTests.test_outside_replies_and_approvals_preserve_m1_contract) ... ok
+test_planner_tool_call_refused (tests.test_course.CourseTests.test_planner_tool_call_refused) ... ok
+test_reset_seed_deterministic_and_private_synthetic (tests.test_course.CourseTests.test_reset_seed_deterministic_and_private_synthetic) ... ok
+test_revision_only_on_observed_failed_checkpoint (tests.test_course.CourseTests.test_revision_only_on_observed_failed_checkpoint) ... ok
+test_says_done_does_not_satisfy_effect_check (tests.test_course.CourseTests.test_says_done_does_not_satisfy_effect_check) ... ok
+test_token_and_wall_bounds (tests.test_course.CourseTests.test_token_and_wall_bounds) ... ok
+test_valid_plan_order_and_no_untrusted_planner_input (tests.test_course.CourseTests.test_valid_plan_order_and_no_untrusted_planner_input) ... ok
+test_critique_limit_still_applies_with_more_revision_budget (tests.test_planning.PlanningTests.test_critique_limit_still_applies_with_more_revision_budget) ... ok
+test_draft_revision_preserves_prefix_and_persists_once (tests.test_planning.PlanningTests.test_draft_revision_preserves_prefix_and_persists_once) ... ok
+test_generic_error_is_not_a_draft_checkpoint (tests.test_planning.PlanningTests.test_generic_error_is_not_a_draft_checkpoint) ... ok
+test_invalid_draft_revision_never_runs (tests.test_planning.PlanningTests.test_invalid_draft_revision_never_runs) ... ok
+test_later_draft_revision_preserves_completed_write (tests.test_planning.PlanningTests.test_later_draft_revision_preserves_completed_write) ... ok
+test_outcome_must_belong_to_its_tool (tests.test_planning.PlanningTests.test_outcome_must_belong_to_its_tool) ... ok
+test_repeated_bad_draft_stops_at_shared_revision_limit (tests.test_planning.PlanningTests.test_repeated_bad_draft_stops_at_shared_revision_limit) ... ok
+test_replaced_rejected_step_is_not_an_extra_call (tests.test_planning.PlanningTests.test_replaced_rejected_step_is_not_an_extra_call) ... ok
+test_shape_valid_but_wrong_results_halt_before_next_step (tests.test_planning.PlanningTests.test_shape_valid_but_wrong_results_halt_before_next_step) ... ok
+test_source_and_draft_checkpoints_share_revision_budget (tests.test_planning.PlanningTests.test_source_and_draft_checkpoints_share_revision_budget) ... ok
+test_uncertain_write_never_revises_or_retries (tests.test_planning.PlanningTests.test_uncertain_write_never_revises_or_retries) ... ok
+test_unknown_outcome_rejected_before_execution (tests.test_planning.PlanningTests.test_unknown_outcome_rejected_before_execution) ... ok
+test_critique_repair_feedback_precedes_one_pending_write (tests.test_agent_contracts.AgentContractTests.test_critique_repair_feedback_precedes_one_pending_write) ... ok
+test_each_use_case_reaches_its_declared_path (tests.test_agent_contracts.AgentContractTests.test_each_use_case_reaches_its_declared_path) ... ok
+test_executed_arguments_resolve_fills_and_match_plan_order (tests.test_agent_contracts.AgentContractTests.test_executed_arguments_resolve_fills_and_match_plan_order) ... ok
+test_initial_and_revised_planner_contexts_exclude_untrusted_text (tests.test_agent_contracts.AgentContractTests.test_initial_and_revised_planner_contexts_exclude_untrusted_text) ... ok
+test_invalid_plan_rules_stop_execution_before_business_writes (tests.test_agent_contracts.AgentContractTests.test_invalid_plan_rules_stop_execution_before_business_writes) ... ok
+test_over_budget_model_response_cannot_dispatch_tools (tests.test_agent_contracts.AgentContractTests.test_over_budget_model_response_cannot_dispatch_tools) ... ok
+test_plan_off_batch_still_stops_at_the_external_step_limit (tests.test_agent_contracts.AgentContractTests.test_plan_off_batch_still_stops_at_the_external_step_limit) ... ok
+test_revision_cannot_change_an_executed_step_to_another_authorized_id (tests.test_agent_contracts.AgentContractTests.test_revision_cannot_change_an_executed_step_to_another_authorized_id) ... ok
+test_orphan_repeat_out_of_order_and_extra_detectors (tests.test_course.RegistryTests.test_orphan_repeat_out_of_order_and_extra_detectors) ... ok
+test_executor_refuses_changed_arguments_extra_and_out_of_order (tests.test_course.RegistryTests.test_executor_refuses_changed_arguments_extra_and_out_of_order) ... ok
+test_recomputes_plan_outcomes_and_draft_checkpoint (tests.test_analysis.AnalysisTests.test_recomputes_plan_outcomes_and_draft_checkpoint) ... ok
+test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence (tests.test_analysis.AnalysisTests.test_recomputes_workflow_and_agent_records_and_rejects_fake_evidence) ... ok
+test_strict_schema_metrics (tests.test_analysis.AnalysisTests.test_strict_schema_metrics) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 5.835s
+
+OK

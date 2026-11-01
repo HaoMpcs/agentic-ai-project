@@ -24,3 +24,13 @@ class AnalysisTests(ScratchTest):
         runtime.configure(backend='tests.fakes:GoodAgent',overrides=['strict.flag=on'])
         stats=schema_stats(Registry('schema',[]).definitions())
         self.assertEqual(stats,{'strict_tools':1,'optional_parameters':0,'union_typed_parameters':0,'deepest_schema_nesting':1})
+
+    def test_recomputes_plan_outcomes_and_draft_checkpoint(self):
+        self.run_task('tasks/batch_questions.yaml', 'plan-analysis', backend='tests.fakes:CorrectingPlanner')
+        report = summarize(self.tmp / 'results/_free/plan-analysis', include_free=True)
+        self.assertEqual(report['passed'], 1)
+        self.assertEqual(report['events']['plan_outcome_pass'], 12)
+        self.assertEqual(report['events']['checkpoint_draft_supported_fail'], 1)
+        self.assertEqual(report['events']['plan_revisions'], 1)
+        self.assertEqual(report['events']['critique_fail'], 1)
+        self.assertEqual(report['events']['plan_rejected_attempts'], 1)

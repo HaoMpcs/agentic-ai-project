@@ -35,7 +35,29 @@
   The final smoke arm reruns every main task after this change.
 - Preserved runner classification of harness token ceilings, provider daily quotas
   and exhausted rate-limit retries; configuration errors do not swallow these outcomes.
+- November 1 execution fixes before any real baseline: replaced free-text plan
+  expectations with six fixed, executable outcome contracts. The executor checks
+  record identity, source properties and pending/open write states, traces each
+  check, and halts on a mismatch rather than continuing the plan.
+- Added the named draft_supported checkpoint for source-critic rejections before
+  persistence. Only those typed failures may request a validated revision; they
+  share the existing one-revision budget with sources_available. Completed steps,
+  write identity, critique limits and the human-only send boundary are preserved.
+  Generic errors and ambiguous writes do not enter the revision path.
+- Centralized checkpoint/revision handling and the critique round constant;
+  source facts are sorted once per review instead of once per matched sentence.
+  Updated fake planners, isolated regressions, trace analysis and M1 contracts.
+  These are engineering corrections, not a measured improvement pass.
 - Post-baseline fixes: none; no official baseline has been run.
+- November 1 responsibility-2 verification: added eight routing, planner-input,
+  executed-prefix, validation, placeholder, critique-feedback and token-bound
+  contract tests. Added an opt-in report command which runs 43 scoped tests,
+  exports unchanged free ScratchTest records/traces, fingerprints working
+  sources and runs the full suite and structural checks. The scoped tests pass
+  43/43 and the full suite passes 98/98. See
+  docs/requirements/AGENT_TEST_REPORT.md. No production behavior, model settings,
+  tasks, checks or switches changed in this verification; no measured pass or
+  real-model performance claim was added.
 
 Reused starter: https://github.com/ralmhana/agentic-ai-project, retained local
 initial commit `5016c83`. `harness/`, `channel/`, `run.py`, the operator pages and

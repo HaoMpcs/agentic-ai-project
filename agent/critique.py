@@ -1,8 +1,18 @@
 """Independent, extractive source check; it does not ask a model to grade itself."""
 from __future__ import annotations
 
-import re
 from sandbox import course
+
+MAX_CRITIQUE_ROUNDS = 3
+DRAFT_CHECKPOINT = "draft_supported"
+
+
+class DraftRejected(ValueError):
+    """A source-check failure before persistence, safe to use as revision feedback."""
+
+    def __init__(self, reason: str, *, exhausted: bool = False):
+        self.exhausted = exhausted
+        super().__init__(reason)
 
 
 def validate_draft(question_id: str, body: str, source_ids: list[str]) -> tuple[bool, str]:
@@ -25,10 +35,11 @@ def validate_draft(question_id: str, body: str, source_ids: list[str]) -> tuple[
     # Sentence-level extraction makes the independent support check decisive. It
     # deliberately rejects paraphrases rather than guessing semantic entailment.
     facts = {fact for doc in docs for fact in doc["facts"]}
+    ordered_facts = sorted(facts, key=len, reverse=True)
     remainder = body.strip()
     used = []
     while remainder:
-        match = next((fact for fact in sorted(facts, key=len, reverse=True) if remainder.startswith(fact)), None)
+        match = next((fact for fact in ordered_facts if remainder.startswith(fact)), None)
         if match is None:
             return False, "Unsupported text: use complete source fact sentences verbatim; omit added claims."
         used.append(match)
