@@ -34,6 +34,16 @@ class ProductTests(ScratchTest):
         self.assertEqual(sent[0].text,body)
         self.assertEqual(course.effect(draft["id"])["status"],"sent")
 
+    def test_manual_draft_rejects_source_from_another_topic(self):
+        response=self.client.post("/course/draft",data={
+            "question_id":"SYN-Q-deadline",
+            "body":"Office hours are unrelated to this deadline.",
+            "sources":"SYN-DOC-office",
+        })
+        self.assertEqual(response.status_code,200)
+        self.assertIn("matching the question topic",response.text)
+        self.assertFalse(course.effects())
+
     def test_flags_clear_reopen_and_draft_discard_restore(self):
         self.client.post("/course/flag",data={"question_id":"SYN-Q-deadline","reason":"missing_information"})
         flag=course.effects()[0]

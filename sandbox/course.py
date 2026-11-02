@@ -137,6 +137,12 @@ def create_effect(kind: str, question_id: str, *, body: str = "", source_ids: li
 
 
 def manual_draft(question_id: str, body: str, source_ids: list[str]) -> dict:
+    question_item = record("question", question_id)
+    for identifier in source_ids:
+        document = record("document", identifier)
+        if (not document["active"] or document["visibility"] != "public"
+                or document["topic"] != question_item["topic"]):
+            raise ValueError("Choose active public sources matching the question topic.")
     previous = effects(question_id=question_id)
     serial = sum(x["stamp"] == "manual" and x["kind"] == "reply" for x in previous)
     if any(x["status"] == "pending" for x in previous):
