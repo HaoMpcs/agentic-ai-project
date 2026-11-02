@@ -1,0 +1,54 @@
+{
+  "settings_digest": "0bc43ce45532",
+  "rows": [
+    {
+      "label": "no_tools",
+      "model": "gemini-3.5-flash-lite",
+      "reported_input_tokens": 17,
+      "cost_usd": 1.26e-05,
+      "usage": {
+        "input_tokens": 17,
+        "output_tokens": 3,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 17
+      },
+      "additional_input_tokens": 0
+    },
+    {
+      "label": "first_draft",
+      "model": "gemini-3.5-flash-lite",
+      "reported_input_tokens": 508,
+      "cost_usd": 0.0001599,
+      "usage": {
+        "input_tokens": 508,
+        "output_tokens": 3,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 508
+      },
+      "additional_input_tokens": 491
+    },
+    {
+      "label": "rewritten",
+      "model": "gemini-3.5-flash-lite",
+      "reported_input_tokens": 825,
+      "cost_usd": 0.000255,
+      "usage": {
+        "input_tokens": 825,
+        "output_tokens": 3,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 825
+      },
+      "additional_input_tokens": 808
+    }
+  ],
+  "schema": {
+    "strict_tools": 0,
+    "optional_parameters": 0,
+    "union_typed_parameters": 0,
+    "deepest_schema_nesting": 0
+  },
+  "method": "Same message and settings; provider-reported prompt tokens including cached input. Tool calls are forbidden by instruction."
+}

@@ -83,18 +83,26 @@ calls), wrong tool (unknown-tool and off-plan probes), misinterpreted results
 (unsupported draft), and missing call (SaysDone false finish). These are tests,
 not measurements of real model error rates.
 
-Examples are useful for `course_create_flag`, where choosing a valid but wrong
+Examples could help `course_create_flag`, where choosing a valid but wrong
 reason is plausible; its switch supplies typical and missing-evidence examples.
 They add little to `course_get_question`, whose only input is an already supplied
 ID. Strict mode is a candidate for `course_create_flag` to constrain required
 fields and the reason enum; it does not establish the truth of a search query or
 a reply. A fake malformed enum demonstrates local validation, not provider
-strict-mode efficacy. `strict.flag` is off by default because no provider is
-selected or verified. The candidate has one strict tool, zero optional inputs,
+strict-mode efficacy. In the November 1, 2026 real Gemini sweep, the model chose
+`conflicting_sources` correctly without an example and all tool calls were
+schema-shaped. The only malformed output was planner text, outside per-tool
+strict mode. Both switches therefore remain off. The candidate has one strict
+tool, zero optional inputs,
 zero union inputs, and one nested level below its argument object. Its object is
 closed, both parameters required, and no nullable transformation is needed.
 Provider support, vendor limits and source/date verification remain pending;
-no claim that strict mode is active is made. `tool_overhead --schema-only`
+Google's [native function-calling documentation](https://ai.google.dev/gemini-api/docs/function-calling)
+names a `validated` mode, while its
+[OpenAI-compatibility documentation](https://ai.google.dev/gemini-api/docs/openai/)
+does not give per-function `strict` support or numeric schema limits (read
+November 1, 2026). Local validation stays
+mandatory. `tool_overhead --schema-only`
 counts the current selection; the unit test checks the candidate selection.
 
 Run `python -m experiments.analysis.tool_overhead` after configuring a real
