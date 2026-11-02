@@ -1,0 +1,201 @@
+{
+  "run_id": "pass1-plan-on-batch_questions-s03-05897e",
+  "arm": "pass1-plan-on",
+  "task": "batch_questions",
+  "task_file": "tasks/batch_questions.yaml",
+  "sweep": 3,
+  "started": "2026-11-02T02:19:27.274+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [
+    "plan.batch=on"
+  ],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "1fb5ea40311bd10a6bb6c31cc935273661b0d711",
+  "dirty": false,
+  "finished": "2026-11-02T02:19:31.157+00:00",
+  "tokens": {
+    "input": 2685,
+    "output": 1637,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 4322
+  },
+  "cost_usd": 0.004898,
+  "unpriced_calls": 0,
+  "model_calls": 2,
+  "latency_s": 3.818,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 3.818,
+  "turn_latency_s": [
+    3.815,
+    0.003
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "plan_rejected",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": false,
+    "reason": "Expected exactly one current-run effect for SYN-Q-deadline; got 0"
+  },
+  "passed": false,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 0
+  },
+  "trace": "results/pass1-plan-on/pass1-plan-on-batch_questions-s03-05897e.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": []}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "No effect is recorded for the selected questions. Inspect the trace for the termination reason.",
+      "actions": [],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "No effect is recorded for the selected questions. Inspect the trace for the termination reason.",
+      "actions": [],
+      "waiting_for": null
+    }
+  ]
+}

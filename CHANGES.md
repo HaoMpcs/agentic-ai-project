@@ -48,13 +48,15 @@
   source facts are sorted once per review instead of once per matched sentence.
   Updated fake planners, isolated regressions, trace analysis and M1 contracts.
   These are engineering corrections, not a measured improvement pass.
-- Post-baseline fixes: none; no official baseline has been run.
+- Pass 1 after the real baseline changed `plan.batch` from on to off. The plan
+  arm passed 0/3 batch runs and the bounded-loop arm passed 3/3. Plan-specific
+  tests now enable the switch explicitly so the mechanism remains covered.
 - November 1 responsibility-2 verification: added eight routing, planner-input,
   executed-prefix, validation, placeholder, critique-feedback and token-bound
   contract tests. Added an opt-in report command which runs 43 scoped tests,
   exports unchanged free ScratchTest records/traces, fingerprints working
   sources and runs the full suite and structural checks. The scoped tests pass
-  43/43 and the full suite passes 98/98. See
+  43/43 and the current full suite passes 99/99. See
   docs/requirements/AGENT_TEST_REPORT.md. No production behavior, model settings,
   tasks, checks or switches changed in this verification; no measured pass or
   real-model performance claim was added.
@@ -63,4 +65,5 @@ Reused starter: https://github.com/ralmhana/agentic-ai-project, retained local
 initial commit `5016c83`. `harness/`, `channel/`, `run.py`, the operator pages and
 44 starter tests retain their contracts. Existing domain design in
 `docs/milestones/M1.md` from `83d10a8` was retained and extended. No Assignment
-1–3 code or measurements were available to reuse; no such reuse is claimed.
+1–3 code was reused. Hao Shi's Assignment 1 measurements are cited in M1.md;
+Assignment 2 and 3 evidence remains with their owners.

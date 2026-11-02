@@ -30,7 +30,9 @@ class CourseTests(ScratchTest):
         for path in sorted(Path("tasks").rglob("*.yaml")):
             with self.subTest(task=path):
                 backend = "tests.fakes:RevisingPlanner" if "checkpoint" in str(path) else "tests.fakes:GoodAgent"
-                record = self.run_task(path, path.stem, backend=backend)
+                planned = path.name == "batch_questions.yaml" or "checkpoint" in str(path)
+                record = self.run_task(path, path.stem, backend=backend,
+                                       overrides=["plan.batch=on"] if planned else None)
                 self.assertTrue(record["passed"], record.get("check_reason", record))
                 self.assertEqual(record["outcome"], "completed")
                 self.assertTrue(record["free"])
@@ -94,7 +96,8 @@ class CourseTests(ScratchTest):
                     self.assertEqual(record["end_reason"], "token_budget")
 
     def test_valid_plan_order_and_no_untrusted_planner_input(self):
-        record = self.run_task("tasks/batch_questions.yaml", "good-plan", backend="tests.fakes:GoodAgent")
+        record = self.run_task("tasks/batch_questions.yaml", "good-plan", backend="tests.fakes:GoodAgent",
+                               overrides=["plan.batch=on"])
         self.assertTrue(record["passed"])
         lines = self.trace(record)
         plan_index = next(i for i,x in enumerate(lines) if x["type"] == "plan")
@@ -106,19 +109,22 @@ class CourseTests(ScratchTest):
         self.assertEqual(diff["skipped"], [])
 
     def test_invalid_plan_replan_bound_and_no_writes(self):
-        record = self.run_task("tasks/batch_questions.yaml", "bad-plan", backend="tests.fakes:BadPlanner")
+        record = self.run_task("tasks/batch_questions.yaml", "bad-plan", backend="tests.fakes:BadPlanner",
+                               overrides=["plan.batch=on"])
         self.assertIn("plan_rejected", record["end_reasons"])
         self.assertEqual(sum(x["type"] == "plan_validation" for x in self.trace(record)), 2)
         self.assertFalse(course.effects())
 
     def test_planner_tool_call_refused(self):
-        record = self.run_task("tasks/batch_questions.yaml", "off-plan", backend="tests.fakes:OffPlanPlanner")
+        record = self.run_task("tasks/batch_questions.yaml", "off-plan", backend="tests.fakes:OffPlanPlanner",
+                               overrides=["plan.batch=on"])
         self.assertIn("plan_rejected", record["end_reasons"])
         self.assertTrue(any(x["type"] == "off_plan" for x in self.trace(record)))
         self.assertFalse(course.effects())
 
     def test_revision_only_on_observed_failed_checkpoint(self):
-        record = self.run_task("tasks/dev/checkpoint_revision.yaml", "revision", backend="tests.fakes:RevisingPlanner")
+        record = self.run_task("tasks/dev/checkpoint_revision.yaml", "revision", backend="tests.fakes:RevisingPlanner",
+                               overrides=["plan.batch=on"])
         self.assertTrue(record["passed"], record)
         plans = [x for x in self.trace(record) if x["type"] == "plan"]
         self.assertEqual([p["version"] for p in plans], [1,2])
@@ -126,7 +132,8 @@ class CourseTests(ScratchTest):
         self.assertTrue(any(x["type"] == "plan_checkpoint" and not x["passed"] and x["count"] == 0 for x in self.trace(record)))
 
     def test_invalid_revision_never_executes_and_labels_skipped(self):
-        record = self.run_task("tasks/dev/checkpoint_revision.yaml", "bad-revision", backend="tests.fakes:BadRevision")
+        record = self.run_task("tasks/dev/checkpoint_revision.yaml", "bad-revision", backend="tests.fakes:BadRevision",
+                               overrides=["plan.batch=on"])
         self.assertIn("revision_rejected", record["end_reasons"])
         self.assertFalse(course.effects())
         self.assertTrue(any(x["type"] == "plan_step" and x["status"] == "skipped" for x in self.trace(record)))

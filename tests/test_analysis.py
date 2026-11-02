@@ -26,7 +26,8 @@ class AnalysisTests(ScratchTest):
         self.assertEqual(stats,{'strict_tools':1,'optional_parameters':0,'union_typed_parameters':0,'deepest_schema_nesting':1})
 
     def test_recomputes_plan_outcomes_and_draft_checkpoint(self):
-        self.run_task('tasks/batch_questions.yaml', 'plan-analysis', backend='tests.fakes:CorrectingPlanner')
+        self.run_task('tasks/batch_questions.yaml', 'plan-analysis', backend='tests.fakes:CorrectingPlanner',
+                      overrides=['plan.batch=on'])
         report = summarize(self.tmp / 'results/_free/plan-analysis', include_free=True)
         self.assertEqual(report['passed'], 1)
         self.assertEqual(report['events']['plan_outcome_pass'], 12)

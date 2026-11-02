@@ -31,7 +31,7 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Arms:** results/pass1-plan-off with plan.batch=off; results/pass1-plan-on with plan.batch=on. All other switches stay at their recorded defaults.
 - **Held constant:** Gemini 3.5 Flash-Lite, settings, committed code, batch task, other switches, price sheet and check.
 - **Tasks and sweeps:** tasks/batch_questions.yaml, three sweeps per arm, after this prediction is committed and pushed.
-- **Results:** pending
-- **Difference:** pending
-- **Verdict:** pending
-- **Links:** pending
+- **Results:** pass1-plan-on passed 0/3, used 12,851 tokens, cost $0.014348, had five plan rejections, and ended twice at plan_rejected and once at plan_fill_error. pass1-plan-off passed 3/3, used 44,305 tokens, cost $0.016759, and had zero plan rejections and zero false finishes.
+- **Difference:** Off minus on: +3 passing runs, +31,454 tokens, +$0.002411 total cost, and -5 plan rejections. Median turn increased from 1.909 to 2.514 seconds (+0.605 seconds).
+- **Verdict:** Keep `plan.batch=off`. The loop completed every batch; the plan completed none.
+- **Links:** results/pass1-plan-on/ and results/pass1-plan-off/.

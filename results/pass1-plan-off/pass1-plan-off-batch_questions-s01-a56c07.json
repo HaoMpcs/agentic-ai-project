@@ -1,0 +1,491 @@
+{
+  "run_id": "pass1-plan-off-batch_questions-s01-a56c07",
+  "arm": "pass1-plan-off",
+  "task": "batch_questions",
+  "task_file": "tasks/batch_questions.yaml",
+  "sweep": 1,
+  "started": "2026-11-02T02:19:35.524+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [
+    "plan.batch=off"
+  ],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "1fb5ea40311bd10a6bb6c31cc935273661b0d711",
+  "dirty": false,
+  "finished": "2026-11-02T02:19:40.704+00:00",
+  "tokens": {
+    "input": 13997,
+    "output": 489,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 14486
+  },
+  "cost_usd": 0.005422,
+  "unpriced_calls": 0,
+  "model_calls": 6,
+  "latency_s": 5.105,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 5.105,
+  "turn_latency_s": [
+    5.098,
+    0.003
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "agent_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 3,
+    "staff_flags": 0
+  },
+  "trace": "results/pass1-plan-off/pass1-plan-off-batch_questions-s01-a56c07.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": null,
+      "id": "call_929134",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-deadline\", \"kind\": \"deadline\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"deadline\", \"untrusted_messages\": [\"When is Assignment 2 due?\"]}}",
+      "is_error": false,
+      "latency_s": 0.002,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 3,
+      "plan_step": null,
+      "id": "call_929135",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-office\", \"kind\": \"office_hours\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"office_hours\", \"untrusted_messages\": [\"Where and when are office hours?\"]}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 4,
+      "plan_step": null,
+      "id": "call_929136",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-repeated\", \"kind\": \"repeated\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"untrusted_messages\": [\"The old forum says late work is never accepted. What is the current policy?\"]}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 6,
+      "plan_step": null,
+      "id": "call_931317",
+      "name": "course_search_materials",
+      "input": {
+        "query": "deadline"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.002,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 7,
+      "plan_step": null,
+      "id": "call_931318",
+      "name": "course_search_materials",
+      "input": {
+        "query": "office hours"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 8,
+      "plan_step": null,
+      "id": "call_931319",
+      "name": "course_search_materials",
+      "input": {
+        "query": "late policy"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-grade\", \"title\": \"Grading policy\", \"topic\": \"grading\", \"version\": 1}, {\"active\": true, \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 10,
+      "plan_step": null,
+      "id": "call_4481",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-deadline"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"claims\": {}, \"facts\": [\"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\"], \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 11,
+      "plan_step": null,
+      "id": "call_4482",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-office"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"claims\": {}, \"facts\": [\"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\"], \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 12,
+      "plan_step": null,
+      "id": "call_4483",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-late"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"claims\": {}, \"facts\": [\"Late submissions lose 10 percent per day for up to two days.\", \"Extensions require an individual decision from course staff.\"], \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 14,
+      "plan_step": null,
+      "id": "call_1396",
+      "name": "course_create_reply",
+      "input": {
+        "source_ids": [
+          "SYN-DOC-deadline"
+        ],
+        "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effect\": {\"action_key\": \"031507bc30cf5f83eaf9e86f3e7a9c333a44f390c923361ad7dea07d73800f48\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-273fb5d7b524589d\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": "031507bc30cf5f83eaf9e86f3e7a9c333a44f390c923361ad7dea07d73800f48",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 15,
+      "plan_step": null,
+      "id": "call_1397",
+      "name": "course_create_reply",
+      "input": {
+        "source_ids": [
+          "SYN-DOC-office"
+        ],
+        "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effect\": {\"action_key\": \"a5e12b8aa006743606b3ef903351ee4b6e72cd3fdbb79e36257c5d7f4c6c6555\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-ff99e49f05991d31\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": "a5e12b8aa006743606b3ef903351ee4b6e72cd3fdbb79e36257c5d7f4c6c6555",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 16,
+      "plan_step": null,
+      "id": "call_1398",
+      "name": "course_create_reply",
+      "input": {
+        "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+        "source_ids": [
+          "SYN-DOC-late"
+        ],
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effect\": {\"action_key\": \"fa7db92bc5354156fba68c5c362c68928b465762fc3efeefebc1b770d5925d00\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-b1ed355b3cc9ecbf\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}}",
+      "is_error": false,
+      "latency_s": 0.004,
+      "error_class": null,
+      "idempotency_key": "fa7db92bc5354156fba68c5c362c68928b465762fc3efeefebc1b770d5925d00",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 18,
+      "plan_step": null,
+      "id": "call_317968",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"031507bc30cf5f83eaf9e86f3e7a9c333a44f390c923361ad7dea07d73800f48\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-273fb5d7b524589d\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 19,
+      "plan_step": null,
+      "id": "call_317969",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"a5e12b8aa006743606b3ef903351ee4b6e72cd3fdbb79e36257c5d7f4c6c6555\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-ff99e49f05991d31\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 20,
+      "plan_step": null,
+      "id": "call_317970",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"fa7db92bc5354156fba68c5c362c68928b465762fc3efeefebc1b770d5925d00\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-b1ed355b3cc9ecbf\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-16",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"031507bc30cf5f83eaf9e86f3e7a9c333a44f390c923361ad7dea07d73800f48\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-273fb5d7b524589d\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-17",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"a5e12b8aa006743606b3ef903351ee4b6e72cd3fdbb79e36257c5d7f4c6c6555\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-ff99e49f05991d31\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-18",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"fa7db92bc5354156fba68c5c362c68928b465762fc3efeefebc1b770d5925d00\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-b1ed355b3cc9ecbf\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-deadline"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"031507bc30cf5f83eaf9e86f3e7a9c333a44f390c923361ad7dea07d73800f48\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-273fb5d7b524589d\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-deadline\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"a5e12b8aa006743606b3ef903351ee4b6e72cd3fdbb79e36257c5d7f4c6c6555\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-ff99e49f05991d31\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"fa7db92bc5354156fba68c5c362c68928b465762fc3efeefebc1b770d5925d00\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-b1ed355b3cc9ecbf\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"pass1-plan-off-batch_questions-s01-a56c07\", \"status\": \"pending\", \"updated_by\": \"pass1-plan-off-batch_questions-s01-a56c07\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-deadline: reply SYN-REPLY-273fb5d7b524589d (pending); sources SYN-DOC-deadline\nSYN-Q-office: reply SYN-REPLY-ff99e49f05991d31 (pending); sources SYN-DOC-office\nSYN-Q-repeated: reply SYN-REPLY-b1ed355b3cc9ecbf (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-273fb5d7b524589d on SYN-Q-deadline; pending",
+        "reply SYN-REPLY-ff99e49f05991d31 on SYN-Q-office; pending",
+        "reply SYN-REPLY-b1ed355b3cc9ecbf on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-deadline: reply SYN-REPLY-273fb5d7b524589d (pending); sources SYN-DOC-deadline\nSYN-Q-office: reply SYN-REPLY-ff99e49f05991d31 (pending); sources SYN-DOC-office\nSYN-Q-repeated: reply SYN-REPLY-b1ed355b3cc9ecbf (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-273fb5d7b524589d on SYN-Q-deadline; pending",
+        "reply SYN-REPLY-ff99e49f05991d31 on SYN-Q-office; pending",
+        "reply SYN-REPLY-b1ed355b3cc9ecbf on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

@@ -16,7 +16,8 @@ from tests.support import ScratchTest
 
 class PlanningTests(ScratchTest):
     def run_batch(self, backend="CorrectingPlanner"):
-        return self.run_task("tasks/batch_questions.yaml", "planning", backend="tests.fakes:" + backend)
+        return self.run_task("tasks/batch_questions.yaml", "planning", backend="tests.fakes:" + backend,
+                             overrides=["plan.batch=on"])
 
     def trace(self, record):
         return read_trace(next(self.tmp.rglob(record["run_id"] + ".trace.jsonl")))
@@ -122,7 +123,7 @@ class PlanningTests(ScratchTest):
 
     def test_source_and_draft_checkpoints_share_revision_budget(self):
         record = self.run_task("tasks/dev/checkpoint_revision.yaml", "shared-budget",
-                               backend="tests.fakes:MixedCheckpointPlanner")
+                               backend="tests.fakes:MixedCheckpointPlanner", overrides=["plan.batch=on"])
         self.assertIn("revision_limit", record["end_reasons"])
         events = self.trace(record)
         self.assertEqual(len([e for e in events if e["type"] == "plan"]), 2)

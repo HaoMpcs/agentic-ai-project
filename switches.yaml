@@ -10,7 +10,7 @@ control:
   ambiguous: {setting: agent, values: [workflow, agent]}
   batch: {setting: agent, values: [workflow, agent]}
 plan:
-  batch: {setting: "on", values: ["off", "on"]}
+  batch: {setting: "off", values: ["off", "on"]}
 critique:
   reply: {setting: external, values: ["off", external]}
 examples:

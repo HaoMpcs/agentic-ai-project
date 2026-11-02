@@ -21,6 +21,7 @@ class AgentContractTests(ScratchTest):
         return read_trace(next(self.tmp.rglob(record["run_id"] + ".trace.jsonl")))
 
     def batch(self, backend="GoodAgent", **kwargs):
+        kwargs.setdefault("overrides", ["plan.batch=on"])
         return self.run_task("tasks/batch_questions.yaml", "contracts",
                              backend="tests.fakes:" + backend, **kwargs)
 
@@ -40,7 +41,8 @@ class AgentContractTests(ScratchTest):
         for task, expected in cases.items():
             with self.subTest(task=task):
                 record = self.run_task(f"tasks/{task}.yaml", "routing",
-                                       backend="tests.fakes:GoodAgent")
+                                       backend="tests.fakes:GoodAgent",
+                                       overrides=["plan.batch=on"] if task == "batch_questions" else None)
                 self.assertTrue(record["passed"], record)
                 events = self.trace(record)
                 routes = [(e["use_case"], e["route"]) for e in events if e["type"] == "routing"]
@@ -81,7 +83,7 @@ class AgentContractTests(ScratchTest):
 
         with mock.patch.object(CorrectingPlanner, "plan", observe):
             record = self.run_task(task_file, "planner-isolation",
-                                   backend="tests.fakes:CorrectingPlanner")
+                                   backend="tests.fakes:CorrectingPlanner", overrides=["plan.batch=on"])
         self.assertTrue(record["passed"], record)
         self.assertEqual(len(contexts), 2)
         self.assertEqual(contexts[1]["checkpoint"]["name"], "draft_supported")
