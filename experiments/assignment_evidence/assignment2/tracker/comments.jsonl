@@ -1,0 +1,32 @@
+{"id": 1, "run_id": "agent-4201-s01-4d7b4c", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:24:24"}
+{"id": 2, "run_id": "agent-4202-s01-25155a", "issue": 4202, "body": "label: feature\nfile: src/export/", "posted_at": "2026-10-15T20:24:27"}
+{"id": 3, "run_id": "agent-4203-s01-c6043e", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:24:31"}
+{"id": 4, "run_id": "agent-4205-s01-8e20e1", "issue": 4205, "body": "label: question\nfile: none\n\nHi there!\n\nTo answer your question: after a successful import, the uploaded file is deleted from object storage, and only the parsed transactions are kept in the database. \n\nIf an import fails, the uploaded file is retained for 7 days so that it can be inspected, after which it is automatically deleted by an hourly purge process.\n\nHope this helps with your security review!", "posted_at": "2026-10-15T20:24:45"}
+{"id": 5, "run_id": "agent-4201-s02-d49b80", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:24:56"}
+{"id": 6, "run_id": "agent-4202-s02-e01fbd", "issue": 4202, "body": "label: feature\nfile: src/exportUtils.ts", "posted_at": "2026-10-15T20:25:02"}
+{"id": 7, "run_id": "agent-4203-s02-8c23e5", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:25:07"}
+{"id": 8, "run_id": "agent-4205-s02-839b8f", "issue": 4205, "body": "label: question\nfile: none\n\nHi there! Here's how our retention works for uploaded files:\n\n- **Successful imports:** After a successful import, the worker immediately deletes the uploaded file from object storage. Only the parsed transactions are retained in the database.\n- **Failed imports:** Uploads that fail to import are kept for 7 days so that the original file can be inspected if needed, and are then automatically deleted by an hourly purge process.\n\nLet us know if you need any other details for your security review!", "posted_at": "2026-10-15T20:25:21"}
+{"id": 9, "run_id": "agent-4201-s03-ecd06b", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts\n\nThe password reset email generation falls back to `http://localhost:3000` when `PUBLIC_URL` is not set in the environment, causing links in production emails to point to localhost instead of the actual public domain.", "posted_at": "2026-10-15T20:25:32"}
+{"id": 10, "run_id": "agent-4202-s03-b4a3aa", "issue": 4202, "body": "label: feature\nfile: src/export/", "posted_at": "2026-10-15T20:25:35"}
+{"id": 11, "run_id": "agent-4203-s03-41ea25", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:25:39"}
+{"id": 12, "run_id": "agent-4204-s03-3a6886", "issue": 4204, "body": "label: bug\nfile: src/util/dates.ts", "posted_at": "2026-10-15T20:25:47"}
+{"id": 13, "run_id": "agent-4205-s03-029429", "issue": 4205, "body": "label: question\nfile: none\n\nWhen an import finishes successfully, the original uploaded file is immediately deleted from object storage (`src/ingest/worker.ts`), and only the parsed transactions are retained in the database.\n\nIf an import fails, the uploaded file is kept for 7 days (`FAILED_UPLOAD_RETENTION_DAYS`) so it can be inspected, after which it is deleted by an hourly purge task.", "posted_at": "2026-10-15T20:25:55"}
+{"id": 14, "run_id": "planned-4201-s01-5d5d42", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:28:54"}
+{"id": 15, "run_id": "planned-4203-s01-c573ed", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:29:04"}
+{"id": 16, "run_id": "planned-4201-s02-56c4ac", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:29:27"}
+{"id": 17, "run_id": "planned-4203-s02-a12cff", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:29:37"}
+{"id": 18, "run_id": "planned-4205-s02-c57399", "issue": 4205, "body": "label: question\nfile: none", "posted_at": "2026-10-15T20:29:48"}
+{"id": 19, "run_id": "planned-4201-s03-dcf83f", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:29:56"}
+{"id": 20, "run_id": "planned-4203-s03-ac9bdc", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:30:06"}
+{"id": 21, "run_id": "planned-4201-s01-6d53d4", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:32:25"}
+{"id": 22, "run_id": "planned-4201-s02-aa9259", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:32:50"}
+{"id": 23, "run_id": "planned-4201-s03-38d0c4", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:33:22"}
+{"id": 24, "run_id": "planned-4201-s01-746044", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:34:41"}
+{"id": 25, "run_id": "planned-4203-s01-69cfc6", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:34:50"}
+{"id": 26, "run_id": "planned-4204-s01-85fcb5", "issue": 4204, "body": "label: bug\nfile: src/notifications/rollup.ts", "posted_at": "2026-10-15T20:34:55"}
+{"id": 27, "run_id": "planned-4201-s02-d9f4f6", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:35:08"}
+{"id": 28, "run_id": "planned-4203-s02-b23119", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:35:19"}
+{"id": 29, "run_id": "planned-4201-s03-acab84", "issue": 4201, "body": "label: bug\nfile: src/notifications/templates.ts", "posted_at": "2026-10-15T20:35:36"}
+{"id": 30, "run_id": "planned-4205-s03-7d453e", "issue": 4205, "body": "label: question\nfile: none", "posted_at": "2026-10-15T20:35:57"}
+{"id": 31, "run_id": "notes-4203-s01-9c6b10", "issue": 4203, "body": "label: bug\nfile: src/ingest/parser.ts", "posted_at": "2026-10-15T20:41:55"}
+{"id": 32, "run_id": "notes-4204-s02-f23b99", "issue": 4204, "body": "label: bug\nfile: src/notifications/rollup.ts", "posted_at": "2026-10-15T20:42:22"}

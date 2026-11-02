@@ -106,13 +106,13 @@ The command creates a fresh directory with a UTC timestamp and prints its summar
 
 ## Remaining real evaluation and handoff
 
-This verification did not read or print API keys, choose a model, make paid API calls, or run git commit, push or an m1 tag operation. The provider/model fields in settings.yaml remain unconfigured, so real-model experiments have not started.
+This verification did not read or print API keys, choose a model, make paid API calls, or run git commit, push or an m1 tag operation. At this verification checkpoint the provider/model fields were unconfigured. Subsequent team commits configured the model and completed the real baseline and Pass 1; see M1 Part 4 and experiments/LEDGER.md. The checklist below records the original handoff, not outstanding experiment work.
 
 1. The team must select the model, price and runtime configuration, complete the four-gate justification for Agent routing, and freeze the tasks and checks. Routing tests prove that configured paths are followed; they do not prove that an Agent is preferable to a workflow. The earlier diagnostic in which every main task passed on workflows still needs to be addressed.
 2. Commit engineering corrections as part of the baseline, then run every main task for three sweeps and inspect all records and traces. Responsibility 2 owns diagnosis of Agent, plan and critique behavior in coordination with the evaluation owner.
 3. Choose an improvement from an observed real problem. Fill the ledger with the problem, evidence, numeric prediction, switch and owner. Commit and push the prediction before running two new measured arms.
 4. Complete the chosen pass's required analysis with the evaluation owner, such as runs with repeated calls and false finishes determined from completion status plus the independent task check. Existing event totals do not establish those metrics by themselves.
-5. Record the verdict, decision table and final switch settings, and add actual Assignment 1-3 figures and references to M1. Passing these mechanism tests does not replace those requirements.
+5. Record the verdict, decision table and final switch settings. Actual Assignment 1-3 figures and references were subsequently added to M1 through the [assignment source review](ASSIGNMENT_EVIDENCE.md); those historical figures do not replace the project's own experiments. Passing these mechanism tests does not replace the remaining requirements.
 
 The new tests are ordinary verification work. Required outcome checks, detectors and diff were not disabled to manufacture a comparison, and free records were not linked as a formal pass. Final clean-clone verification and submission tagging remain to be performed once the code and materials are complete.
 

@@ -1,13 +1,19 @@
-# Real-model evaluation protocol — pending
+# Real-model evaluation protocol
 
-No real-model baseline or improvement arm exists. Thirty retained free smoke runs
-exercise mechanics and cannot support a milestone cost or quality claim.
+The retained baseline contains 30 real-model runs (27 passed). Pass 1 is complete:
+results/pass1-plan-on and results/pass1-plan-off contain three batch runs each,
+with 0/3 and 3/3 passing respectively. The advance prediction is in commit
+1fb5ea4 and the verdict keeps plan.batch=off. See LEDGER.md and M1 Part 4.
+Free smoke records remain separate and cannot support model cost/quality claims.
+The procedure below applies to new measurements; preserve the existing arms.
 
-1. Obtain the official spec and actual Assignment 1–3 evidence. Confirm owner.
+1. Review the supplied milestone criteria and the retained Assignment 1-3
+   evidence in docs/requirements/ASSIGNMENT_EVIDENCE.md. Confirm the current
+   domain's gate estimates, representative Agent cases and experiment owner.
 2. Select provider/model/key in the documented settings interface; verify the
    provider's current price and strict-mode documentation. Record source/date.
 3. Run `make ping`, tests and checks; commit engineering code. Official arms
-   must not run on dirty code. No remote operation has been authorized.
+   must not run on dirty code.
 4. Run `python run.py --tasks tasks/ --sweeps 3 --arm baseline` (10 tasks,
    30 runs), then analyze records and every failure trace. Cite the earliest
    cause by run ID and one-based trace line. Review plan repeats/orphans,

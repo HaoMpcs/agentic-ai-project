@@ -74,10 +74,11 @@ does not claim atomic transactions across both stores.
 | Seed/reset | course.records and channel.messages/threads | Re-seed only when intentionally resetting demo/run | Operator/runner |
 
 The compact `experiments/tool_definitions/first_draft.json` is a retained design
-variant for a future three-call comparison. It was not used for a measured
-baseline. The rewritten definitions add purpose, namespace consistency, argument
+variant used in the retained three-call tool-overhead comparison, separate
+from the baseline task runs. The rewritten definitions add purpose, namespace consistency, argument
 constraints, explicit empty-result semantics, semantic IDs, and response bounds.
-There are no observed real-model definition failures yet. Controlled probes
+M1 Part 3 records real-model planning-output failures and the development
+sweep; no wrong-tool or misread-result failure was observed there. Controlled probes
 cover Lecture 3's categories: wrong arguments (never-stops and direct malformed
 calls), wrong tool (unknown-tool and off-plan probes), misinterpreted results
 (unsupported draft), and missing call (SaysDone false finish). These are tests,
@@ -96,8 +97,8 @@ strict mode. Both switches therefore remain off. The candidate has one strict
 tool, zero optional inputs,
 zero union inputs, and one nested level below its argument object. Its object is
 closed, both parameters required, and no nullable transformation is needed.
-Provider support, vendor limits and source/date verification remain pending;
-Google's [native function-calling documentation](https://ai.google.dev/gemini-api/docs/function-calling)
+Per-function strict support and numeric limits remain undocumented for the
+selected compatibility endpoint in the sources reviewed. Google's [native function-calling documentation](https://ai.google.dev/gemini-api/docs/function-calling)
 names a `validated` mode, while its
 [OpenAI-compatibility documentation](https://ai.google.dev/gemini-api/docs/openai/)
 does not give per-function `strict` support or numeric schema limits (read
@@ -105,9 +106,21 @@ November 1, 2026). Local validation stays
 mandatory. `tool_overhead --schema-only`
 counts the current selection; the unit test checks the candidate selection.
 
-Run `python -m experiments.analysis.tool_overhead` after configuring a real
-provider and price row. The three calls use identical system/user text and the
+The retained `experiments/tool_definitions/measurement.json` reports 17 input
+tokens without tools, 508 with first-draft tools and 825 with rewritten tools
+on November 1, 2026. The respective overheads are 491 and 808 input tokens.
+Run `python -m experiments.analysis.tool_overhead` for a new measurement with
+the configured provider and price row. The three calls use identical system/user text and the
 same registry request format, once without tools, once with the compact variant,
 and once with rewritten definitions. Output records provider-reported input
 usage including cached input, actual serving model, settings digest, cost and
 token deltas; no character-based token estimate is substituted.
+
+Historical Assignment 3 evidence is now available in
+[ASSIGNMENT_EVIDENCE.md](requirements/ASSIGNMENT_EVIDENCE.md): Jingyu Huang's
+five-tool definitions increased from 386 to 2,536 reported input tokens, and
+the derived-key/readback arm left duplicates in 0/12 runs versus 4/12 with UUID
+keys and verification off. The latter counts are recomputed from tracker SQL.
+The comparison changes two safeguards together and does not isolate the tool
+rewrite. Historical definition measurements lack standalone provider-response
+logs and do not replace measuring this project's definitions on its chosen model.

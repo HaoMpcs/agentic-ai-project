@@ -64,6 +64,12 @@
 Reused starter: https://github.com/ralmhana/agentic-ai-project, retained local
 initial commit `5016c83`. `harness/`, `channel/`, `run.py`, the operator pages and
 44 starter tests retain their contracts. Existing domain design in
-`docs/milestones/M1.md` from `83d10a8` was retained and extended. No Assignment
-1–3 code was reused. Hao Shi's Assignment 1 measurements are cited in M1.md;
-Assignment 2 and 3 evidence remains with their owners.
+`docs/milestones/M1.md` from `83d10a8` was retained and extended. No assignment
+runtime code was imported. Hao Shi's Assignment 1 measurements remain the
+primary source for Part 1's gate calculation. Jingyu Huang's Assignment 1-3
+archive reports and measurements are also retained and cited, from
+`ylwhale/agentic-ai-assignment1`, `ylwhale/agentic-ai-assignment2` and
+`ylwhale/agentic-ai-assignment3`. See docs/requirements/ASSIGNMENT_EVIDENCE.md
+for hashes, archived revisions and recomputation. The offline evidence analyzer
+and its tests are new code. Assignment 4 was reviewed for scope; its recovery
+and memory code was not reused.

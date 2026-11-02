@@ -1,0 +1,127 @@
+{
+  "lab": "01",
+  "part0": {
+    "model_calls": 21,
+    "tool_calls": 23,
+    "prompt_tokens": 399123,
+    "cache_read_tokens": 388338,
+    "cache_read_share": 0.9729782548237009,
+    "first_prompt": 13445,
+    "last_prompt": 24188,
+    "cumulative_over_first": 29.68560803272592
+  },
+  "worst_case": {
+    "F": 519,
+    "A": 158.01466275659823,
+    "N": 12,
+    "cumulative_prompt_tokens": 16656.967741935485
+  },
+  "results": {
+    "direct": {
+      "runs": 60,
+      "passes": 30,
+      "per_issue": {
+        "4201": 0,
+        "4202": 10,
+        "4203": 10,
+        "4204": 0,
+        "4205": 10,
+        "4206": 0
+      },
+      "sweep_min": 3,
+      "sweep_max": 3,
+      "all_ten": 3,
+      "mean_prompt_tokens": 1244.3333333333333,
+      "mean_output_tokens": 48.766666666666666,
+      "mean_cached_tokens": 0,
+      "p50_latency_s": 0.834,
+      "p95_latency_s": 2.28,
+      "mean_cost_usd": 0.0004952166666666667,
+      "mean_tool_calls": 2,
+      "max_tool_calls": 2
+    },
+    "workflow": {
+      "runs": 60,
+      "passes": 22,
+      "per_issue": {
+        "4201": 10,
+        "4202": 0,
+        "4203": 2,
+        "4204": 0,
+        "4205": 10,
+        "4206": 0
+      },
+      "sweep_min": 2,
+      "sweep_max": 3,
+      "all_ten": 2,
+      "mean_prompt_tokens": 1105.2333333333333,
+      "mean_output_tokens": 64.08333333333333,
+      "mean_cached_tokens": 0,
+      "p50_latency_s": 1.507,
+      "p95_latency_s": 103.219,
+      "mean_cost_usd": 0.0004917783333333333,
+      "mean_tool_calls": 4.716666666666667,
+      "max_tool_calls": 5
+    },
+    "agent": {
+      "runs": 60,
+      "passes": 26,
+      "per_issue": {
+        "4201": 8,
+        "4202": 3,
+        "4203": 7,
+        "4204": 0,
+        "4205": 8,
+        "4206": 0
+      },
+      "sweep_min": 0,
+      "sweep_max": 4,
+      "all_ten": 0,
+      "mean_prompt_tokens": 7388.866666666667,
+      "mean_output_tokens": 172.78333333333333,
+      "mean_cached_tokens": 0,
+      "p50_latency_s": 52.865,
+      "p95_latency_s": 553.074,
+      "mean_cost_usd": 0.0026486183333333333,
+      "mean_tool_calls": 5.766666666666667,
+      "max_tool_calls": 12
+    },
+    "hybrid": {
+      "runs": 60,
+      "passes": 31,
+      "per_issue": {
+        "4201": 10,
+        "4202": 2,
+        "4203": 9,
+        "4204": 0,
+        "4205": 10,
+        "4206": 0
+      },
+      "sweep_min": 2,
+      "sweep_max": 4,
+      "all_ten": 2,
+      "mean_prompt_tokens": 8421.483333333334,
+      "mean_output_tokens": 211.93333333333334,
+      "mean_cached_tokens": 0,
+      "p50_latency_s": 21.022,
+      "p95_latency_s": 58.632,
+      "mean_cost_usd": 0.003056278333333333,
+      "mean_tool_calls": 9.7,
+      "max_tool_calls": 16
+    }
+  },
+  "analysis": {
+    "ratio_agent_over_direct_tokens": 5.847691593844251,
+    "m_agent_over_workflow_cost": 5.385797124043014,
+    "f": 0.16666666666666666,
+    "blended_cost": 0.0008512516666666666,
+    "all_agent_cost": 0.0026486183333333333,
+    "workflow_cost": 0.0004917783333333333,
+    "path_entropy": {
+      "distinct_sequences": 13,
+      "top3_share": 0.4166666666666667
+    },
+    "verdict": "workflow",
+    "hybrid_handoffs": 38
+  }
+}

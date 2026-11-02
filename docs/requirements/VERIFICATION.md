@@ -81,3 +81,16 @@ their original traces and four direct session traces, plus the original logs
 and working-source fingerprints. Negative task checks are expected refusal and
 fault-injection observations, not failed unit tests. These are working-tree
 results, not a new clean-clone check or a real-model improvement experiment.
+
+## Historical assignment source verification, November 2, 2026 UTC
+
+The [assignment source review](ASSIGNMENT_EVIDENCE.md) adds Jingyu Huang's
+Assignment 1-3 references to M1. Independent offline analysis verifies 256
+retained source-file hashes and recomputes 216 historical runs from original
+traces and tracker records. Three new source-integrity/grounding regression
+tests pass. The full suite now passes **101/101 tests**, with make check and
+git diff --check passing; logs are retained under
+experiments/reports/assignment-evidence-20261102/. No assignment runtime code,
+Assignment 4 recovery/memory behavior, paid calls or official project arms were
+introduced. Historical reported schema-token measurements are distinguished
+from independently reconstructed run metrics and current-project measurements.

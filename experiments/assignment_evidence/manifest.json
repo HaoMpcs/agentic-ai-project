@@ -1,0 +1,1593 @@
+{
+  "read_date": "2026-11-02",
+  "owner": "Jingyu Huang (archives identified by the user as their previous homework)",
+  "kind": "historical homework evidence; not current-project evaluation",
+  "assignments": {
+    "1": {
+      "archive": "/Users/jingyu_huang/Files/courses/agenticAI/assignments/week1/agentic-ai-assignment1.zip",
+      "sha256": "b3302bbbac837d6097f6ac11134847896981f47ed5ffb63fd1f52371b084eda3",
+      "remotes": [
+        "git@github.com:ylwhale/agentic-ai-assignment1.git"
+      ],
+      "head": "ref: refs/heads/main",
+      "commit": "dcda194cb3a0238b2d2a68ad6ab16ae008f45ee6",
+      "repository": "https://github.com/ylwhale/agentic-ai-assignment1",
+      "scope": "M1 Parts 1-3 historical evidence",
+      "retained_files": 125
+    },
+    "2": {
+      "archive": "/Users/jingyu_huang/Files/courses/agenticAI/assignments/week2/agentic-ai-assignment2.zip",
+      "sha256": "c94465ffc755e8a31222e2474117a722ab432a72b8311c667e45d2243ac5f2a6",
+      "remotes": [
+        "git@github.com:ylwhale/agentic-ai-assignment2.git"
+      ],
+      "head": "ref: refs/heads/main",
+      "commit": "2e9fd0631afd7279ff6f91d569e9324fbbf9f42c",
+      "repository": "https://github.com/ylwhale/agentic-ai-assignment2",
+      "scope": "M1 Parts 1-3 historical evidence",
+      "retained_files": 78
+    },
+    "3": {
+      "archive": "/Users/jingyu_huang/Files/courses/agenticAI/assignments/week3/agentic-ai-assignment3.zip",
+      "sha256": "13866b69a54fd2c44f36e6bca44b917f06ab350196652e764be062487f59ab24",
+      "remotes": [
+        "git@github.com:ylwhale/agentic-ai-assignment3.git"
+      ],
+      "head": "ref: refs/heads/main",
+      "commit": "84521d35dff1808bb596e08b8724b344f54c25f8",
+      "repository": "https://github.com/ylwhale/agentic-ai-assignment3",
+      "scope": "M1 Parts 1-3 historical evidence",
+      "retained_files": 53
+    },
+    "4": {
+      "archive": "/Users/jingyu_huang/Files/courses/agenticAI/assignments/week4/agentic-ai-assignment4.zip",
+      "sha256": "9758eb20381c53c21835053e5779b7b7ca06f90e2b2ed0b29ad1fe74da6356e9",
+      "remotes": [
+        "git@github.com:ylwhale/agentic-ai-assignment4.git"
+      ],
+      "head": "ref: refs/heads/main",
+      "commit": "74e36f2cd679fe7093642ca47bf79d441d987682",
+      "repository": "https://github.com/ylwhale/agentic-ai-assignment4",
+      "scope": "Reviewed; recovery and memory results excluded from M1 scope"
+    }
+  },
+  "files": {
+    "assignment1/runs/agent-4203-s01-049603.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s01-049603.jsonl",
+      "bytes": 10763,
+      "sha256": "b76da9c68774ed664ed41d9f60498f419b61e9d196a54ecc9ea1e913c31ae569"
+    },
+    "assignment1/runs/workflow-4202-s04-470932.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s04-470932.jsonl",
+      "bytes": 3984,
+      "sha256": "30ad7f183662c19609ca095a8cc7d705d6b2e6d70d4ca95d17c5b72571cec391"
+    },
+    "assignment1/runs/workflow-4205-s04-aa1314.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s04-aa1314.jsonl",
+      "bytes": 4135,
+      "sha256": "1cd951d878eaf1b0cd5451aae77ae2853023d802bf3c1825591ed8048f09b79d"
+    },
+    "assignment1/runs/agent-4205-s06-a496a0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s06-a496a0.jsonl",
+      "bytes": 5868,
+      "sha256": "33a935dc377d6cb3c8a002991ebecb8d83e901f042a2dfe53c92611c88264ea4"
+    },
+    "assignment1/runs/agent-4205-s10-adaf9b.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s10-adaf9b.jsonl",
+      "bytes": 6223,
+      "sha256": "5c373cd76c1d6ce20c544cd1b37b6d1470080c24d9eda81e49051b957b8f259d"
+    },
+    "assignment1/runs/agent-4201-s07-1435e8.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s07-1435e8.jsonl",
+      "bytes": 3034,
+      "sha256": "749abe69fae0be422bfdedd5d0f1c2b3fb1e16edcccbd6798b1e9fe447c17f94"
+    },
+    "assignment1/runs/agent-4204-s06-09915e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s06-09915e.jsonl",
+      "bytes": 10845,
+      "sha256": "5bcefafe091f32d7b4b4bc1e19990aacf64f01bb01d1323066e63be6611f4903"
+    },
+    "assignment1/runs/workflow-4204-s07-6155e1.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s07-6155e1.jsonl",
+      "bytes": 3771,
+      "sha256": "36ae55585b931ab1ffbc080f1af46350aac576fb07c9474303e6faf95b406b76"
+    },
+    "assignment1/runs/agent-4202-s09-6b50e4.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s09-6b50e4.jsonl",
+      "bytes": 8640,
+      "sha256": "e75c4eeaac079d86494a148bd6c5448925e35e6f6d0d2e11cac4a9f49c51db2c"
+    },
+    "assignment1/runs/workflow-4205-s09-3bc8f8.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s09-3bc8f8.jsonl",
+      "bytes": 4193,
+      "sha256": "b679f8fed2c5662a073f20ba983e85cd0ad010dd8c4d3f2fe90cf235c7603f25"
+    },
+    "assignment1/runs/agent-4202-s04-c5f0cd.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s04-c5f0cd.jsonl",
+      "bytes": 8482,
+      "sha256": "c0b0ce9f4f12e515e79624f9bbdddbaf27c10718933cfb041e007395fbe60a3d"
+    },
+    "assignment1/runs/agent-4202-s06-c48fd1.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s06-c48fd1.jsonl",
+      "bytes": 8944,
+      "sha256": "55f199dc2b8b0d58254e3c4a45fe5f1e75a2d9cecc4726d7d8ccd3bcbe6b6f2a"
+    },
+    "assignment1/runs/agent-4202-s01-756f4f.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s01-756f4f.jsonl",
+      "bytes": 8287,
+      "sha256": "230bb1a8ee67968388eb7d8c20b4d6722cba75e39780be221ecd3a8bf45a6c0c"
+    },
+    "assignment1/runs/workflow-4201-s05-871fd2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s05-871fd2.jsonl",
+      "bytes": 3843,
+      "sha256": "d14c1641dc2444686b068a5e74259d45f4fddf371bad827088603dea84f1615a"
+    },
+    "assignment1/runs/workflow-4202-s06-c89eab.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s06-c89eab.jsonl",
+      "bytes": 3967,
+      "sha256": "f4ba873833b4489f81626166d35d13d9685151324c586b1dea1035c62cbcf73b"
+    },
+    "assignment1/runs/workflow-4203-s09-ddfcd3.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s09-ddfcd3.jsonl",
+      "bytes": 3891,
+      "sha256": "4206476e61ffe38efd761583aae3c177805a16365428397abb8ea1b10d1c56d7"
+    },
+    "assignment1/runs/agent-4202-s07-530b5c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s07-530b5c.jsonl",
+      "bytes": 1103,
+      "sha256": "201604de6bb68bb2bf2fc557a058fc78e8fef885c4de9d025f7ae14202c3ab1d"
+    },
+    "assignment1/runs/workflow-4206-s05-b5f3db.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s05-b5f3db.jsonl",
+      "bytes": 3399,
+      "sha256": "48005c88d33c4e11fd771faae5d7f319991f9fc3746b816c0f9d32b2864c5962"
+    },
+    "assignment1/runs/workflow-4201-s03-70e422.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s03-70e422.jsonl",
+      "bytes": 3840,
+      "sha256": "07394dc3180ffe3eb241feb6546836b99619b54f7092c4b62f6ededfd88ef783"
+    },
+    "assignment1/runs/agent-4202-s02-35713d.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s02-35713d.jsonl",
+      "bytes": 8646,
+      "sha256": "9951d6514395022c57f986a9a866095d76f3d06e07a6f75de77875803d65296e"
+    },
+    "assignment1/runs/workflow-4205-s08-3bb79c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s08-3bb79c.jsonl",
+      "bytes": 4181,
+      "sha256": "10b5619c1721b97e22a5c1da4a69fc1adf06f6af211a57023295ed1e178bd19e"
+    },
+    "assignment1/runs/workflow-4203-s08-7adb9f.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s08-7adb9f.jsonl",
+      "bytes": 4053,
+      "sha256": "de9a0592f6e666c3679c162151ec67104c59202161c6e894a34ba9c33ff06870"
+    },
+    "assignment1/runs/workflow-4206-s09-26dcd3.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s09-26dcd3.jsonl",
+      "bytes": 3422,
+      "sha256": "669780b46902760eb10543cdd7a58a3f05fe253c54d202715c0b03fb6468450c"
+    },
+    "assignment1/runs/agent-4202-s05-38a1a0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s05-38a1a0.jsonl",
+      "bytes": 8989,
+      "sha256": "507a89c010d9ff60ca2528501efa119f57481829de2b632dd87f40c526037c2a"
+    },
+    "assignment1/runs/agent-4203-s10-d5febe.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s10-d5febe.jsonl",
+      "bytes": 7732,
+      "sha256": "4055940c9674a90967cb27959a3e5de1862356f740c09d89e4b2c95f112e03c3"
+    },
+    "assignment1/runs/workflow-4202-s05-619e34.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s05-619e34.jsonl",
+      "bytes": 3968,
+      "sha256": "900bbc27cc39b3a957dd948b60e60ad0814d370df762d9b4eb4bf7754f321115"
+    },
+    "assignment1/runs/agent-4205-s08-bc34c0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s08-bc34c0.jsonl",
+      "bytes": 4149,
+      "sha256": "c1321910bfaf92634396c6d22ab5a32ef44404e6f627397522f2bc4445cfd1e9"
+    },
+    "assignment1/runs/agent-4201-s05-8bdebd.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s05-8bdebd.jsonl",
+      "bytes": 3941,
+      "sha256": "bbb1aef110e986f63fea0db1b08d6be9363f0cdf66f8e6bdbd171361274fc955"
+    },
+    "assignment1/runs/agent-4205-s02-d18fb9.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s02-d18fb9.jsonl",
+      "bytes": 5991,
+      "sha256": "60fcd42d3ec59a513dc011656ffe66f96ed689ed8673fb5a5d68302c01c9559d"
+    },
+    "assignment1/runs/workflow-4201-s09-f59d66.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s09-f59d66.jsonl",
+      "bytes": 3597,
+      "sha256": "c93db05ac8243217efe2f6f377bb6d5b7e511d8bb40b7bbc36129237da23588a"
+    },
+    "assignment1/runs/agent-4201-s03-66e412.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s03-66e412.jsonl",
+      "bytes": 4062,
+      "sha256": "df99bff01ef0449e054b6fcfc3c208bbf88f05bd15778d68f7d0f700bb4cfcce"
+    },
+    "assignment1/runs/workflow-4201-s02-85b2c8.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s02-85b2c8.jsonl",
+      "bytes": 3371,
+      "sha256": "aa82f6b9fa77ce690f37f902863234b6242f1c57af32fdbdaf7fbc5bc8ff2e4e"
+    },
+    "assignment1/runs/agent-4204-s05-beec30.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s05-beec30.jsonl",
+      "bytes": 10525,
+      "sha256": "0507c3f006262b6fc89cec86b42b47fd3b64286c41e9b6728d0e488effd31f51"
+    },
+    "assignment1/runs/workflow-4204-s08-af9f32.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s08-af9f32.jsonl",
+      "bytes": 3841,
+      "sha256": "5bfc6ad6b43c1eaae94009ac20727decbb15830acdc7c6441e584b9d0e59d879"
+    },
+    "assignment1/runs/workflow-4202-s07-a75d12.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s07-a75d12.jsonl",
+      "bytes": 3951,
+      "sha256": "9d4c757c59752c223c52434b0929516235d525558e5c5e356a83b8e4b471ac00"
+    },
+    "assignment1/runs/agent-4204-s09-974f81.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s09-974f81.jsonl",
+      "bytes": 10702,
+      "sha256": "88660026102da641d7a15c6b713614e3b40ab8b1c83a6c3bc891d9decf698dd3"
+    },
+    "assignment1/runs/agent-4201-s06-c7ed0c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s06-c7ed0c.jsonl",
+      "bytes": 3954,
+      "sha256": "b11d8f3c0402a0745893c02b0d8a640ea3bdd32ccee4fbc10de654b07a6bdfe4"
+    },
+    "assignment1/runs/agent-4201-s02-f3f24e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s02-f3f24e.jsonl",
+      "bytes": 4209,
+      "sha256": "957741b44373098983f14058353f26f9d289f3894abc4b3586523b3b4273900d"
+    },
+    "assignment1/runs/agent-4204-s01-2784d4.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s01-2784d4.jsonl",
+      "bytes": 10714,
+      "sha256": "1ced5c8b3be29351592836bd9c5f9fe82c0d9368792d428f6b6169182db198d3"
+    },
+    "assignment1/runs/workflow-4202-s08-e45830.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s08-e45830.jsonl",
+      "bytes": 3998,
+      "sha256": "6b8b3f19046f928330437374c7b7bf8ab4499b49d2b409f46cfc45bd8b2210ed"
+    },
+    "assignment1/runs/workflow-4205-s05-ea060e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s05-ea060e.jsonl",
+      "bytes": 3647,
+      "sha256": "6068acc4dd3c4b366e30a64e13c5b8046f1a5f5185b0781d5c03029b85b74a2c"
+    },
+    "assignment1/runs/workflow-4206-s08-d39fc1.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s08-d39fc1.jsonl",
+      "bytes": 2965,
+      "sha256": "17fbfe6b70c60c891cb2789cd8ed7f6166c19f1add08470945e4bac81490e78a"
+    },
+    "assignment1/runs/workflow-4206-s02-2d29f5.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s02-2d29f5.jsonl",
+      "bytes": 2985,
+      "sha256": "4e1deeb42e99d5dfb50a26bbbf51487c7ad8c7cc67a7710ec69a34411a9c9393"
+    },
+    "assignment1/runs/workflow-4206-s10-51e54a.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s10-51e54a.jsonl",
+      "bytes": 3490,
+      "sha256": "68ed8a947b8ccb27c680973cdd677552aa1f7953369be1473ee79abf1af09415"
+    },
+    "assignment1/runs/agent-4205-s07-b82d26.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s07-b82d26.jsonl",
+      "bytes": 1105,
+      "sha256": "39e404331c2a51c8fdd9368c2ed60f64ae9f6fc298175770965472777196ca71"
+    },
+    "assignment1/runs/agent-4205-s09-9785af.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s09-9785af.jsonl",
+      "bytes": 6987,
+      "sha256": "360dbc312e0bed3dad059b284cb8ebdd90980fc5efb5f306010f1d8ea950c4ac"
+    },
+    "assignment1/runs/agent-4203-s08-d8d2db.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s08-d8d2db.jsonl",
+      "bytes": 4145,
+      "sha256": "8a04d4c0b19e0a13e712def218826a4d871baabfb78e0b66fa0e03af4506ce23"
+    },
+    "assignment1/runs/agent-4203-s07-d19f32.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s07-d19f32.jsonl",
+      "bytes": 1103,
+      "sha256": "91150747766611312a6369791c0f6fa6506a4e154c59cbf99bf8b4844010ec83"
+    },
+    "assignment1/runs/workflow-4203-s05-6ec101.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s05-6ec101.jsonl",
+      "bytes": 3906,
+      "sha256": "3db2e2e3101c12a21db49f8adc1c874b0a656416be1e7e72e58aebeadec147a6"
+    },
+    "assignment1/runs/workflow-4203-s07-c49f04.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s07-c49f04.jsonl",
+      "bytes": 3691,
+      "sha256": "4515fd62df5c5f8c2542a47154cb5dfacb4de7be58d3a79627fd0e4bc859d1e5"
+    },
+    "assignment1/runs/workflow-4203-s02-6b1c98.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s02-6b1c98.jsonl",
+      "bytes": 3735,
+      "sha256": "9d7e93b66e1614510e7617431b4aaa73b07524bc8e929f75098efdf73e22a278"
+    },
+    "assignment1/runs/agent-4205-s03-6aba80.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s03-6aba80.jsonl",
+      "bytes": 5015,
+      "sha256": "b052cdad1959ed8f7b8d1e6fad40ff7be1d4ee583917b2cc27f1d4b0ae267dc2"
+    },
+    "assignment1/runs/agent-4203-s06-c1d835.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s06-c1d835.jsonl",
+      "bytes": 7454,
+      "sha256": "7277cd12223c4cc54168a76107c5b0f0d4aab5940aedab321b018bb4a9de8ac3"
+    },
+    "assignment1/runs/agent-4205-s04-fedda2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s04-fedda2.jsonl",
+      "bytes": 5987,
+      "sha256": "c722b5121e9bc6301155227146dd55fce85e3b54f9eebb1392a2ab8a7530868f"
+    },
+    "assignment1/runs/workflow-4203-s04-04ebbb.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s04-04ebbb.jsonl",
+      "bytes": 4190,
+      "sha256": "2962d66cfe002b3bf6a8fd82e56177a9682125f2e0ac78815a667b94718a12bd"
+    },
+    "assignment1/runs/agent-4201-s04-965cb8.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s04-965cb8.jsonl",
+      "bytes": 4199,
+      "sha256": "67fb09225a0ed73d7146617e2f02453a10d385404b7830d2a74630c14572968d"
+    },
+    "assignment1/runs/agent-4203-s02-3ea5f3.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s02-3ea5f3.jsonl",
+      "bytes": 8825,
+      "sha256": "5b1f515e3d7c332015b6e840b88f4b70e3885cc0c67f8a6d16b3132dee92f66f"
+    },
+    "assignment1/runs/agent-4206-s03-75372f.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s03-75372f.jsonl",
+      "bytes": 5232,
+      "sha256": "46c96c8dee7ff7ecc2210f3951b629d07ee60c4e0fed90ed6f34facd3e31fff4"
+    },
+    "assignment1/runs/workflow-4201-s06-e9b15e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s06-e9b15e.jsonl",
+      "bytes": 3601,
+      "sha256": "6eccb3262155144978304a705f13924954741adad710402fbe86ffdca00d3b32"
+    },
+    "assignment1/runs/workflow-4205-s03-7640d2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s03-7640d2.jsonl",
+      "bytes": 4134,
+      "sha256": "b1008ab05903c36bed3ac5e92faba0b681ab6c2c26039d15eb8b0a6c2c66672b"
+    },
+    "assignment1/runs/workflow-4202-s02-424eec.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s02-424eec.jsonl",
+      "bytes": 3910,
+      "sha256": "440ef38fca1b0398b6265d57d7bfb4e71776d325973f5d4fcd82980b271ed59d"
+    },
+    "assignment1/runs/workflow-4202-s10-c75895.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s10-c75895.jsonl",
+      "bytes": 3924,
+      "sha256": "34da301a586d83c4d1146b7eb75bf570ea8cd96eb3c1ccdfb45968da406d1f9f"
+    },
+    "assignment1/runs/workflow-4206-s01-d3bcd4.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s01-d3bcd4.jsonl",
+      "bytes": 3459,
+      "sha256": "f7a9f105bf86de7b503e892718768515d36a23665b9b0d2995fe801015b83942"
+    },
+    "assignment1/runs/agent-4205-s05-7de306.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s05-7de306.jsonl",
+      "bytes": 5053,
+      "sha256": "58b02fbdb4f81dd4e9f433c84d99850e8edeae8c0de45bb095193b18808b93d4"
+    },
+    "assignment1/runs/agent-4203-s04-78c8dc.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s04-78c8dc.jsonl",
+      "bytes": 7615,
+      "sha256": "775e639fc004156b5eae60f676f71f204da9877723a32fbffab184dd7177a966"
+    },
+    "assignment1/runs/agent-4204-s02-d39093.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s02-d39093.jsonl",
+      "bytes": 10482,
+      "sha256": "bcfa7a06c61f7b36e533ca0c90025f484cf8e00b79a3cc229b35b4775ebc14bf"
+    },
+    "assignment1/runs/workflow-4201-s07-f6bb58.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s07-f6bb58.jsonl",
+      "bytes": 3885,
+      "sha256": "4e7da2fef26c76dd926c51292bec47a00ef54ea8ab25451d05d89013e5ac3fae"
+    },
+    "assignment1/runs/agent-4201-s09-cc6ad0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s09-cc6ad0.jsonl",
+      "bytes": 4141,
+      "sha256": "fdf96a958131fcba6e6cc0f0f99189eb7b94f5b36d96fc323ee5751a6e4789fd"
+    },
+    "assignment1/runs/agent-4201-s01-38cbb0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s01-38cbb0.jsonl",
+      "bytes": 4063,
+      "sha256": "096d0cd21a69ca54d18cf453bf7ca5415fb206f482023357c408348773e6190e"
+    },
+    "assignment1/runs/agent-4206-s04-03dff2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s04-03dff2.jsonl",
+      "bytes": 11461,
+      "sha256": "881f30e5da6c8101e7815aa5b2a7d3415d40f13b7daaaca51654363cac042076"
+    },
+    "assignment1/runs/workflow-4205-s01-1ad249.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s01-1ad249.jsonl",
+      "bytes": 3906,
+      "sha256": "79c6c8de017cfb6e8f744b99592f2f4dcb036ddcf38e273759988e95e07896c6"
+    },
+    "assignment1/runs/agent-4204-s03-701552.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s03-701552.jsonl",
+      "bytes": 9576,
+      "sha256": "6acbb5a93802a3a3f8d2e6889261380ff76b025f7fb7e732cf0cfe4bdf262dfd"
+    },
+    "assignment1/runs/workflow-4206-s06-beac4a.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s06-beac4a.jsonl",
+      "bytes": 2877,
+      "sha256": "0596a7dc7453dadc6d52b86a2cf2560a539d46acc9a6a3aaaf2a57020f0748f1"
+    },
+    "assignment1/runs/workflow-4206-s03-3bb016.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s03-3bb016.jsonl",
+      "bytes": 3467,
+      "sha256": "6e038e6a07ec19d14818ddb38b8e99446d21558f5226bb16398eaff995a008ff"
+    },
+    "assignment1/runs/agent-4206-s10-0fa72e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s10-0fa72e.jsonl",
+      "bytes": 10272,
+      "sha256": "00e328b710200d64a7b1f05729e33e2aea1765959a6d81c0631ab06b44e3d8a6"
+    },
+    "assignment1/runs/workflow-4204-s05-2d4227.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s05-2d4227.jsonl",
+      "bytes": 3652,
+      "sha256": "ada390507f1a7b6eff005af3781643838adcd226fd54cfa220477a525467ed3d"
+    },
+    "assignment1/runs/agent-4206-s09-513b20.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s09-513b20.jsonl",
+      "bytes": 8275,
+      "sha256": "b0270200b0530506319e49ac5ccfdfb147263ebc1f88e4abae9be3f1b160eec8"
+    },
+    "assignment1/runs/workflow-4206-s07-73448c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s07-73448c.jsonl",
+      "bytes": 3421,
+      "sha256": "4cfa61d804586434b5efc97ead78fb394267d3a033880bba6fd396d6d017c5d2"
+    },
+    "assignment1/runs/agent-4206-s08-479ff4.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s08-479ff4.jsonl",
+      "bytes": 5616,
+      "sha256": "1b2bebcb600bf422d8b4d05998eba3d218abfc4385decb2ec67ca710ebff9862"
+    },
+    "assignment1/runs/workflow-4201-s04-6675cc.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s04-6675cc.jsonl",
+      "bytes": 3992,
+      "sha256": "4ed90e8edcca35f8c82969dfb91a2c6f91e361fbd33abab41f60587a08d14b6e"
+    },
+    "assignment1/runs/workflow-4203-s06-664e2d.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s06-664e2d.jsonl",
+      "bytes": 3787,
+      "sha256": "d7ba7f940bdba88e722691eaf713388bc66902fa1d4786815c102aaa908e7253"
+    },
+    "assignment1/runs/agent-4204-s07-d26340.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s07-d26340.jsonl",
+      "bytes": 1105,
+      "sha256": "2eb3f2f748b223612b09c6706bb964957c7c31793e5242fa1663ea80f60b5d13"
+    },
+    "assignment1/runs/agent-4206-s07-4971ed.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s07-4971ed.jsonl",
+      "bytes": 4150,
+      "sha256": "39e8b02603922ff9ddac7918ab46217742ac671be4c9286bf5e3d14af0d24f6a"
+    },
+    "assignment1/runs/workflow-4202-s09-59054f.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s09-59054f.jsonl",
+      "bytes": 3905,
+      "sha256": "c2819437efe83e640fef3114359dd44487755bf52448e71b483a94a3ec5d1be8"
+    },
+    "assignment1/runs/workflow-4204-s02-edaf1b.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s02-edaf1b.jsonl",
+      "bytes": 4010,
+      "sha256": "9a52f64db8226a9318b46cab9622925c819af39dadee3dd72f5f39ee52ea8e43"
+    },
+    "assignment1/runs/workflow-4203-s03-869f4e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s03-869f4e.jsonl",
+      "bytes": 3911,
+      "sha256": "da33176b65c1bbaabdacc3e751a5b1afff334ef8e19bed64dc7de47663a78e6d"
+    },
+    "assignment1/runs/workflow-4204-s04-300562.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s04-300562.jsonl",
+      "bytes": 4205,
+      "sha256": "410b8779c77f71ada8bd0b122e843944c079cafa841d00d0f6ddb09b54ad2d84"
+    },
+    "assignment1/runs/agent-4206-s02-afc5b1.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s02-afc5b1.jsonl",
+      "bytes": 5122,
+      "sha256": "f9a30d40c76f13191df4a296956d3b100510e27d364118307de64d588c90d5f3"
+    },
+    "assignment1/runs/agent-4201-s08-82231b.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s08-82231b.jsonl",
+      "bytes": 3028,
+      "sha256": "35404e9d19c6c8ca1abc97dbd28f8d022548aec72ef653741dff2ba06b514c7e"
+    },
+    "assignment1/runs/agent-4204-s04-9891c4.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s04-9891c4.jsonl",
+      "bytes": 9866,
+      "sha256": "75f48343ec2a8621a1056f59649f46d2539bc10546914439ff9e70b481cc01b9"
+    },
+    "assignment1/runs/workflow-4204-s06-7d500c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s06-7d500c.jsonl",
+      "bytes": 4105,
+      "sha256": "2ad4ac9f4007c0ec3c5f9ed89dabf2aca23eb92f1b5e871cf76a0564af6350de"
+    },
+    "assignment1/runs/workflow-4205-s02-5597e2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s02-5597e2.jsonl",
+      "bytes": 4023,
+      "sha256": "dd3ce316f1daedd5b9b6bc0723ff6645cc3d83b7b8c8b925b23ad3c37236e960"
+    },
+    "assignment1/runs/agent-4203-s09-5d84f2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s09-5d84f2.jsonl",
+      "bytes": 9923,
+      "sha256": "1aff47a2cdd7931485f3c103d0246a03a1ffd18b72c5af2942d8f67cd7397472"
+    },
+    "assignment1/runs/workflow-4204-s09-d6768e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s09-d6768e.jsonl",
+      "bytes": 4111,
+      "sha256": "783f7c95571b3aa44b15cf06891060b7f32b29f95f1918ba8f511f6729d63301"
+    },
+    "assignment1/runs/agent-4202-s03-a28e07.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s03-a28e07.jsonl",
+      "bytes": 9196,
+      "sha256": "de76d79a3740cd6d3164ee2924d9996d712577641d931cddbe5e3543b091b369"
+    },
+    "assignment1/runs/workflow-4205-s06-dcd924.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s06-dcd924.jsonl",
+      "bytes": 4185,
+      "sha256": "db11005c8df2d70722dc6c0a94249e6dd95fd8c9f260bd22276d1ffce5bba9e6"
+    },
+    "assignment1/runs/workflow-4204-s03-5140c2.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s03-5140c2.jsonl",
+      "bytes": 3992,
+      "sha256": "8c8b6ecdb93852c875d6f0c0110907945429d8a478df48993c84e255fa3ab810"
+    },
+    "assignment1/runs/workflow-4205-s10-ec1fda.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s10-ec1fda.jsonl",
+      "bytes": 4174,
+      "sha256": "a42f740e7247b0219aa38c11e5de9df2b1afb3c97f89283ea39413c9153d9f51"
+    },
+    "assignment1/runs/workflow-4201-s01-1b91c8.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s01-1b91c8.jsonl",
+      "bytes": 3316,
+      "sha256": "861cb08e6515718bacafdcb457dd2f95c1dc83b8344111c0c429b15bef82cb12"
+    },
+    "assignment1/runs/workflow-4206-s04-864226.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4206-s04-864226.jsonl",
+      "bytes": 3417,
+      "sha256": "e47f778f5096aab958a7de6243742d479eec873f8e9fd610e1d6de24303ca5d2"
+    },
+    "assignment1/runs/agent-4204-s10-6ca7cf.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s10-6ca7cf.jsonl",
+      "bytes": 9900,
+      "sha256": "1d7d77eafef22dc8f61aa0e7648e7bed56eda719b9e289e73526d8ce83bae73a"
+    },
+    "assignment1/runs/workflow-4203-s10-8692f1.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s10-8692f1.jsonl",
+      "bytes": 4085,
+      "sha256": "39c5b5cb82ee21716ccb171489bc84f37cf686a398456539ddde66df20c751e3"
+    },
+    "assignment1/runs/agent-4206-s06-0b8000.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s06-0b8000.jsonl",
+      "bytes": 2678,
+      "sha256": "1db5eb22e63f3a6335deba550b7a8e0f2cf5c67e40cb0e6a2291e60784d9cab8"
+    },
+    "assignment1/runs/workflow-4204-s10-234038.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s10-234038.jsonl",
+      "bytes": 3995,
+      "sha256": "2d1d3a0072174b8787dd200cd285bdd5fb51923d596a7f7e6825de472510558d"
+    },
+    "assignment1/runs/workflow-4204-s01-6dc96c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4204-s01-6dc96c.jsonl",
+      "bytes": 4139,
+      "sha256": "3ae031bb322b505a9a213b008671ba554c51869ea38f20d1ffbb6c8820601351"
+    },
+    "assignment1/runs/workflow-4201-s10-213ff6.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s10-213ff6.jsonl",
+      "bytes": 3419,
+      "sha256": "2d3a5e44a91a170897bbad4b906d6ab17ef778b60e174e1eb5629f11e4fea359"
+    },
+    "assignment1/runs/agent-4202-s08-611304.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s08-611304.jsonl",
+      "bytes": 1101,
+      "sha256": "92d7be1e8096e08015765c7c2f813a2ed77d1154864e3b37c5709c0491b4c814"
+    },
+    "assignment1/runs/agent-4206-s01-5c8a62.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s01-5c8a62.jsonl",
+      "bytes": 8202,
+      "sha256": "13a065d5bb1cb6bfab3bf27c2f8aadd8a5ee72a9a8543db295f55f93f5d5434b"
+    },
+    "assignment1/runs/agent-4201-s10-2cafdb.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4201-s10-2cafdb.jsonl",
+      "bytes": 5036,
+      "sha256": "2ded61d3f598f37a439899ea142db56718d567d77f11b4a5a612b43d40518cd4"
+    },
+    "assignment1/runs/workflow-4201-s08-0201bd.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4201-s08-0201bd.jsonl",
+      "bytes": 3937,
+      "sha256": "d041ef75a824f14e4a6a910a7c3fb92212c3720dc741b7e55b7529b827e65b7f"
+    },
+    "assignment1/runs/agent-4203-s05-ba26b7.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s05-ba26b7.jsonl",
+      "bytes": 8804,
+      "sha256": "e933f252f704e3236ef0a0c72874c7fd9caf77d5002a093f28cac44fa6deba30"
+    },
+    "assignment1/runs/workflow-4205-s07-10d5e0.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4205-s07-10d5e0.jsonl",
+      "bytes": 4169,
+      "sha256": "9cfac5dd4bae5d02551d0c017c5025a80a16dd07b94c6a301560586b23e9fbcb"
+    },
+    "assignment1/runs/agent-4202-s10-c0b870.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4202-s10-c0b870.jsonl",
+      "bytes": 8510,
+      "sha256": "c762df45e82fb2d310df417c3e36996630c9cf635552820979be24b717305d28"
+    },
+    "assignment1/runs/workflow-4202-s01-a6187e.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s01-a6187e.jsonl",
+      "bytes": 3873,
+      "sha256": "009b9abdcfc231900a3c44f870f63f9afacb6fabadd0e5f28c446f967001053e"
+    },
+    "assignment1/runs/agent-4204-s08-706ab7.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4204-s08-706ab7.jsonl",
+      "bytes": 4149,
+      "sha256": "762ac447fd0e242d31add2f11c1615087ee9cfbe757da2d22aff7c3470fc0f2c"
+    },
+    "assignment1/runs/agent-4205-s01-6b425c.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4205-s01-6b425c.jsonl",
+      "bytes": 5905,
+      "sha256": "fa77822a7df70366940e6c78bc2ab23d5354eff7a006a5f37e83f2b44ed5760c"
+    },
+    "assignment1/runs/agent-4206-s05-a2d884.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4206-s05-a2d884.jsonl",
+      "bytes": 5228,
+      "sha256": "459352e3d705e95b9108aab717eb352f2bf8043f4ff4b0b233bf8b5824eb2798"
+    },
+    "assignment1/runs/workflow-4203-s01-75dfea.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4203-s01-75dfea.jsonl",
+      "bytes": 3704,
+      "sha256": "061c95dbafb70f173d3dd89b679a81ac39eb4167088eefaea18883b438961abd"
+    },
+    "assignment1/runs/agent-4203-s03-cb01d3.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/agent-4203-s03-cb01d3.jsonl",
+      "bytes": 9761,
+      "sha256": "b66ab2a34b229a53cc2202f5cc6d8ed3164750fd2cf4632b4a2f552df2f320c3"
+    },
+    "assignment1/runs/workflow-4202-s03-62df18.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/runs/workflow-4202-s03-62df18.jsonl",
+      "bytes": 3980,
+      "sha256": "4b9650d31fc941346d240a2bd9b423ebbc2d5a0957d8a1755894a2e1a552b5b5"
+    },
+    "assignment1/reports/LAB_01.md": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/reports/LAB_01.md",
+      "bytes": 34052,
+      "sha256": "064fcbbc0adc7e7462176bb727b36cc56ebe8954a4fa2b6d2aea5e4860cd09b7"
+    },
+    "assignment1/reports/LAB_01.json": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/reports/LAB_01.json",
+      "bytes": 3148,
+      "sha256": "893b057829b497debe07a365a4b9ea17a6959d99ad447e23adf6bb108eaa0296"
+    },
+    "assignment1/fixtures/answers.yaml": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/fixtures/answers.yaml",
+      "bytes": 744,
+      "sha256": "0fcb9ec2b00655abd0ee9d4cd7fb72b80c9823c67f1eff6b6ed0dc96ed504b3a"
+    },
+    "assignment1/pricing.yaml": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/pricing.yaml",
+      "bytes": 2355,
+      "sha256": "e7ac6069a125fd32fefebeea967e635ca5607f2eef24ac6088d64403511b407a"
+    },
+    "assignment1/tracker/comments.jsonl": {
+      "assignment": 1,
+      "archive_entry": "agentic-ai-assignment1/tracker/comments.jsonl",
+      "bytes": 70310,
+      "sha256": "78afe34aa748d2160a414310077bbe9a54d60c37b0fa86ff425f249e2db6657b"
+    },
+    "assignment2/runs/planned-4204-s01-a62177.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s01-a62177.jsonl",
+      "bytes": 12072,
+      "sha256": "01387fd705bed971544f45377b0f3a4944f0a2f25378077173510804d2d65030"
+    },
+    "assignment2/runs/planned-4201-s02-d9f4f6.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s02-d9f4f6.jsonl",
+      "bytes": 7028,
+      "sha256": "4c25760cf0e87ee6b0bfc0da17490117d24b9f6bf2c87f9448e4261054a2ede9"
+    },
+    "assignment2/runs/planned-4201-s02-56c4ac.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s02-56c4ac.jsonl",
+      "bytes": 6634,
+      "sha256": "e220d5fc3fd83b15d271982695b6d79fcb2d6d0c2b5c390b8c2be7a533a3bc8a"
+    },
+    "assignment2/runs/planned-4204-s01-85fcb5.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s01-85fcb5.jsonl",
+      "bytes": 11323,
+      "sha256": "98e905a5c966ce499509784a5fd7630a207f86c1e5ab8e4d55a239f3fd76372f"
+    },
+    "assignment2/runs/planned-4204-s02-c3c31a.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s02-c3c31a.jsonl",
+      "bytes": 12010,
+      "sha256": "59c574ec8dc5a4825d517fe4ddfd21cc2a5db4cf9a6409a7f185445e7d37707d"
+    },
+    "assignment2/runs/planned-4206-s02-6e82c6.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s02-6e82c6.jsonl",
+      "bytes": 6590,
+      "sha256": "d98b20e1d676380a105f1ebb4779cd97964ae514c9f013264485f9571040da62"
+    },
+    "assignment2/runs/agent-4204-s03-3a6886.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4204-s03-3a6886.jsonl",
+      "bytes": 12223,
+      "sha256": "a03bf31774a45e5be541a2606904b6bc00beebd172ea511729a66c1fdcdeb77f"
+    },
+    "assignment2/runs/planned-4206-s03-8ced01.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s03-8ced01.jsonl",
+      "bytes": 12418,
+      "sha256": "ec65f2e6e43cbd5f4340ddec576b36ae61ebaf6fee1752ecacaf0fb8d47900a4"
+    },
+    "assignment2/runs/planned-4201-s02-aa9259.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s02-aa9259.jsonl",
+      "bytes": 7685,
+      "sha256": "d12e656c82a5ed19aa6f13fb5560355bee6ec4cc28b48c3875e06cbc29fb5b8b"
+    },
+    "assignment2/runs/planned-4206-s02-f37a93.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s02-f37a93.jsonl",
+      "bytes": 9809,
+      "sha256": "3983787938254ee574e7d71bc3ceafaf5f8507805d07c091ab52b72f43c1f44c"
+    },
+    "assignment2/runs/planned-4206-s01-182fc0.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s01-182fc0.jsonl",
+      "bytes": 6718,
+      "sha256": "42b01fbdb1b3e27b1e298b7120d18379f13f5c26d8a7f08f0c80cd7cd88308be"
+    },
+    "assignment2/runs/planned-4204-s03-c8d670.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s03-c8d670.jsonl",
+      "bytes": 6635,
+      "sha256": "96eeab95da105e46b6c763a8a95215efe4ba21df5e047e94b3540501e6d734ab"
+    },
+    "assignment2/runs/planned-4203-s03-461f59.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s03-461f59.jsonl",
+      "bytes": 6871,
+      "sha256": "055f28fbc9daeeab7b3e89011c5eb2b5ca918054f3980262f90b0a42120b0ed9"
+    },
+    "assignment2/runs/agent-4206-s03-97325d.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4206-s03-97325d.jsonl",
+      "bytes": 12168,
+      "sha256": "8fe338f5b8d7fc9a9d71e14d080c393dfbc4237ee34f36f9bdc7edb59d1ed63f"
+    },
+    "assignment2/runs/planned-4205-s03-7d453e.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s03-7d453e.jsonl",
+      "bytes": 11288,
+      "sha256": "9deef302d4812ae6c7225ba117891e187c2f32ec6259d1f0dd047164a323aa98"
+    },
+    "assignment2/runs/planned-4202-s03-f71fb8.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s03-f71fb8.jsonl",
+      "bytes": 13163,
+      "sha256": "7e77a5f1428d6b42aa55f4453734403d9881238626d4150c05b9eb246dd49eed"
+    },
+    "assignment2/runs/agent-4201-s03-ecd06b.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4201-s03-ecd06b.jsonl",
+      "bytes": 5226,
+      "sha256": "13ff9b360737ed77f204aaf53c5594a661b923b9f30a842ffc481e89732db84e"
+    },
+    "assignment2/runs/planned-4205-s01-a7199a.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s01-a7199a.jsonl",
+      "bytes": 6937,
+      "sha256": "8397e7533d1206ea85e58c3c1ae6e810a6090bb9930ce3dcdae8d6eb9dbb893a"
+    },
+    "assignment2/runs/planned-4203-s01-c573ed.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s01-c573ed.jsonl",
+      "bytes": 10900,
+      "sha256": "9e726b1dd251032f84992b92b4a3130e852234c62a59de05f4544fe1dc5dfab4"
+    },
+    "assignment2/runs/planned-4205-s03-ba9a55.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s03-ba9a55.jsonl",
+      "bytes": 6727,
+      "sha256": "0e1068515492fde114c4dad69cd04e11548e90da2838897c453e198fab216a12"
+    },
+    "assignment2/runs/planned-4204-s02-e4165c.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s02-e4165c.jsonl",
+      "bytes": 6596,
+      "sha256": "c46021baba222ae29163925a325883da5eba06754f9fd3eca23efefc505a2e4c"
+    },
+    "assignment2/runs/planned-4206-s03-89e90c.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s03-89e90c.jsonl",
+      "bytes": 11022,
+      "sha256": "b17b5597d8c3303ac382ad371e6caac25b08403376a8db28879bb96c819339d9"
+    },
+    "assignment2/runs/planned-4202-s03-e0f0af.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s03-e0f0af.jsonl",
+      "bytes": 7170,
+      "sha256": "3318db35ce27d691b6fa097c3b8aae480210f46b04dbfc9b812c62500b05c6ce"
+    },
+    "assignment2/runs/agent-4205-s02-839b8f.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4205-s02-839b8f.jsonl",
+      "bytes": 8578,
+      "sha256": "dd50c8a240e6108ddad45ac4d31054ebb50c5642973cf40353387ebbecbeb6bd"
+    },
+    "assignment2/runs/planned-4205-s03-9a0bd0.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s03-9a0bd0.jsonl",
+      "bytes": 6463,
+      "sha256": "f824f06ccd40d138b681446f0ff1467cc7ecadd06bec68b6f12dad1189709716"
+    },
+    "assignment2/runs/agent-4204-s01-5c46a4.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4204-s01-5c46a4.jsonl",
+      "bytes": 12619,
+      "sha256": "c1321ca7f2e7f46706aeb35a0f5fb6b0cc2f24ed2f982e58000e6db430631cd1"
+    },
+    "assignment2/runs/planned-4205-s02-c57399.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s02-c57399.jsonl",
+      "bytes": 11096,
+      "sha256": "8f35013d86487a746137f4eed30f74886a2d3ac7f65fbbb685148b3ff7b14195"
+    },
+    "assignment2/runs/agent-4203-s01-c6043e.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4203-s01-c6043e.jsonl",
+      "bytes": 5882,
+      "sha256": "925ae5c06c30564f4127cf51ae06be48e176fbc0553a9c74b25069fc16de9852"
+    },
+    "assignment2/runs/planned-4206-s01-e9147e.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s01-e9147e.jsonl",
+      "bytes": 11039,
+      "sha256": "8223f306cade72ad75934801ba95a3e3c2a6c2c5a365e248f933973e7a0226d1"
+    },
+    "assignment2/runs/planned-4203-s02-a12cff.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s02-a12cff.jsonl",
+      "bytes": 11235,
+      "sha256": "b25a033c4577b83edc265f3523e41d9c1816b655acacb5228583179d214471de"
+    },
+    "assignment2/runs/planned-4202-s02-1b18cd.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s02-1b18cd.jsonl",
+      "bytes": 11043,
+      "sha256": "85bd75f33cae905ccd2c985edaa94892fcde5cbaca41618c87fc1c54e7a4e667"
+    },
+    "assignment2/runs/planned-4203-s02-ad4dc6.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s02-ad4dc6.jsonl",
+      "bytes": 9073,
+      "sha256": "8c2ea47aeb6725213292e581b91b5adda4a0207f10e1083f916e5887f4d6a792"
+    },
+    "assignment2/runs/planned-4202-s01-6fbd4c.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s01-6fbd4c.jsonl",
+      "bytes": 6261,
+      "sha256": "e9ab42b8f6177bfcbd71d5414b8ccd2c015f7441219056dc41ea938d2278b88b"
+    },
+    "assignment2/runs/planned-4205-s01-bcc6de.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s01-bcc6de.jsonl",
+      "bytes": 7254,
+      "sha256": "2fc07b295550f4ec6c2a2961087b125088a2a89b1ea4a635e565792a1f0f4fbf"
+    },
+    "assignment2/runs/planned-4201-s03-38d0c4.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s03-38d0c4.jsonl",
+      "bytes": 7451,
+      "sha256": "b924c7c1aafc1e87d5d80d99e88f49c9ea20e5cf5da060cf0fba6e1f942f710e"
+    },
+    "assignment2/runs/planned-4206-s01-f0a1b7.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s01-f0a1b7.jsonl",
+      "bytes": 11271,
+      "sha256": "7c430a3f53d29736819fef7c738334567896b518dcd5e379c5544411f1f6cbde"
+    },
+    "assignment2/runs/agent-4202-s03-b4a3aa.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4202-s03-b4a3aa.jsonl",
+      "bytes": 3981,
+      "sha256": "a2f147e0b2c2057dbdfec0ed636bff5d4b6eebab689fe4085b017a44e42e3713"
+    },
+    "assignment2/runs/agent-4201-s01-4d7b4c.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4201-s01-4d7b4c.jsonl",
+      "bytes": 4789,
+      "sha256": "c54ee3046f42d0fdb96c84b989d22520a5af42f81dc731ea3388e18856393601"
+    },
+    "assignment2/runs/planned-4206-s02-0e0ccc.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s02-0e0ccc.jsonl",
+      "bytes": 6572,
+      "sha256": "e9f6ead79b3cb1db1f5f55930794b5f19e93613db0c1aac7a1c08c5f21cb22bb"
+    },
+    "assignment2/runs/planned-4201-s03-dcf83f.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s03-dcf83f.jsonl",
+      "bytes": 6919,
+      "sha256": "582619871f0d2f2e639b32a49502d74c95b66137487826ec16caf1696b88d179"
+    },
+    "assignment2/runs/agent-4204-s02-75b30c.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4204-s02-75b30c.jsonl",
+      "bytes": 12368,
+      "sha256": "8a0e1cedf603447694dad0fc212ac1cc046c37f4e87750cdbd46616752e2469a"
+    },
+    "assignment2/runs/agent-4202-s02-e01fbd.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4202-s02-e01fbd.jsonl",
+      "bytes": 9242,
+      "sha256": "04bb6988bf127be52f8918d240946448f6e072f8900d72d18902dd4434008517"
+    },
+    "assignment2/runs/planned-4205-s01-0e9a77.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s01-0e9a77.jsonl",
+      "bytes": 7153,
+      "sha256": "6564cd4bf451faee989ba482dcf80c6c9dc3b6b392303b29c09f81722fd42fdf"
+    },
+    "assignment2/runs/planned-4204-s01-0e1144.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s01-0e1144.jsonl",
+      "bytes": 6544,
+      "sha256": "f1cd38cdc9546158b4718764bfcfd7caa680aad891550205580202af6ec2cc27"
+    },
+    "assignment2/runs/planned-4201-s01-5d5d42.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s01-5d5d42.jsonl",
+      "bytes": 6929,
+      "sha256": "205484d581b3c8e58701702bb15fde7e14addbd235b8bca1f8c1ca1f7f4c0436"
+    },
+    "assignment2/runs/planned-4202-s01-ddf1ca.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s01-ddf1ca.jsonl",
+      "bytes": 13064,
+      "sha256": "41c57e2bd83b463d4424f029320ed05a7559bd1588be630e05f2b304b5ff9849"
+    },
+    "assignment2/runs/planned-4202-s03-797515.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s03-797515.jsonl",
+      "bytes": 7002,
+      "sha256": "08e816176bef2b0be2603d6c289a84ffa83199744d965dc1e2904f5e7b60b530"
+    },
+    "assignment2/runs/planned-4202-s01-97939b.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s01-97939b.jsonl",
+      "bytes": 6406,
+      "sha256": "442bdc7e4618f484a4a524a3ed5de98a9c279b0e8d9544d39535137d2b52105c"
+    },
+    "assignment2/runs/planned-4203-s01-64863e.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s01-64863e.jsonl",
+      "bytes": 6994,
+      "sha256": "681aa8ecf349c3d0d80326d2b6958afb4f624341be2e2b7a4cad1677aca6675c"
+    },
+    "assignment2/runs/planned-4204-s03-28c41d.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s03-28c41d.jsonl",
+      "bytes": 10268,
+      "sha256": "9c71300d570126b59198743299baacc74c9df34353f9c73dd790224904700941"
+    },
+    "assignment2/runs/planned-4203-s01-69cfc6.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s01-69cfc6.jsonl",
+      "bytes": 10594,
+      "sha256": "5d8baf9c34d2a7ce5ccd7c842b6b8b1532974541709cff8d84007b3cab64b6be"
+    },
+    "assignment2/runs/agent-4203-s03-41ea25.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4203-s03-41ea25.jsonl",
+      "bytes": 5893,
+      "sha256": "1d06e8470dcc56981e60bfdc6e853d596aa4ddcec6ea58852b7e20ba99d15434"
+    },
+    "assignment2/runs/agent-4203-s02-8c23e5.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4203-s02-8c23e5.jsonl",
+      "bytes": 5872,
+      "sha256": "db161dac288d5f285b4820a0c9c7a89f915b60aeeb28cb110e09714e24e3de2f"
+    },
+    "assignment2/runs/agent-4206-s02-d30fe3.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4206-s02-d30fe3.jsonl",
+      "bytes": 12688,
+      "sha256": "106868a8d0ceb57c69f37bc16167738eaed41b138c7194450f9eea60facfb2d4"
+    },
+    "assignment2/runs/planned-4203-s02-b23119.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s02-b23119.jsonl",
+      "bytes": 11406,
+      "sha256": "0f4a1a2a6e1032e7172b8e334d450c977c19a86f793371c0ddff3e47de1f0f11"
+    },
+    "assignment2/runs/agent-4201-s02-d49b80.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4201-s02-d49b80.jsonl",
+      "bytes": 4749,
+      "sha256": "52b6a4e337e214590f6ac32c4d855c2479b014edf8d02607213b608bd74a5ed3"
+    },
+    "assignment2/runs/planned-4201-s01-746044.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s01-746044.jsonl",
+      "bytes": 6540,
+      "sha256": "4c40c65708357e96e81b3dc9fdbee608c4233f9cbdc0415e75b5897a3b292a40"
+    },
+    "assignment2/runs/agent-4205-s03-029429.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4205-s03-029429.jsonl",
+      "bytes": 12762,
+      "sha256": "2b1161184f90be3faf601fa2d04990773803c0628da14465fda3684cd1c534bd"
+    },
+    "assignment2/runs/agent-4205-s01-8e20e1.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4205-s01-8e20e1.jsonl",
+      "bytes": 6682,
+      "sha256": "4a3b666c0edcc6c4afefa2d0ef8f10a88819c04367e174e15c1071aa5900f8f8"
+    },
+    "assignment2/runs/agent-4202-s01-25155a.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4202-s01-25155a.jsonl",
+      "bytes": 3979,
+      "sha256": "4bb62bbcb31324072ae3ee9e63fd10b4e1f0cc392643a1db8eea6b364132c8fd"
+    },
+    "assignment2/runs/planned-4202-s02-ef65ff.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s02-ef65ff.jsonl",
+      "bytes": 6901,
+      "sha256": "afcb49a20c870b637dddd293bce89fc7a023ed3f2f581e693d8bfbe6e31c130d"
+    },
+    "assignment2/runs/planned-4201-s01-6d53d4.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s01-6d53d4.jsonl",
+      "bytes": 7704,
+      "sha256": "8197c0cfd283422d49f86c254ad5298e5335e73f4f1fd8736b28cdb94def838a"
+    },
+    "assignment2/runs/planned-4205-s02-5e554a.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s02-5e554a.jsonl",
+      "bytes": 12169,
+      "sha256": "15ce5f8442077ae780b294f7d3a4e046982dcf82afb8de5e2794c70d68e028e3"
+    },
+    "assignment2/runs/planned-4206-s03-b04032.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4206-s03-b04032.jsonl",
+      "bytes": 11980,
+      "sha256": "b4a30dc3c11aa5f7b203a28939f386277b1721580a74b7d684360f455951bfd1"
+    },
+    "assignment2/runs/planned-4202-s02-9fd570.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4202-s02-9fd570.jsonl",
+      "bytes": 13096,
+      "sha256": "1876dc2287251c609f375d36351a75c1c57ef94c7a5301ae598625739b4ccf77"
+    },
+    "assignment2/runs/planned-4205-s02-787d47.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4205-s02-787d47.jsonl",
+      "bytes": 13844,
+      "sha256": "5592015010b3d82ff80361ba03df58fbe57e92d807dec0b78a57cf9183dd9cab"
+    },
+    "assignment2/runs/agent-4206-s01-cf5e43.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/agent-4206-s01-cf5e43.jsonl",
+      "bytes": 12242,
+      "sha256": "ef8a9842fec8ab26180ac630056f61871f51db652d6c1d182ba271b3e1a7c972"
+    },
+    "assignment2/runs/planned-4203-s03-79c496.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s03-79c496.jsonl",
+      "bytes": 6779,
+      "sha256": "e69ac461b8ea059b4f2e706a8eb8ba81cb7dafe673c1414108be380d2f54b192"
+    },
+    "assignment2/runs/planned-4203-s03-ac9bdc.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4203-s03-ac9bdc.jsonl",
+      "bytes": 10923,
+      "sha256": "b86693aefa6395be475e8d45cff32734419d2e2c730937e69c142557d4f8accd"
+    },
+    "assignment2/runs/planned-4204-s02-35f96d.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s02-35f96d.jsonl",
+      "bytes": 12060,
+      "sha256": "0e9cfa3cdbed0465d15f4a510f267124dbf9dcbdc6e645641c63306a5d9e3a3c"
+    },
+    "assignment2/runs/planned-4201-s03-acab84.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4201-s03-acab84.jsonl",
+      "bytes": 6885,
+      "sha256": "b02488b6b6fc5e9d6c27e6ab9296cf44520aa02c7e173e19c1ae8da8f2f14cae"
+    },
+    "assignment2/runs/planned-4204-s03-514c51.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/runs/planned-4204-s03-514c51.jsonl",
+      "bytes": 12092,
+      "sha256": "92bdeefbd6f1a268ba124e78e518335ac5f9773ce73eb812709839abcd3179dd"
+    },
+    "assignment2/reports/LAB_02.md": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/reports/LAB_02.md",
+      "bytes": 13624,
+      "sha256": "c2e2934fe4be3458ee4d48a7937b611b7f34ccc310cceb4fcde8b457e2583069"
+    },
+    "assignment2/reports/LAB_02.json": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/reports/LAB_02.json",
+      "bytes": 14309,
+      "sha256": "52d0e9f45be9e3067053a2bb3050790a6b502a7884b7c2a7fbe98ea6dbbda2fa"
+    },
+    "assignment2/fixtures/answers.yaml": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/fixtures/answers.yaml",
+      "bytes": 744,
+      "sha256": "0fcb9ec2b00655abd0ee9d4cd7fb72b80c9823c67f1eff6b6ed0dc96ed504b3a"
+    },
+    "assignment2/pricing.yaml": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/pricing.yaml",
+      "bytes": 3031,
+      "sha256": "ab6a9b135841d3d30df3ada299e15ea99454b6ab61f99140dbe03da391a8da6b"
+    },
+    "assignment2/tracker/comments.jsonl": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/tracker/comments.jsonl",
+      "bytes": 6278,
+      "sha256": "19802b73e88fc6d44bb1caddc3e8226d335e46a5ea4457f6edf38c31a747ece2"
+    },
+    "assignment2/reports/MEASURED_TABLES_02.md": {
+      "assignment": 2,
+      "archive_entry": "agentic-ai-assignment2/reports/MEASURED_TABLES_02.md",
+      "bytes": 3901,
+      "sha256": "b5de35118fa762a4d973a3558eab720e8c0348665bd527de76c99ff57c7d72da"
+    },
+    "assignment3/runs/planned-4202-s01-5fdb4b.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s01-5fdb4b.jsonl",
+      "bytes": 10188,
+      "sha256": "b78817f98ae11a7de98d86ca81fa58c1a579cd8733d606de19f5d9f4c95172fb"
+    },
+    "assignment3/runs/planned-4202-s01-5fdb4b.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s01-5fdb4b.calls.jsonl",
+      "bytes": 3201,
+      "sha256": "ffe319c8e83d98ab27403b4ff3b103a7b42a784be871603e5809127ffb7118b3"
+    },
+    "assignment3/runs/planned-4206-s02-57eb7c.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s02-57eb7c.jsonl",
+      "bytes": 10485,
+      "sha256": "973976b23e4863da6f26e0a67253682b97cd0134722e62ce97db3c99f9c26777"
+    },
+    "assignment3/runs/planned-4206-s02-57eb7c.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s02-57eb7c.calls.jsonl",
+      "bytes": 3360,
+      "sha256": "5acf036e3bb96fc8a672c4a1ef6c9a8338e75bd8289eff238d7baa302cf476e2"
+    },
+    "assignment3/runs/planned-4205-s02-6e0a0d.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s02-6e0a0d.jsonl",
+      "bytes": 8791,
+      "sha256": "d88f0d79f3a5c69fcc147036c0f6dc5ebcc501ecdb0b3ad7cc9e89389f7ae698"
+    },
+    "assignment3/runs/planned-4205-s02-6e0a0d.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s02-6e0a0d.calls.jsonl",
+      "bytes": 2447,
+      "sha256": "5565d74f7b2aee07ff149dcc976f1262dd4ac1640ffdb9f09068b3a08aa3ae62"
+    },
+    "assignment3/runs/planned-4201-s04-a7f3e8.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s04-a7f3e8.jsonl",
+      "bytes": 10509,
+      "sha256": "f149196ec4e135f184483f50b3a96a9413a6e9c977b89d93299cbb076fff9a1f"
+    },
+    "assignment3/runs/planned-4201-s04-a7f3e8.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s04-a7f3e8.calls.jsonl",
+      "bytes": 3976,
+      "sha256": "25ca1883e9bb3b6ccf490b9cce456066a26fda9e61406cbaf024078ba3e891a7"
+    },
+    "assignment3/runs/planned-4201-s01-a4c55d.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s01-a4c55d.jsonl",
+      "bytes": 10380,
+      "sha256": "707fb2e8d4e0e75738be5df4c5610aada3d27415d87c44f3669a597666bab696"
+    },
+    "assignment3/runs/planned-4201-s01-a4c55d.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s01-a4c55d.calls.jsonl",
+      "bytes": 3933,
+      "sha256": "09d3cfcab4f2eaeae3a75a829777db532bce2d628f5ff3989434e1a904a91ec7"
+    },
+    "assignment3/runs/planned-4203-s01-b1629a.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s01-b1629a.jsonl",
+      "bytes": 15696,
+      "sha256": "4cf9ae655cebb8ed514cf1e6edb7d8c6ece2b13a585a82de580587b729013a33"
+    },
+    "assignment3/runs/planned-4203-s01-b1629a.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s01-b1629a.calls.jsonl",
+      "bytes": 4062,
+      "sha256": "bb8fdc98d761fc7536160f41134201fbf2c35a5c8624db5d63e9193a447c488f"
+    },
+    "assignment3/runs/planned-4203-s02-5e5160.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s02-5e5160.jsonl",
+      "bytes": 16072,
+      "sha256": "d3b65cce124f7d61d9e52d8d33c59bc3d69cc541417e83c65ce36b278183f8fb"
+    },
+    "assignment3/runs/planned-4203-s02-5e5160.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s02-5e5160.calls.jsonl",
+      "bytes": 4193,
+      "sha256": "f179ae6182221bee0bbecfcef78bc62044620c1b991b64c3d7ed3e4ecace8d73"
+    },
+    "assignment3/runs/planned-4204-s01-37233e.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s01-37233e.jsonl",
+      "bytes": 10238,
+      "sha256": "5ae15beea6bc5267078d99ec8dd52bd00ab2857c9d62e27f4540118623034022"
+    },
+    "assignment3/runs/planned-4204-s01-37233e.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s01-37233e.calls.jsonl",
+      "bytes": 3911,
+      "sha256": "1ac298230770c0f5fc4bf79470b24a14914ff615ff7c51b0b38498afe26ba762"
+    },
+    "assignment3/runs/planned-4205-s01-905ab6.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s01-905ab6.jsonl",
+      "bytes": 9418,
+      "sha256": "5f709a513f351c6c6f920b130f41415c7b6fee61944c53ec0c92a5774c0ec27f"
+    },
+    "assignment3/runs/planned-4205-s01-905ab6.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s01-905ab6.calls.jsonl",
+      "bytes": 2623,
+      "sha256": "075124507c893a6d75a886517220c79f47bd62c592103fcdcdcff077fac423ee"
+    },
+    "assignment3/runs/planned-4205-s04-a36e32.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s04-a36e32.jsonl",
+      "bytes": 8817,
+      "sha256": "7096e829e32605f2d412d7988938b8e2ef3831114fac3c8b3d8b4038349f5075"
+    },
+    "assignment3/runs/planned-4205-s04-a36e32.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s04-a36e32.calls.jsonl",
+      "bytes": 2996,
+      "sha256": "82e5b4abc6be6bcf30c16549d78119c77506d1f657b8b5b335f3b31db711f706"
+    },
+    "assignment3/runs/planned-4203-s03-621593.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s03-621593.jsonl",
+      "bytes": 16506,
+      "sha256": "b68d1b8c4bb36322daefe1a7b673ed46fede3609b5efeaf8e6da15fc627447d9"
+    },
+    "assignment3/runs/planned-4203-s03-621593.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s03-621593.calls.jsonl",
+      "bytes": 6362,
+      "sha256": "b3953929662cc7edf855c815425482ea04c518df3812f928932bd126ef4dd138"
+    },
+    "assignment3/runs/planned-4201-s02-c2847b.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s02-c2847b.jsonl",
+      "bytes": 10284,
+      "sha256": "5ab4275ef826270601ee1ac7b3f8f5cf013f10324fafcf6f18f2acb43a7741e8"
+    },
+    "assignment3/runs/planned-4201-s02-c2847b.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s02-c2847b.calls.jsonl",
+      "bytes": 4016,
+      "sha256": "bbe4a40bafd1164f46ba97f62a81dd6ca01d6e4d98f49c0e4de715583c87cbac"
+    },
+    "assignment3/runs/planned-4206-s01-f01ba1.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s01-f01ba1.jsonl",
+      "bytes": 17220,
+      "sha256": "bac7f44f1dcf2d830998b56d893535c04c39bf0ee6289f2a2e7e18a4bd721a15"
+    },
+    "assignment3/runs/planned-4206-s01-f01ba1.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s01-f01ba1.calls.jsonl",
+      "bytes": 4457,
+      "sha256": "1502aa008d9c9491a3ef3924260f5fcb5c3b5626af01401d25b01304904437ed"
+    },
+    "assignment3/runs/planned-4204-s02-d14da7.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s02-d14da7.jsonl",
+      "bytes": 16491,
+      "sha256": "b6301b74350c6f88097a29a8f6529322c4514d4e692a5581db3758116ef5b2b4"
+    },
+    "assignment3/runs/planned-4204-s02-d14da7.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s02-d14da7.calls.jsonl",
+      "bytes": 4085,
+      "sha256": "708fe7616caa9f2db3fdb8dd75a0139af7dbae644ff31030a5579c8700734ce0"
+    },
+    "assignment3/runs/planned-4206-s04-70b0f6.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s04-70b0f6.jsonl",
+      "bytes": 10131,
+      "sha256": "fd5846c257a19295b764aa36ec6686a60db2b746817d579632c25ce51ac45c69"
+    },
+    "assignment3/runs/planned-4206-s04-70b0f6.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s04-70b0f6.calls.jsonl",
+      "bytes": 3842,
+      "sha256": "75c67ed5a0c97c67f8610e42bc04ea4aa95deb158790e6c8160ccdf2222fdf14"
+    },
+    "assignment3/runs/planned-4201-s03-4bc0d4.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s03-4bc0d4.jsonl",
+      "bytes": 10298,
+      "sha256": "554507f8a437e46f7683ebb415e9ea56e1dbcf821a2670cc8aa9226eb072a97a"
+    },
+    "assignment3/runs/planned-4201-s03-4bc0d4.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4201-s03-4bc0d4.calls.jsonl",
+      "bytes": 4493,
+      "sha256": "1f69b01f6a49e3538ef8de66a09780d54cab163113f51e993e60e7e34012c9cb"
+    },
+    "assignment3/runs/planned-4202-s04-5875b8.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s04-5875b8.jsonl",
+      "bytes": 9958,
+      "sha256": "771ad5e9964759f8ca5f1a121829b24e0c6706e9f7034008566d0b84493e38b4"
+    },
+    "assignment3/runs/planned-4202-s04-5875b8.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s04-5875b8.calls.jsonl",
+      "bytes": 3711,
+      "sha256": "7d2ff2ae532c2c48cefa9c2830953827f9865766e754d44627b614e8859671df"
+    },
+    "assignment3/runs/planned-4203-s04-e130e6.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s04-e130e6.jsonl",
+      "bytes": 18784,
+      "sha256": "daf79ab98e789223343c2e4de348520a8f3ab3e720092ccbdaf56dc0520221ce"
+    },
+    "assignment3/runs/planned-4203-s04-e130e6.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4203-s04-e130e6.calls.jsonl",
+      "bytes": 4792,
+      "sha256": "25adef98721c11b08dc6c500a9b96c3f672e78001829393354a3207161e8f030"
+    },
+    "assignment3/runs/planned-4204-s04-e83783.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s04-e83783.jsonl",
+      "bytes": 15785,
+      "sha256": "39f49ab530ca7c616633553219c6a0278b7cd0a238f9589d31e01d34fa1e1a0a"
+    },
+    "assignment3/runs/planned-4204-s04-e83783.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s04-e83783.calls.jsonl",
+      "bytes": 4555,
+      "sha256": "4bd5a11e19ad8e71ccdaaeb4f2b15fe05c055b156eb75dc60c998d3ccd25c664"
+    },
+    "assignment3/runs/planned-4205-s03-25f184.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s03-25f184.jsonl",
+      "bytes": 8997,
+      "sha256": "d48e45e7d561d950521d88d76838b38b1b0b917ac763b32ff2dd9c52eb1af01a"
+    },
+    "assignment3/runs/planned-4205-s03-25f184.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4205-s03-25f184.calls.jsonl",
+      "bytes": 2467,
+      "sha256": "6a06e17bddb0872532ef59e8c0dd5ad4b19ef2dc9f152e4778ca4c9adf588d2e"
+    },
+    "assignment3/runs/planned-4202-s02-2d8ac2.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s02-2d8ac2.jsonl",
+      "bytes": 10186,
+      "sha256": "b81ecc0bf94159cfc76b427681427dfdc52469d2e4b93f70d86e7a9616d4bf4a"
+    },
+    "assignment3/runs/planned-4202-s02-2d8ac2.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s02-2d8ac2.calls.jsonl",
+      "bytes": 3786,
+      "sha256": "7ffe6937d7b9dd5eaec735aa406fbdf59fc471872e1e55ae6b7479acf86b1b32"
+    },
+    "assignment3/runs/planned-4202-s03-03e531.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s03-03e531.jsonl",
+      "bytes": 12544,
+      "sha256": "35c1e83c958a485d0eda154a906b6ff407c8c034e9adc04ba696912f89dd0690"
+    },
+    "assignment3/runs/planned-4202-s03-03e531.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4202-s03-03e531.calls.jsonl",
+      "bytes": 4295,
+      "sha256": "4b365a6eae8b998f1b163fa0ecd3b85594db7438b1a8b0f99b8b0b40c54a00aa"
+    },
+    "assignment3/runs/planned-4204-s03-cd407f.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s03-cd407f.jsonl",
+      "bytes": 15379,
+      "sha256": "131e66eb6604fd90b83279ab810dd3ad52ff2d34c2a2a4b50bed3304577cf7e4"
+    },
+    "assignment3/runs/planned-4204-s03-cd407f.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4204-s03-cd407f.calls.jsonl",
+      "bytes": 1796,
+      "sha256": "011ea463fc07557ef9010c18dcc455dfb91080592deba69c14019d1a105f0ce8"
+    },
+    "assignment3/runs/planned-4206-s03-02ba63.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s03-02ba63.jsonl",
+      "bytes": 10265,
+      "sha256": "dcfcc2cf1463130f9bf8fe13e6ab423f4c85356f9008a786a915eae0c71117a6"
+    },
+    "assignment3/runs/planned-4206-s03-02ba63.calls.jsonl": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/runs/planned-4206-s03-02ba63.calls.jsonl",
+      "bytes": 3231,
+      "sha256": "b77efee2e8dc18e3c6a87c225284f5525f2cea793dea7205a5d9f0e3a513edc7"
+    },
+    "assignment3/reports/LAB_03.md": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/reports/LAB_03.md",
+      "bytes": 38133,
+      "sha256": "1688147ae32a604067908df1c4c5e97377f1390a37a292e30ba8269d4cd928f3"
+    },
+    "assignment3/reports/LAB_03.json": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/reports/LAB_03.json",
+      "bytes": 3273,
+      "sha256": "22827fe02bc91afaa9e983c803cdc6b70e05bbafb068412cd81e3476cdfe835d"
+    },
+    "assignment3/fixtures/answers.yaml": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/fixtures/answers.yaml",
+      "bytes": 744,
+      "sha256": "0fcb9ec2b00655abd0ee9d4cd7fb72b80c9823c67f1eff6b6ed0dc96ed504b3a"
+    },
+    "assignment3/pricing.yaml": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/pricing.yaml",
+      "bytes": 3031,
+      "sha256": "ab6a9b135841d3d30df3ada299e15ea99454b6ab61f99140dbe03da391a8da6b"
+    },
+    "assignment3/tracker/tracker.db": {
+      "assignment": 3,
+      "archive_entry": "agentic-ai-assignment3/tracker/tracker.db",
+      "bytes": 57344,
+      "sha256": "e8386fbac309fff0c266311ed66470e00155cb519ed65b2be195b4715191f224"
+    }
+  },
+  "read_date_basis": "UTC"
+}

@@ -1,0 +1,31 @@
+{
+  "verified_at_utc": "2026-11-02T02:14:59.988779+00:00",
+  "checks": [
+    {
+      "command": [
+        "make",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/assignment-evidence-20261102/make-test.log"
+    },
+    {
+      "command": [
+        "make",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/assignment-evidence-20261102/make-check.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "experiments/reports/assignment-evidence-20261102/git-diff-check.log"
+    }
+  ],
+  "kind": "offline homework evidence verification; no model calls"
+}

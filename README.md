@@ -5,8 +5,9 @@ pending replies or staff flags. The operator reviews and sends drafts from the
 course page. Private synthetic student records are staff-only and unavailable to
 agent tools. Later outside replies are stored without automatic processing.
 
-**Current status:** working local implementation; real-model evaluation and final
-academic requirements remain pending. See [Milestone report](docs/milestones/M1.md),
+**Current status:** working local implementation with a real-model baseline,
+tool-definition measurement and completed Pass 1. The measured verdict keeps
+`plan.batch=off`. Final academic and submission checks remain outstanding. See [Milestone report](docs/milestones/M1.md),
 [requirement audit](docs/requirements/AUDIT.md),
 [compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
 
@@ -46,21 +47,18 @@ flag, discard/restore a draft, and clear/reopen a flag. State persists through
 `make serve`; `make app` and `make seed` intentionally reset it. This application
 assumes a trusted operator on localhost and uses no real student data.
 
-## Real model configuration — required before evaluation
+## Real model configuration
 
-The real model name is **not configured yet**. In `settings.yaml`, select
-`anthropic` or `openai-compatible`, a provider-supported tool-calling `model`,
-its `base_url` if needed, and `api_key_env`. The only credential source is the
-process environment; `.env` is ignored by Git but is not automatically loaded.
-For example, export `ANTHROPIC_API_KEY` or the variable named by `api_key_env` in
-the same terminal that starts the app/runner. Never put the secret in a file to
-commit, a trace or a chat message.
+`settings.yaml` selects `gemini-3.5-flash-lite` through Google's OpenAI-compatible
+endpoint and reads `GEMINI_API_KEY`. Set that variable in the terminal that starts
+the app or runner. The only credential source is the process environment; `.env`
+is ignored by Git but is not automatically loaded. Never put the secret in a
+committed file, a trace or a chat message.
 
-Verify the model's current provider price page; add/update its row in
-`pricing.yaml` with source/date. The bundled price sheet is starter data and has
-not been reverified for a selected provider. Keep model, reasoning settings and
-price sheet fixed across comparison arms. The default `effort: null` preserves
-the provider default; justify any change once a real model is selected.
+The model's price row and source/read date are recorded in `pricing.yaml`.
+Reverify prices before a new experiment, and hold the model, reasoning settings
+and price sheet fixed across comparison arms. The default `effort: null`
+preserves the provider default.
 
 ```bash
 make ping
@@ -97,6 +95,9 @@ This command does not run a real-model baseline or improvement pass.
 # Real provider-reported tool overhead, three calls:
 .venv/bin/python -m experiments.analysis.tool_overhead
 .venv/bin/python -m experiments.analysis.tool_overhead --schema-only
+
+# Historical Assignment 1-3 evidence, offline; no model calls:
+.venv/bin/python -m experiments.analysis.assignment_evidence
 ```
 
 The independent check requires the correct run-stamped effect, exact ground
@@ -104,18 +105,21 @@ truth and sources, one effect per question, and no outgoing message on any
 thread. Console claims do not establish success. Fake results always stay under
 `results/_free/`. The analysis script refuses them unless explicitly requested.
 
-Follow [experiments/PROTOCOL.md](experiments/PROTOCOL.md) for the real improvement
-pass: inspect baseline failures, choose one intervention, complete and commit
-the numeric prediction in [LEDGER.md](experiments/LEDGER.md), obtain authorization
-to push it, then run two new three-sweep arms differing only in that switch.
-Do not run the measured arms before the prediction is pushed. Analyze using
-`python -m experiments.analysis.summarize results/pass1-off results/pass1-on`.
-No measured improvement has been claimed or performed yet.
+The retained baseline passed 27/30 runs. Pass 1 compared three batch runs per
+arm: `pass1-plan-on` passed 0/3 and `pass1-plan-off` passed 3/3. The prediction
+was committed and pushed before those arms. See
+[LEDGER.md](experiments/LEDGER.md) and the milestone report for costs, latency
+and the verdict. Recompute with
+`python -m experiments.analysis.summarize results/pass1-plan-on results/pass1-plan-off`.
+Use [experiments/PROTOCOL.md](experiments/PROTOCOL.md) for any new pass; retain
+the existing records and do not rerun an arm under an existing name.
 
-The official assignment specification, actual Assignment 1–3 results, verified
-team responsibilities, collaborator access, and the team's required AI
-assistance disclosure remain outstanding. The disclosure is reserved for the
-user's separate completion. No final tag or remote push has been performed.
+Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
+for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
+These are separate from this project's real-model baseline and pass. Full
+lecture decks, final team responsibilities, collaborator access and the team's
+required AI assistance disclosure remain outstanding. The disclosure is
+reserved for the user's separate completion. No final milestone tag is claimed.
 
 ---
 

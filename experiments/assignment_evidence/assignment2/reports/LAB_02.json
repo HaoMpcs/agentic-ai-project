@@ -1,0 +1,694 @@
+{
+  "lab": "02",
+  "schema": {
+    "args_representation": "args_json",
+    "optional_fields": 0,
+    "union_types": 0,
+    "strict_compiles": null
+  },
+  "fixture_validation": [
+    {
+      "plan": "good_export_fix.json",
+      "valid": true,
+      "failures": []
+    },
+    {
+      "plan": "good_triage.json",
+      "valid": true,
+      "failures": []
+    },
+    {
+      "plan": "s18_specimen.json",
+      "valid": false,
+      "failures": [
+        {
+          "step": 2,
+          "check": 2
+        },
+        {
+          "step": 3,
+          "check": 3
+        },
+        {
+          "step": 5,
+          "check": 1
+        }
+      ]
+    }
+  ],
+  "ladder": {
+    "looping": {
+      "q1": {
+        "fired": true,
+        "ids": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "q2": {
+        "fired": true,
+        "ids": [
+          3,
+          4
+        ]
+      },
+      "q3": {
+        "fired": true,
+        "ids": [
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "s49": {
+      "q1": {
+        "fired": true,
+        "ids": [
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "q2": {
+        "fired": false,
+        "ids": []
+      },
+      "q3": {
+        "fired": true,
+        "ids": [
+          6
+        ]
+      }
+    }
+  },
+  "diff_s49": {
+    "steps": {
+      "1": "executed",
+      "2": "executed",
+      "3": "executed",
+      "4": "executed",
+      "5": "executed",
+      "6": "skipped"
+    },
+    "extra": [
+      4
+    ]
+  },
+  "results": {
+    "agent": {
+      "runs": 18,
+      "passes": 11,
+      "per_issue": {
+        "4201": 3,
+        "4202": 1,
+        "4203": 3,
+        "4204": 1,
+        "4205": 3,
+        "4206": 0
+      },
+      "sweep_min": 3,
+      "sweep_max": 4,
+      "mean_tokens": 12771.722222222223,
+      "p50_latency_s": 4.488,
+      "max_latency_s": 9.056,
+      "plan_overhead_share": null,
+      "critique_overhead_share": null,
+      "runs_with_repeat": 3,
+      "off_plan": null,
+      "revisions_mean": null,
+      "revisions_max": null,
+      "rounds_mean": null,
+      "rounds_max": null,
+      "drafts_changed": null,
+      "drafts_fixed": null,
+      "drafts_broken": null,
+      "drafts_held": null
+    },
+    "planned_off": {
+      "runs": 18,
+      "passes": 7,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 3,
+        "4204": 0,
+        "4205": 1,
+        "4206": 0
+      },
+      "sweep_min": 2,
+      "sweep_max": 3,
+      "mean_tokens": 4415.277777777777,
+      "p50_latency_s": 5.18,
+      "max_latency_s": 7.786,
+      "plan_overhead_share": 0.541349540306406,
+      "critique_overhead_share": null,
+      "runs_with_repeat": 1,
+      "off_plan": 0,
+      "revisions_mean": 1.2222222222222223,
+      "revisions_max": 2,
+      "rounds_mean": null,
+      "rounds_max": null,
+      "drafts_changed": null,
+      "drafts_fixed": null,
+      "drafts_broken": null,
+      "drafts_held": null
+    },
+    "planned_self": {
+      "runs": 18,
+      "passes": 3,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 0,
+        "4204": 0,
+        "4205": 0,
+        "4206": 0
+      },
+      "sweep_min": 1,
+      "sweep_max": 1,
+      "mean_tokens": 3728.5555555555557,
+      "p50_latency_s": 4.415,
+      "max_latency_s": 7.568,
+      "plan_overhead_share": 0.655499714190203,
+      "critique_overhead_share": 0.04744026025045603,
+      "runs_with_repeat": 0,
+      "off_plan": 0,
+      "revisions_mean": 1.1666666666666667,
+      "revisions_max": 2,
+      "rounds_mean": 0.16666666666666666,
+      "rounds_max": 1,
+      "drafts_changed": 0,
+      "drafts_fixed": 0,
+      "drafts_broken": 0,
+      "drafts_held": 0
+    },
+    "planned_external": {
+      "runs": 18,
+      "passes": 6,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 2,
+        "4204": 0,
+        "4205": 1,
+        "4206": 0
+      },
+      "sweep_min": 2,
+      "sweep_max": 2,
+      "mean_tokens": 4407.611111111111,
+      "p50_latency_s": 4.366,
+      "max_latency_s": 6.711,
+      "plan_overhead_share": 0.5297306380800036,
+      "critique_overhead_share": 0.01729805190684688,
+      "runs_with_repeat": 0,
+      "off_plan": 0,
+      "revisions_mean": 1.0,
+      "revisions_max": 2,
+      "rounds_mean": 0.5,
+      "rounds_max": 2,
+      "drafts_changed": 1,
+      "drafts_fixed": 0,
+      "drafts_broken": 0,
+      "drafts_held": 1
+    }
+  },
+  "context": [
+    {
+      "run_id": "notes-4203-s01-09835b",
+      "issue": 4203,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 5
+    },
+    {
+      "run_id": "notes-4203-s01-9c6b10",
+      "issue": 4203,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "src/i18n/fr.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "src/ingest/errors.ts",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4203-s02-136c47",
+      "issue": 4203,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4203-s02-cf44f4",
+      "issue": 4203,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4204-s01-3dacc1",
+      "issue": 4204,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4204-s01-e1c656",
+      "issue": 4204,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/CONFIG.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4204-s02-a32716",
+      "issue": 4204,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "src/i18n/en.json",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4204-s02-f23b99",
+      "issue": 4204,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "CHANGELOG.md",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": "src/notifications/rollup.ts",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 3
+    },
+    {
+      "run_id": "notes-4206-s01-b30166",
+      "issue": 4206,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/CONFIG.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4206-s01-b8d1f5",
+      "issue": 4206,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "CHANGELOG.md",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": "README.md",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "yes",
+          "answer": "no"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/CONFIG.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 3
+    },
+    {
+      "run_id": "notes-4206-s02-151f10",
+      "issue": 4206,
+      "notes_shown": true,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "CHANGELOG.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "README.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/CONFIG.md",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    },
+    {
+      "run_id": "notes-4206-s02-25baa6",
+      "issue": 4206,
+      "notes_shown": false,
+      "compacted": true,
+      "questions": [
+        {
+          "path": "CHANGELOG.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "README.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": "docs/API.md",
+          "truth": "yes",
+          "answer": "yes"
+        },
+        {
+          "path": ".eslintrc.json",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "docs/CONFIG.md",
+          "truth": "no",
+          "answer": "no"
+        },
+        {
+          "path": "package.json",
+          "truth": "no",
+          "answer": "no"
+        }
+      ],
+      "right": 6
+    }
+  ]
+}

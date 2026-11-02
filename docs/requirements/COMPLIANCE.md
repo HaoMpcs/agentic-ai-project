@@ -1,9 +1,29 @@
 # Milestone 1 compliance and remaining work
 
+Current evidence update: M1 now includes Hao Shi's Part 1 gate analysis, the
+real tool-definition measurement, a 30-run baseline (27 passed), and a completed
+Pass 1 (plan on: 0/3; plan off: 3/3). The verdict keeps plan.batch=off. These
+results supersede the missing-provider/baseline/pass entries in the historical
+audit below; see M1 Parts 1, 3 and 4 and experiments/LEDGER.md. The remaining
+rows have not been recertified as a full academic compliance audit.
+
 Status: **Partially complete**. The implementation runs locally. This audit uses
 the user's pasted requirements because the official milestone specification and
 lecture slides are absent. It is not a score prediction or final submission
 approval. `make check` checks starter structure, not the full academic rubric.
+
+Source update, November 2, 2026 UTC: Jingyu Huang supplied Assignment 1-4 ZIPs.
+Assignment 1-3 citations now appear in M1 Parts 1-3, with a retained source guide
+in [ASSIGNMENT_EVIDENCE.md](ASSIGNMENT_EVIDENCE.md). Offline analysis verifies
+256 source hashes and recomputes 216 historical runs from traces and tracker
+records. These historical references remain separate from Hao Shi's gate
+calculation and the project's own measured baseline/pass. Assignment 4
+recovery/memory stays outside M1.
+
+## Historical audit before the real-model evaluation
+
+The table and completion checklist below record that earlier checkpoint, rather
+than the current experiment status. The evidence update above takes precedence.
 
 | Criterion | Points | Status | Implementation / documentation | Verification evidence | Remaining issue |
 |---|---:|---|---|---|---|
@@ -11,7 +31,7 @@ approval. `make check` checks starter structure, not the full academic rubric.
 | Three properties, channel, console, product page | 4 | Implemented/tested locally | sandbox/, channel/, app/product.py, home.html | CourseTests + ProductTests; manual operator send and uncertain-send tests | Official spec cross-check |
 | Test tasks and independent checks | 4 | Implemented/tested | 10 main +2 dev YAML; checks/course.py | Every task via ScratchTest.run_task; negative controls via run_check | Real-model task performance |
 | Routing, agent/workflows, traces, bounds | 5 | Implemented/tested locally | service.py, bounds.py, grouped switches | Misrouting, NeverStops, HugeUsage, SlowAgent; end reasons in records | Real latency; last response can cross token threshold; in-flight billing limitation |
-| Planning and tests | 4 | Implemented/tested locally | planning.py | Valid/invalid/revision/off-plan/skipped/orphan/order tests; local-revision trace | Actual Assignment 2 and measured value |
+| Planning and tests | 4 | Implemented/tested locally | planning.py | Valid/invalid/revision/off-plan/skipped/orphan/order tests; A2 evidence now cited | Current-domain measured utility |
 | Critique and tests | 4 | Implemented/tested locally | critique.py, tools.py | Correct/repair/hold/once-only tests; repair and hold traces | Extractive-only; real-model utility |
 | Registry, retries, keys, hooks | 5 | Implemented/tested locally | tools.py, sandbox/course.py | RegistryTests, same-key retries, first-result preservation, fail-closed hook | Provider/network behavior; no full M2 recovery |
 | Rewritten tools and repairable errors | 4 | Implemented/tested locally | tools.py, docs/TOOLS.md, first_draft.json | Malformed calls, unknown tools, scopes, output bounds, fixed-order tests | Real-model failure taxonomy and measured definition benefit |
@@ -20,10 +40,10 @@ approval. `make check` checks starter structure, not the full academic rubric.
 | Reproducible analysis script | 3 | Implemented/tested locally | experiments/analysis/summarize.py | AnalysisTests; local-smoke-v2.json recomputed from original records | Recompute actual baseline and both arms |
 | Real task, use cases, independent criteria | 5 | Documented/implemented | M1 Part 1; original eight-case design retained | Tasks and environment checks | Official assignment confirmation |
 | Baseline failures with IDs and trace lines | 6 | Blocked | M1 Part 4 has separately labeled free diagnostics | Real failures unavailable; retained fake failure lines cited accurately | Real baseline traces and diagnosis |
-| Four gates and cost evidence | 9 | Partial | M1 four gates, symbolic break-even | Formula derivation; no numeric values invented | Actual Assignment 1 m/f/c/r; mistake value; real latency |
+| Four gates and cost evidence | 9 | Partial | M1 four gates, A1 citation and symbolic break-even | A1 m=5.385797, 60 runs/path; current route remains provisional | Current-domain f/c/r and mistake value; real per-turn latency; variable Agent case |
 | Component control-flow classifications | 2 | Documented | M1 build table | Source inspection and path tests | Lecture slide numbers unavailable |
 | Action grid, undo, approval line, trifecta | 6 | Documented/implemented | M1 action grid; docs/TOOLS.md | No publishing tool; manual review/send/status tests | Official criteria confirmation |
-| Planning/critique decisions with evidence | 6 | Partial | M1 Part 2, decision and step-sizing tables | Fake plan/revision/critique traces, test names | Actual Assignment 2 and real experimental evidence |
+| Planning/critique decisions with evidence | 6 | Partial | M1 Part 2, decision and step-sizing tables | A2 four arms x18; negative quality result and held-draft evidence cited | Current-domain experimental evidence and remaining decision/write-up requirements |
 | Execution-state awareness | 3 | Documented | M1 state inventory | Memory/trace/SQLite implementation and tests | No M2 continuation claimed |
 | Complete tool table and contracts | 5 | Documented/implemented | docs/TOOLS.md and executable schemas | Registry tests; write verification inventory | Official criteria confirmation |
 | Examples, strict, measurements, write verification | 5 | Partial | Selective switches, tool_overhead.py | Fixed-order/examples/schema-metrics/error/read-back tests | Provider strict support/limits/source-date and real overhead calls |
@@ -58,8 +78,10 @@ blocked or pending.
 
 1. Supply the official `docs/requirements/milestone1-spec.md` and lecture slides;
    compare every requirement again. The audit file is not an invented spec.
-2. Supply real member Assignment 1–3 measurements/repository references. Fill in
-   cost gates, quantitative routing justification and lecture slide citations.
+2. Historical Assignment 1-3 measurements/repository references are now supplied
+   and cited. Complete current-domain cost gates, quantitative routing
+   justification and full lecture references without substituting homework
+   figures for the project's own measurements.
 3. Confirm model/provider and configure the API key locally. Verify price and
    strict-mode support/limits from the selected vendor, with source/date.
 4. Run real baseline, inspect failures, select one intervention, name its owner

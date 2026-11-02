@@ -1,0 +1,185 @@
+{
+  "kind": "historical homework evidence; not current-project evaluation",
+  "owner": "Jingyu Huang (archives identified by the user as their previous homework)",
+  "source_read_date_utc": "2026-11-02",
+  "verified_source_files": 256,
+  "assignment1": {
+    "workflow": {
+      "runs": 60,
+      "passes": 22,
+      "per_issue": {
+        "4201": 10,
+        "4202": 0,
+        "4203": 2,
+        "4204": 0,
+        "4205": 10,
+        "4206": 0
+      },
+      "mean_cost_usd": 0.0004917783333333333,
+      "mean_total_tokens": 1169.3166666666666,
+      "p50_latency_s": 1.507,
+      "p95_latency_s": 103.219,
+      "distinct_tool_sequences": 3
+    },
+    "agent": {
+      "runs": 60,
+      "passes": 26,
+      "per_issue": {
+        "4201": 8,
+        "4202": 3,
+        "4203": 7,
+        "4204": 0,
+        "4205": 8,
+        "4206": 0
+      },
+      "mean_cost_usd": 0.0026486183333333333,
+      "mean_total_tokens": 7561.65,
+      "p50_latency_s": 52.865,
+      "p95_latency_s": 553.074,
+      "distinct_tool_sequences": 13
+    },
+    "cost_comparison": {
+      "m": 5.385797124043014,
+      "qualifying_issues": [
+        4203
+      ],
+      "f_family_share": 0.16666666666666666,
+      "extra_cost_per_run_usd": 0.00215684,
+      "extra_cost_divided_by_family_share_usd": 0.012941040000000001,
+      "oracle_blended_usd": 0.0008512516666666667,
+      "f_definition": "share of issue families with workflow <5/10 and agent >=5/10; not this project's f or r"
+    }
+  },
+  "assignment2": {
+    "agent": {
+      "runs": 18,
+      "passes": 11,
+      "per_issue": {
+        "4201": 3,
+        "4202": 1,
+        "4203": 3,
+        "4204": 1,
+        "4205": 3,
+        "4206": 0
+      },
+      "mean_tokens": 12771.722222222223,
+      "p50_latency_s": 4.488,
+      "max_latency_s": 9.056,
+      "runs_with_repeat": 3,
+      "plan_overhead_share": null,
+      "critique_overhead_share": null,
+      "off_plan": null,
+      "revisions_mean": null,
+      "rounds_mean": null,
+      "drafts_changed": null,
+      "drafts_fixed": null,
+      "drafts_broken": null,
+      "drafts_held": null
+    },
+    "planned_off": {
+      "runs": 18,
+      "passes": 7,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 3,
+        "4204": 0,
+        "4205": 1,
+        "4206": 0
+      },
+      "mean_tokens": 4415.277777777777,
+      "p50_latency_s": 5.18,
+      "max_latency_s": 7.786,
+      "runs_with_repeat": 1,
+      "plan_overhead_share": 0.541349540306406,
+      "critique_overhead_share": null,
+      "off_plan": 0,
+      "revisions_mean": 1.2222222222222223,
+      "rounds_mean": null,
+      "drafts_changed": null,
+      "drafts_fixed": null,
+      "drafts_broken": null,
+      "drafts_held": null
+    },
+    "planned_self": {
+      "runs": 18,
+      "passes": 3,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 0,
+        "4204": 0,
+        "4205": 0,
+        "4206": 0
+      },
+      "mean_tokens": 3728.5555555555557,
+      "p50_latency_s": 4.415,
+      "max_latency_s": 7.568,
+      "runs_with_repeat": 0,
+      "plan_overhead_share": 0.655499714190203,
+      "critique_overhead_share": 0.04744026025045602,
+      "off_plan": 0,
+      "revisions_mean": 1.1666666666666667,
+      "rounds_mean": 0.16666666666666666,
+      "drafts_changed": 0,
+      "drafts_fixed": 0,
+      "drafts_broken": 0,
+      "drafts_held": 0
+    },
+    "planned_external": {
+      "runs": 18,
+      "passes": 6,
+      "per_issue": {
+        "4201": 3,
+        "4202": 0,
+        "4203": 2,
+        "4204": 0,
+        "4205": 1,
+        "4206": 0
+      },
+      "mean_tokens": 4407.611111111111,
+      "p50_latency_s": 4.366,
+      "max_latency_s": 6.711,
+      "runs_with_repeat": 0,
+      "plan_overhead_share": 0.5297306380800036,
+      "critique_overhead_share": 0.01729805190684688,
+      "off_plan": 0,
+      "revisions_mean": 1.0,
+      "rounds_mean": 0.5,
+      "drafts_changed": 1,
+      "drafts_fixed": 0,
+      "drafts_broken": 0,
+      "drafts_held": 1
+    }
+  },
+  "assignment3": {
+    "harness": {
+      "runs": 12,
+      "comments_per_run_max": 1,
+      "duplicate_comment_runs": 0,
+      "prs_correct_runs": 12,
+      "committed_timeouts": 18,
+      "escalated": 0,
+      "triage_passes": 7,
+      "model_calls": 67
+    },
+    "control": {
+      "runs": 12,
+      "comments_per_run_max": 3,
+      "duplicate_comment_runs": 4,
+      "prs_correct_runs": 12,
+      "committed_timeouts": 10,
+      "escalated": 2,
+      "triage_passes": 3,
+      "model_calls": 66
+    },
+    "tool_surface_reported": {
+      "tokens_before": 386,
+      "tokens_after": 2536,
+      "list_tokens_before": 116,
+      "list_tokens_after": 1555
+    },
+    "tool_surface_status": "Reported historical API measurements; raw standalone provider responses not retained. Not a current-project measurement."
+  },
+  "assignment4": "Reviewed for scope; no memory, compaction or restart recovery imported into M1."
+}
