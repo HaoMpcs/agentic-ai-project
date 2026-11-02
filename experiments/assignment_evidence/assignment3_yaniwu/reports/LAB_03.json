@@ -1,0 +1,98 @@
+{
+  "lab": "03",
+  "strict": {
+    "tools": 5,
+    "optional_params": 0,
+    "union_types": 0,
+    "compiles": true
+  },
+  "failures": {
+    "read_issue": {
+      "transient": [
+        "Temporary read timeout/connection interruption or retryable local I/O (injected in tests; normal implementation reads a local fixture)."
+      ],
+      "permanent": [
+        "Invalid number or missing issue: change number using the available issue list.",
+        "Permission denied or missing/malformed fixture: maintainer must restore the resource; unchanged calls do not help."
+      ],
+      "ambiguous": []
+    },
+    "search": {
+      "transient": [
+        "Temporary index/disk read interruption, connection timeout or retryable local I/O (no network rate limiter exists in the local stub)."
+      ],
+      "permanent": [
+        "Blank/overlong query, malformed path_glob, invalid format or out-of-range max_results: change the named field.",
+        "Missing/corrupt index or unreadable repository: maintainer repair is required; a valid zero-match search is not an error."
+      ],
+      "ambiguous": []
+    },
+    "read_file": {
+      "transient": [
+        "Temporary read timeout, connection interruption or retryable local I/O."
+      ],
+      "permanent": [
+        "Missing, wrong-case, binary, excluded or outside-repository file: choose a valid exact UTF-8 path.",
+        "Permission denied or file removed during reading: restore permission/resource or search again."
+      ],
+      "ambiguous": []
+    },
+    "comment": {
+      "transient": [
+        "Only an explicit adapter signal proving the request was not dispatched; may carry retry_after."
+      ],
+      "permanent": [
+        "Invalid number or empty/overlong/unresolved body: fix arguments.",
+        "Missing issue: select an existing number; permission/resource failures need maintainer repair."
+      ],
+      "ambiguous": [
+        "TrackerTimeout after dispatch, which may mean before or after commit; never infer commit status from exception text.",
+        "Unqualified timeout/connection drop or transient signal without before_dispatch proof: do not retry blind."
+      ]
+    },
+    "open_pr": {
+      "transient": [
+        "Only an explicit adapter signal proving the request was not dispatched; may carry retry_after."
+      ],
+      "permanent": [
+        "Invalid number, nonmatching branch, empty/overlong title or body: fix arguments.",
+        "Missing issue: select an existing number; permission/resource failures need maintainer repair."
+      ],
+      "ambiguous": [
+        "TrackerTimeout after dispatch, which may mean before or after commit; never infer commit status from exception text.",
+        "Unqualified timeout/connection drop or transient signal without before_dispatch proof: do not retry blind."
+      ]
+    }
+  },
+  "protocol_error_policy": "end_run",
+  "surface": {
+    "tokens_before": 191,
+    "tokens_after": 2042,
+    "list_tokens_before": 106,
+    "list_tokens_after": 1422,
+    "calls_per_run": 7.25,
+    "cost_per_run_before": 0.00021410000000000005,
+    "cost_per_run_after": 0.0024014000000000015,
+    "cost_per_run_all_five": 0.005921800000000002
+  },
+  "writes": {
+    "harness": {
+      "runs": 12,
+      "comments_per_run_max": 1,
+      "duplicate_comment_runs": 0,
+      "prs_correct_runs": 12,
+      "committed_timeouts": 11,
+      "escalated": 0,
+      "triage_passes": 3
+    },
+    "control": {
+      "runs": 12,
+      "comments_per_run_max": 3,
+      "duplicate_comment_runs": 7,
+      "prs_correct_runs": 12,
+      "committed_timeouts": 14,
+      "escalated": 3,
+      "triage_passes": 1
+    }
+  }
+}

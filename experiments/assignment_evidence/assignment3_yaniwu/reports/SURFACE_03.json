@@ -1,0 +1,311 @@
+{
+  "method": "actual prompt_tokens difference including cache usage",
+  "starter_commit": "a2936d70c7fe7b2802fff71daa3a8bf343850443",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "settings_model": "gpt-4.1-mini",
+  "runtime_sha256": "bc8fbf9c6a84fe43cfe07117d303f3477dc0e6147684729bc664ada1e4ab0dd3",
+  "current_definitions_hash": "adc793f8b87b7dc0",
+  "module_names": {
+    "read_issue": "tracker_read_issue",
+    "search_repo": "code_search",
+    "read_file": "code_read_file",
+    "post_comment": "tracker_post_comment",
+    "open_pr": "pulls_open_pr"
+  },
+  "baseline_prompt_tokens": 33,
+  "counts": {
+    "before": {
+      "all_five": 191,
+      "alone": {
+        "read_issue": 37,
+        "search_repo": 71,
+        "read_file": 34,
+        "post_comment": 44,
+        "open_pr": 53
+      },
+      "planner_list": 106
+    },
+    "after": {
+      "all_five": 2042,
+      "alone": {
+        "read_issue": 266,
+        "search_repo": 624,
+        "read_file": 348,
+        "post_comment": 362,
+        "open_pr": 490
+      },
+      "planner_list": 1422
+    }
+  },
+  "raw_calls": [
+    {
+      "label": "baseline",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [],
+      "usage": {
+        "input_tokens": 33,
+        "output_tokens": 1,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 33
+      },
+      "cost_usd": 1.48e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "4f53cda18c2baa0c"
+    },
+    {
+      "label": "before:all_five",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "read_issue",
+        "search_repo",
+        "read_file",
+        "post_comment",
+        "open_pr"
+      ],
+      "usage": {
+        "input_tokens": 224,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 224
+      },
+      "cost_usd": 9.28e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "d72eb6f345e05929"
+    },
+    {
+      "label": "before:read_issue",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "read_issue"
+      ],
+      "usage": {
+        "input_tokens": 70,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 70
+      },
+      "cost_usd": 3.12e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "bd6a090ffa320a7e"
+    },
+    {
+      "label": "before:search_repo",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "search_repo"
+      ],
+      "usage": {
+        "input_tokens": 104,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 104
+      },
+      "cost_usd": 4.4800000000000005e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "2d5cb8788ce989b7"
+    },
+    {
+      "label": "before:read_file",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "read_file"
+      ],
+      "usage": {
+        "input_tokens": 67,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 67
+      },
+      "cost_usd": 3e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "0a30fa8a245d1fba"
+    },
+    {
+      "label": "before:post_comment",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "post_comment"
+      ],
+      "usage": {
+        "input_tokens": 77,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 77
+      },
+      "cost_usd": 3.4e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "ef715662f33de1d6"
+    },
+    {
+      "label": "before:open_pr",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "open_pr"
+      ],
+      "usage": {
+        "input_tokens": 86,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 86
+      },
+      "cost_usd": 3.76e-05,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "08cde9a607ea154a"
+    },
+    {
+      "label": "before:planner_list",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [],
+      "usage": {
+        "input_tokens": 139,
+        "output_tokens": 1,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 139
+      },
+      "cost_usd": 5.72e-05,
+      "text_sha256": "31a1c0d27e5e6d49734aac185567869f225c2860d44be9410f06f25d0f0942b0",
+      "schemas_hash": "4f53cda18c2baa0c"
+    },
+    {
+      "label": "after:all_five",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "tracker_read_issue",
+        "code_search",
+        "code_read_file",
+        "tracker_post_comment",
+        "pulls_open_pr"
+      ],
+      "usage": {
+        "input_tokens": 2075,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 2075
+      },
+      "cost_usd": 0.0008332000000000001,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "adc793f8b87b7dc0"
+    },
+    {
+      "label": "after:read_issue",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "tracker_read_issue"
+      ],
+      "usage": {
+        "input_tokens": 299,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 299
+      },
+      "cost_usd": 0.0001228,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "69e98b93cfa4cf64"
+    },
+    {
+      "label": "after:search_repo",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "code_search"
+      ],
+      "usage": {
+        "input_tokens": 657,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 657
+      },
+      "cost_usd": 0.000266,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "1896eea1ebaa863a"
+    },
+    {
+      "label": "after:read_file",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "code_read_file"
+      ],
+      "usage": {
+        "input_tokens": 381,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 381
+      },
+      "cost_usd": 0.0001556,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "205de3e6b424e781"
+    },
+    {
+      "label": "after:post_comment",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "tracker_post_comment"
+      ],
+      "usage": {
+        "input_tokens": 395,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 395
+      },
+      "cost_usd": 0.0001612,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "38d8f3d4f1783949"
+    },
+    {
+      "label": "after:open_pr",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [
+        "pulls_open_pr"
+      ],
+      "usage": {
+        "input_tokens": 523,
+        "output_tokens": 2,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 523
+      },
+      "cost_usd": 0.0002124,
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "schemas_hash": "727908e490be4926"
+    },
+    {
+      "label": "after:planner_list",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "tools": [],
+      "usage": {
+        "input_tokens": 1455,
+        "output_tokens": 1,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "prompt_tokens": 1455
+      },
+      "cost_usd": 0.0005836,
+      "text_sha256": "eeebc4d0b6de80aeb42a2e5c1a4f4190af934016b30d782342236317198a382d",
+      "schemas_hash": "4f53cda18c2baa0c"
+    }
+  ],
+  "totals": {
+    "model_calls": 15,
+    "prompt_tokens": 6585,
+    "output_tokens": 27,
+    "cache_read_tokens": 0,
+    "total_tokens": 6612,
+    "cost_usd": 0.002677,
+    "unpriced_calls": 0,
+    "models": [
+      "gpt-4.1-mini-2025-04-14"
+    ]
+  }
+}
