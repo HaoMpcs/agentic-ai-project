@@ -39,7 +39,8 @@ Implementation order:
 8. Run full checks and clean-snapshot app test. Real evidence remains conditional
    on the external inputs above; never substitute fake runs for measured arms.
 
-Final local evidence: see [COMPLIANCE.md](COMPLIANCE.md) for current row status
-and [VERIFICATION.md](VERIFICATION.md) for 77 passing tests, both clean-clone
-checks, real HTTP app operations and retained diagnostic traces. All model
-quality/cost claims and the official-spec comparison remain pending.
+Current evidence: see [COMPLIANCE.md](COMPLIANCE.md) for updated row status and
+[VERIFICATION.md](VERIFICATION.md) for the dated engineering checks. The current
+workspace passes 102 tests. The retained real baseline passed 27/30, and Pass 1
+compared plan on at 0/3 with plan off at 3/3. This file otherwise records the
+initial audit and should not be read as the current project status.

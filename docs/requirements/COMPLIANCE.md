@@ -3,9 +3,9 @@
 Current evidence update: M1 now includes Hao Shi's Part 1 gate analysis, the
 real tool-definition measurement, a 30-run baseline (27 passed), and a completed
 Pass 1 (plan on: 0/3; plan off: 3/3). The verdict keeps plan.batch=off. These
-results supersede the missing-provider/baseline/pass entries in the historical
-audit below; see M1 Parts 1, 3 and 4 and experiments/LEDGER.md. The remaining
-rows have not been recertified as a full academic compliance audit.
+results supersede the missing-provider/baseline/pass entries in the earlier
+audit; see M1 Parts 1, 3 and 4 and experiments/LEDGER.md. The table below now
+reflects the retained evidence, but is not a score prediction.
 
 Status: **Partially complete**. The implementation runs locally. This audit uses
 the user's pasted requirements because the official milestone specification and
@@ -20,33 +20,33 @@ records. These historical references remain separate from Hao Shi's gate
 calculation and the project's own measured baseline/pass. Assignment 4
 recovery/memory stays outside M1.
 
-## Historical audit before the real-model evaluation
+## Current requirement status
 
-The table and completion checklist below record that earlier checkpoint, rather
-than the current experiment status. The evidence update above takes precedence.
+Historical verification details remain below the table with their dates. Current
+experiment status comes from M1 Part 4, the ledger and retained results.
 
 | Criterion | Points | Status | Implementation / documentation | Verification evidence | Remaining issue |
 |---|---:|---|---|---|---|
-| Clean checkout, make app, runner, make check | 3 | Verified locally | Makefile, app/, agent/service.py | 77 tests; runner smoke; VERIFICATION.md and clean-checkout-http.json | Real-model console and final submission commit |
+| Clean checkout, make app, runner, make check | 3 | Verified locally | Makefile, app/, agent/service.py | 102 current tests; earlier 77-test clean checkout and HTTP record in VERIFICATION.md | Repeat clean checkout for the final tag |
 | Three properties, channel, console, product page | 4 | Implemented/tested locally | sandbox/, channel/, app/product.py, home.html | CourseTests + ProductTests; manual operator send and uncertain-send tests | Official spec cross-check |
-| Test tasks and independent checks | 4 | Implemented/tested | 10 main +2 dev YAML; checks/course.py | Every task via ScratchTest.run_task; negative controls via run_check | Real-model task performance |
+| Test tasks and independent checks | 4 | Implemented/tested | 10 main +2 dev YAML; checks/course.py | Every task via ScratchTest.run_task; 30-run real baseline | None for M1 evaluation |
 | Routing, agent/workflows, traces, bounds | 5 | Implemented/tested locally | service.py, bounds.py, grouped switches | Misrouting, NeverStops, HugeUsage, SlowAgent; end reasons in records | Real latency; last response can cross token threshold; in-flight billing limitation |
 | Planning and tests | 4 | Implemented/tested locally | planning.py | Valid/invalid/revision/off-plan/skipped/orphan/order tests; A2 evidence now cited | Current-domain measured utility |
 | Critique and tests | 4 | Implemented/tested locally | critique.py, tools.py | Correct/repair/hold/once-only tests; repair and hold traces | Extractive-only; real-model utility |
 | Registry, retries, keys, hooks | 5 | Implemented/tested locally | tools.py, sandbox/course.py | RegistryTests, same-key retries, first-result preservation, fail-closed hook | Provider/network behavior; no full M2 recovery |
 | Rewritten tools and repairable errors | 4 | Implemented/tested locally | tools.py, docs/TOOLS.md, first_draft.json | Malformed calls, unknown tools, scopes, output bounds, fixed-order tests | Real-model failure taxonomy and measured definition benefit |
-| Baseline measurements | 3 | Blocked | run.py and analysis script ready | 0 real runs; 30 fake smoke runs explicitly excluded | Provider/model/key and clean committed code |
-| Improvement experiment and verdict | 11 | Blocked | PROTOCOL.md; pending Pass 1 in LEDGER | 0 off-arm, 0 on-arm real runs; no invented hypothesis/verdict | Baseline evidence, owner, numeric prediction, commit and authorized push before arms |
-| Reproducible analysis script | 3 | Implemented/tested locally | experiments/analysis/summarize.py | AnalysisTests; local-smoke-v2.json recomputed from original records | Recompute actual baseline and both arms |
+| Baseline measurements | 3 | Complete | results/baseline; M1 Part 4 | 30 real runs, 27 passed; tokens, cost and latency retained | None |
+| Improvement experiment and verdict | 11 | Complete | LEDGER.md; results/pass1-plan-on and pass1-plan-off | Prediction pushed first; on 0/3, off 3/3; verdict keeps plan.batch=off | None |
+| Reproducible analysis script | 3 | Implemented/tested locally | experiments/analysis/summarize.py | AnalysisTests; baseline and both pass arms recomputable | None |
 | Real task, use cases, independent criteria | 5 | Documented/implemented | M1 Part 1; original eight-case design retained | Tasks and environment checks | Official assignment confirmation |
-| Baseline failures with IDs and trace lines | 6 | Blocked | M1 Part 4 has separately labeled free diagnostics | Real failures unavailable; retained fake failure lines cited accurately | Real baseline traces and diagnosis |
-| Four gates and cost evidence | 9 | Partial | M1 four gates, A1 citation and symbolic break-even | A1 m=5.385797, 60 runs/path; current route remains provisional | Current-domain f/c/r and mistake value; real per-turn latency; variable Agent case |
+| Baseline failures with IDs and trace lines | 6 | Complete | M1 Part 4 | Three real batch failures cite first trace lines and answer the four plan questions | None |
+| Four gates and cost evidence | 9 | Documented | M1 four gates and A1 citation | Hao Shi A1 gives m=3.72; assumptions and break-even are explicit | Values are estimates, not current-domain causal measurements |
 | Component control-flow classifications | 2 | Documented | M1 build table | Source inspection and path tests | Lecture slide numbers unavailable |
 | Action grid, undo, approval line, trifecta | 6 | Documented/implemented | M1 action grid; docs/TOOLS.md | No publishing tool; manual review/send/status tests | Official criteria confirmation |
 | Planning/critique decisions with evidence | 6 | Partial | M1 Part 2, decision and step-sizing tables | A2 four arms x18; negative quality result and held-draft evidence cited | Current-domain experimental evidence and remaining decision/write-up requirements |
 | Execution-state awareness | 3 | Documented | M1 state inventory | Memory/trace/SQLite implementation and tests | No M2 continuation claimed |
 | Complete tool table and contracts | 5 | Documented/implemented | docs/TOOLS.md and executable schemas | Registry tests; write verification inventory | Official criteria confirmation |
-| Examples, strict, measurements, write verification | 5 | Partial | Selective switches, tool_overhead.py | Fixed-order/examples/schema-metrics/error/read-back tests | Provider strict support/limits/source-date and real overhead calls |
+| Examples, strict, measurements, write verification | 5 | Partial | Selective switches, tool_overhead.py | Real definition measurement; fixed-order, error and read-back tests | Finish the required per-tool examples/strict decision table |
 | Named team ownership | 3 | Pending confirmation | M1 The team | Names supplied; existing HaoMpcs commit preserved | Actual module/experiment/report responsibilities and account mapping |
 
 Total rubric: 100 points (50 build/evaluation +50 documentation). No total score
@@ -70,38 +70,26 @@ blocked or pending.
   real performance, token overhead, costs or routing economics.
 - Additional retained free probes: revision pass 1/1, bad plan expected fail 0/1,
   critique repair pass 1/1, critique hold expected fail 0/1. M1 cites original
-  trace line numbers. Zero real baseline/arm runs and zero real overhead calls.
-- API key availability was checked by boolean presence only; no secret value
-  was read into output. No configured provider/model and no relevant key exist.
+  trace line numbers. These pre-evaluation probes are not the later measured arms.
+- Later commits configured Gemini 3.5 Flash-Lite, measured tool overhead, ran the
+  30-run baseline and completed both Pass 1 arms. No secret value was recorded.
 
 ## External completion dependencies
 
-1. Supply the official `docs/requirements/milestone1-spec.md` and lecture slides;
-   compare every requirement again. The audit file is not an invented spec.
-2. Historical Assignment 1-3 measurements/repository references are now supplied
-   and cited. Complete current-domain cost gates, quantitative routing
-   justification and full lecture references without substituting homework
-   figures for the project's own measurements.
-3. Confirm model/provider and configure the API key locally. Verify price and
-   strict-mode support/limits from the selected vendor, with source/date.
-4. Run real baseline, inspect failures, select one intervention, name its owner
-   and prepare numeric prediction. Only then request permission for the required
-   prediction push; no measured arms may precede it.
-5. Confirm team responsibilities and required collaborator/course-staff access.
+1. Finish the Part 3 per-tool examples/strict decisions and name its owner.
+2. Confirm team responsibilities and required collaborator/course-staff access.
    Git remotes alone do not prove access. No collaborator list was fabricated.
-6. The user must complete the course-required AI assistance disclosure at the
+3. The user must complete the course-required AI assistance disclosure at the
    end of M1.md in their separate stage. No section was created/populated and no
    checker was weakened. The starter checker does not enforce that disclosure,
    so its passing result cannot establish academic readiness.
-7. After evidence and disclosure, run final checks, create the final milestone
+4. After evidence and disclosure, run final checks, create the final milestone
    commit, repeat the final clean checkout, and obtain authorization before
    publishing tag `m1` or pushing commits/tags. Canvas requires the team's repo URL.
 
 ## Git and submission boundaries
 
-Implementation branch: codex/milestone1-implementation. Existing teammate design
-was retained. Local engineering checkpoint commits are distinct from a final
-Milestone 1 submission commit. No prediction was pushed, no final `m1` tag was
-created, and no remote push was executed. The existing origin is
+The implementation is now on `main`, and the prediction and measured Pass 1
+commits are pushed to `origin/main`. No final `m1` tag has been created. The existing origin is
 `git@github.com:HaoMpcs/agentic-ai-project.git`; staff collaborator status is
 unverified. Final repository URL: https://github.com/HaoMpcs/agentic-ai-project.

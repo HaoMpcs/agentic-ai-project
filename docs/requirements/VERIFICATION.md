@@ -94,3 +94,12 @@ experiments/reports/assignment-evidence-20261102/. No assignment runtime code,
 Assignment 4 recovery/memory behavior, paid calls or official project arms were
 introduced. Historical reported schema-token measurements are distinguished
 from independently reconstructed run metrics and current-project measurements.
+
+## Current project status, November 2, 2026 UTC
+
+The dated checkpoints above remain historical records. They are superseded for
+current status by 102 passing tests and all four `make check` checks. The project
+also retains a 30-run real baseline (27 passed), the real tool-definition
+measurement, and Pass 1 arms where plan on passed 0/3 and plan off passed 3/3.
+The prediction and experiment commits are on `origin/main`. A final clean-clone
+check and the `m1` tag remain outstanding.

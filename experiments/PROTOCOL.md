@@ -25,11 +25,12 @@ The procedure below applies to new measurements; preserve the existing arms.
    switch, owner, constants, task set and three sweeps. Commit the prediction,
    then obtain authorization and push it. Do not start the arms until the push
    is verified. Preserve the prediction after measurement begins.
-7. Run fresh `pass1-off` and `pass1-on` arms on identical committed code/model/
+7. Run fresh arms such as `pass2-<switch>-off` and `pass2-<switch>-on` on identical committed code/model/
    settings/tasks and three sweeps, changing only the selected switch. Do not
    reuse baseline as the off arm.
-8. Recompute with `python -m experiments.analysis.summarize results/pass1-off
-   results/pass1-on`. Compare success, costs, tokens, latency and the chosen
+8. Recompute the new arm directories. For the retained Pass 1, use
+   `python -m experiments.analysis.summarize results/pass1-plan-off
+   results/pass1-plan-on`. Compare success, costs, tokens, latency and the chosen
    intervention's trace metrics. Record a keep/drop verdict, including negative
    outcomes. Tool overhead is a separate real-API measurement.
 

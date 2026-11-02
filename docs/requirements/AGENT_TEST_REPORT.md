@@ -104,9 +104,9 @@ To regenerate the machine report with all 43 scoped tests, the full regression s
 
 The command creates a fresh directory with a UTC timestamp and prints its summary.json path. Use `--output experiments/reports/<new-directory-name>` to choose a new directory. It refuses to overwrite an existing output directory or its corresponding free-evidence directory. Model tests still execute inside ScratchTest folders.
 
-## Remaining real evaluation and handoff
+## Historical real-evaluation handoff
 
-This verification did not read or print API keys, choose a model, make paid API calls, or run git commit, push or an m1 tag operation. At this verification checkpoint the provider/model fields were unconfigured. Subsequent team commits configured the model and completed the real baseline and Pass 1; see M1 Part 4 and experiments/LEDGER.md. The checklist below records the original handoff, not outstanding experiment work.
+This verification did not read or print API keys, choose a model, make paid API calls, or run git commit, push or an m1 tag operation. At this verification checkpoint the provider/model fields were unconfigured. Subsequent team commits configured the model and completed the real baseline and Pass 1; see M1 Part 4 and experiments/LEDGER.md. The checklist below records the original handoff. Items 1–5 were subsequently addressed by the retained baseline, Pass 1, M1 Parts 1–4 and assignment source review; they are not current experiment tasks.
 
 1. The team must select the model, price and runtime configuration, complete the four-gate justification for Agent routing, and freeze the tasks and checks. Routing tests prove that configured paths are followed; they do not prove that an Agent is preferable to a workflow. The earlier diagnostic in which every main task passed on workflows still needs to be addressed.
 2. Commit engineering corrections as part of the baseline, then run every main task for three sweeps and inspect all records and traces. Responsibility 2 owns diagnosis of Agent, plan and critique behavior in coordination with the evaluation owner.
