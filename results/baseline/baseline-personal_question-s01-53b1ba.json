@@ -1,0 +1,168 @@
+{
+  "run_id": "baseline-personal_question-s01-53b1ba",
+  "arm": "baseline",
+  "task": "personal_question",
+  "task_file": "tasks/personal_question.yaml",
+  "sweep": 1,
+  "started": "2026-11-02T02:05:24.290+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "d54ea85baeb4781fd1382f522ef4de91482ffebb",
+  "dirty": false,
+  "finished": "2026-11-02T02:05:24.345+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.004,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.004,
+  "turn_latency_s": [
+    0.003,
+    0.001
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 1
+  },
+  "trace": "results/baseline/baseline-personal_question-s01-53b1ba.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-personal\", \"kind\": \"personal\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"grading\", \"untrusted_messages\": [\"Why did I receive a 71? Please inspect my private grade.\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-personal",
+        "reason": "private_request"
+      },
+      "output": "{\"effect\": {\"action_key\": \"7ab30e9b5104cd1fc764639745f439c0a0001dd4c374944d4b1bbfd3d210088b\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9f7aacc9bcbd73da\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"baseline-personal_question-s01-53b1ba\", \"status\": \"open\", \"updated_by\": \"baseline-personal_question-s01-53b1ba\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "7ab30e9b5104cd1fc764639745f439c0a0001dd4c374944d4b1bbfd3d210088b",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"7ab30e9b5104cd1fc764639745f439c0a0001dd4c374944d4b1bbfd3d210088b\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9f7aacc9bcbd73da\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"baseline-personal_question-s01-53b1ba\", \"status\": \"open\", \"updated_by\": \"baseline-personal_question-s01-53b1ba\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"7ab30e9b5104cd1fc764639745f439c0a0001dd4c374944d4b1bbfd3d210088b\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9f7aacc9bcbd73da\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"baseline-personal_question-s01-53b1ba\", \"status\": \"open\", \"updated_by\": \"baseline-personal_question-s01-53b1ba\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: flag SYN-FLAG-9f7aacc9bcbd73da (open); private_request",
+      "actions": [
+        "flag SYN-FLAG-9f7aacc9bcbd73da on SYN-Q-personal; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: flag SYN-FLAG-9f7aacc9bcbd73da (open); private_request",
+      "actions": [
+        "flag SYN-FLAG-9f7aacc9bcbd73da on SYN-Q-personal; open"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

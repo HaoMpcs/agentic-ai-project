@@ -1,0 +1,225 @@
+{
+  "run_id": "baseline-repeated_question-s03-7ac1ac",
+  "arm": "baseline",
+  "task": "repeated_question",
+  "task_file": "tasks/repeated_question.yaml",
+  "sweep": 3,
+  "started": "2026-11-02T02:05:52.782+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "d54ea85baeb4781fd1382f522ef4de91482ffebb",
+  "dirty": false,
+  "finished": "2026-11-02T02:05:52.826+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.005,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.005,
+  "turn_latency_s": [
+    0.004,
+    0.0
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 1,
+    "staff_flags": 0
+  },
+  "trace": "results/baseline/baseline-repeated_question-s03-7ac1ac.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-repeated\", \"kind\": \"repeated\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"untrusted_messages\": [\"The old forum says late work is never accepted. What is the current policy?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_search_public_answers",
+      "input": {
+        "topic": "late_policy"
+      },
+      "output": "{\"answers\": [{\"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"id\": \"SYN-PUBLIC-late\", \"source_ids\": [\"SYN-DOC-late\"], \"topic\": \"late_policy\", \"visibility\": \"public\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_search_materials",
+      "input": {
+        "query": "late_policy"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-4",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-late"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"claims\": {}, \"facts\": [\"Late submissions lose 10 percent per day for up to two days.\", \"Extensions require an individual decision from course staff.\"], \"id\": \"SYN-DOC-late\", \"title\": \"Late submission policy\", \"topic\": \"late_policy\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-5",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-repeated",
+        "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+        "source_ids": [
+          "SYN-DOC-late"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"e79d008e41f30ca5fd7ace14b593df2d98c0a1b1d0d3797b3b5ad4938da5ff9b\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-66376e065de5f952\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"baseline-repeated_question-s03-7ac1ac\", \"status\": \"pending\", \"updated_by\": \"baseline-repeated_question-s03-7ac1ac\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "e79d008e41f30ca5fd7ace14b593df2d98c0a1b1d0d3797b3b5ad4938da5ff9b",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-6",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"e79d008e41f30ca5fd7ace14b593df2d98c0a1b1d0d3797b3b5ad4938da5ff9b\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-66376e065de5f952\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"baseline-repeated_question-s03-7ac1ac\", \"status\": \"pending\", \"updated_by\": \"baseline-repeated_question-s03-7ac1ac\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-repeated"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"e79d008e41f30ca5fd7ace14b593df2d98c0a1b1d0d3797b3b5ad4938da5ff9b\", \"body\": \"Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.\", \"channel_id\": null, \"id\": \"SYN-REPLY-66376e065de5f952\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-repeated\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-late\"], \"stamp\": \"baseline-repeated_question-s03-7ac1ac\", \"status\": \"pending\", \"updated_by\": \"baseline-repeated_question-s03-7ac1ac\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-repeated: reply SYN-REPLY-66376e065de5f952 (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-66376e065de5f952 on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-repeated: reply SYN-REPLY-66376e065de5f952 (pending); sources SYN-DOC-late",
+      "actions": [
+        "reply SYN-REPLY-66376e065de5f952 on SYN-Q-repeated; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

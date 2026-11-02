@@ -20,17 +20,17 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Verdict:** <keep or drop, and the switch's setting>
 - **Links:** <results/<arm>/ for every arm>
 
-## Pass 1 · Pending real baseline evidence
+## Pass 1 · Remove the failing batch plan
 
-- **Pass:** 1; pending evidence-selected improvement.
-- **Owner:** Pending confirmation by Jingyu Huang, Hao Shi and Yani Wu.
-- **Problem:** Pending inspection of the real-model baseline; no measured problem asserted.
-- **Evidence:** Pending; no real baseline run IDs or failure traces exist.
-- **Why this fix:** Pending application of the lecture criteria to an observed baseline failure.
-- **Prediction:** pending
-- **Arms:** Pending; new pass1-off and pass1-on arms will vary exactly one implemented switch on identical code.
-- **Held constant:** Provider, model, settings, committed code, ten main tasks, prompts except the selected switch, price sheet and checks.
-- **Tasks and sweeps:** Ten main tasks in tasks/; three sweeps per arm (30 runs each), after baseline and pushed prediction.
+- **Pass:** 1; turn the batch plan off.
+- **Owner:** Hao Shi.
+- **Problem:** The real baseline passed 27/30 runs, but batch_questions passed 0/3. Every batch failed in planning or runtime placeholder filling before a reply was written.
+- **Evidence:** baseline-batch_questions-s01-63f59a trace line 8; baseline-batch_questions-s02-73602d trace lines 8 and 47; baseline-batch_questions-s03-d48388 trace line 8.
+- **Why this fix:** Lecture 2 says a plan does not help when it adds more failure cost than the validator or diff catches. The bounded loop can investigate and repair one call at a time.
+- **Prediction:** pass1-plan-off will pass at least 2/3 runs with 0 plan rejections; pass1-plan-on will pass at most 1/3 with at least 2 plan rejections.
+- **Arms:** results/pass1-plan-off with plan.batch=off; results/pass1-plan-on with plan.batch=on. All other switches stay at their recorded defaults.
+- **Held constant:** Gemini 3.5 Flash-Lite, settings, committed code, batch task, other switches, price sheet and check.
+- **Tasks and sweeps:** tasks/batch_questions.yaml, three sweeps per arm, after this prediction is committed and pushed.
 - **Results:** pending
 - **Difference:** pending
 - **Verdict:** pending

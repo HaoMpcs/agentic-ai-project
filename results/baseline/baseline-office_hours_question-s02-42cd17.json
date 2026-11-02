@@ -1,0 +1,207 @@
+{
+  "run_id": "baseline-office_hours_question-s02-42cd17",
+  "arm": "baseline",
+  "task": "office_hours_question",
+  "task_file": "tasks/office_hours_question.yaml",
+  "sweep": 2,
+  "started": "2026-11-02T02:05:37.329+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "d54ea85baeb4781fd1382f522ef4de91482ffebb",
+  "dirty": false,
+  "finished": "2026-11-02T02:05:37.375+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.004,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.004,
+  "turn_latency_s": [
+    0.003,
+    0.001
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 1,
+    "staff_flags": 0
+  },
+  "trace": "results/baseline/baseline-office_hours_question-s02-42cd17.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-office\", \"kind\": \"office_hours\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"office_hours\", \"untrusted_messages\": [\"Where and when are office hours?\"]}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "office_hours"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-office"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"claims\": {}, \"facts\": [\"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\"], \"id\": \"SYN-DOC-office\", \"title\": \"Office hours and location\", \"topic\": \"office_hours\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-4",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-office",
+        "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+        "source_ids": [
+          "SYN-DOC-office"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"57570487d6a4b2e927f96d14e19399765a9d2e9203186d4d82b92544f2de400a\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-62b43f7bfae2aba7\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"baseline-office_hours_question-s02-42cd17\", \"status\": \"pending\", \"updated_by\": \"baseline-office_hours_question-s02-42cd17\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": "57570487d6a4b2e927f96d14e19399765a9d2e9203186d4d82b92544f2de400a",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-5",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"57570487d6a4b2e927f96d14e19399765a9d2e9203186d4d82b92544f2de400a\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-62b43f7bfae2aba7\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"baseline-office_hours_question-s02-42cd17\", \"status\": \"pending\", \"updated_by\": \"baseline-office_hours_question-s02-42cd17\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-office"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"57570487d6a4b2e927f96d14e19399765a9d2e9203186d4d82b92544f2de400a\", \"body\": \"Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.\", \"channel_id\": null, \"id\": \"SYN-REPLY-62b43f7bfae2aba7\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-office\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-office\"], \"stamp\": \"baseline-office_hours_question-s02-42cd17\", \"status\": \"pending\", \"updated_by\": \"baseline-office_hours_question-s02-42cd17\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-office: reply SYN-REPLY-62b43f7bfae2aba7 (pending); sources SYN-DOC-office",
+      "actions": [
+        "reply SYN-REPLY-62b43f7bfae2aba7 on SYN-Q-office; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-office: reply SYN-REPLY-62b43f7bfae2aba7 (pending); sources SYN-DOC-office",
+      "actions": [
+        "reply SYN-REPLY-62b43f7bfae2aba7 on SYN-Q-office; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "run_id": "baseline-conceptual_question-s02-98bff1",
+  "arm": "baseline",
+  "task": "conceptual_question",
+  "task_file": "tasks/conceptual_question.yaml",
+  "sweep": 2,
+  "started": "2026-11-02T02:05:32.317+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "on",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "d54ea85baeb4781fd1382f522ef4de91482ffebb",
+  "dirty": false,
+  "finished": "2026-11-02T02:05:37.187+00:00",
+  "tokens": {
+    "input": 11321,
+    "output": 356,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 11677
+  },
+  "cost_usd": 0.004286,
+  "unpriced_calls": 0,
+  "model_calls": 7,
+  "latency_s": 4.811,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 4.811,
+  "turn_latency_s": [
+    4.809,
+    0.002
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "agent_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 1,
+    "staff_flags": 0
+  },
+  "trace": "results/baseline/baseline-conceptual_question-s02-98bff1.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": null,
+      "id": "call_2997",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-concept"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-concept\", \"kind\": \"conceptual\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"search\", \"untrusted_messages\": [\"Why can greedy best-first search miss an optimal solution? Compare uniform-cost search.\"]}}",
+      "is_error": false,
+      "latency_s": 0.002,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 4,
+      "plan_step": null,
+      "id": "call_7412",
+      "name": "course_search_materials",
+      "input": {
+        "query": "search"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-optimal\", \"title\": \"Uniform-cost comparison\", \"topic\": \"search\", \"version\": 1}, {\"active\": true, \"id\": \"SYN-DOC-search\", \"title\": \"Search strategies\", \"topic\": \"search\", \"version\": 2}]}",
+      "is_error": false,
+      "latency_s": 0.002,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 6,
+      "plan_step": null,
+      "id": "call_15626",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-optimal"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\", \"claims\": {}, \"facts\": [\"Uniform-cost search orders the frontier by accumulated path cost.\", \"With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\"], \"id\": \"SYN-DOC-optimal\", \"title\": \"Uniform-cost comparison\", \"topic\": \"search\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 7,
+      "plan_step": null,
+      "id": "call_15627",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-search"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution.\", \"claims\": {}, \"facts\": [\"Greedy best-first search chooses the frontier node with the lowest heuristic estimate.\", \"It can ignore path cost and therefore does not guarantee an optimal solution.\"], \"id\": \"SYN-DOC-search\", \"title\": \"Search strategies\", \"topic\": \"search\", \"version\": 2, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 9,
+      "plan_step": null,
+      "id": "call_21436",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-concept",
+        "source_ids": [
+          "SYN-DOC-search",
+          "SYN-DOC-optimal"
+        ],
+        "body": "Greedy best-first search chooses the frontier node with the lowest heuristic estimate, and it can ignore path cost and therefore does not guarantee an optimal solution. In contrast, uniform-cost search orders the frontier by accumulated path cost, and with nonnegative edge costs and suitable duplicate handling, it finds an optimal solution."
+      },
+      "output": "{\"checkpoint\": \"draft_supported\", \"error\": \"Revise draft. Unsupported text: use complete source fact sentences verbatim; omit added claims.\", \"repairable\": true}",
+      "is_error": true,
+      "latency_s": 0.004,
+      "error_class": "permanent",
+      "idempotency_key": "91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 11,
+      "plan_step": null,
+      "id": "call_20218",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-concept",
+        "source_ids": [
+          "SYN-DOC-search",
+          "SYN-DOC-optimal"
+        ],
+        "body": "Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution. Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution."
+      },
+      "output": "{\"effect\": {\"action_key\": \"91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8\", \"body\": \"Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution. Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\", \"channel_id\": null, \"id\": \"SYN-REPLY-34f6b6ca6d4eb374\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-concept\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-search\", \"SYN-DOC-optimal\"], \"stamp\": \"baseline-conceptual_question-s02-98bff1\", \"status\": \"pending\", \"updated_by\": \"baseline-conceptual_question-s02-98bff1\"}}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": "91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 13,
+      "plan_step": null,
+      "id": "call_9413",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-concept"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8\", \"body\": \"Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution. Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\", \"channel_id\": null, \"id\": \"SYN-REPLY-34f6b6ca6d4eb374\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-concept\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-search\", \"SYN-DOC-optimal\"], \"stamp\": \"baseline-conceptual_question-s02-98bff1\", \"status\": \"pending\", \"updated_by\": \"baseline-conceptual_question-s02-98bff1\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-8",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-concept"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8\", \"body\": \"Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution. Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\", \"channel_id\": null, \"id\": \"SYN-REPLY-34f6b6ca6d4eb374\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-concept\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-search\", \"SYN-DOC-optimal\"], \"stamp\": \"baseline-conceptual_question-s02-98bff1\", \"status\": \"pending\", \"updated_by\": \"baseline-conceptual_question-s02-98bff1\"}]}",
+      "is_error": false,
+      "latency_s": 0.001,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "workflow"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-concept"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"91ca89c9def75c7d23511117a969f115c42f33992e4f2a2f526978ccbcea54d8\", \"body\": \"Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution. Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution.\", \"channel_id\": null, \"id\": \"SYN-REPLY-34f6b6ca6d4eb374\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-concept\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-search\", \"SYN-DOC-optimal\"], \"stamp\": \"baseline-conceptual_question-s02-98bff1\", \"status\": \"pending\", \"updated_by\": \"baseline-conceptual_question-s02-98bff1\"}]}",
+      "is_error": false,
+      "latency_s": 0.0,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-concept: reply SYN-REPLY-34f6b6ca6d4eb374 (pending); sources SYN-DOC-search, SYN-DOC-optimal",
+      "actions": [
+        "reply SYN-REPLY-34f6b6ca6d4eb374 on SYN-Q-concept; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-concept: reply SYN-REPLY-34f6b6ca6d4eb374 (pending); sources SYN-DOC-search, SYN-DOC-optimal",
+      "actions": [
+        "reply SYN-REPLY-34f6b6ca6d4eb374 on SYN-Q-concept; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}
