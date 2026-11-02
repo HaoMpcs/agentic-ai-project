@@ -43,11 +43,11 @@ experiment status comes from M1 Part 4, the ledger and retained results.
 | Four gates and cost evidence | 9 | Documented | M1 four gates and A1 citation | Hao Shi A1 gives m=3.72; assumptions and break-even are explicit | Values are estimates, not current-domain causal measurements |
 | Component control-flow classifications | 2 | Documented | M1 build table | Source inspection and path tests | Lecture slide numbers unavailable |
 | Action grid, undo, approval line, trifecta | 6 | Documented/implemented | M1 action grid; docs/TOOLS.md | No publishing tool; manual review/send/status tests | Official criteria confirmation |
-| Planning/critique decisions with evidence | 6 | Partial | M1 Part 2, decision and step-sizing tables | A2 four arms x18; negative quality result and held-draft evidence cited | Current-domain experimental evidence and remaining decision/write-up requirements |
+| Planning/critique decisions with evidence | 6 | Complete | M1 Part 2, decision and step-sizing tables | A2 four arms x18; plan/critique choices, checkpoints, bounds, tests and inventory documented | None |
 | Execution-state awareness | 3 | Documented | M1 state inventory | Memory/trace/SQLite implementation and tests | No M2 continuation claimed |
 | Complete tool table and contracts | 5 | Documented/implemented | docs/TOOLS.md and executable schemas | Registry tests; write verification inventory | Official criteria confirmation |
-| Examples, strict, measurements, write verification | 5 | Partial | Selective switches, tool_overhead.py | Real definition measurement; fixed-order, error and read-back tests | Finish the required per-tool examples/strict decision table |
-| Named team ownership | 3 | Pending confirmation | M1 The team | Names supplied; existing HaoMpcs commit preserved | Actual module/experiment/report responsibilities and account mapping |
+| Examples, strict, measurements, write verification | 5 | Partial | Per-tool decision table, selective switches, tool_overhead.py | Real definition measurement; fixed-order, error and read-back tests | Criteria ask for one enabled helpful example; current evidence leaves every example off |
+| Named team ownership | 3 | Complete | M1 Part headings and The team | Hao Shi: Parts 1 and 4; Jingyu Huang: Part 2; Yani Wu: Part 3 | None |
 
 Total rubric: 100 points (50 build/evaluation +50 documentation). No total score
 is asserted. Passing structural checks does not resolve the rows marked partial,
@@ -76,14 +76,10 @@ blocked or pending.
 
 ## External completion dependencies
 
-1. Finish the Part 3 per-tool examples/strict decisions and name its owner.
-2. Confirm team responsibilities and required collaborator/course-staff access.
+1. Resolve the Part 3 example requirement without contradicting the retained baseline and Pass 1 settings.
+2. Confirm required collaborator/course-staff access.
    Git remotes alone do not prove access. No collaborator list was fabricated.
-3. The user must complete the course-required AI assistance disclosure at the
-   end of M1.md in their separate stage. No section was created/populated and no
-   checker was weakened. The starter checker does not enforce that disclosure,
-   so its passing result cannot establish academic readiness.
-4. After evidence and disclosure, run final checks, create the final milestone
+3. After the remaining evidence is complete, run final checks, create the final milestone
    commit, repeat the final clean checkout, and obtain authorization before
    publishing tag `m1` or pushing commits/tags. Canvas requires the team's repo URL.
 

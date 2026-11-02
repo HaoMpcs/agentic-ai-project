@@ -116,10 +116,9 @@ the existing records and do not rerun an arm under an existing name.
 
 Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
 for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
-These are separate from this project's real-model baseline and pass. Full
-lecture decks, final team responsibilities, collaborator access and the team's
-required AI assistance disclosure remain outstanding. The disclosure is
-reserved for the user's separate completion. No final milestone tag is claimed.
+These are separate from this project's real-model baseline and pass. Team
+responsibilities and AI assistance are recorded in M1.md. Collaborator access
+and the final milestone tag remain to be confirmed.
 
 ---
 
