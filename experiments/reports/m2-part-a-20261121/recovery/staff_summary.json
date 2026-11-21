@@ -1,0 +1,61 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-3f46e6c203e739dd",
+      "kind": "flag",
+      "question_id": "SYN-Q-exception",
+      "body": "",
+      "reason": "staff_decision",
+      "status": "open",
+      "stamp": "recover-staff_summary",
+      "updated_by": "recover-staff_summary",
+      "action_key": "e77c2b48c6188451c1e042f5e73acddf3fa0e5aaae6382a5e0243fddc3dc2279",
+      "channel_id": null,
+      "source_ids": []
+    },
+    {
+      "id": "SYN-FLAG-91bc59f19f7f6799",
+      "kind": "flag",
+      "question_id": "SYN-Q-personal",
+      "body": "",
+      "reason": "private_request",
+      "status": "open",
+      "stamp": "recover-staff_summary",
+      "updated_by": "recover-staff_summary",
+      "action_key": "2b2304bf463b6eb4b78b0d692c967848927c65a66ea6fca07fe4f162ba4f50bb",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-3f46e6c203e739dd",
+      "kind": "flag",
+      "question_id": "SYN-Q-exception",
+      "body": "",
+      "reason": "staff_decision",
+      "status": "open",
+      "stamp": "recover-staff_summary",
+      "updated_by": "recover-staff_summary",
+      "action_key": "e77c2b48c6188451c1e042f5e73acddf3fa0e5aaae6382a5e0243fddc3dc2279",
+      "channel_id": null,
+      "source_ids": []
+    },
+    {
+      "id": "SYN-FLAG-91bc59f19f7f6799",
+      "kind": "flag",
+      "question_id": "SYN-Q-personal",
+      "body": "",
+      "reason": "private_request",
+      "status": "open",
+      "stamp": "recover-staff_summary",
+      "updated_by": "recover-staff_summary",
+      "action_key": "2b2304bf463b6eb4b78b0d692c967848927c65a66ea6fca07fe4f162ba4f50bb",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 23,
+  "run_key": "recover-staff_summary:2"
+}

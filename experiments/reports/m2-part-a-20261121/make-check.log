@@ -1,0 +1,9 @@
+.venv/bin/python -m harness.check
+make check: the project's structure, no tokens
+
+One path ........... ok: the console page and run.py reach the agent only through agent.service
+Switches recorded .. ok: 46 run records, each with every one of 15 switches
+Tasks valid ........ ok: 13 task files
+Ledger ............. ok: 1 entry
+
+All four checks pass.

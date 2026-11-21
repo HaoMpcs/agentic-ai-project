@@ -1,0 +1,35 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-64f28f3ccf5dcb28",
+      "kind": "flag",
+      "question_id": "SYN-Q-personal",
+      "body": "",
+      "reason": "private_request",
+      "status": "open",
+      "stamp": "recover-personal_question",
+      "updated_by": "recover-personal_question",
+      "action_key": "abdc54a1fe428fa67bc371c5118fa7cc581974cd79ef07bc600d9809ae315347",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-64f28f3ccf5dcb28",
+      "kind": "flag",
+      "question_id": "SYN-Q-personal",
+      "body": "",
+      "reason": "private_request",
+      "status": "open",
+      "stamp": "recover-personal_question",
+      "updated_by": "recover-personal_question",
+      "action_key": "abdc54a1fe428fa67bc371c5118fa7cc581974cd79ef07bc600d9809ae315347",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 9,
+  "run_key": "recover-personal_question:1"
+}

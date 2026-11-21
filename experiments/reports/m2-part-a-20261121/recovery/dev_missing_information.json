@@ -1,0 +1,35 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-ee386972a4a359ee",
+      "kind": "flag",
+      "question_id": "SYN-Q-unknown",
+      "body": "",
+      "reason": "missing_information",
+      "status": "open",
+      "stamp": "recover-dev_missing_information",
+      "updated_by": "recover-dev_missing_information",
+      "action_key": "384009a085dd1d7ba0c4bff432677544bd31aa68ade60ca0dcecd340661b28c7",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-ee386972a4a359ee",
+      "kind": "flag",
+      "question_id": "SYN-Q-unknown",
+      "body": "",
+      "reason": "missing_information",
+      "status": "open",
+      "stamp": "recover-dev_missing_information",
+      "updated_by": "recover-dev_missing_information",
+      "action_key": "384009a085dd1d7ba0c4bff432677544bd31aa68ade60ca0dcecd340661b28c7",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 21,
+  "run_key": "recover-dev_missing_information:1"
+}

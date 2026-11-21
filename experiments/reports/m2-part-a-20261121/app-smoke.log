@@ -1,0 +1,31 @@
+.venv/bin/python -m harness.seed 
+sandbox reset and seeded in /var/folders/25/vrtwwwk11zz1yh2tj4wg878c0000gn/T/m2-a-http-9iuevt3e/state, with your demo data
+PROJECT_BACKEND=tests.m2_fakes:RuntimeAgent .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 55979
+INFO:     Started server process [76371]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:55979 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55985 - "GET /console HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55985 - "POST /console/new HTTP/1.1" 303 See Other
+INFO:     127.0.0.1:55985 - "POST /console/s-20261121-104331-1031/turn HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55985 - "GET /threads?thread=SYN-Q-clarify HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [76371]
+make: *** [app] Terminated: 15
+PROJECT_BACKEND=tests.m2_fakes:RuntimeAgent .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 55979
+INFO:     Started server process [76382]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:55979 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55988 - "GET /console HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /console HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /console/s-20261121-104331-1031 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "POST /threads/reply HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "POST /console/s-20261121-104331-1031/turn HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [76382]
+make: *** [serve] Terminated: 15

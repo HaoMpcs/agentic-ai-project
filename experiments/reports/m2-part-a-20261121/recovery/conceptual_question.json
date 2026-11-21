@@ -1,0 +1,41 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-435871f29300b8d0",
+      "kind": "reply",
+      "question_id": "SYN-Q-concept",
+      "body": "Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution. Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-conceptual_question",
+      "updated_by": "recover-conceptual_question",
+      "action_key": "ef31dac888e2908d45d333481a1dc3dcd1629fc6ebba353c57fa66f72896a1c4",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-optimal",
+        "SYN-DOC-search"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-435871f29300b8d0",
+      "kind": "reply",
+      "question_id": "SYN-Q-concept",
+      "body": "Uniform-cost search orders the frontier by accumulated path cost. With nonnegative edge costs and suitable duplicate handling, it finds an optimal solution. Greedy best-first search chooses the frontier node with the lowest heuristic estimate. It can ignore path cost and therefore does not guarantee an optimal solution.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-conceptual_question",
+      "updated_by": "recover-conceptual_question",
+      "action_key": "ef31dac888e2908d45d333481a1dc3dcd1629fc6ebba353c57fa66f72896a1c4",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-optimal",
+        "SYN-DOC-search"
+      ]
+    }
+  ],
+  "crash_trace_lines": 32,
+  "run_key": "recover-conceptual_question:1"
+}

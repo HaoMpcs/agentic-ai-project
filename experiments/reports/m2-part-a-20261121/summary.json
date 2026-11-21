@@ -1,0 +1,230 @@
+{
+  "scope": "Milestone 2 Part A only; free mechanism verification, not an evaluation arm",
+  "owner": "Jingyu Huang (jyhuang28)",
+  "read_date": "2026-11-21",
+  "timezone": "America/Chicago",
+  "base_commit": "216f0b6831f9f90dc034fcb8aaa24a3c406807ce",
+  "branch": "codex/m2-runtime",
+  "working_tree_source_hashes": {
+    "agent/__init__.py": "7d59e6ab3f7358ad61c2809af3728e38145b50389b43349db503e8944802b17e",
+    "agent/bounds.py": "336c3b6375e61b32623b79b996b51efac965d42de5d7a42fe5b99fffe88aafd6",
+    "agent/code_calls.py": "56ff10f5a5a166d21678f1918767a4f4f43932adb8ff49305def373dde08cb69",
+    "agent/code_worker.py": "4f92368353fd41a44f1ed9aea7b838c2470a444b715ed12734d891b5b8cbcc6c",
+    "agent/critique.py": "ee5e260999c3a18676c4493110148110700a55b1c5abad256c8b7eb3144f5198",
+    "agent/execution.py": "bd051cd371ed8f6e76892ddd893f487bcb7ca78a9539a0289a597890348cd361",
+    "agent/mcp_transport.py": "59f74c10631c2305cf5111225835b62afa96bb0c96729ae6cb5de5e6b3b694a5",
+    "agent/planning.py": "94d87426a37e358e3d25b1ecf80491602cf1366bde0c5cdb6ad5b7641d4d41bb",
+    "agent/service.py": "f7b413ce0d97141250c93dd33edc761a06c13d70bd25600ef12bc2acbe7b7de1",
+    "agent/tools.py": "782841b337d5a199a510cfaeb9921fbcfde4fd8ecaab049d85fab703b246ef4d",
+    "channel/__init__.py": "051e03a436cbe144dde39326b592239e832292f1891eb237066a422639589242",
+    "checks/__init__.py": "f68fb6ad59c5ac31601b03f729d4bf8f1de2f332580230b7b213222d2744cf12",
+    "checks/course.py": "bcbbd1e02bd7057538f800c524fad85756b4ad01b633f19b1358e1239320e2c6",
+    "checks/example.py": "12db5a1a7fc243454faf33676933bdf6360a66f1fbdda3ea24866b833097aab3",
+    "checks/exchange.py": "a091c90270b5742ab7f21266efee35d07880693872d74cd896fd4bb92396cdde",
+    "checks/helpers.py": "2fccae6c985dad32390df2e5e20308f1d789cb7f6e2a8ebddf0a4f7510316e56",
+    "experiments/analysis/agent_test_report.py": "da762697af66714658a0382f9d820edd20076243dca974ca2556126313ed2610",
+    "experiments/analysis/assignment_evidence.py": "e5abfe6247a3a7320860be95fa747da1fe37e376ba005b37ea022372d17c185a",
+    "experiments/analysis/m2_runtime.py": "c1325b0933bbc39d302bcd7355095561683035c21cd28be1e84a0fa481685d63",
+    "experiments/analysis/summarize.py": "46fd6771fc7d15b1c7ba05732928bbb61afb3ab3f432b9e6964d4afe9c69aeb3",
+    "experiments/analysis/tool_overhead.py": "0f8483fdca5b06c2e23ef4097567926becf006d8a32b5efdc6c3ed86288a985b",
+    "harness/__init__.py": "e5ece49a2e56f4dce4e62a3bdc7bdc2c33e4d00e38ff476903a72db9e1284b8a",
+    "harness/backends.py": "63548c76f3b7d64c2e57eec660d74a8c45cea2de16e990272ce2f751c86c7833",
+    "harness/check.py": "714926a2e9f4c50235372c47f84f33c057e60e454d1e6ee67f3b123034b6964d",
+    "harness/client.py": "5df57bfec53c31be623b0d303d5a21dfe58e9f282179c1250b93739baeb201c6",
+    "harness/formats.py": "3c92a6ea4da3426c7a3147a307f92487cc1682fd10e082e8574ea6740da171d8",
+    "harness/paths.py": "86b38734caefb90c8972ba4e3b8b3ceea5bbe5cfc75a8ca0564880c8882f96e7",
+    "harness/ping.py": "d9fa7bf666e7b7e45cdff6994f4230d933d82f1d9b6e26e6c4ffbdcd39175575",
+    "harness/pricing.py": "f44d8c3d4176cacb8a1618e92012b9af23446db57233f3ea08080eeccf60cf40",
+    "harness/records.py": "c1125896f078cfef889a3369c152e488b65fbb5e2cad445669aaff651314c650",
+    "harness/runner.py": "e38f7fa9205079fe612c392263dad33193a4b376cdcd3c860662b959feae8fb6",
+    "harness/runtime.py": "c209761dab0006c058095f959ded3fb2bff20474782aad871e1d6058dc24cf34",
+    "harness/schema.py": "7ef29d225716af9d7dfe57b268a935f81c0d800c5a1cbe44ba1d45d28a2a6a75",
+    "harness/scripted.py": "ee1b361b975a3c27005b649fdf79c0c8bbb7507eb52e2c10a04f99f772fe5536",
+    "harness/seed.py": "3ccdf5595ee4c5ad2b267e311923646eb1d8018b91750041ce54bf2a6cf7027f",
+    "harness/settings.py": "804901fe2cb2157845796f9d000d343088cc707092d5f2e2bbf4ac7ae0918a60",
+    "harness/summarize.py": "9e088a29e474aa3c9ca8ee2d5ae31e02e7e4acf3a6e95fdcaeaf5c1ef114c79d",
+    "harness/switches.py": "d8184b1dfe0f8e9857b5656758a096f81b6cea38deb57ffcb5dc03dd3346d3a7",
+    "harness/tasks.py": "c379ee1fdfd08d870df7dc8cb9ba2eb324284603450fdc47dd2217c362979e26",
+    "harness/trace.py": "b02b54c762dfcd5e1727586e55741b5e6738a74484af79325aa1eda654709b09",
+    "harness/turns.py": "a269283b833f1511e9159e008b01f78d614b89dafc3fd541423708541d304087",
+    "requirements.txt": "b5cba8f89c4dad5c74ec7757d008b57dc736bad6324f42edf1b2d97b6ad0342a",
+    "run.py": "bdd3604af8c236f67957b63326d28a79ab9118a737b215e32ea9277b87f33170",
+    "sandbox/__init__.py": "98e2d85f3df3dba22303223838ed431493f37d8ba20b016382b52281f53211b0",
+    "sandbox/course.py": "c9bc22f9e6a06bae9c4d2216e14170060f004ad86bc94e7c7af3edc0dbc7b3c5",
+    "sandbox/data.py": "0db5b95f42acb6ef71672076ae18f82583f8d838194e3f64feb8c965b05d59fe",
+    "sandbox/exchange.py": "9ed1c4be9d69aec045dd6d74b6be04bb39253704b4634393fc4164249422d930",
+    "sandbox/execution.py": "dd6afcfcc8589d6e197282307cdf834981c7f2cce9053fc47b80fef44906aa94",
+    "sandbox/queue.py": "5850bd74688e416937e3f521e47a712174ba2e2e4920fba35d7f51508bd6bebb",
+    "sandbox/seed.py": "85371064d7cfd018322b3cb3ee393dc3efa95568d1a5cb35a4f897176d74cd30",
+    "settings.yaml": "6c0145dbdf886b7f3190ce62551e955dc536a71e5689c30ec90452de944a9f53",
+    "switches.yaml": "49efa3a56a07db33ec5eee592773f1cca8cc907e2797ee23623e4366fdf4721e",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/fakes.py": "a5a2b2a73d10fa1fe31cdff4ba13bd98addafe5a1191371d51d8ad179240f84b",
+    "tests/fixtures/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/fixtures/checks.py": "fc8379b8016a6029bba91f6ced1a8cdccf6ad806bd672f1fe192273d704c5ba6",
+    "tests/m2_fakes.py": "ed2495cd9a7f5c1c23a634c17b049022105eb82da45e8b5f96d8ee0dbfaea8bf",
+    "tests/support.py": "67fef4599714a265eece8c482b488fb63dce1fe5108231b31ec93dffe5eb802d",
+    "tests/test_agent_contracts.py": "ca12c27a750d8a280d13310e2720e957ac593cc1299ae6026a03367f8ef7f39e",
+    "tests/test_analysis.py": "c7459e2a21d9a893f15975dcc8b1d3474f2ead540b308347191ea33df0a66804",
+    "tests/test_app.py": "e2e6c677276e4ebe379ca1b43b82c5d7fc2e6751790437c2fe7ac9e42ba49cd8",
+    "tests/test_assignment_evidence.py": "322267fbced306156035b2f9f13bc84543a6b94e532c030bc39f907541659fde",
+    "tests/test_course.py": "6798198c270a4c444c061642e555acf7217de9cf2df2b47d711ae815d28776c1",
+    "tests/test_harness.py": "5cc272e0144de08d572bea0731459b1d41f12ef94e1d9b3b1de5f157f18940dc",
+    "tests/test_m2_runtime.py": "310143fc273e5bfe3c5682231764a84506a7f2a85c933b41f3cf8010f33cfdb6",
+    "tests/test_one_path.py": "26b15a3d15758310a1250fb77579e0770b4f23493bba5bf0b1cd9e62a2b0ce9b",
+    "tests/test_planning.py": "20e1bfac1da8a46445713584a6c310fb795261b7d0f7e7b4efc0278fd9018c24",
+    "tests/test_product.py": "4e671991d6e7041072275d538fffc2098b154201d48931d0322f997b86cf619c"
+  },
+  "recovery": {
+    "kind": "free mechanism tests; not a real-model baseline or improvement pass",
+    "recovery_cases": 13,
+    "duplicates": 0,
+    "completed_execution_calls_repeated": 0,
+    "cases": [
+      {
+        "task": "ambiguous_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "batch_questions",
+        "effects_before": 0,
+        "effects_after_crash": 3,
+        "effects_after_resume": 3,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "conceptual_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "deadline_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "dev_checkpoint_revision",
+        "effects_before": 0,
+        "effects_after_crash": 2,
+        "effects_after_resume": 2,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "dev_missing_information",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "exception_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "office_hours_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "personal_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "repeated_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "staff_summary",
+        "effects_before": 0,
+        "effects_after_crash": 2,
+        "effects_after_resume": 2,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "topic_clarification",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      },
+      {
+        "task": "unauthorized_question",
+        "effects_before": 0,
+        "effects_after_crash": 1,
+        "effects_after_resume": 1,
+        "duplicate_effects": 0,
+        "completed_execution_calls_repeated": 0
+      }
+    ],
+    "events": {
+      "mcp_request": 103,
+      "write_no": 18,
+      "write_yes": 13,
+      "call_reused": 21
+    },
+    "historical_assignment4_reported_matrices": {
+      "matrix_derived": {
+        "cases": 10,
+        "one_comment_cases": 10,
+        "duplicate_comment_cases": 0
+      },
+      "matrix_uuid": {
+        "cases": 10,
+        "one_comment_cases": 8,
+        "duplicate_comment_cases": 2
+      }
+    },
+    "historical_source_files_hash_verified": 2
+  },
+  "historical_tool_bill": {
+    "source": "M1 default definitions: 808 API-measured input tokens per call",
+    "runs": 30,
+    "model_calls": 45,
+    "mean_calls_per_run": 1.5,
+    "estimated_definition_tokens_per_run": 1212.0,
+    "scope": "Historical default surface only, not new M2 measurements or split-role costs"
+  },
+  "full_suite": {
+    "tests": 127,
+    "failures": 0,
+    "errors": 0,
+    "log": "make-test.log"
+  },
+  "part_a_test_cases": 25,
+  "structural_checks": {
+    "passed": 4,
+    "log": "make-check.log"
+  },
+  "compileall_passed": true,
+  "diff_check_passed": true
+}

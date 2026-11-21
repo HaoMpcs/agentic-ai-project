@@ -1,0 +1,39 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-2053701e88586361",
+      "kind": "reply",
+      "question_id": "SYN-Q-clarify",
+      "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-topic_clarification",
+      "updated_by": "recover-topic_clarification",
+      "action_key": "6c5f65ef7da6aa997413f5928a0fab27996d3d6d11bb398a367faef6069df0e6",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-deadline"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-2053701e88586361",
+      "kind": "reply",
+      "question_id": "SYN-Q-clarify",
+      "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-topic_clarification",
+      "updated_by": "recover-topic_clarification",
+      "action_key": "6c5f65ef7da6aa997413f5928a0fab27996d3d6d11bb398a367faef6069df0e6",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-deadline"
+      ]
+    }
+  ],
+  "crash_trace_lines": 28,
+  "run_key": "recover-topic_clarification:1"
+}

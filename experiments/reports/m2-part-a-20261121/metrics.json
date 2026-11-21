@@ -1,0 +1,139 @@
+{
+  "kind": "free mechanism tests; not a real-model baseline or improvement pass",
+  "recovery_cases": 13,
+  "duplicates": 0,
+  "completed_execution_calls_repeated": 0,
+  "cases": [
+    {
+      "task": "ambiguous_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "batch_questions",
+      "effects_before": 0,
+      "effects_after_crash": 3,
+      "effects_after_resume": 3,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "conceptual_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "deadline_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "dev_checkpoint_revision",
+      "effects_before": 0,
+      "effects_after_crash": 2,
+      "effects_after_resume": 2,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "dev_missing_information",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "exception_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "office_hours_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "personal_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "repeated_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "staff_summary",
+      "effects_before": 0,
+      "effects_after_crash": 2,
+      "effects_after_resume": 2,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "topic_clarification",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    },
+    {
+      "task": "unauthorized_question",
+      "effects_before": 0,
+      "effects_after_crash": 1,
+      "effects_after_resume": 1,
+      "duplicate_effects": 0,
+      "completed_execution_calls_repeated": 0
+    }
+  ],
+  "events": {
+    "mcp_request": 103,
+    "write_no": 18,
+    "write_yes": 13,
+    "call_reused": 21
+  },
+  "historical_assignment4_reported_matrices": {
+    "matrix_derived": {
+      "cases": 10,
+      "one_comment_cases": 10,
+      "duplicate_comment_cases": 0
+    },
+    "matrix_uuid": {
+      "cases": 10,
+      "one_comment_cases": 8,
+      "duplicate_comment_cases": 2
+    }
+  },
+  "historical_source_files_hash_verified": 2,
+  "historical_tool_bill": {
+    "source": "M1 default definitions: 808 API-measured input tokens per call",
+    "runs": 30,
+    "model_calls": 45,
+    "mean_calls_per_run": 1.5,
+    "estimated_definition_tokens_per_run": 1212.0,
+    "scope": "Historical default surface only, not new M2 measurements or split-role costs"
+  }
+}
