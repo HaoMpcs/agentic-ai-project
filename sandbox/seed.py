@@ -1,8 +1,9 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Deterministic synthetic records and initial outside messages for each run."""
 from __future__ import annotations
 
 import channel
-from sandbox import course
+from sandbox import course, execution
 from sandbox.data import DEMO_INPUTS, DOCUMENTS, NOW
 
 PARALLEL_SAFE = True
@@ -10,8 +11,9 @@ PARALLEL_SAFE = True
 
 def reset() -> None:
     channel.reset()
+    execution.reset()
     with course.db() as conn:
-        for table in ("records", "effects", "audit"):
+        for table in ("records", "effects", "audit", "compensations"):
             conn.execute(f"DELETE FROM {table}")
 
 
@@ -35,7 +37,9 @@ def seed(task: dict | None) -> None:
             if kind not in course.KINDS:
                 raise ValueError(f"Unknown trusted question kind {kind}")
             course.put_record("question", {"id": identifier, "student_id": item.get("from", "SYN-STUDENT-001"),
-                             "kind": kind, "topic": item.get("topic", "unknown"), "received_at": NOW})
+                             "kind": kind, "topic": item.get("topic", "unknown"), "received_at": NOW,
+                             "requires_topic": bool(item.get("requires_topic", False)),
+                             "topic_options": item.get("topic_options", [])})
             channel.receive(identifier, str(item.get("text", "")), sender=item.get("from", "SYN-STUDENT-001"))
     if task:
         for doc in task.get("documents", []):

@@ -1,3 +1,4 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Validated model-selected plans; deterministic executor and bounded revision."""
 from __future__ import annotations
 
@@ -150,6 +151,8 @@ def execution_diff(plan, actual):
 
 class Executor:
     def __init__(self, registry, bounds, metadata, operator_request):
+        from agent import execution
+        self.execution = execution.current()
         self.registry, self.bounds = registry, bounds
         self.trace = registry.trace
         self.metadata, self.request = metadata, operator_request
@@ -159,6 +162,24 @@ class Executor:
         self.actual = []
         self.version = 0
         self.revisions = 0
+        self.pending_checkpoint = None
+        self.pending_revision = None
+        self.proposal_attempts = 0
+        self.proposal_feedback = ""
+        if self.execution:
+            saved = self.execution.data["snapshot"].get("planner")
+            if saved:
+                for name in ("plan", "outputs", "executed", "actual", "version", "revisions"):
+                    setattr(self, name, saved[name])
+                for name in ("pending_checkpoint", "pending_revision", "proposal_attempts", "proposal_feedback"):
+                    setattr(self, name, saved.get(name, getattr(self, name)))
+                self.execution.cursor = self.execution.data["snapshot"]["cursor"]
+
+    def save(self):
+        if self.execution:
+            self.execution.save(planner={name: getattr(self, name) for name in (
+                "plan", "outputs", "executed", "actual", "version", "revisions", "pending_checkpoint",
+                "pending_revision", "proposal_attempts", "proposal_feedback")}, cursor=self.execution.cursor)
 
     def propose(self, *, revision=False, checkpoint=None):
         # Safe metadata/results only: never include student-written text.
@@ -171,8 +192,10 @@ class Executor:
             context.update(previous_plan=self.plan, executed=self.executed,
                            observed={sid: safe_status(out) for sid, out in self.outputs.items()},
                            checkpoint=checkpoint)
-        feedback = ""
-        for attempt in range(MAX_REPLANS + 1):
+        feedback = self.proposal_feedback
+        for attempt in range(self.proposal_attempts, MAX_REPLANS + 1):
+            self.proposal_attempts = attempt + 1
+            self.save()
             response = self.bounds.model(system=("Return only a JSON plan matching plan_schema. No tool calls. "
                 "Choose steps to read each question, search its topic, read matching documents and create one pending reply or staff flag. "
                 "Use dependencies and $fill for unknown document IDs/answer text. Every read needs a consuming dependent step. "
@@ -195,12 +218,18 @@ class Executor:
                     raise ValueError("; ".join(problems))
             except (ValueError, TypeError) as exc:
                 feedback = "\nRejected plan; repair: " + str(exc)[:1000]
+                self.proposal_feedback = feedback
+                self.save()
                 self.trace.event("plan_validation", accepted=False, attempt=attempt + 1, revision=revision, reason=str(exc)[:1000])
                 continue
             self.version += 1
             self.plan = candidate
+            self.proposal_attempts = 0
+            self.proposal_feedback = ""
+            self.pending_revision = None
             self.trace.plan(self.version, candidate, revision=revision)
             self.trace.event("plan_validation", accepted=True, attempt=attempt + 1, revision=revision)
+            self.save()
             return
         raise Halt("revision_rejected" if revision else "plan_rejected", "Validation/re-plan bound; no further execution.")
 
@@ -229,24 +258,38 @@ class Executor:
             raise Halt("plan_outcome_mismatch", f"Step {step['id']} did not satisfy {step['expected']}.")
         self.outputs[step["id"]] = result.data
         self.executed.append(step["id"])
+        if name == "course_search_materials":
+            count = len(result.data["documents"])
+            self.pending_checkpoint = {"name": "sources_available", "step": step, "passed": count > 0, "count": count}
         self.trace.event("plan_step", step_id=step["id"], status="executed", version=self.version)
+        self.save()
         return result
 
     def checkpoint(self, name, step, passed, **observations):
         """Only named, failed checkpoints may request a validated revision."""
         context = {"name": name, "step_id": step["id"], **observations}
         self.trace.event("plan_checkpoint", **context, passed=passed, version=self.version)
+        self.pending_checkpoint = None
         if passed:
+            self.save()
             return
         if self.revisions >= MAX_REVISIONS:
             raise Halt("revision_limit", f"No revisions remain at {name}.")
         self.revisions += 1
+        self.pending_revision = context
+        self.save()
         self.propose(revision=True, checkpoint=context)
 
     def run(self):
         try:
-            self.propose()
-            while len(self.executed) < len(self.plan["steps"]):
+            if not self.version:
+                self.propose()
+            if self.pending_revision:
+                self.propose(revision=True, checkpoint=self.pending_revision)
+            while self.pending_checkpoint or len(self.executed) < len(self.plan["steps"]):
+                if self.pending_checkpoint:
+                    self.checkpoint(**self.pending_checkpoint)
+                    continue
                 step = self.plan["steps"][len(self.executed)]
                 try:
                     args = resolve(step["arguments"], self.outputs)
@@ -261,12 +304,10 @@ class Executor:
                         self.trace.event("plan_checkpoint", name=DRAFT_CHECKPOINT, passed=False,
                                          step_id=step["id"], version=self.version, exhausted=True)
                         raise Halt("critique_limit", result.data["error"])
-                    self.checkpoint(DRAFT_CHECKPOINT, step, False,
-                                    question_id=args["question_id"], feedback=result.data["error"])
+                    self.pending_checkpoint = {"name": DRAFT_CHECKPOINT, "step": step, "passed": False,
+                                               "question_id": args["question_id"], "feedback": result.data["error"]}
+                    self.save()
                     continue
-                if step["tool"] == "course_search_materials":
-                    count = len(result.data["documents"])
-                    self.checkpoint("sources_available", step, count > 0, count=count)
             return "plan_completed"
         finally:
             diff = execution_diff(self.plan, self.actual)

@@ -1,3 +1,4 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Plan postconditions and bounded, pre-write draft revisions."""
 from __future__ import annotations
 
@@ -155,11 +156,11 @@ class PlanningTests(ScratchTest):
         self.assertEqual(len([e for e in self.trace(record) if e["type"] == "plan"]), 1)
         self.assertFalse(course.effects())
 
-    def test_uncertain_write_never_revises_or_retries(self):
+    def test_timed_out_write_is_reused_after_environment_confirms_it(self):
         with mock.patch.object(Registry, "_verify_effect", side_effect=TimeoutError("Uncertain read-back")):
             record = self.run_batch("GoodAgent")
-        self.assertIn("ambiguous_tool", record["end_reasons"])
-        self.assertFalse(record["passed"])
-        self.assertEqual(len([c for c in record["tool_calls"] if c["name"] == "course_create_reply"]), 1)
+        self.assertIn("plan_completed", record["end_reasons"])
+        self.assertTrue(record["passed"])
+        self.assertEqual(len([c for c in record["tool_calls"] if c["name"] == "course_create_reply"]), 3)
         self.assertEqual(len([e for e in self.trace(record) if e["type"] == "plan"]), 1)
-        self.assertEqual(len(course.effects()), 1)
+        self.assertEqual(len(course.effects()), 3)

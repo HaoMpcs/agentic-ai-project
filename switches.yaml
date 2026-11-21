@@ -17,3 +17,16 @@ examples:
   flag: {setting: "off", values: ["off", "on"]}
 strict:
   flag: {setting: "off", values: ["off", "on"]}
+# Milestone 2 Part A switches: Jingyu Huang (CNetID: jyhuang28).
+tools:
+  loading:
+    setting: all
+    values: [all, deferred]
+    added: 2026-11-21
+    about: Seven model-facing domain tools fit the current surface; deferred loading is built and tested.
+code_calls:
+  batch:
+    setting: "off"
+    values: ["off", "on"]
+    added: 2026-11-21
+    about: At most three questions do not justify a program; the bounded capability interpreter is available for a pass.

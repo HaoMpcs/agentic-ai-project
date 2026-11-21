@@ -1,7 +1,9 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Externally enforced per-task model/tool bounds, distinct from harness ceiling."""
 from __future__ import annotations
 
 import queue
+import json
 import threading
 import time
 
@@ -22,28 +24,50 @@ class Halt(Exception):
 
 class Bounds:
     def __init__(self, session_id):
+        from agent import execution
+        self.execution = execution.current()
+        previous = self.execution.data["snapshot"].get("bounds", {}) if self.execution else {}
         self.session_id = session_id
         self.trace = runtime.trace(session_id)
         self.started = time.monotonic()
-        self.steps = 0
+        self.steps = previous.get("steps", 0)
+        self.previous_tokens = previous.get("tokens", 0)
+        self.previous_elapsed = previous.get("elapsed_s", 0)
         self.client = None
         self.initial_tokens = 0
         self.trace.event("agent_bounds", max_steps=MAX_STEPS, token_budget=TOKEN_BUDGET,
                          wall_seconds=WALL_SECONDS, harness_ceiling_separate=True)
 
     def check(self):
-        if time.monotonic() - self.started >= WALL_SECONDS:
+        if self.execution:
+            if self.execution.command == "rollback":
+                raise Halt("operator_only", "Rollback never calls a model or resumes the agent.")
+            self.execution.check()
+        if self.previous_elapsed + time.monotonic() - self.started >= WALL_SECONDS:
             raise Halt("agent_wall_clock", "Wall-clock boundary; no further tools or effects permitted.")
-        if self.client and self.client.total_tokens - self.initial_tokens >= TOKEN_BUDGET:
+        if self.previous_tokens + (self.client.total_tokens - self.initial_tokens if self.client else 0) >= TOKEN_BUDGET:
             raise Halt("agent_token_budget", "Agent token boundary; distinct from the harness token_budget ceiling.")
+
+    def save(self):
+        if self.execution:
+            self.execution.save(bounds={"steps": self.steps,
+                "tokens": self.previous_tokens + (self.client.total_tokens - self.initial_tokens if self.client else 0),
+                "elapsed_s": self.previous_elapsed + time.monotonic() - self.started})
 
     def tick(self):
         self.check()
         if self.steps >= MAX_STEPS:
             raise Halt("agent_step_limit")
         self.steps += 1
+        self.save()
 
     def model(self, *, system, messages, tools=None, purpose="execute"):
+        from agent import execution
+        controlled = execution.before_model_call(system=system, messages=messages, tools=tools, purpose=purpose)
+        assembled = execution.assemble_context(**controlled, purpose=purpose)
+        system, messages, tools = assembled["system"], assembled["messages"], assembled["tools"]
+        self.trace.event("tool_offering", purpose=purpose, names=[t["name"] for t in tools or []],
+                         definition_characters=len(json.dumps(tools or [])))
         self.tick()
         if self.client is None:
             self.client = runtime.client(self.session_id)
@@ -68,7 +92,7 @@ class Bounds:
             _inflight[id(client)] = worker
         worker.start()
         while True:
-            remaining = WALL_SECONDS - (time.monotonic() - self.started)
+            remaining = WALL_SECONDS - self.previous_elapsed - (time.monotonic() - self.started)
             if remaining <= 0:
                 self.trace.event("model_inflight_timeout", billing="unknown until provider returns; no tools executed by worker")
                 raise Halt("agent_wall_clock", "Provider still in flight; inspect billing before measurements.")
@@ -80,5 +104,6 @@ class Bounds:
         if not ok:
             raise response
         self.trace.model_call(self.steps, response, purpose=purpose, content=response.content)
+        self.save()
         self.check()  # never dispatch tool calls from a response over the boundary
         return response
