@@ -5,6 +5,8 @@ from __future__ import annotations
 import contextlib
 import contextvars
 import copy
+import json
+import re
 
 from harness import runtime
 from sandbox import execution as store
@@ -78,8 +80,47 @@ def release_hold(run_key):
 
 
 def assemble_context(*, system, messages, tools, purpose):
-    """B replaces this adapter; no notes, memory or compaction are implemented here."""
-    return {"system": system, "messages": messages, "tools": tools}
+    """Fit every request to a deterministic budget, retaining atomic call pairs."""
+    active = current()
+    budget = 12000
+    threshold = 9000
+    tool_chars = len(json.dumps(tools or [], sort_keys=True))
+    system_chars = len(system)
+    limit_chars = max(1200, budget * 4 - tool_chars - system_chars)
+    prepared = copy.deepcopy(messages)
+    from sandbox import memory
+    records = memory.prompt_records()
+    if records and purpose not in ("plan", "revise_plan"):
+        prepared.insert(0, {"role": "user", "content": json.dumps({"confirmed_operator_memory": records}, sort_keys=True)})
+        if active:
+            active.trace.event("memory_read", run_key=active.key, records=len(records), before_model=True)
+    original_chars = len(json.dumps(prepared, sort_keys=True))
+    notes = []
+    omitted = 0
+    while len(json.dumps(prepared, sort_keys=True)) > limit_chars and len(prepared) > 2:
+        item = prepared.pop(0)
+        text = str(item.get("content", ""))
+        # Notes accept only trusted operator selections, never outside/student text
+        # and never planner inputs.
+        if purpose not in ("plan", "revise_plan") and "trusted_operator" in text and not re.search(
+                r"untrusted|student_messages|outside", text, re.I):
+            notes.append(text[:300])
+        omitted += 1
+    if notes:
+        prepared.insert(0, {"role": "user", "content": json.dumps({"durable_notes": notes}, sort_keys=True)})
+    if len(json.dumps(prepared, sort_keys=True)) > limit_chars:
+        last = copy.deepcopy(prepared[-1])
+        last["content"] = str(last.get("content", ""))[-max(500, limit_chars // 2):]
+        prepared = [last]
+    estimated = (system_chars + tool_chars + len(json.dumps(prepared, sort_keys=True)) + 3) // 4
+    if active:
+        active.save(context={"budget_tokens": budget, "estimated_tokens": estimated,
+                             "omitted_messages": omitted, "notes": notes})
+        active.trace.event("context_assembled", purpose=purpose, budget_tokens=budget,
+                           estimated_tokens=estimated, original_characters=original_chars,
+                           omitted_messages=omitted, compacted=original_chars > threshold * 4,
+                           notes_count=len(notes), tool_characters=tool_chars)
+    return {"system": system, "messages": prepared, "tools": tools}
 
 
 def before_model_call(*, system, messages, tools, purpose):
@@ -92,6 +133,15 @@ def before_model_call(*, system, messages, tools, purpose):
 
 def operator_control(session_id, text):
     """C can handle urgent commands before the ordinary session lock/queue."""
+    match = re.fullmatch(r"/remember\s+preference\s+([A-Za-z0-9_-]{1,40})\s+(.{1,500})", text.strip())
+    if match:
+        from sandbox import memory
+        from harness.turns import Reply
+        row = memory.put("operator_preference", match.group(1), match.group(2),
+                         source_type="trusted_operator", source_id=session_id)
+        runtime.trace(session_id).event("memory_write", memory_kind=row["kind"], name=row["name"],
+                                        provenance={"source_type": row["source_type"], "source_id": row["source_id"]})
+        return Reply(f"Remembered operator preference {row['name']} with provenance.")
     return None
 
 

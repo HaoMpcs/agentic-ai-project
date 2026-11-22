@@ -10,6 +10,7 @@ PARALLEL_SAFE = True
 
 
 def reset() -> None:
+    from sandbox import memory
     from policy import state as policy_state
     from policy import approvals
     from policy import escalations
@@ -22,6 +23,7 @@ def reset() -> None:
     policy_state.reset()
     channel.reset()
     execution.reset()
+    memory.reset()
     with course.db() as conn:
         for table in ("records", "effects", "audit", "draft_authorship", "compensations"):
             conn.execute(f"DELETE FROM {table}")

@@ -30,3 +30,21 @@ code_calls:
     values: ["off", "on"]
     added: 2026-11-21
     about: At most three questions do not justify a program; the bounded capability interpreter is available for a pass.
+context:
+  budget:
+    setting: 12000
+    values: [12000]
+    added: 2026-11-22
+    about: Every model request counts system, messages and tool definitions before dispatch.
+notes:
+  compaction:
+    setting: "on"
+    values: ["off", "on"]
+    added: 2026-11-22
+    about: Long task sessions compact trusted operator selections; outside text never enters notes.
+memory:
+  operator_preference:
+    setting: "on"
+    values: ["off", "on"]
+    added: 2026-11-22
+    about: Explicit operator preferences persist with source provenance; student facts are excluded.
