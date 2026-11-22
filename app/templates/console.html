@@ -15,6 +15,15 @@
   <section>
     {% if session_id %}
       <h2>Session {{ session_id }}</h2>
+      <details>
+        <summary>Send a message while a task is running</summary>
+        <p>Use <code>/add QUESTION_ID</code> to add an inbox question, or
+        <code>/replace QUESTION_ID</code> to replace the task. Earlier results are retained
+        unless you explicitly select compensation. Ordinary messages wait in a queue
+        of at most eight; <code>/messages</code> shows their status.</p>
+        <p><code>/stop</code>, <code>/cancel</code>, <code>/resume</code>,
+        <code>/rollback</code> and supported limits take priority over the queue.</p>
+      </details>
       <div id="history">{% include "_history.html" %}</div>
       <form id="turn" method="post" action="/console/{{ session_id }}/turn">
         <textarea name="text" rows="3" required placeholder="A message to the agent"></textarea>

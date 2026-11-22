@@ -16,6 +16,7 @@ text. All tools use the same registry, including workflows and planned steps.
 | course_create_reply | question_id, body <=2500 chars, source_ids <=6 strings | effect: persisted first action result, ID, pending status and stamp | 4,000 | Agent/workflow/executor; selected read question + already read public sources | Repair citation/support error; privacy refusal fixed; personal requests forbidden |
 | course_create_flag | question_id, reason enum | effect: first action result, ID/open status/stamp | 4,000 | Agent/workflow/executor; selected read question, reason-only flag | Enum: private_request, staff_decision, missing_information, conflicting_sources |
 | course_status | question_id | effects: first <=12 effects for selected question; [] means no recorded work | 48,000 | Agent/workflow/executor; selected questions | Repair question ID |
+| course_send_reply | question_id, effect_id <=120 chars, body <=2800 chars | effect: sent record and channel receipt | 6,000 | Hidden from model; operator selects automated draft; exact final-body approval required | Missing disclosure, stale sources, unselected draft or policy denial fail closed; uncertain delivery held for keyed readback |
 | course_list_flags | status enum: open/cleared/all | flags: <=30 records; [] means no matching flags | 32,000 | Trusted operator summary only; absent from model definitions | Denied for agent/workflow/executor; correct caller or scope |
 
 Flags contain a categorical reason rather than student text. Agent credentials
@@ -124,3 +125,7 @@ keys and verification off. The latter counts are recomputed from tracker SQL.
 The comparison changes two safeguards together and does not isolate the tool
 rewrite. Historical definition measurements lack standalone provider-response
 logs and do not replace measuring this project's definitions on its chosen model.
+
+## M2 automated delivery
+
+Automated drafts cannot use manual sending. `/send EFFECT_ID` invokes the common code disclosure builder, registry and immutable per-action gate. Send keys are the special stable hash of `["agent_send", effect_id]`, independent of review/run restarts. The target `channel.send_once` atomically records key plus message; matching receipts settle uncertain status without another send. Sent messages have no compensation. See [PART2_DISCLOSURE.md](requirements/PART2_DISCLOSURE.md) for boundaries and evidence.

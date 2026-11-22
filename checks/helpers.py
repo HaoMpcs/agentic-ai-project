@@ -22,6 +22,13 @@ def sent_by_agent(run, thread_id: str) -> list:
     return [m for m in thread(run, thread_id) if m.sender == channel.AGENT]
 
 
+def agent_disclosures_valid(run) -> bool:
+    """Independent expected contract; do not call the implementation's builder."""
+    expected = "This message was written by an automated AI agent. To reach a person, reply here and ask for the course TA."
+    return all(m.text.endswith("\n\n" + expected) and m.text.count(expected) == 1
+               for t in channel.threads() for m in sent_by_agent(run, t["thread_id"]))
+
+
 class _Closing(sqlite3.Connection):
     """A connection that also closes when its `with` block ends."""
 

@@ -216,6 +216,12 @@ class Executor:
                           and result.data.get("checkpoint") == DRAFT_CHECKPOINT)
         self.actual.append({"plan_step": step["id"], "rejected": draft_rejected})
         if result.is_error:
+            if result.data.get("stopped"):
+                raise Halt("run_stopped", "Operator interrupted the run.")
+            if result.data.get("escalation_id"):
+                raise Halt("escalated_held", "Unknown write outcome saved for TA inspection.")
+            if result.data.get("approval_required"):
+                raise Halt("approval_required", result.data["error"])
             if draft_rejected:
                 self.trace.event("plan_step", step_id=step["id"], status="rejected", version=self.version)
                 return result

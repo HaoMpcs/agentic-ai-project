@@ -36,6 +36,7 @@ def db():
           stamp TEXT NOT NULL, updated_by TEXT NOT NULL, action_key TEXT NOT NULL UNIQUE, channel_id INTEGER);
         CREATE TABLE IF NOT EXISTS audit (id INTEGER PRIMARY KEY, effect_id TEXT, action TEXT, note TEXT,
           stamp TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS draft_authorship (effect_id TEXT PRIMARY KEY, author TEXT NOT NULL);
         """)
         with conn:
             yield conn
@@ -119,7 +120,7 @@ def effect(identifier: str) -> dict:
 
 
 def create_effect(kind: str, question_id: str, *, body: str = "", source_ids: list | None = None,
-                  reason: str = "", key: str) -> dict:
+                  reason: str = "", key: str, authorship: str = "automated") -> dict:
     record("question", question_id)
     if kind not in ("reply", "flag"):
         raise ValueError("Effect kind must be reply or flag.")
@@ -127,13 +128,23 @@ def create_effect(kind: str, question_id: str, *, body: str = "", source_ids: li
         raise ValueError(f"Use a flag reason in {FLAG_REASONS}.")
     if kind == "reply" and (not body.strip() or len(body) > 2500):
         raise ValueError("A draft must contain 1–2500 characters.")
+    if authorship not in ("automated", "human"):
+        raise ValueError("Draft authorship must be explicit.")
     identifier = "SYN-" + kind.upper() + "-" + hashlib.sha256(key.encode()).hexdigest()[:16]
     with db() as conn:
         conn.execute("INSERT OR IGNORE INTO effects VALUES (?,?,?,?,?,?,?,?,?,?,NULL)",
                      (identifier, kind, question_id, body, json.dumps(source_ids or []), reason,
                       "pending" if kind == "reply" else "open", stamp(), stamp(), key))
         row = conn.execute("SELECT * FROM effects WHERE action_key=?", (key,)).fetchone()
+        if kind == "reply":
+            conn.execute("INSERT OR IGNORE INTO draft_authorship VALUES (?,?)", (row["id"], authorship))
     return _effect(row)
+
+
+def draft_author(identifier):
+    with db() as conn:
+        row = conn.execute("SELECT author FROM draft_authorship WHERE effect_id=?", (identifier,)).fetchone()
+    return row[0] if row else "unknown"
 
 
 def manual_draft(question_id: str, body: str, source_ids: list[str]) -> dict:
@@ -148,7 +159,7 @@ def manual_draft(question_id: str, body: str, source_ids: list[str]) -> dict:
     if any(x["status"] == "pending" for x in previous):
         raise ValueError("A pending draft already exists; review or discard it first.")
     return create_effect("reply", question_id, body=body, source_ids=source_ids,
-                         key=f"manual:reply:{question_id}:{serial}")
+                         key=f"manual:reply:{question_id}:{serial}", authorship="human")
 
 
 def update_status(identifier: str, status: str, note: str = "") -> dict:
@@ -173,6 +184,8 @@ def send_pending(identifier: str) -> dict:
             return item
         if item["kind"] != "reply" or item["status"] != "pending":
             raise ValueError("Only a pending reply can be sent. Inspect uncertain sends in Threads.")
+        if draft_author(identifier) != "human":
+            raise ValueError(f"This draft is automated or has unknown authorship. Request /send {identifier} in the console for disclosed operator review.")
         with db() as conn:
             changed = conn.execute("UPDATE effects SET status='sending', updated_by=? WHERE id=? AND status='pending'",
                                    (stamp(), identifier)).rowcount
@@ -189,3 +202,45 @@ def send_pending(identifier: str) -> dict:
             conn.execute("INSERT INTO audit(effect_id,action,note,stamp) VALUES (?,?,?,?)",
                          (identifier, "sent", str(message.id), stamp()))
         return effect(identifier)
+
+
+def send_agent(identifier: str, body: str, key: str) -> dict:
+    """Reviewed automated send; local target stores key and message atomically."""
+    from policy import disclosure
+    with _send_lock:
+        item = effect(identifier)
+        if body != disclosure.render(item["body"]):
+            raise ValueError("Outgoing body differs from the selected draft plus disclosure.")
+        if item["kind"] != "reply" or item["status"] != "pending":
+            raise ValueError("Only a pending reply can be sent automatically.")
+        with db() as conn:
+            changed = conn.execute("UPDATE effects SET status='sending',updated_by=? WHERE id=? AND status='pending'",
+                                   (stamp(), identifier)).rowcount
+        if changed != 1:
+            raise ValueError("Another operation claimed the draft; inspect status.")
+        try:
+            message = channel.send_once(item["question_id"], body, key=key)
+        except Exception:
+            with db() as conn:
+                conn.execute("UPDATE effects SET status='uncertain' WHERE id=? AND status='sending'", (identifier,))
+            raise TimeoutError("Automated send outcome needs confirming readback") from None
+        with db() as conn:
+            conn.execute("UPDATE effects SET status='sent',channel_id=?,updated_by=? WHERE id=? AND status='sending'",
+                         (message.id, stamp(), identifier))
+            conn.execute("INSERT INTO audit(effect_id,action,note,stamp) VALUES (?,?,?,?)", (identifier, "agent_sent", key, stamp()))
+        return effect(identifier)
+
+
+def confirm_agent_send(identifier: str, message_id: int, *, key: str, body: str):
+    """Settle internal status after the target receipt was independently verified."""
+    from policy import disclosure
+    item = effect(identifier)
+    receipt = channel.sent_for_key(key)
+    if (receipt is None or receipt.id != message_id or receipt.sender != channel.AGENT
+            or receipt.thread_id != item["question_id"] or receipt.text != body
+            or body != disclosure.render(item["body"])):
+        raise ValueError("Receipt does not match the selected draft and saved outgoing body.")
+    with db() as conn:
+        conn.execute("UPDATE effects SET status='sent',channel_id=?,updated_by=? WHERE id=? AND status IN ('sending','uncertain')",
+                     (message_id, stamp(), identifier))
+    return effect(identifier)

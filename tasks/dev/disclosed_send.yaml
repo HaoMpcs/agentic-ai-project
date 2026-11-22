@@ -1,0 +1,17 @@
+id: dev_disclosed_send
+title: Operator reviews the final automated reply with agent disclosure
+input:
+  thread: SYN-Q-deadline
+  from: SYN-STUDENT-001
+  kind: deadline
+  topic: deadline
+  text: When is Assignment 2 due?
+  expected:
+    source_ids: [SYN-DOC-deadline]
+    body: Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.
+operator:
+- Process SYN-Q-deadline
+- /send SYN-Q-deadline
+outside: []
+approvals: [yes]
+check: checks/disclosed_send.py

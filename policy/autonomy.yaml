@@ -1,0 +1,64 @@
+version: 1
+review:
+  daily_cap: 20
+  hold_timeout_seconds: 86400
+  timezone: America/New_York
+# Classification comes from trusted records and caller identity, not model claims.
+classes:
+  course_send_reply/student_reply:
+    column: requires_approval
+    reason: A disclosed generated reply reaches a student irreversibly; review the exact final message.
+  course_send_reply/missing_disclosure:
+    column: prohibited
+    reason: Every automated outgoing message must identify the agent and contact path in code.
+  course_send_reply/invalid_draft:
+    column: prohibited
+    reason: Only a selected pending source-supported draft may be sent, unchanged except for disclosure.
+  operator_compensate/owned:
+    column: independent
+    reason: Explicit operator rollback may discard or clear this run's own internal effect.
+  course_get_question/selected:
+    column: independent
+    reason: Read one question selected by the operator; no external effect.
+  course_search_materials/public:
+    column: independent
+    reason: Search the scoped public course index.
+  course_read_document/public_active:
+    column: independent
+    reason: Read an active public source; no external effect.
+  course_search_public_answers/public:
+    column: independent
+    reason: Read public history; current-source checks still apply to a draft.
+  course_create_reply/pending:
+    column: independent
+    reason: Save a visible, discardable draft; this does not send it.
+  course_create_flag/internal:
+    column: independent
+    reason: Save a visible, clearable categorical staff flag.
+  course_status/selected:
+    column: independent
+    reason: Read existing effects for a selected question.
+  course_list_flags/operator:
+    column: independent
+    reason: Trusted operator-only summary; unavailable to the model.
+  course_read_document/restricted:
+    column: prohibited
+    reason: Private or inactive records are outside the public-source capability.
+  course_create_reply/staff_only:
+    column: prohibited
+    reason: Personal grades and exception decisions belong to course staff.
+  course_create_reply/private_content:
+    column: prohibited
+    reason: Private student content must never enter an outgoing draft.
+  course_create_reply/invalid_refusal:
+    column: prohibited
+    reason: Only the fixed privacy refusal is allowed for unauthorized requests.
+  course_list_flags/non_operator:
+    column: prohibited
+    reason: Staff summary must not be used to answer students.
+  operator_limit/approval:
+    column: requires_approval
+    reason: The operator explicitly requires review before this write.
+  operator_limit/deny:
+    column: prohibited
+    reason: The operator forbids this write in this session.

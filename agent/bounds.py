@@ -6,6 +6,7 @@ import threading
 import time
 
 from harness import runtime
+from policy import controls, state as policy_state
 
 MAX_STEPS = 24
 TOKEN_BUDGET = 32000
@@ -21,17 +22,22 @@ class Halt(Exception):
 
 
 class Bounds:
-    def __init__(self, session_id):
+    def __init__(self, session_id, *, run_id=None):
         self.session_id = session_id
+        run = runtime.current_run()
+        self.control_run_id = run_id or (run.run_id if run else session_id)
         self.trace = runtime.trace(session_id)
         self.started = time.monotonic()
         self.steps = 0
         self.client = None
         self.initial_tokens = 0
         self.trace.event("agent_bounds", max_steps=MAX_STEPS, token_budget=TOKEN_BUDGET,
-                         wall_seconds=WALL_SECONDS, harness_ceiling_separate=True)
+                         wall_seconds=WALL_SECONDS, harness_ceiling_separate=True, control_run_id=self.control_run_id)
 
     def check(self):
+        if policy_state.is_stopped(self.control_run_id):
+            controls.observe(self.control_run_id, self.trace)
+            raise Halt("run_stopped", "Operator interrupted the run; no further model or tool calls permitted.")
         if time.monotonic() - self.started >= WALL_SECONDS:
             raise Halt("agent_wall_clock", "Wall-clock boundary; no further tools or effects permitted.")
         if self.client and self.client.total_tokens - self.initial_tokens >= TOKEN_BUDGET:
@@ -44,6 +50,8 @@ class Bounds:
         self.steps += 1
 
     def model(self, *, system, messages, tools=None, purpose="execute"):
+        from policy import messages as inbox
+        inbox.observe(self.control_run_id, self.trace, messages)
         self.tick()
         if self.client is None:
             self.client = runtime.client(self.session_id)
@@ -73,12 +81,17 @@ class Bounds:
                 self.trace.event("model_inflight_timeout", billing="unknown until provider returns; no tools executed by worker")
                 raise Halt("agent_wall_clock", "Provider still in flight; inspect billing before measurements.")
             try:
-                ok, response = answers.get(timeout=min(5.0, remaining))
+                ok, response = answers.get(timeout=min(0.1, remaining))
                 break
             except queue.Empty:
-                self.trace.progress(f"{purpose}: still waiting for the provider; {max(0, int(remaining - 5))} seconds remain.")
+                try:
+                    self.check()
+                except Halt as exc:
+                    if exc.reason == "run_stopped":
+                        self.trace.event("model_interrupted_inflight", billing="unknown until provider returns; worker cannot execute tools")
+                    raise
         if not ok:
             raise response
-        self.trace.model_call(self.steps, response, purpose=purpose, content=response.content)
+        self.trace.model_call(self.steps, response, purpose=purpose, content=response.content, control_run_id=self.control_run_id)
         self.check()  # never dispatch tool calls from a response over the boundary
         return response

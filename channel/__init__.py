@@ -138,6 +138,39 @@ def send(thread_id: str, text: str, sender: str = AGENT) -> Message:
     return message
 
 
+def sent_for_key(key: str) -> Message | None:
+    """Read the target's committed receipt, independent of the agent's log."""
+    with _db() as conn:
+        conn.execute("CREATE TABLE IF NOT EXISTS keyed_sends (action_key TEXT PRIMARY KEY, message_id INTEGER NOT NULL)")
+        row = conn.execute("SELECT m.* FROM keyed_sends k JOIN messages m ON m.id=k.message_id WHERE k.action_key=?", (key,)).fetchone()
+    return _row(row) if row else None
+
+
+def send_once(thread_id: str, text: str, *, key: str) -> Message:
+    """Atomic local target deduplication for disclosed automated sends."""
+    if not key or not isinstance(key, str):
+        raise ValueError("A registry-derived action key is required.")
+    run = runtime.current_run()
+    session = runtime.current_session() or (run.run_id if run else None)
+    inserted = False
+    with _lock, _db() as conn:
+        conn.execute("CREATE TABLE IF NOT EXISTS keyed_sends (action_key TEXT PRIMARY KEY, message_id INTEGER NOT NULL)")
+        conn.execute("BEGIN IMMEDIATE")
+        row = conn.execute("SELECT m.* FROM keyed_sends k JOIN messages m ON m.id=k.message_id WHERE k.action_key=?", (key,)).fetchone()
+        if row is None:
+            cur = conn.execute("INSERT INTO messages(thread_id,sender,text,at,run_id,session_id,seeded,handled_by) VALUES (?,?,?,?,?,?,0,NULL)",
+                               (str(thread_id), AGENT, text, now(), run.run_id if run else None, session))
+            conn.execute("INSERT INTO keyed_sends VALUES (?,?)", (key, cur.lastrowid))
+            row = conn.execute("SELECT * FROM messages WHERE id=?", (cur.lastrowid,)).fetchone()
+            inserted = True
+        elif row[1] != str(thread_id) or row[2] != AGENT or row[3] != text:
+            raise ValueError("The send key already identifies different message content.")
+    message = _row(row)
+    if inserted:
+        _script.sent(message)
+    return message
+
+
 def replies(thread_id: str, since: int = 0) -> list[Message]:
     """The stranger's messages on this thread with an ID greater than `since`. It only reads."""
     with _db() as conn:

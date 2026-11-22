@@ -13,6 +13,7 @@ def render(request, error=None):
     return templates.TemplateResponse(request, "home.html", {"page": "home", "error": error,
         "questions": [course.question(x["id"]) for x in course.records("question")],
         "documents": course.records("document"), "effects": course.effects(),
+        "draft_authors": {e["id"]: course.draft_author(e["id"]) for e in course.effects() if e["kind"] == "reply"},
         "students": course.records("private_student"), "public_answers": course.records("public_answer")})
 
 

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approvals</title>
+<style>
+  :root { --bg: #ffffff; --fg: #1d1f23; --muted: #5f6672; --line: #d9dce1; --soft: #f3f4f6;
+          --accent: #2754c5; --agent: #eef3ff; --outside: #fff6e6; --error: #b42318; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16181c; --fg: #e6e8eb; --muted: #9aa1ab; --line: #343840; --soft: #1f2227;
+            --accent: #8fb0ff; --agent: #1e2a44; --outside: #3a2f1c; --error: #ff8a80; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, sans-serif; }
+  nav { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a.here { color: var(--fg); font-weight: 600; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.4rem; margin: 8px 0 12px; }
+  h2 { font-size: 1.1rem; margin: 22px 0 8px; }
+  a { color: var(--accent); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .scroll { overflow-x: auto; }
+  .muted { color: var(--muted); }
+  .notice { padding: 10px 12px; background: var(--soft); border-left: 3px solid var(--accent); margin: 12px 0; }
+  .error { color: var(--error); }
+  textarea, input[type=text] { width: 100%; padding: 8px; font: inherit; color: var(--fg);
+                               background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
+  button { padding: 7px 14px; font: inherit; border-radius: 6px; border: 1px solid var(--line);
+           background: var(--soft); color: var(--fg); cursor: pointer; }
+  .line { padding: 8px 10px; margin: 6px 0; border-radius: 6px; background: var(--soft); white-space: pre-wrap; }
+  .line.reply { background: var(--agent); }
+  .line.outside { background: var(--outside); }
+  .line.error { border-left: 3px solid var(--error); }
+  .who { font-size: 12px; color: var(--muted); }
+  code, pre { font-family: ui-monospace, monospace; font-size: 13px; }
+  pre { background: var(--soft); padding: 10px; overflow-x: auto; }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 24px; }
+  @media (max-width: 720px) { .split { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="">Home</a>
+  <a href="/console" class="">Console</a>
+  <a href="/queue" class="">Queue</a>
+  <a href="/threads" class="">Threads</a>
+  <a href="/approvals" class="here">Approvals</a>
+  <a href="/traces" class="">Traces</a>
+</nav>
+<main>
+
+<h1>Approvals</h1>
+
+
+
+  <div class="line">
+    <div class="who">Approval approval-7d260711d9e07adc2a116432</div>
+    
+    <p class="muted">Session send-review · Run send-review:send:abf0a06f7fc4 · Created 2026-11-22T16:51:34.625+00:00</p>
+    <h2>Exact effect — computed</h2>
+    
+    <p>This sends the final disclosed message to the student thread. It cannot be recalled.</p>
+    
+    <pre>{
+  "arguments": {
+    "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\n\nThis message was written by an automated AI agent. To reach a person, reply here and ask for the course TA.",
+    "effect_id": "SYN-REPLY-8a0892be03825f24",
+    "question_id": "SYN-Q-deadline"
+  },
+  "publishes_to_student": true,
+  "status_after": "sent",
+  "tool": "course_send_reply"
+}</pre>
+    <h2>Checks and scope — computed</h2>
+    <table><tr><th>draft_created_by</th><td>send-review</td></tr><tr><th>external_recipients</th><td>1</td></tr><tr><th>input_author</th><td>outside student; untrusted</td></tr><tr><th>private_marker_present</th><td>False</td></tr><tr><th>question_id</th><td>SYN-Q-deadline</td></tr><tr><th>question_kind</th><td>deadline</td></tr><tr><th>recipient_thread</th><td>SYN-Q-deadline</td></tr><tr><th>records_changed</th><td>1</td></tr><tr><th>source_check_detail</th><td>All sentences have independent active public-source support.</td></tr><tr><th>source_check_passed</th><td>True</td></tr><tr><th>source_ids</th><td>[&#39;SYN-DOC-deadline&#39;]</td></tr><tr><th>sources_active_public</th><td>True</td></tr><tr><th>target_origin</th><td>existing synthetic question record</td></tr><tr><th>topic</th><td>deadline</td></tr></table>
+    <h2>Student input — outside text, untrusted</h2>
+    
+    <p>SYN-STUDENT-001:</p><pre>When is Assignment 2 due?</pre>
+    
+    
+    <form method="post" action="/approvals">
+      <input type="hidden" name="approval_id" value="approval-7d260711d9e07adc2a116432">
+      <p><input type="text" name="note" placeholder="A note (optional)"></p>
+      <button name="decision" value="approve">Approve</button>
+      <button name="decision" value="deny">Deny</button>
+    </form>
+  </div>
+
+
+</main>
+</body>
+</html>

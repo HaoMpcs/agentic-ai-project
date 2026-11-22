@@ -11,6 +11,34 @@ tool-definition measurement and completed Pass 1. The measured verdict keeps
 [requirement audit](docs/requirements/AUDIT.md),
 [compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
 
+## Milestone 2 requirements and status
+
+The latest user-supplied requirements were saved on November 22, 2026:
+[verbatim specification](docs/requirements/M2_REQUIREMENTS.txt),
+[source provenance](docs/requirements/M2_SOURCE.md),
+[current M2 audit](docs/requirements/M2_COMPLIANCE.md), and
+[working M2 report](docs/milestones/M2.md).
+The runtime has the M1 build plus the [Part 2 policy foundation](docs/requirements/PART2_POLICY.md):
+three-column registry rules and persisted console limits (`/limit drafts approval`
+or `/limit writes deny`). Approval-required calls now create a [persisted per-action review](docs/requirements/PART2_APPROVALS.md)
+on the Approvals page. Approve executes the exact saved internal draft/flag; deny
+leaves it unexecuted. [Unknown-write escalation](docs/requirements/PART2_ESCALATION.md)
+now holds failed writes for TA inspection (`/escalations`, then `/resolve <id> confirm`).
+[Stop controls](docs/requirements/PART2_STOP.md) now support `/stop`, `/cancel`,
+`/resume` and `/rollback`, with approval withdrawal/reissue and owned-effect compensation.
+[Mid-task messages](docs/requirements/PART2_MESSAGES.md) support `/add QUESTION_ID`,
+`/replace QUESTION_ID`, optional selected rollback, `/queue TEXT`, `/reject TEXT`
+and `/messages`. Ordinary busy messages queue with an eight-slot limit.
+[Automated sends](docs/requirements/PART2_DISCLOSURE.md) use `/send EFFECT_ID`: code adds AI identity and TA contact, then the operator reviews the exact final message on Approvals. Automated drafts cannot bypass this through manual sending. [Legal scope](docs/requirements/PART2_LEGAL.md) is assessed against dated primary sources.
+General task resume remains a Part 1 integration. Whole-plan approval, general task recovery,
+MCP, durable outside waits/memory and split branch remain to be implemented and tested.
+Keep existing switches at their M1 verdicts. M2 needs two additional measured
+passes, numbered after Pass 1, with predictions pushed before either arm.
+
+`make serve` restarts the app without resetting the sandbox. Persisted course
+effects remain, but current in-memory task state does not resume after restart.
+The M2 report tracks the durable-session work still required.
+
 ## Run locally
 
 Requires Python >=3.10, git and make. Tested with Python 3.13.7. Install only the

@@ -1,5 +1,10 @@
 # Milestone 1 compliance and remaining work
 
+Latest requirement update: November 22, 2026. Milestone 2 is tracked separately
+in [M2_COMPLIANCE.md](M2_COMPLIANCE.md), from the saved
+[M2 specification](M2_REQUIREMENTS.txt). This page retains M1 evidence; its
+completion statuses do not establish M2 compliance.
+
 Current evidence update: M1 now includes Hao Shi's Part 1 gate analysis, the
 real tool-definition measurement, a 30-run baseline (27 passed), and a completed
 Pass 1 (plan on: 0/3; plan off: 3/3). The verdict keeps plan.batch=off. These

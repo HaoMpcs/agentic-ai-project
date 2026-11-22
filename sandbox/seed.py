@@ -9,9 +9,19 @@ PARALLEL_SAFE = True
 
 
 def reset() -> None:
+    from policy import state as policy_state
+    from policy import approvals
+    from policy import escalations
+    from policy import controls
+    from policy import messages
+    messages.reset()
+    controls.reset()
+    escalations.reset()
+    approvals.reset()
+    policy_state.reset()
     channel.reset()
     with course.db() as conn:
-        for table in ("records", "effects", "audit"):
+        for table in ("records", "effects", "audit", "draft_authorship"):
             conn.execute(f"DELETE FROM {table}")
 
 

@@ -3,10 +3,12 @@ from __future__ import annotations
 
 import json
 import channel
-from checks.helpers import connect, thread
+from checks.helpers import connect, thread, agent_disclosures_valid
 
 
 def check(run):
+    if not agent_disclosures_valid(run):
+        return False, "Automated outgoing message lacks its agent/contact disclosure", {}
     items = run.task.get("inputs", [run.task.get("input")])
     with connect(run, "course.sqlite3") as conn:
         conn.row_factory = __import__("sqlite3").Row

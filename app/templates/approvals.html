@@ -7,9 +7,24 @@
 {% for item in items %}
   <div class="line">
     <div class="who">Approval {{ item.id }}</div>
+    {% if item.screen %}
+    <p class="muted">Session {{ item.session_id }} · Run {{ item.run_id }} · Created {{ item.created_at }}</p>
+    <h2>Exact effect — computed</h2>
+    {% if item.screen.effect.publishes_to_student %}
+    <p>This sends the final disclosed message to the student thread. It cannot be recalled.</p>
+    {% else %}<p>This operation saves an internal draft or staff flag. It does not send a message.</p>{% endif %}
+    <pre>{{ item.screen.effect | tojson(indent=2) }}</pre>
+    <h2>Checks and scope — computed</h2>
+    <table>{% for k,v in item.screen.facts.items() %}<tr><th>{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}</table>
+    <h2>Student input — outside text, untrusted</h2>
+    {% for message in item.screen.student_messages %}
+    <p>{{ message.author }}:</p><pre>{{ message.text }}</pre>
+    {% endfor %}
+    {% else %}
     <div class="scroll"><table>
       {% for k, v in item.items() if k != 'id' %}<tr><th>{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}
     </table></div>
+    {% endif %}
     <form method="post" action="/approvals">
       <input type="hidden" name="approval_id" value="{{ item.id }}">
       <p><input type="text" name="note" placeholder="A note (optional)"></p>
@@ -19,9 +34,7 @@
   </div>
 {% else %}
   {% if not error %}
-  <p class="muted">Nothing waits for approval. Your approval gate fills this page. Your
-  agent lists what waits here through <code>pending_approvals()</code> in
-  <code>agent/service.py</code>, and the answer goes back through <code>decide_approval()</code>.</p>
+  <p class="muted">Nothing waits for approval.</p>
   {% endif %}
 {% endfor %}
 {% endblock %}
