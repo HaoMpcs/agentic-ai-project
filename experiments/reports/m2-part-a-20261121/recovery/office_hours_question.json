@@ -1,0 +1,39 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-219a9e65c282612e",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-office_hours_question",
+      "updated_by": "recover-office_hours_question",
+      "action_key": "6762fb28c577a4eeacd05d7bce6ceee67df45961f33a204efe4673bf37e11803",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-219a9e65c282612e",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-office_hours_question",
+      "updated_by": "recover-office_hours_question",
+      "action_key": "6762fb28c577a4eeacd05d7bce6ceee67df45961f33a204efe4673bf37e11803",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    }
+  ],
+  "crash_trace_lines": 14,
+  "run_key": "recover-office_hours_question:1"
+}

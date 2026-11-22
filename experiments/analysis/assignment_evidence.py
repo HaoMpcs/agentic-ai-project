@@ -8,6 +8,7 @@ are checked first. These results never enter the project's results/ arms.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 from collections import Counter
 import hashlib
 import json
@@ -193,7 +194,7 @@ def assignment3(root):
     reported = json.loads((root / "reports/LAB_03.json").read_text())
     truth = yaml.safe_load((root / "fixtures/answers.yaml").read_text())["eval"]
     result = {}
-    with sqlite3.connect((root / "tracker/tracker.db").resolve().as_uri() + "?mode=ro", uri=True) as db:
+    with closing(sqlite3.connect((root / "tracker/tracker.db").resolve().as_uri() + "?mode=ro", uri=True)) as db:
         db.row_factory = sqlite3.Row
         for arm, mode in (("harness", "derived"), ("control", "uuid")):
             runs = [run for run in load_runs(root) if run[1][0]["switches"]["key_mode"] == mode]

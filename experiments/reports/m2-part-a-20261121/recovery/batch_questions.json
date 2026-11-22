@@ -1,0 +1,99 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-6d261667efdc2069",
+      "kind": "reply",
+      "question_id": "SYN-Q-repeated",
+      "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "c24a999886e6351ada1b6aed404c8c25d144609bcbdda36bc0f83fe84e15b0fa",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-late"
+      ]
+    },
+    {
+      "id": "SYN-REPLY-95be05cc7e043566",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "a43f8ae35bc8a372e1574b671907569a2b5400ba058eff0a6ddc68abb1f90855",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    },
+    {
+      "id": "SYN-REPLY-9c9be079832521f4",
+      "kind": "reply",
+      "question_id": "SYN-Q-deadline",
+      "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "8ba09eb51077af241cbf76bf8e1fc35a3844d1dddf44ba900c432c0be531b5a0",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-deadline"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-6d261667efdc2069",
+      "kind": "reply",
+      "question_id": "SYN-Q-repeated",
+      "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "c24a999886e6351ada1b6aed404c8c25d144609bcbdda36bc0f83fe84e15b0fa",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-late"
+      ]
+    },
+    {
+      "id": "SYN-REPLY-95be05cc7e043566",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "a43f8ae35bc8a372e1574b671907569a2b5400ba058eff0a6ddc68abb1f90855",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    },
+    {
+      "id": "SYN-REPLY-9c9be079832521f4",
+      "kind": "reply",
+      "question_id": "SYN-Q-deadline",
+      "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-batch_questions",
+      "updated_by": "recover-batch_questions",
+      "action_key": "8ba09eb51077af241cbf76bf8e1fc35a3844d1dddf44ba900c432c0be531b5a0",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-deadline"
+      ]
+    }
+  ],
+  "crash_trace_lines": 49,
+  "run_key": "recover-batch_questions:1"
+}

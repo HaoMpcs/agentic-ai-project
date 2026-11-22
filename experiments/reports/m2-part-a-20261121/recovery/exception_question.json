@@ -1,0 +1,35 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-1ed6a3590f8525d9",
+      "kind": "flag",
+      "question_id": "SYN-Q-exception",
+      "body": "",
+      "reason": "staff_decision",
+      "status": "open",
+      "stamp": "recover-exception_question",
+      "updated_by": "recover-exception_question",
+      "action_key": "ae22e18da057e3da84d1a52e48fc7369df120914b346ce8b59742a9b8793bcef",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-1ed6a3590f8525d9",
+      "kind": "flag",
+      "question_id": "SYN-Q-exception",
+      "body": "",
+      "reason": "staff_decision",
+      "status": "open",
+      "stamp": "recover-exception_question",
+      "updated_by": "recover-exception_question",
+      "action_key": "ae22e18da057e3da84d1a52e48fc7369df120914b346ce8b59742a9b8793bcef",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 9,
+  "run_key": "recover-exception_question:1"
+}

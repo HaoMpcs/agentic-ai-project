@@ -1,0 +1,28 @@
+{
+  "kind": "free local HTTP smoke; not a measured arm",
+  "session_id": "s-20261121-104331-1031",
+  "make_app_started": true,
+  "make_serve_restarted_without_reset": true,
+  "original_session_listed": true,
+  "external_wait_survived_restart": true,
+  "agent_messages": 1,
+  "effects": [
+    [
+      "reply",
+      "SYN-Q-clarify",
+      "pending",
+      "s-20261121-104331-1031"
+    ]
+  ],
+  "followup": {
+    "ok": true,
+    "reply": {
+      "text": "SYN-Q-clarify: reply SYN-REPLY-3a7be8ea5fc2772d (pending); sources SYN-DOC-deadline",
+      "actions": [
+        "reply SYN-REPLY-3a7be8ea5fc2772d on SYN-Q-clarify; pending"
+      ],
+      "waiting_for": null
+    },
+    "error": null
+  }
+}

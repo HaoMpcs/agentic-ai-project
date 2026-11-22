@@ -41,8 +41,8 @@ The M2 report tracks the durable-session work still required.
 
 ## Run locally
 
-Requires Python >=3.10, git and make. Tested with Python 3.13.7. Install only the
-starter's declared dependencies:
+Requires Python >=3.10, git and make. Tested with Python 3.13.7. Install the
+declared project dependencies:
 
 ```bash
 make setup
@@ -50,6 +50,43 @@ make test
 make check
 make app BACKEND=tests.fakes:GoodAgent
 ```
+
+Milestone 2 Part A adds the pinned MCP SDK to requirements; run `make setup`
+after pulling this update. It supplies durable run checkpoints/journals,
+call-triggered recovery, fixed-topic outside questions, MCP, deferred loading
+and restricted code calls. See [M2 implementation record](docs/milestones/M2.md),
+[Part A verification](docs/requirements/M2_PART_A_TEST_REPORT.md) and
+[B/C integration contracts](docs/requirements/M2_PART_A_HANDOFF.md). Context,
+memory, the full autonomy UI and M2's formal passes remain separate work.
+
+Try `Process SYN-Q-clarify`, then reply `deadline` on its Threads page. A
+pending source-grounded answer should appear. Stop the app while it waits and
+restart with `make serve BACKEND=tests.m2_fakes:RuntimeAgent` to continue without
+resetting the sandbox. For a crash-interrupted run, type `resume` in its original
+console session. Held runs require an explicit staff decision through C's
+integration; an outside reply never approves or releases them.
+
+Both `tools.loading=all|deferred` and `code_calls.batch=off|on` are implemented.
+Defaults remain `all` and `off`; M1's `plan.batch=off` verdict is unchanged. Code
+calls use a bounded Python subset with `tool(name, arguments)`, indexing, lists,
+for/if, assignments and return; imports, attributes, files and network access
+are unavailable. Every call still passes Registry/hook and MCP.
+
+Part A tests spend no API tokens:
+
+```bash
+.venv/bin/python -m unittest tests.test_m2_runtime -v
+make test
+make check
+.venv/bin/python -m experiments.analysis.m2_runtime experiments/reports/m2-part-a-20261121/recovery
+```
+
+To capture a new recovery evidence bundle, choose a fresh folder and set
+`PART_A_EVIDENCE_DIR` to its `recovery` subfolder when running `make test`, then
+run the analysis command on that subfolder. These are free mechanism records,
+not an official baseline or either improvement arm. After all M2 modules are
+integrated, run the full task set (sessions included), and follow the project
+protocol for two sequential three-sweep passes with advance-pushed predictions.
 
 Open http://localhost:8000. The course page shows incoming questions, public
 sources, drafts, flags and synthetic staff-only records. In the console, try:

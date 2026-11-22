@@ -38,6 +38,15 @@ classes:
   course_status/selected:
     column: independent
     reason: Read existing effects for a selected question.
+  course_find_tools/catalogue:
+    column: independent
+    reason: Search deterministic tool definitions; this has no outside effect.
+  course_ask_clarification/fixed_public_question:
+    column: independent
+    reason: Code sends a fixed disclosed public-topic question under a durable key.
+  course_compensate_effect/owned:
+    column: independent
+    reason: Recovery or an explicit operator rollback may compensate this run's owned reversible effect.
   course_list_flags/operator:
     column: independent
     reason: Trusted operator-only summary; unavailable to the model.

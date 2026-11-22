@@ -1,0 +1,39 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-1aed88ed186a3617",
+      "kind": "reply",
+      "question_id": "SYN-Q-repeated",
+      "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-repeated_question",
+      "updated_by": "recover-repeated_question",
+      "action_key": "154f8d4ce8d2034620968775e97857df79463a2d89e21bfbb4ba6da22bd99fee",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-late"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-1aed88ed186a3617",
+      "kind": "reply",
+      "question_id": "SYN-Q-repeated",
+      "body": "Late submissions lose 10 percent per day for up to two days. Extensions require an individual decision from course staff.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-repeated_question",
+      "updated_by": "recover-repeated_question",
+      "action_key": "154f8d4ce8d2034620968775e97857df79463a2d89e21bfbb4ba6da22bd99fee",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-late"
+      ]
+    }
+  ],
+  "crash_trace_lines": 16,
+  "run_key": "recover-repeated_question:1"
+}

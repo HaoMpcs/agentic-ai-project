@@ -69,6 +69,9 @@ def classify(name: str, args: dict, caller: str) -> str:
     suffixes = {"course_get_question": "selected", "course_search_materials": "public",
                 "course_search_public_answers": "public", "course_create_flag": "internal",
                 "course_status": "selected",
+                "course_find_tools": "catalogue",
+                "course_ask_clarification": "fixed_public_question",
+                "course_compensate_effect": "owned" if caller in ("workflow", "operator") else "unknown",
                 "operator_compensate": "owned" if caller == "operator" else "unknown",
                 "course_list_flags": "operator" if caller == "operator" else "non_operator"}
     return f"{name}/{suffixes.get(name, 'unknown')}"
@@ -78,7 +81,14 @@ def enforce(name, args, *, caller, session_id, run_id, trace, approval_id=None, 
     compensating = operator_compensation and name == "operator_compensate" and caller == "operator"
     from policy import controls
     # A persisted stop is consulted before reading/classifying any target record.
-    if state.is_stopped(run_id) and not compensating:
+    durable_stopped = False
+    try:
+        from sandbox import execution as execution_store
+        durable = execution_store.load(run_id)
+        durable_stopped = bool(durable and (durable.get("stop") or durable.get("status") in ("held", "stopped", "cancelled")))
+    except (KeyError, ValueError):
+        pass
+    if (state.is_stopped(run_id) or durable_stopped) and not compensating:
         from policy import controls
         controls.observe(run_id, trace)
         trace.event("policy_decision", action_class="run/stopped", column="prohibited",

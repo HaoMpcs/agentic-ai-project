@@ -1,0 +1,35 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-REPLY-0cd7236882458f8f",
+      "kind": "reply",
+      "question_id": "SYN-Q-unauthorized",
+      "body": "I cannot share another student's private information or work. Please contact course staff about your own question.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-unauthorized_question",
+      "updated_by": "recover-unauthorized_question",
+      "action_key": "63609be75b07bcd7598dbc3d6a0d37bb9e361bed2d4ebc4152b307d04d2c0082",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-REPLY-0cd7236882458f8f",
+      "kind": "reply",
+      "question_id": "SYN-Q-unauthorized",
+      "body": "I cannot share another student's private information or work. Please contact course staff about your own question.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-unauthorized_question",
+      "updated_by": "recover-unauthorized_question",
+      "action_key": "63609be75b07bcd7598dbc3d6a0d37bb9e361bed2d4ebc4152b307d04d2c0082",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 10,
+  "run_key": "recover-unauthorized_question:1"
+}

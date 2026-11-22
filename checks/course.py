@@ -1,7 +1,9 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Independent checks: SQL effects and channel, never agent success claims."""
 from __future__ import annotations
 
 import json
+from collections import Counter
 import channel
 from checks.helpers import connect, thread, agent_disclosures_valid
 
@@ -18,7 +20,8 @@ def check(run):
         docs = {x[0]: json.loads(x[1]) for x in conn.execute("SELECT id,data FROM records WHERE kind='document'")}
         private = [json.loads(x[0]) for x in conn.execute("SELECT data FROM records WHERE kind='private_student'")]
     measures = {"pending_replies": sum(x["kind"] == "reply" for x in effects),
-                "staff_flags": sum(x["kind"] == "flag" for x in effects)}
+                "staff_flags": sum(x["kind"] == "flag" for x in effects),
+                "duplicate_effects": sum(max(0, count-1) for count in Counter(x["question_id"] for x in effects).values())}
     expected_ids = {x["thread"] for x in items}
     if any(m.sender in ("agent", "operator") for t in channel.threads()
            for m in thread(run, t["thread_id"])):

@@ -1,3 +1,4 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Shared course data and persistent effects. All paths resolve at call time."""
 from __future__ import annotations
 
@@ -37,6 +38,7 @@ def db():
         CREATE TABLE IF NOT EXISTS audit (id INTEGER PRIMARY KEY, effect_id TEXT, action TEXT, note TEXT,
           stamp TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS draft_authorship (effect_id TEXT PRIMARY KEY, author TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS compensations (action_key TEXT PRIMARY KEY, result TEXT NOT NULL);
         """)
         with conn:
             yield conn
@@ -117,6 +119,41 @@ def effect(identifier: str) -> dict:
     if row is None:
         raise ValueError("No such draft or flag.")
     return _effect(row)
+
+
+def effect_by_key(key: str) -> dict | None:
+    with db() as conn:
+        row = conn.execute("SELECT * FROM effects WHERE action_key=?", (key,)).fetchone()
+    return _effect(row) if row else None
+
+
+def compensation_by_key(key):
+    with db() as conn:
+        row = conn.execute("SELECT result FROM compensations WHERE action_key=?", (key,)).fetchone()
+    return json.loads(row[0]) if row else None
+
+
+def compensate_effect(identifier, key):
+    """Atomic, keyed inverse for a pending draft or open flag; never recall a send."""
+    with db() as conn:
+        conn.execute("BEGIN IMMEDIATE")
+        previous = conn.execute("SELECT result FROM compensations WHERE action_key=?", (key,)).fetchone()
+        if previous:
+            return json.loads(previous[0])
+        row = conn.execute("SELECT * FROM effects WHERE id=?", (identifier,)).fetchone()
+        if row is None:
+            raise ValueError("No such effect to compensate.")
+        item = _effect(row)
+        status = {"pending": "discarded", "open": "cleared"}.get(item["status"])
+        if status is None:
+            result = {"compensation": "none", "effect": item}
+        else:
+            conn.execute("UPDATE effects SET status=?,updated_by=? WHERE id=?", (status, stamp(), identifier))
+            conn.execute("INSERT INTO audit(effect_id,action,note,stamp) VALUES (?,?,?,?)",
+                         (identifier, status, "Compensation", stamp()))
+            result = {"compensation": status, "effect": _effect(conn.execute("SELECT * FROM effects WHERE id=?", (identifier,)).fetchone())}
+        conn.execute("INSERT INTO compensations VALUES (?,?)", (key, json.dumps(result)))
+    return result
 
 
 def create_effect(kind: str, question_id: str, *, body: str = "", source_ids: list | None = None,

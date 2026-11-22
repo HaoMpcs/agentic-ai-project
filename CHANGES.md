@@ -165,3 +165,34 @@ archive reports and measurements are also retained and cited, from
 for hashes, archived revisions and recomputation. The offline evidence analyzer
 and its tests are new code. Assignment 4 was reviewed for scope; its recovery
 and memory code was not reused.
+
+# Milestone 2 — Part A
+
+Owner: Jingyu Huang (CNetID: jyhuang28).
+
+- Added a SQLite run store, prepared/completed-call journal, saved model calls
+  and plan/prefix/revision state, cumulative bounds, process/thread ownership,
+  call-triggered resume and final checkpoint exports in traces.
+- Added read-back resolution for confirmed, absent and unknown writes, stable
+  per-run action keys, reverse keyed compensation and conservative staff holds.
+- Routed valid Registry dispatch through a fresh request-scoped MCP SDK Server;
+  pinned mcp 1.30.0, documented its 2025-11-25 protocol revision and the tested
+  stateless compatibility adapter. Added no handshake or deprecated capabilities.
+- Added deferred catalogue loading and a bounded Python-subset program process,
+  both behind dated switches. All program calls retain Registry/hook/MCP checks;
+  no general Python execution, file or network capability is exposed.
+- Added a fixed-template, disclosed missing-topic question, a persistent external
+  wait, exact offered-topic validation, timeout/unknown holds and a demo case.
+- Added B's context and C's control/policy adapter contracts, without claiming
+  notes, memory, approvals or a complete autonomy policy are implemented.
+- Added free cross-process crash/wait/program tests, recovery evidence, analysis
+  and English implementation/handoff documentation. Updated the M1 timeout test
+  to require reuse after independent confirmation; an inconclusive-read test
+  separately requires holding without another effect.
+- Retained Jingyu Huang's Assignment 4 original reports from
+  ylwhale/agentic-ai-assignment4 with hashes, citing its reported stable-key and
+  broken-key matrices. No Assignment 4 runtime code, RepoMind fixtures/tools or
+  recovery framework was imported. Continued our own M1 service, registry,
+  executor and starter test harness; harness/, channel/ and run.py are unchanged.
+- Deferred the full M2 baseline, topology branch and formal passes to integration;
+  no prediction, performance improvement or measured experiment is invented.

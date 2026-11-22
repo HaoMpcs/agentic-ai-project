@@ -1,3 +1,4 @@
+# Milestone 2 Part A contributions: Jingyu Huang (CNetID: jyhuang28).
 """Fictional course fixtures; these are not University policies or student records."""
 
 NOW = "2026-10-27T09:00:00-05:00"
@@ -36,6 +37,9 @@ DOCUMENTS = [
 ]
 
 DEMO_INPUTS = [
+    {"thread": "SYN-Q-clarify", "from": "SYN-STUDENT-001", "kind": "deadline", "topic": "",
+     "requires_topic": True, "topic_options": ["deadline", "office_hours"],
+     "text": "When is it due? I forgot to name the course topic."},
     {"thread": "SYN-Q-deadline", "from": "SYN-STUDENT-001", "kind": "deadline", "topic": "deadline",
      "text": "When is Assignment 2 due?"},
     {"thread": "SYN-Q-concept", "from": "SYN-STUDENT-002", "kind": "conceptual", "topic": "search",

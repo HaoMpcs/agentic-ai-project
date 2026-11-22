@@ -1,0 +1,35 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-aa3335c45f878364",
+      "kind": "flag",
+      "question_id": "SYN-Q-ambiguous",
+      "body": "",
+      "reason": "conflicting_sources",
+      "status": "open",
+      "stamp": "recover-ambiguous_question",
+      "updated_by": "recover-ambiguous_question",
+      "action_key": "af538b73913bb8eae582cb280de0029e0a6a0047c714e6f2cd3ebfa3e4a2642a",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-aa3335c45f878364",
+      "kind": "flag",
+      "question_id": "SYN-Q-ambiguous",
+      "body": "",
+      "reason": "conflicting_sources",
+      "status": "open",
+      "stamp": "recover-ambiguous_question",
+      "updated_by": "recover-ambiguous_question",
+      "action_key": "af538b73913bb8eae582cb280de0029e0a6a0047c714e6f2cd3ebfa3e4a2642a",
+      "channel_id": null,
+      "source_ids": []
+    }
+  ],
+  "crash_trace_lines": 31,
+  "run_key": "recover-ambiguous_question:1"
+}

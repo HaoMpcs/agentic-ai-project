@@ -1,0 +1,65 @@
+{
+  "before": [],
+  "after_crash": [
+    {
+      "id": "SYN-FLAG-cf4ab89aec3d7324",
+      "kind": "flag",
+      "question_id": "SYN-Q-deadline",
+      "body": "",
+      "reason": "missing_information",
+      "status": "open",
+      "stamp": "recover-dev_checkpoint_revision",
+      "updated_by": "recover-dev_checkpoint_revision",
+      "action_key": "1988672eeb65d601458570ad80127a93c545923e915285b63a859b1fc8a75be0",
+      "channel_id": null,
+      "source_ids": []
+    },
+    {
+      "id": "SYN-REPLY-43102dbc46ccc598",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-dev_checkpoint_revision",
+      "updated_by": "recover-dev_checkpoint_revision",
+      "action_key": "95ddab48393263a2989e8b4bd51b5f045a7553bf4871964e04a2d990bfa9c986",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    }
+  ],
+  "after_resume": [
+    {
+      "id": "SYN-FLAG-cf4ab89aec3d7324",
+      "kind": "flag",
+      "question_id": "SYN-Q-deadline",
+      "body": "",
+      "reason": "missing_information",
+      "status": "open",
+      "stamp": "recover-dev_checkpoint_revision",
+      "updated_by": "recover-dev_checkpoint_revision",
+      "action_key": "1988672eeb65d601458570ad80127a93c545923e915285b63a859b1fc8a75be0",
+      "channel_id": null,
+      "source_ids": []
+    },
+    {
+      "id": "SYN-REPLY-43102dbc46ccc598",
+      "kind": "reply",
+      "question_id": "SYN-Q-office",
+      "body": "Office hours are Tuesdays from 2:00 PM to 3:00 PM America/Chicago in SYN-Room 204.",
+      "reason": "",
+      "status": "pending",
+      "stamp": "recover-dev_checkpoint_revision",
+      "updated_by": "recover-dev_checkpoint_revision",
+      "action_key": "95ddab48393263a2989e8b4bd51b5f045a7553bf4871964e04a2d990bfa9c986",
+      "channel_id": null,
+      "source_ids": [
+        "SYN-DOC-office"
+      ]
+    }
+  ],
+  "crash_trace_lines": 47,
+  "run_key": "recover-dev_checkpoint_revision:1"
+}
