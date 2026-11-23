@@ -1,0 +1,238 @@
+{
+  "run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e",
+  "arm": "m2-topology-single-free",
+  "task": "ambiguous_question",
+  "task_file": "tasks/ambiguous_question.yaml",
+  "sweep": 3,
+  "started": "2026-11-23T00:00:21.600+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off",
+    "tools.loading": "all",
+    "code_calls.batch": "off",
+    "context.budget": 12000,
+    "notes.compaction": "on",
+    "memory.operator_preference": "on",
+    "topology": "single"
+  },
+  "overrides": [
+    "topology=single"
+  ],
+  "backend": "tests.fakes:GoodAgent",
+  "model": "says-done",
+  "free": true,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "0c93c0f684cd0c11b37cdee294925f7ddc8d207c",
+  "dirty": true,
+  "finished": "2026-11-23T00:00:21.749+00:00",
+  "tokens": {
+    "input": 600,
+    "output": 120,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 720
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 6,
+  "latency_s": 0.104,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.104,
+  "turn_latency_s": [
+    0.095,
+    0.009
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "agent_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 1,
+    "duplicate_effects": 0
+  },
+  "trace": "results/_free/m2-topology-single-free/m2-topology-single-free-ambiguous_question-s03-f3c76e.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 2,
+      "plan_step": null,
+      "id": "fake-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-ambiguous\", \"kind\": \"ambiguous\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": false, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"project_deadline\", \"topic_options\": [], \"untrusted_messages\": [\"Is the project due November 1 or November 3? The sources disagree.\"]}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 4,
+      "plan_step": null,
+      "id": "fake-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "project_deadline"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-conflict-a\", \"title\": \"Project deadline in syllabus\", \"topic\": \"project_deadline\", \"version\": 1}, {\"active\": true, \"id\": \"SYN-DOC-conflict-b\", \"title\": \"Project deadline in announcement\", \"topic\": \"project_deadline\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 6,
+      "plan_step": null,
+      "id": "fake-3",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-conflict-a"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"The synthetic project deadline in the syllabus is November 1, 2026.\", \"claims\": {\"project_due_date\": \"2026-11-01\"}, \"facts\": [\"The synthetic project deadline in the syllabus is November 1, 2026.\"], \"id\": \"SYN-DOC-conflict-a\", \"title\": \"Project deadline in syllabus\", \"topic\": \"project_deadline\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 8,
+      "plan_step": null,
+      "id": "fake-4",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-conflict-b"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"The synthetic project deadline in the announcement is November 3, 2026.\", \"claims\": {\"project_due_date\": \"2026-11-03\"}, \"facts\": [\"The synthetic project deadline in the announcement is November 3, 2026.\"], \"id\": \"SYN-DOC-conflict-b\", \"title\": \"Project deadline in announcement\", \"topic\": \"project_deadline\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 10,
+      "plan_step": null,
+      "id": "fake-5",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-ambiguous",
+        "reason": "conflicting_sources"
+      },
+      "output": "{\"effect\": {\"action_key\": \"d228af5efd96933773d02d037020f8cd94706a5d3b7aaca28569843888e2d0d8\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-40954e7dc3d01066\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\"}}",
+      "is_error": false,
+      "latency_s": 0.009,
+      "error_class": null,
+      "idempotency_key": "d228af5efd96933773d02d037020f8cd94706a5d3b7aaca28569843888e2d0d8",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "agent",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"d228af5efd96933773d02d037020f8cd94706a5d3b7aaca28569843888e2d0d8\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-40954e7dc3d01066\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\"}]}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-ambiguous"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"d228af5efd96933773d02d037020f8cd94706a5d3b7aaca28569843888e2d0d8\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-40954e7dc3d01066\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-ambiguous\", \"reason\": \"conflicting_sources\", \"source_ids\": [], \"stamp\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-free-ambiguous_question-s03-f3c76e\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-free-ambiguous_question-s03-f3c76e"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-ambiguous: flag SYN-FLAG-40954e7dc3d01066 (open); conflicting_sources",
+      "actions": [
+        "flag SYN-FLAG-40954e7dc3d01066 on SYN-Q-ambiguous; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-ambiguous: flag SYN-FLAG-40954e7dc3d01066 (open); conflicting_sources",
+      "actions": [
+        "flag SYN-FLAG-40954e7dc3d01066 on SYN-Q-ambiguous; open"
+      ],
+      "waiting_for": null
+    }
+  ]
+}
