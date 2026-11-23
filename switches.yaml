@@ -48,3 +48,8 @@ memory:
     values: ["off", "on"]
     added: 2026-11-22
     about: Explicit operator preferences persist with source provenance; student facts are excluded.
+topology:
+  setting: single
+  values: [single]
+  added: 2026-11-22
+  about: Split candidate retained on m2-split for final tag m2-split-final; it did not improve matched fake-model correctness and added latency.

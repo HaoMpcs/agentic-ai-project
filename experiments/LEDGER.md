@@ -35,3 +35,19 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Difference:** Off minus on: +3 passing runs, +31,454 tokens, +$0.002411 total cost, and -5 plan rejections. Median turn increased from 1.909 to 2.514 seconds (+0.605 seconds).
 - **Verdict:** Keep `plan.batch=off`. The loop completed every batch; the plan completed none.
 - **Links:** results/pass1-plan-on/ and results/pass1-plan-off/.
+
+## Pass 2 · Route the repeatedly false-finishing batch to a workflow
+
+- **Pass:** 2; compare the agent batch route with the deterministic workflow route.
+- **Owner:** Part 3/integration owner; name pending team confirmation.
+- **Problem:** The clean M2 topology diagnostics passed 27/30 in both single and split arms. All three failures were `batch_questions`; the fake agent stopped after one question, leaving `SYN-Q-office` without an effect. Example: `m2-topology-single-verified-free-batch_questions-s01-574240`, trace line 44.
+- **Evidence:** Three identical batch failures in each topology arm; independent sandbox checks report the first missing effect rather than trusting the model's completion text.
+- **Why this fix:** Lecture 1's routing test favors a workflow when the steps and branching are known in advance. This batch contains the same bounded read/search/read/write procedure per selected question; model coordination adds a false-finish point.
+- **Prediction:** `m2-pass2-batch-workflow-free` will pass 3/3 with zero `false_finish` ends; `m2-pass2-batch-agent-free` will pass at most 1/3 and record at least two `false_finish` ends. Workflow will use no more model tokens than agent.
+- **Arms:** Pending measurement after this prediction commit: `control.batch=workflow` versus `control.batch=agent`, with `topology=single` and `plan.batch=off` in both.
+- **Held constant:** Same committed code, tasks, fake GoodAgent backend, checks, 32,000-token task bound, tools.loading=all, code_calls.batch=off, and all other switches.
+- **Tasks and sweeps:** `tasks/batch_questions.yaml`, three sweeps per arm.
+- **Results:** Pending.
+- **Difference:** Pending.
+- **Verdict:** Pending; do not change the setting until both arms are recorded.
+- **Links:** Pending `results/_free/m2-pass2-batch-agent-free/` and `results/_free/m2-pass2-batch-workflow-free/`.
