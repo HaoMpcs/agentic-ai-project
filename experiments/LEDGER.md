@@ -47,7 +47,7 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Arms:** `results/m2-pass2-tools-all` with `tools.loading=all`; `results/m2-pass2-tools-deferred` with `tools.loading=deferred`. Both explicitly keep `topology=single`, `plan.batch=off`, and `code_calls.batch=off`.
 - **Held constant:** Same committed code, Gemini 3.5 Flash-Lite, settings and price sheet, 32,000-token task bound, checks, task inputs, three sweeps, sequential jobs, all other switches and scripted operator behavior.
 - **Tasks and sweeps:** `tasks/ambiguous_question.yaml`, `tasks/batch_questions.yaml`, and `tasks/conceptual_question.yaml`; three sweeps per arm, nine runs each.
-- **Results:** Pending; run only after this prediction commit is pushed.
-- **Difference:** Pending.
-- **Verdict:** Pending; retain `tools.loading=all` until both arms are recorded.
-- **Links:** Pending `results/m2-pass2-tools-all/` and `results/m2-pass2-tools-deferred/`.
+- **Results:** Both arms passed 9/9. All used 107,283 input + 3,084 output = 110,367 tokens, $0.039895, 57 model calls and 115 tool calls. Deferred used 155,408 input + 3,589 output = 158,997 tokens, $0.055595, 74 model calls and 132 tool calls, including 22 catalogue calls. Median turn was 1.8695s all and 2.257s deferred.
+- **Difference:** Deferred minus all: +48,125 input tokens (+44.9%), +48,630 total tokens, +$0.015700, +17 model calls, +17 tool calls and +0.3875s median turn, with no pass-rate change. The predicted 10% input reduction was wrong; catalogue turns outweighed the smaller initial surface.
+- **Verdict:** Drop deferred for this workload and keep `tools.loading=all`. Seven default model-facing tools are below the point where search pays for itself; retain the alternative and reopen only after the surface or per-call definition share grows materially.
+- **Links:** `results/m2-pass2-tools-all/` and `results/m2-pass2-tools-deferred/`.
