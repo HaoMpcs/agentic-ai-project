@@ -48,3 +48,8 @@ memory:
     values: ["off", "on"]
     added: 2026-11-22
     about: Explicit operator preferences persist with source provenance; student facts are excluded.
+topology:
+  setting: split
+  values: [single, split]
+  added: 2026-11-22
+  about: Candidate split on m2-split; main remains single until a matched-budget pass favors it.

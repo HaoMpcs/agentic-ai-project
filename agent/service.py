@@ -428,6 +428,13 @@ def _execute(data):
                                 registry.bound = bounds.check
                                 agent_loop(registry, bounds, f"Process added question {qid}", [qid])
                         inbox.finish(event["id"], "Added selected questions processed without replaying completed effects.")
+                if runtime.switch("topology", "single") == "split":
+                    from agent.topology import combined_end_state, run_candidate
+                    run_candidate(registry, ids, trace, parent_id=active.key)
+                    combined = combined_end_state(ids, course.effects())
+                    trace.event("topology_end_state", run_key=active.key, **combined)
+                    if reason != "false_finish" and not combined["passed"]:
+                        raise Halt("topology_divergence", "; ".join(combined["errors"]))
                 trace.end(reason)
                 active.finish("failed" if reason == "false_finish" else "completed", reason)
                 controls.set_status(registry.control_run_id, "failed" if reason == "false_finish" else "completed")

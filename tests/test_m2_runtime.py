@@ -116,7 +116,10 @@ print(json.dumps(replies))
                 self.assertEqual(len(effects), len(items))
                 following = read_trace(trace)[boundary:]
                 self.assertFalse([e for e in following if e["type"] == "mcp_request"
-                                  and e["metadata"]["run_key"] == run["run_key"]])
+                                  and e["metadata"]["run_key"] == run["run_key"]
+                                  and e["tool"] in {"course_create_reply", "course_create_flag",
+                                                    "course_send_reply", "course_ask_clarification",
+                                                    "course_compensate_effect"}])
                 self.keep(task["id"], [], crashed, effects, trace, boundary=boundary, run_key=run["run_key"])
 
     def test_planned_path_recovers_saved_plan_without_replanning(self):
