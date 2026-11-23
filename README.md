@@ -7,8 +7,9 @@ agent tools. Later outside replies are stored without automatic processing.
 
 **Current status:** the Milestone 2 build, real-model evaluation and three
 improvement passes are complete. The measured verdicts keep `plan.batch=off`,
-`tools.loading=all` and `code_calls.batch=off`. The final human approval timing
-sample and `m2` submission tag remain outstanding. See [Milestone 2 report](docs/milestones/M2.md),
+`tools.loading=all` and `code_calls.batch=off`. Human approval timing and screen
+evidence are retained; course-framework label confirmation and the `m2` tag
+remain. See [Milestone 2 report](docs/milestones/M2.md),
 [requirement audit](docs/requirements/AUDIT.md),
 [compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
 
@@ -35,8 +36,7 @@ The durable Part 1 runtime, MCP path, outside wait/reply flow, bounded context,
 provenance memory and Part 2 controls are now integrated locally. The required
 candidate split is retained on `m2-split`; the integration decision remains
 single. Fixed-plan and per-action approvals are implemented. The formal
-real-model build and Passes 2 and 3 are complete; only the real-human review
-measurement remains open before the final tag.
+real-model build, Passes 2 and 3, and the real-human review measurement are complete.
 
 `make serve` restarts the app without resetting the sandbox. Persisted effects,
 run checkpoints, prepared/completed calls, waits and memory survive restart;
@@ -208,7 +208,7 @@ Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
 for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
 These are separate from this project's real-model baseline and pass. Team
 responsibilities and AI assistance are recorded in M2.md. The final milestone
-tag will be created after the human approval sample and team review are recorded.
+tag will be created after course-framework labels and final review are recorded.
 
 ---
 

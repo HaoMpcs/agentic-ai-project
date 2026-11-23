@@ -1,0 +1,50 @@
+{
+  "observed_at": "2026-11-22T21:52:01-06:00",
+  "reviewer": "Hao Shi",
+  "environment": "localhost synthetic course records; tests.fakes:GoodAgent; no model API calls",
+  "method": "Six requests were created together and answered through the live Approvals page. Elapsed time is request creation to operator decision, so later items include queue wait. Two approvals and one denial were deliberately recorded in each class.",
+  "day": {
+    "runs": 6,
+    "asks_per_run": 1.0,
+    "asks": 6,
+    "review_window_seconds": 51.707,
+    "reviewer_minutes": 0.862,
+    "seconds_per_ask": 8.618
+  },
+  "overall": {
+    "decisions": 6,
+    "approved": 4,
+    "denied": 2,
+    "approval_rate": 0.6667,
+    "median_request_to_decision_seconds": 42.7605
+  },
+  "by_action_class": {
+    "course_send_reply/student_reply": {
+      "approval_mode": "plan",
+      "decisions": 3,
+      "approved": 2,
+      "denied": 1,
+      "approval_rate": 0.6667,
+      "elapsed_seconds": [22.843, 32.535, 40.791],
+      "median_request_to_decision_seconds": 32.535
+    },
+    "operator_limit/approval": {
+      "approval_mode": "per_action",
+      "decisions": 3,
+      "approved": 2,
+      "denied": 1,
+      "approval_rate": 0.6667,
+      "elapsed_seconds": [44.73, 47.805, 51.461],
+      "median_request_to_decision_seconds": 47.805
+    }
+  },
+  "trace_files": [
+    "traces/human-send-1.jsonl",
+    "traces/human-send-2.jsonl",
+    "traces/human-send-3.jsonl",
+    "traces/human-internal-1.jsonl",
+    "traces/human-internal-2.jsonl",
+    "traces/human-internal-3.jsonl"
+  ],
+  "limitations": "Small convenience sample with synthetic, source-supported actions and scheduled denials. It measures this page and queue order, not harmful-action detection or a production workload."
+}
