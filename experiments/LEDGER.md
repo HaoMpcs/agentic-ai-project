@@ -39,7 +39,7 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 ## Pass 2 · Reduce the full tool-definition bill
 
 - **Pass:** 2; compare full tool loading with deferred catalogue loading.
-- **Owner:** Part 3/integration owner; name pending team confirmation.
+- **Owner:** Hao Shi (CNetID: haocs), Part 3 and integration.
 - **Problem:** The real M2 build passed 33/33, so there is no correctness failure to repair. Its nine Agent-path runs consumed all 107,257 model tokens. Every model call offered the full default tool surface; the three batch runs used 14,906, 15,264 and 15,264 tokens.
 - **Evidence:** `m2-build-batch_questions-s01-2b4b19`, `s02-05a411` and `s03-6a1129`; the build summary records 104,217 input and 3,040 output tokens, $0.038866, and no failed runs.
 - **Why this fix:** Lecture 3's definition-bill test asks whether repeatedly transmitting tools the model does not need consumes a material window share. Deferred loading is already built behind a switch and preserves Registry/policy checks; this pass measures whether its smaller initial surface offsets catalogue-search calls.
@@ -55,7 +55,7 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 ## Pass 3 · Keep batch intermediates out of model context
 
 - **Pass:** 3; compare the bounded agent loop with restricted code calls for the batch use case.
-- **Owner:** Part 3/integration owner; name pending team confirmation.
+- **Owner:** Hao Shi (CNetID: haocs), Part 3 and integration.
 - **Problem:** Pass 2 showed that adding catalogue model turns increased input by 44.9%. With full loading retained, `batch_questions` remains the largest Agent task: its three Pass 2 control runs used 15,265, 15,376 and 15,330 total tokens. Repeated model round trips carry tool definitions and intermediate results.
 - **Evidence:** `m2-pass2-tools-all-batch_questions-s01-ba3497`, `s02-1f6ed7`, and `s03-eb1b3f`; all passed, so the pass targets input/model-call cost without relaxing the independent sandbox check.
 - **Why this fix:** Lecture 3's code-call test applies to a bounded loop over several records. The implemented restricted program can call only the Registry, uses no imports/files/network/attributes, retains the task's shared bounds and keys, and returns only a small final result to the next model call.

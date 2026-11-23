@@ -91,7 +91,10 @@ def assemble_context(*, system, messages, tools, purpose):
     from sandbox import memory
     records = memory.prompt_records()
     if records and purpose not in ("plan", "revise_plan"):
-        prepared.insert(0, {"role": "user", "content": json.dumps({"confirmed_operator_memory": records}, sort_keys=True)})
+        # Preserve the task envelope as message zero: scripted backends and
+        # coordinators parse it structurally. Memory is still present before
+        # the first model call, immediately after that protected request.
+        prepared.insert(1 if prepared else 0, {"role": "user", "content": json.dumps({"confirmed_operator_memory": records}, sort_keys=True)})
         if active:
             active.trace.event("memory_read", run_key=active.key, records=len(records), before_model=True)
     original_chars = len(json.dumps(prepared, sort_keys=True))
@@ -107,7 +110,7 @@ def assemble_context(*, system, messages, tools, purpose):
             notes.append(text[:300])
         omitted += 1
     if notes:
-        prepared.insert(0, {"role": "user", "content": json.dumps({"durable_notes": notes}, sort_keys=True)})
+        prepared.insert(1 if prepared else 0, {"role": "user", "content": json.dumps({"durable_notes": notes}, sort_keys=True)})
     if len(json.dumps(prepared, sort_keys=True)) > limit_chars:
         last = copy.deepcopy(prepared[-1])
         last["content"] = str(last.get("content", ""))[-max(500, limit_chars // 2):]
