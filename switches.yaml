@@ -48,6 +48,12 @@ memory:
     values: ["off", "on"]
     added: 2026-11-22
     about: Explicit operator preferences persist with source provenance; student facts are excluded.
+approval:
+  reviewed_send:
+    setting: plan
+    values: [per_action, plan]
+    added: 2026-11-22
+    about: The selected draft, recipient, final disclosed text and sources are fixed before review, so one plan review covers its reads and exact send.
 topology:
   setting: single
   values: [single]

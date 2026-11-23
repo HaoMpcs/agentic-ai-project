@@ -416,6 +416,22 @@ class Registry:
         self.trace.event("compensation", **{**result.data, "effect_id": effect_id, "action_key": key})
         return f"{effect_id}: {result.data['compensation']}"
 
+    def request_plan_approval(self, name, args, *, caller, steps):
+        """Prepare an upfront review only when policy independently gates the call."""
+        if name == "course_send_reply" and args["effect_id"] not in self.send_effect_ids:
+            raise PermissionError("The selected effect is outside this run's scope.")
+        try:
+            autonomy.enforce(name, args, caller=caller, session_id=self.session_id,
+                             run_id=self.control_run_id, trace=self.trace)
+        except autonomy.PolicyBlocked as exc:
+            if exc.decision != "approval_required":
+                raise
+            if self.hook(name, copy.deepcopy(args)) is not True:
+                raise PermissionError("Pre-call hook denied this plan.")
+            return approvals.request_plan(self, name, args, caller=caller,
+                                          action_class=exc.action_class, steps=steps)
+        raise PermissionError("Plan review is available only for an approval-gated action.")
+
     def _authorize(self, name, args, caller, *, step=0, plan_step=None, call_id=None):
         try:
             if name == "course_send_reply" and args["effect_id"] not in self.send_effect_ids:

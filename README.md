@@ -33,8 +33,8 @@ and `/messages`. Ordinary busy messages queue with an eight-slot limit.
 The durable Part 1 runtime, MCP path, outside wait/reply flow, bounded context,
 provenance memory and Part 2 controls are now integrated locally. The required
 candidate split is retained on `m2-split`; the integration decision remains
-single. Whole-plan approval, real-human review measurements and formal real-model
-M2 experiments remain open. M2 still needs two additional measured passes,
+single. Fixed-plan and per-action approvals are implemented; real-human review
+measurements and formal real-model M2 experiments remain open. M2 still needs two additional measured passes,
 numbered after Pass 1, with each prediction pushed before either arm.
 
 `make serve` restarts the app without resetting the sandbox. Persisted effects,

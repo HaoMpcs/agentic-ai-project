@@ -67,6 +67,47 @@ class DisclosureTests(ScratchTest):
         self.assertEqual(course.effect(draft["id"])["status"], "sent")
         self.assertEqual(approvals.get(item["id"])["status"], "executed")
 
+    def test_plan_review_lists_every_step_and_enforces_exact_gated_action(self):
+        draft, item = self.pending_send()
+        row = approvals.get(item["id"])
+        self.assertEqual(item["approval_mode"], "plan")
+        self.assertEqual(row["payload"]["approval_mode"], "plan")
+        steps = item["plan"]["steps"]
+        self.assertEqual(steps[0]["tool"], "course_get_question")
+        self.assertEqual(steps[-1]["tool"], "course_send_reply")
+        self.assertEqual(steps[-1]["arguments"], row["payload"]["arguments"])
+        self.assertTrue(item["plan"]["output_checks"])
+        with TestClient(app) as client:
+            page = client.get("/approvals").text
+            self.assertIn("Complete gated plan", page)
+            self.assertIn("exact recipient, body, effect ID", page)
+        self.approve(item)
+        self.assertEqual(len(self.sent()), 1)
+        self.assertEqual(course.effect(draft["id"])["status"], "sent")
+
+    def test_per_action_switch_keeps_send_at_call_time(self):
+        runtime.configure(backend="tests.fakes:GoodAgent",
+                          overrides=["approval.reviewed_send=per_action"])
+        _, item = self.pending_send()
+        self.assertEqual(item["approval_mode"], "per_action")
+        self.assertIsNone(item["plan"])
+        self.approve(item)
+        self.assertEqual(len(self.sent()), 1)
+
+    def test_send_not_listed_in_approved_plan_crosses_gate_again(self):
+        _, first = self.pending_send()
+        self.approve(first)
+        document = course.record("document", "SYN-DOC-deadline")
+        second = course.create_effect("reply", "SYN-Q-deadline", body=document["answer"],
+                                      source_ids=[document["id"]], key="second-plan-candidate")
+        reply = turns.operator_turn("send-review", f"/send {second['id']}")
+        self.assertIn("Approvals", reply.text)
+        pending = service.pending_approvals()
+        self.assertEqual(len(pending), 1)
+        self.assertNotEqual(pending[0]["id"], first["id"])
+        self.assertEqual(pending[0]["plan"]["steps"][-1]["arguments"]["effect_id"], second["id"])
+        self.assertEqual(len(self.sent()), 1)
+
     def test_direct_registry_send_without_line_denied_before_approval_and_write(self):
         draft = self.draft()
         registry = Registry("probe", [draft["question_id"]], send_effect_ids=[draft["id"]])

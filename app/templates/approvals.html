@@ -9,6 +9,11 @@
     <div class="who">Approval {{ item.id }}</div>
     {% if item.screen %}
     <p class="muted">Session {{ item.session_id }} · Run {{ item.run_id }} · Created {{ item.created_at }}</p>
+    <p><strong>Review mode:</strong> {{ item.approval_mode }}</p>
+    {% if item.plan %}
+    <h2>Complete gated plan — computed</h2>
+    <pre>{{ item.plan | tojson(indent=2) }}</pre>
+    {% endif %}
     <h2>Exact effect — computed</h2>
     {% if item.screen.effect.publishes_to_student %}
     <p>This sends the final disclosed message to the student thread. It cannot be recalled.</p>

@@ -98,14 +98,16 @@ def screen(name, args, facts):
     }
 
 
-def request(registry, name, args, *, caller, action_class, step=0, plan_step=None, call_id=None):
+def request(registry, name, args, *, caller, action_class, step=0, plan_step=None, call_id=None,
+            approval_mode="per_action", plan=None):
     facts = current_facts(args)
     payload = {"tool": name, "arguments": args, "action_class": action_class,
                "action_key": registry.key(name, args), "caller": caller,
                "allowed_questions": sorted(registry.allowed), "read_questions": sorted(registry.read_questions),
                "send_effect_ids": sorted(registry.send_effect_ids),
                "read_documents": sorted(registry.read_docs), "facts_digest": digest(facts),
-               "screen": screen(name, args, facts), "approval_mode": "per_action",
+               "screen": screen(name, args, facts), "approval_mode": approval_mode,
+               "plan": plan,
                "operator_limits": state.limits(registry.session_id),
                "step": step, "plan_step": plan_step, "call_id": call_id,
                "parent_run_id": runtime.current_run().run_id if runtime.current_run() else None,
@@ -124,8 +126,24 @@ def request(registry, name, args, *, caller, action_class, step=0, plan_step=Non
     if inserted:
         registry.trace.event("approval_requested", approval_id=identifier, action_class=action_class,
                              control_run_id=registry.control_run_id, action_key=payload["action_key"],
-                             approval_mode="per_action", screen=payload["screen"], switches=payload["switches"])
+                             approval_mode=approval_mode, screen=payload["screen"], plan=plan,
+                             switches=payload["switches"])
     return identifier
+
+
+def request_plan(registry, name, args, *, caller, action_class, steps):
+    """Queue one immutable plan whose gated actions are already fully resolved."""
+    if not steps or any(not isinstance(s.get("tool"), str) or not isinstance(s.get("arguments"), dict)
+                        for s in steps):
+        raise ValueError("A plan approval needs resolved tool calls.")
+    gated = [s for s in steps if s["tool"] == name]
+    if len(gated) != 1 or canonical(gated[0]["arguments"]) != canonical(args):
+        raise ValueError("The exact gated action must appear once in the reviewed plan.")
+    plan = {"use_case": "reviewed_send", "steps": steps,
+            "output_checks": ["current sources re-read", "policy and disclosure rechecked",
+                              "exact recipient, body, effect ID and action key enforced"]}
+    return request(registry, name, args, caller=caller, action_class=action_class,
+                   approval_mode="plan", plan=plan)
 
 
 def authorizes(identifier, *, session_id, run_id, name, args):
@@ -133,11 +151,17 @@ def authorizes(identifier, *, session_id, run_id, name, args):
         return False
     row = get(identifier)
     p = row["payload"]
-    return (row["status"] == "executing" and row["approved"] == 1
-            and row["session_id"] == session_id and row["run_id"] == run_id
-            and p["tool"] == name and canonical(p["arguments"]) == canonical(args)
-            and p["operator_limits"] == state.limits(session_id)
-            and p["facts_digest"] == digest(current_facts(args)))
+    common = (row["status"] == "executing" and row["approved"] == 1
+              and row["session_id"] == session_id and row["run_id"] == run_id
+              and p["operator_limits"] == state.limits(session_id))
+    if not common:
+        return False
+    exact_gated_action = p["tool"] == name and canonical(p["arguments"]) == canonical(args)
+    if p["approval_mode"] == "plan":
+        listed = any(s["tool"] == name and canonical(s["arguments"]) == canonical(args)
+                     for s in p["plan"]["steps"])
+        return listed and (not exact_gated_action or p["facts_digest"] == digest(current_facts(args)))
+    return exact_gated_action and p["facts_digest"] == digest(current_facts(args))
 
 
 def claim(identifier, approved, note):
@@ -165,5 +189,6 @@ def finish(identifier, status, outcome):
 def pending():
     return [{"id": r["id"], "session_id": r["session_id"], "run_id": r["run_id"],
              "summary": f"{r['payload']['tool']} for {r['payload']['arguments']['question_id']}",
-             "created_at": r["created_at"], "screen": r["payload"]["screen"]}
+             "created_at": r["created_at"], "screen": r["payload"]["screen"],
+             "approval_mode": r["payload"]["approval_mode"], "plan": r["payload"].get("plan")}
             for r in records()]

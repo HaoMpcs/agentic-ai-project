@@ -1,10 +1,19 @@
-# Part 2: persisted per-action approval gate
+# Part 2: persisted per-action and fixed-plan approval gates
 
 Owner: Yani Wu. Updated November 22, 2026 (America/New_York). Source: user-supplied M2 Part 2 task 4 and the local implementation. This increment follows [the policy foundation](PART2_POLICY.md).
 
 ## What is implemented
 
 policy/approvals.py stores pending requests in state_dir()/autonomy.sqlite3. A request contains the originating session/run ID, tool, immutable arguments, original action key, caller, authorized/read IDs, trusted-record digest, computed screen, operator restrictions and runtime switch snapshot. Repeated identical pending calls share one review. These are gate records, not Part 1 task checkpoints.
+
+`approval.reviewed_send=plan` is the plan-level case. `/send` has already fixed
+the selected draft, recipient thread, final disclosed body, source IDs and action
+key, so its screen lists the exact read/check prefix and gated send before any
+step executes. Approval authorizes only those resolved calls. Policy, sources,
+disclosure and exact outgoing arguments are checked again; a revised or unlisted
+send creates a new review. `per_action` remains implemented as the comparison
+setting. Generated replies remain per-action when an operator limit gates them,
+because their content is not fixed by an eligible upfront plan.
 
 When the policy hook requires approval, the registry creates a request without executing the write. The service ends the turn and directs the operator to Approvals. Ordinary task messages in that session are held while a request is pending/executing/uncertain. Limit commands still take effect before the session lock. The queue page already lists pending approvals through the shared service; sandbox/queue.py additionally lists executing/uncertain/blocked/failed approval outcomes for inspection.
 
@@ -52,7 +61,13 @@ No model rationale is presented as a computed fact. Every approval_decision trac
 
 A request survives restart and can execute its one saved operation. Resuming all remaining model/workflow/plan steps, with their journal and shared remaining budget, still belongs to the Part 1 integration. This gate does not re-run the original task to guess continuation. Registry(..., run_id=durable_key) is the integration point for an app session with multiple runs. The inbox now persists fresh child IDs for replacement/queued tasks; Part 1 must reuse those IDs and the gate records the root harness ID for scripted child decisions. After a reviewed call completes, Part 1 should record its result and continue any remaining steps from saved state.
 
-[Unknown-write holds](PART2_ESCALATION.md) now settle confirmed committed actions without replay. [Stop controls](PART2_STOP.md) now withdraw pending requests and reissue them under new IDs on resume. Whole-plan approval, unlisted/revised plan actions, external sends and disclosure, the remaining Part 1 continuation integration remain to be built; [live mid-task add/replace/queue handling](PART2_MESSAGES.md) is now implemented, with full wait/crash continuation still pending. No approval switch is advertised for a plan mode that does not yet exist. A5 attribution, real-human review measurements and legal/framework analysis remain report work.
+[Unknown-write holds](PART2_ESCALATION.md) settle confirmed committed actions
+without replay. [Stop controls](PART2_STOP.md) withdraw pending requests and
+reissue them under new IDs on resume. Fixed-plan reviewed-send approval,
+re-gating of unlisted actions, external sends and disclosure are implemented;
+[live mid-task add/replace/queue handling](PART2_MESSAGES.md) is also implemented.
+A5 attribution, real-human review measurements and final framework analysis
+remain report work.
 
 ## Verification
 

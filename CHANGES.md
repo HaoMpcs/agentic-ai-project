@@ -209,3 +209,6 @@ Owner: Jingyu Huang (CNetID: jyhuang28).
   `topology=single` because split added latency without an observed benefit.
 - Froze the next-pass prediction in the ledger. Formal model runs are not claimed:
   they require a pushed prediction, configured credential and retained evidence.
+- Added `approval.reviewed_send=plan|per_action`. Plan mode reviews the complete
+  resolved read/check/send sequence once, authorizes only its exact listed calls,
+  and re-gates any changed or additional send.

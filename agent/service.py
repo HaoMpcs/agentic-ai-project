@@ -529,6 +529,15 @@ def _request_send(session_id, effect_id):
     registry = Registry(session_id, [prepared["question_id"]], run_id=run_id, send_effect_ids=[effect_id])
     controls.remember_task(run_id, f"/send {effect_id}", [prepared["question_id"]], "reviewed_send")
     try:
+        if runtime.switch("approval.reviewed_send") == "plan":
+            steps = [{"tool": "course_get_question", "arguments": {"question_id": prepared["question_id"]}}]
+            steps.extend({"tool": "course_read_document", "arguments": {"document_id": source}}
+                         for source in course.effect(effect_id)["source_ids"])
+            steps.append({"tool": "course_send_reply", "arguments": prepared})
+            registry.request_plan_approval("course_send_reply", prepared, caller="operator", steps=steps)
+            controls.set_status(run_id, "waiting_approval")
+            trace.end("approval_required", detail="Exact reviewed-send plan awaits operator approval.")
+            return Reply("Review the exact send plan on the Approvals page; nothing was sent.")
         _invoke(registry, "course_get_question", {"question_id": prepared["question_id"]})
         for source in course.effect(effect_id)["source_ids"]:
             _invoke(registry, "course_read_document", {"document_id": source})
@@ -590,15 +599,23 @@ def _decide_approval(approval_id: str, approved: bool, note: str = "") -> Reply 
                 raise ValueError("Question, student input or sources changed; request a new review.")
             if p["switches"] != runtime.switches():
                 raise ValueError("Runtime settings changed; request a new review.")
-            # Execute the immutable reviewed call only. Part 1 owns continuation
-            # of any remaining workflow/plan/model steps after this action.
+            # Execute only the immutable reviewed action. A plan review also
+            # replays its fixed read/check prefix before that exact gated call.
             registry = Registry(session_id, p["allowed_questions"], run_id=row["run_id"], approval_id=approval_id)
             registry.send_effect_ids.update(p.get("send_effect_ids", []))
             registry.read_questions.update(p["read_questions"])
             registry.read_docs.update(p["read_documents"])
             with runtime.in_session(session_id):
-                result = registry.call(p["tool"], p["arguments"], caller=p["caller"], step=p["step"],
-                                       plan_step=p["plan_step"], call_id=p["call_id"])
+                if p["approval_mode"] == "plan":
+                    result = None
+                    for planned in p["plan"]["steps"]:
+                        result = registry.call(planned["tool"], planned["arguments"], caller="executor")
+                        if result.is_error:
+                            break
+                    assert result is not None
+                else:
+                    result = registry.call(p["tool"], p["arguments"], caller=p["caller"], step=p["step"],
+                                           plan_step=p["plan_step"], call_id=p["call_id"])
             status = ("uncertain" if result.error_class in ("ambiguous", "internal", "transient") else
                       "blocked" if result.is_error else "executed")
             approvals.finish(approval_id, status, result.data)
