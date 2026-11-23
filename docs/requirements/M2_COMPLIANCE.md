@@ -6,8 +6,10 @@ Audited November 22, 2026 (America/New_York). Source: [verbatim user-supplied re
 retained as history. Part 1 runtime/MCP/recovery, context/provenance memory,
 Part 2 controls, and the required split implementation have since been integrated
 and locally verified. Use [the current M2 report](../milestones/M2.md) for status.
-Formal real-model evaluation, two new sequential passes, whole-plan approval,
-human-review measurements and missing Assignment 2/4/5/6 figures remain open.
+Formal real-model evaluation, two new sequential passes and project-specific
+human-review measurements remain open. Fixed-plan approval is implemented;
+historical Assignment 2/4/5/6 figures and provenance are recorded in
+[M2_ASSIGNMENT_EVIDENCE.md](M2_ASSIGNMENT_EVIDENCE.md).
 No final M2 completion score is asserted.
 
 ## Requirement-by-requirement review

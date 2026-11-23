@@ -2,9 +2,8 @@
 
 Date: 2026-11-22. Owner: Part 3 owner to confirm. Candidate implementation:
 branch `m2-split`, commits `0c93c0f` (build) and `cf7bd98` (clean diagnostic
-runs). This record does not substitute a missing team member's Assignment 6
-source; its repository, multiplier and matched-budget numbers must be added
-before final submission.
+runs). Hao Shi's historical Assignment 6 source, multiplier and matched-budget
+numbers are recorded in `docs/requirements/M2_ASSIGNMENT_EVIDENCE.md`.
 
 ## Mid-task communication inventory
 
@@ -79,9 +78,10 @@ above makes that trade testable by another person.
 
 ## Spend check
 
-No published multi-agent performance claim is relied on. The lecture's reported
-averages are context, not project evidence. For this candidate: it did not spend
-more fake-model tokens; spending more is therefore not the explanation for an
-improvement; and no improvement occurred. A real-model rerun under the same
-budget remains required before any design-credit claim. A member's Assignment 6
-multiplier and matched-budget result are still required external evidence.
+For this candidate, fake-model token spend was equal and no improvement occurred;
+a real-model rerun under the same budget remains required before a project
+performance claim. In Hao Shi's Assignment 6, split/single token multipliers were
+0.49x for single issues and 0.40x for batches. At matched spend, sequential
+S-plus and split M each passed 12/18 single issues, while both passed 0/6 batches.
+That assignment also kept one agent: focused context or lower spend did not
+establish that a second agent caused the result.
