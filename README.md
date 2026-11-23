@@ -8,8 +8,8 @@ agent tools. Later outside replies are stored without automatic processing.
 **Current status:** the Milestone 2 build, real-model evaluation and three
 improvement passes are complete. The measured verdicts keep `plan.batch=off`,
 `tools.loading=all` and `code_calls.batch=off`. Human approval timing and screen
-evidence are retained; course-framework label confirmation and the `m2` tag
-remain. See [Milestone 2 report](docs/milestones/M2.md),
+evidence and course-framework placements are retained; final verification and
+the `m2` tag remain. See [Milestone 2 report](docs/milestones/M2.md),
 [requirement audit](docs/requirements/AUDIT.md),
 [compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
 
@@ -208,7 +208,7 @@ Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
 for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
 These are separate from this project's real-model baseline and pass. Team
 responsibilities and AI assistance are recorded in M2.md. The final milestone
-tag will be created after course-framework labels and final review are recorded.
+tag will be created after final review and clean-checkout verification.
 
 ---
 

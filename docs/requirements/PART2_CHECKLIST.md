@@ -30,7 +30,7 @@ this file records current submission status.
 - [x] Add real-human decisions by action class, asks/run, the declared real day,
   reviewer minutes, asks/day, seconds/ask, rates and median times.
 - [x] Add clean synthetic approval-page captures from that human run.
-- [ ] Confirm the exact Knight Institute and Interface/Ada Lovelace level names
+- [x] Confirm the exact Knight Institute and Interface/Ada Lovelace level names
   from the course slides; CSA Tier 2 obligations are already described.
 - [ ] Create and push the final `m2` tag after the preceding items and final
   clean-checkout verification.
