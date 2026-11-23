@@ -5,9 +5,10 @@ pending replies or staff flags. The operator reviews and sends drafts from the
 course page. Private synthetic student records are staff-only and unavailable to
 agent tools. Later outside replies are stored without automatic processing.
 
-**Current status:** working local implementation with a real-model baseline,
-tool-definition measurement and completed Pass 1. The measured verdict keeps
-`plan.batch=off`. Final academic and submission checks remain outstanding. See [Milestone report](docs/milestones/M1.md),
+**Current status:** the Milestone 2 build, real-model evaluation and three
+improvement passes are complete. The measured verdicts keep `plan.batch=off`,
+`tools.loading=all` and `code_calls.batch=off`. The final human approval timing
+sample and `m2` submission tag remain outstanding. See [Milestone 2 report](docs/milestones/M2.md),
 [requirement audit](docs/requirements/AUDIT.md),
 [compliance evidence](docs/requirements/COMPLIANCE.md), and [tool contracts](docs/TOOLS.md).
 
@@ -33,14 +34,14 @@ and `/messages`. Ordinary busy messages queue with an eight-slot limit.
 The durable Part 1 runtime, MCP path, outside wait/reply flow, bounded context,
 provenance memory and Part 2 controls are now integrated locally. The required
 candidate split is retained on `m2-split`; the integration decision remains
-single. Fixed-plan and per-action approvals are implemented; real-human review
-measurements and formal real-model M2 experiments remain open. M2 still needs two additional measured passes,
-numbered after Pass 1, with each prediction pushed before either arm.
+single. Fixed-plan and per-action approvals are implemented. The formal
+real-model build and Passes 2 and 3 are complete; only the real-human review
+measurement remains open before the final tag.
 
 `make serve` restarts the app without resetting the sandbox. Persisted effects,
 run checkpoints, prepared/completed calls, waits and memory survive restart;
 recovery uses the original run and action keys. The M2 report distinguishes
-these mechanism guarantees from the still-pending formal experiment evidence.
+mechanism tests, historical assignment evidence and completed project runs.
 
 ## Run locally
 
@@ -60,7 +61,8 @@ call-triggered recovery, fixed-topic outside questions, MCP, deferred loading
 and restricted code calls. See [M2 implementation record](docs/milestones/M2.md),
 [Part A verification](docs/requirements/M2_PART_A_TEST_REPORT.md) and
 [B/C integration contracts](docs/requirements/M2_PART_A_HANDOFF.md). Context,
-memory and the autonomy UI are integrated; M2's formal passes remain separate work.
+memory and the autonomy UI are integrated; M2's formal passes and retained
+results are documented in the report and ledger.
 
 Try `Process SYN-Q-clarify`, then reply `deadline` on its Threads page. A
 pending source-grounded answer should appear. Stop the app while it waits and
@@ -205,8 +207,8 @@ and the two arm directories named in [the ledger](experiments/LEDGER.md).
 Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
 for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
 These are separate from this project's real-model baseline and pass. Team
-responsibilities and AI assistance are recorded in M1.md. Collaborator access
-and the final milestone tag remain to be confirmed.
+responsibilities and AI assistance are recorded in M2.md. The final milestone
+tag will be created after the human approval sample and team review are recorded.
 
 ---
 

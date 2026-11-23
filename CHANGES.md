@@ -207,8 +207,8 @@ Owner: Jingyu Huang (CNetID: jyhuang28).
   return contract, shared budget, linked traces and planted-divergence checks.
   Equal free diagnostics passed 27/30 in both arms; the integration branch keeps
   `topology=single` because split added latency without an observed benefit.
-- Froze the next-pass prediction in the ledger. Formal model runs are not claimed:
-  they require a pushed prediction, configured credential and retained evidence.
+- Froze each next-pass prediction in the ledger before its arms. The completed
+  formal model runs retain their configured switches, traces, costs and results.
 - Added `approval.reviewed_send=plan|per_action`. Plan mode reviews the complete
   resolved read/check/send sequence once, authorizes only its exact listed calls,
   and re-gates any changed or additional send.
