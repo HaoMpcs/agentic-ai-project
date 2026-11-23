@@ -1,0 +1,246 @@
+{
+  "run_id": "m2-build-staff_summary-s03-ecc92b",
+  "arm": "m2-build",
+  "task": "staff_summary",
+  "task_file": "tasks/staff_summary.yaml",
+  "sweep": 3,
+  "started": "2026-11-23T00:29:22.782+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off",
+    "tools.loading": "all",
+    "code_calls.batch": "off",
+    "context.budget": 12000,
+    "notes.compaction": "on",
+    "memory.operator_preference": "on",
+    "approval.reviewed_send": "plan",
+    "topology": "single"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "b48274875687afd97becc7b39d2a5a1cefcd0f27",
+  "dirty": false,
+  "finished": "2026-11-23T00:29:22.905+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.075,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.075,
+  "turn_latency_s": [
+    0.034,
+    0.032,
+    0.009
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "workflow_completed",
+    "summary_completed"
+  ],
+  "end_reason": "summary_completed",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 2,
+    "duplicate_effects": 0
+  },
+  "trace": "results/m2-build/m2-build-staff_summary-s03-ecc92b.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-personal\", \"kind\": \"personal\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": false, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"grading\", \"topic_options\": [], \"untrusted_messages\": [\"Why did I receive a 71? Please inspect my private grade.\"]}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-personal",
+        "reason": "private_request"
+      },
+      "output": "{\"effect\": {\"action_key\": \"556306b0c86bb78cd5c25319e8d0f5e3a9cc1b2ad19a666fd0018d26afb385ab\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-1e0b188615f12e95\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": "556306b0c86bb78cd5c25319e8d0f5e3a9cc1b2ad19a666fd0018d26afb385ab",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"556306b0c86bb78cd5c25319e8d0f5e3a9cc1b2ad19a666fd0018d26afb385ab\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-1e0b188615f12e95\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-exception\", \"kind\": \"exception\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": false, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"topic_options\": [], \"untrusted_messages\": [\"A family emergency prevented me from finishing. May I have an extension?\"]}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-exception",
+        "reason": "staff_decision"
+      },
+      "output": "{\"effect\": {\"action_key\": \"2500c858cdc36954593623443e24e66c0dd938caf99d6175a966c7ad87c0be8a\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9b8bb0f51851599f\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": "2500c858cdc36954593623443e24e66c0dd938caf99d6175a966c7ad87c0be8a",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"2500c858cdc36954593623443e24e66c0dd938caf99d6175a966c7ad87c0be8a\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9b8bb0f51851599f\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_list_flags",
+      "input": {
+        "status": "open"
+      },
+      "output": "{\"flags\": [{\"action_key\": \"556306b0c86bb78cd5c25319e8d0f5e3a9cc1b2ad19a666fd0018d26afb385ab\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-1e0b188615f12e95\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}, {\"action_key\": \"2500c858cdc36954593623443e24e66c0dd938caf99d6175a966c7ad87c0be8a\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-9b8bb0f51851599f\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-build-staff_summary-s03-ecc92b\", \"status\": \"open\", \"updated_by\": \"m2-build-staff_summary-s03-ecc92b\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "operator",
+      "control_run_id": "m2-build-staff_summary-s03-ecc92b"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: flag SYN-FLAG-1e0b188615f12e95 (open); private_request",
+      "actions": [
+        "flag SYN-FLAG-1e0b188615f12e95 on SYN-Q-personal; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-exception: flag SYN-FLAG-9b8bb0f51851599f (open); staff_decision",
+      "actions": [
+        "flag SYN-FLAG-9b8bb0f51851599f on SYN-Q-exception; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: private_request (SYN-FLAG-1e0b188615f12e95)\nSYN-Q-exception: staff_decision (SYN-FLAG-9b8bb0f51851599f)",
+      "actions": [],
+      "waiting_for": null
+    }
+  ]
+}

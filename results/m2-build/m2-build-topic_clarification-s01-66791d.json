@@ -1,0 +1,278 @@
+{
+  "run_id": "m2-build-topic_clarification-s01-66791d",
+  "arm": "m2-build",
+  "task": "topic_clarification",
+  "task_file": "tasks/m2/topic_clarification.yaml",
+  "sweep": 1,
+  "started": "2026-11-23T00:28:54.127+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off",
+    "tools.loading": "all",
+    "code_calls.batch": "off",
+    "context.budget": 12000,
+    "notes.compaction": "on",
+    "memory.operator_preference": "on",
+    "approval.reviewed_send": "plan",
+    "topology": "single"
+  },
+  "overrides": [],
+  "backend": "openai-compatible",
+  "model": "gemini-3.5-flash-lite",
+  "free": false,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "b48274875687afd97becc7b39d2a5a1cefcd0f27",
+  "dirty": false,
+  "finished": "2026-11-23T00:28:54.263+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.087,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.087,
+  "turn_latency_s": [
+    0.029,
+    0.048,
+    0.009
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "waiting_external",
+    "workflow_completed",
+    "follow_up"
+  ],
+  "end_reason": "follow_up",
+  "error": null,
+  "outside": [
+    {
+      "thread": "SYN-Q-clarify",
+      "who": "SYN-STUDENT-001",
+      "asked": 1,
+      "answered": 1,
+      "wrote_unasked": 0
+    }
+  ],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/exchange.py",
+    "passed": true,
+    "reason": "One disclosed question, answer used, one pending effect"
+  },
+  "passed": true,
+  "measures": {
+    "questions_asked": 1,
+    "duplicate_effects": 0
+  },
+  "trace": "results/m2-build/m2-build-topic_clarification-s01-66791d.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-clarify"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-clarify\", \"kind\": \"deadline\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": true, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"\", \"topic_options\": [\"deadline\", \"office_hours\"], \"untrusted_messages\": [\"When is it due? I forgot to name the topic.\"]}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_ask_clarification",
+      "input": {
+        "question_id": "SYN-Q-clarify",
+        "options": [
+          "deadline",
+          "office_hours"
+        ]
+      },
+      "output": "{\"message\": {\"body\": \"Which course topic is your question about? Reply with one of: deadline, office_hours.\\n\\nAn automated agent wrote this message. Contact course staff for human help.\", \"id\": 2, \"thread_id\": \"SYN-Q-clarify\"}}",
+      "is_error": false,
+      "latency_s": 0.009,
+      "error_class": null,
+      "idempotency_key": "a737916e4d0e7b91a81a98b4bd5e6330b0dce1178955396cda5d3955c84e869e",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-clarify"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-clarify\", \"kind\": \"deadline\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": true, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"deadline\", \"topic_options\": [\"deadline\", \"office_hours\"], \"untrusted_messages\": [\"When is it due? I forgot to name the topic.\", \"deadline\"]}}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": true,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_search_materials",
+      "input": {
+        "query": "deadline"
+      },
+      "output": "{\"documents\": [{\"active\": true, \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1}]}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-3",
+      "name": "course_read_document",
+      "input": {
+        "document_id": "SYN-DOC-deadline"
+      },
+      "output": "{\"document\": {\"active\": true, \"answer\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"claims\": {}, \"facts\": [\"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\"], \"id\": \"SYN-DOC-deadline\", \"title\": \"Assignment 2 deadline\", \"topic\": \"deadline\", \"version\": 1, \"visibility\": \"public\"}}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-4",
+      "name": "course_create_reply",
+      "input": {
+        "question_id": "SYN-Q-clarify",
+        "body": "Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.",
+        "source_ids": [
+          "SYN-DOC-deadline"
+        ]
+      },
+      "output": "{\"effect\": {\"action_key\": \"9260212654c7601b1edb0ef99a57edf6330b6435f2c07c2e02e1c0d49a8c97c5\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-0c4aa917b28a98ad\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-clarify\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"m2-build-topic_clarification-s01-66791d\", \"status\": \"pending\", \"updated_by\": \"m2-build-topic_clarification-s01-66791d\"}}",
+      "is_error": false,
+      "latency_s": 0.008,
+      "error_class": null,
+      "idempotency_key": "9260212654c7601b1edb0ef99a57edf6330b6435f2c07c2e02e1c0d49a8c97c5",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-clarify"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"9260212654c7601b1edb0ef99a57edf6330b6435f2c07c2e02e1c0d49a8c97c5\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-0c4aa917b28a98ad\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-clarify\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"m2-build-topic_clarification-s01-66791d\", \"status\": \"pending\", \"updated_by\": \"m2-build-topic_clarification-s01-66791d\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-clarify"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"9260212654c7601b1edb0ef99a57edf6330b6435f2c07c2e02e1c0d49a8c97c5\", \"body\": \"Assignment 2 is due November 1, 2026 at 11:59 PM America/Chicago.\", \"channel_id\": null, \"id\": \"SYN-REPLY-0c4aa917b28a98ad\", \"kind\": \"reply\", \"question_id\": \"SYN-Q-clarify\", \"reason\": \"\", \"source_ids\": [\"SYN-DOC-deadline\"], \"stamp\": \"m2-build-topic_clarification-s01-66791d\", \"status\": \"pending\", \"updated_by\": \"m2-build-topic_clarification-s01-66791d\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-build-topic_clarification-s01-66791d"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "Asked for the missing topic; waiting for the student's reply.",
+      "actions": [],
+      "waiting_for": "SYN-Q-clarify"
+    },
+    {
+      "function": "on_outside_reply",
+      "text": "SYN-Q-clarify: reply SYN-REPLY-0c4aa917b28a98ad (pending); sources SYN-DOC-deadline",
+      "actions": [
+        "reply SYN-REPLY-0c4aa917b28a98ad on SYN-Q-clarify; pending"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-clarify: reply SYN-REPLY-0c4aa917b28a98ad (pending); sources SYN-DOC-deadline",
+      "actions": [
+        "reply SYN-REPLY-0c4aa917b28a98ad on SYN-Q-clarify; pending"
+      ],
+      "waiting_for": null
+    }
+  ]
+}
