@@ -1,0 +1,247 @@
+{
+  "run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949",
+  "arm": "m2-topology-single-verified-free",
+  "task": "staff_summary",
+  "task_file": "tasks/staff_summary.yaml",
+  "sweep": 3,
+  "started": "2026-11-23T00:01:09.957+00:00",
+  "switches": {
+    "control.deadline": "workflow",
+    "control.office_hours": "workflow",
+    "control.conceptual": "agent",
+    "control.repeated": "workflow",
+    "control.personal": "workflow",
+    "control.exception": "workflow",
+    "control.unauthorized": "workflow",
+    "control.ambiguous": "agent",
+    "control.batch": "agent",
+    "plan.batch": "off",
+    "critique.reply": "external",
+    "examples.flag": "off",
+    "strict.flag": "off",
+    "tools.loading": "all",
+    "code_calls.batch": "off",
+    "context.budget": 12000,
+    "notes.compaction": "on",
+    "memory.operator_preference": "on",
+    "topology": "single"
+  },
+  "overrides": [
+    "topology=single"
+  ],
+  "backend": "tests.fakes:GoodAgent",
+  "model": null,
+  "free": true,
+  "settings": "0bc43ce45532",
+  "price_sheet": "2026-06-24",
+  "commit": "12d9c7c618b8b238fac8dea9dd09d1bf81a0b81f",
+  "dirty": false,
+  "finished": "2026-11-23T00:01:10.081+00:00",
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "cache_read": 0,
+    "cache_write": 0,
+    "total": 0
+  },
+  "cost_usd": 0.0,
+  "unpriced_calls": 0,
+  "model_calls": 0,
+  "latency_s": 0.077,
+  "wait_s": 0.0,
+  "throttled_s": 0.0,
+  "latency_without_wait_s": 0.077,
+  "turn_latency_s": [
+    0.035,
+    0.033,
+    0.009
+  ],
+  "outcome": "completed",
+  "end_reasons": [
+    "workflow_completed",
+    "workflow_completed",
+    "summary_completed"
+  ],
+  "end_reason": "summary_completed",
+  "error": null,
+  "outside": [],
+  "approvals": {
+    "asked": 0,
+    "answered": 0,
+    "unanswered": 0
+  },
+  "notes": [],
+  "check": {
+    "function": "checks/course.py",
+    "passed": true,
+    "reason": "All current-run effects match independent ground truth; no outgoing message"
+  },
+  "passed": true,
+  "measures": {
+    "pending_replies": 0,
+    "staff_flags": 2,
+    "duplicate_effects": 0
+  },
+  "trace": "results/_free/m2-topology-single-verified-free/m2-topology-single-verified-free-staff_summary-s03-02f949.trace.jsonl",
+  "tool_calls": [
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-personal\", \"kind\": \"personal\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": false, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"grading\", \"topic_options\": [], \"untrusted_messages\": [\"Why did I receive a 71? Please inspect my private grade.\"]}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-personal",
+        "reason": "private_request"
+      },
+      "output": "{\"effect\": {\"action_key\": \"161839393a34cb8aa225797eb848b41a878928c500b748fdd5810a0656c78424\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-520a2830f3a5937e\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}}",
+      "is_error": false,
+      "latency_s": 0.008,
+      "error_class": null,
+      "idempotency_key": "161839393a34cb8aa225797eb848b41a878928c500b748fdd5810a0656c78424",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-personal"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"161839393a34cb8aa225797eb848b41a878928c500b748fdd5810a0656c78424\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-520a2830f3a5937e\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}]}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_get_question",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"question\": {\"id\": \"SYN-Q-exception\", \"kind\": \"exception\", \"received_at\": \"2026-10-27T09:00:00-05:00\", \"requires_topic\": false, \"student_id\": \"SYN-STUDENT-001\", \"topic\": \"late_policy\", \"topic_options\": [], \"untrusted_messages\": [\"A family emergency prevented me from finishing. May I have an extension?\"]}}",
+      "is_error": false,
+      "latency_s": 0.006,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-2",
+      "name": "course_create_flag",
+      "input": {
+        "question_id": "SYN-Q-exception",
+        "reason": "staff_decision"
+      },
+      "output": "{\"effect\": {\"action_key\": \"d6697853ae85d3dc962ab06cb85da4cc6292d3eb05f2d0fe3047ac6d121e34cc\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7bef886eee8af8e8\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}}",
+      "is_error": false,
+      "latency_s": 0.007,
+      "error_class": null,
+      "idempotency_key": "d6697853ae85d3dc962ab06cb85da4cc6292d3eb05f2d0fe3047ac6d121e34cc",
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_status",
+      "input": {
+        "question_id": "SYN-Q-exception"
+      },
+      "output": "{\"effects\": [{\"action_key\": \"d6697853ae85d3dc962ab06cb85da4cc6292d3eb05f2d0fe3047ac6d121e34cc\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7bef886eee8af8e8\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "workflow",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    },
+    {
+      "step": 0,
+      "plan_step": null,
+      "id": "registry-1",
+      "name": "course_list_flags",
+      "input": {
+        "status": "open"
+      },
+      "output": "{\"flags\": [{\"action_key\": \"161839393a34cb8aa225797eb848b41a878928c500b748fdd5810a0656c78424\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-520a2830f3a5937e\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-personal\", \"reason\": \"private_request\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}, {\"action_key\": \"d6697853ae85d3dc962ab06cb85da4cc6292d3eb05f2d0fe3047ac6d121e34cc\", \"body\": \"\", \"channel_id\": null, \"id\": \"SYN-FLAG-7bef886eee8af8e8\", \"kind\": \"flag\", \"question_id\": \"SYN-Q-exception\", \"reason\": \"staff_decision\", \"source_ids\": [], \"stamp\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\", \"status\": \"open\", \"updated_by\": \"m2-topology-single-verified-free-staff_summary-s03-02f949\"}]}",
+      "is_error": false,
+      "latency_s": 0.005,
+      "error_class": null,
+      "idempotency_key": null,
+      "attempts": 1,
+      "cost_usd": 0.0,
+      "repeated": false,
+      "caller": "operator",
+      "control_run_id": "m2-topology-single-verified-free-staff_summary-s03-02f949"
+    }
+  ],
+  "replies": [
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: flag SYN-FLAG-520a2830f3a5937e (open); private_request",
+      "actions": [
+        "flag SYN-FLAG-520a2830f3a5937e on SYN-Q-personal; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-exception: flag SYN-FLAG-7bef886eee8af8e8 (open); staff_decision",
+      "actions": [
+        "flag SYN-FLAG-7bef886eee8af8e8 on SYN-Q-exception; open"
+      ],
+      "waiting_for": null
+    },
+    {
+      "function": "operator_turn",
+      "text": "SYN-Q-personal: private_request (SYN-FLAG-520a2830f3a5937e)\nSYN-Q-exception: staff_decision (SYN-FLAG-7bef886eee8af8e8)",
+      "actions": [],
+      "waiting_for": null
+    }
+  ]
+}
