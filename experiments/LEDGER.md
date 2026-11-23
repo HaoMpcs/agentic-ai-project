@@ -36,18 +36,18 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Verdict:** Keep `plan.batch=off`. The loop completed every batch; the plan completed none.
 - **Links:** results/pass1-plan-on/ and results/pass1-plan-off/.
 
-## Pass 2 · Route the repeatedly false-finishing batch to a workflow
+## Pass 2 · Reduce the full tool-definition bill
 
-- **Pass:** 2; compare the agent batch route with the deterministic workflow route.
+- **Pass:** 2; compare full tool loading with deferred catalogue loading.
 - **Owner:** Part 3/integration owner; name pending team confirmation.
-- **Problem:** The clean M2 topology diagnostics passed 27/30 in both single and split arms. All three failures were `batch_questions`; the fake agent stopped after one question, leaving `SYN-Q-office` without an effect. Example: `m2-topology-single-verified-free-batch_questions-s01-574240`, trace line 44.
-- **Evidence:** Three identical batch failures in each topology arm; independent sandbox checks report the first missing effect rather than trusting the model's completion text.
-- **Why this fix:** Lecture 1's routing test favors a workflow when the steps and branching are known in advance. This batch contains the same bounded read/search/read/write procedure per selected question; model coordination adds a false-finish point.
-- **Prediction:** `m2-pass2-batch-workflow-free` will pass 3/3 with zero `false_finish` ends; `m2-pass2-batch-agent-free` will pass at most 1/3 and record at least two `false_finish` ends. Workflow will use no more model tokens than agent.
-- **Arms:** Pending measurement after this prediction commit: `control.batch=workflow` versus `control.batch=agent`, with `topology=single` and `plan.batch=off` in both.
-- **Held constant:** Same committed code, tasks, fake GoodAgent backend, checks, 32,000-token task bound, tools.loading=all, code_calls.batch=off, and all other switches.
-- **Tasks and sweeps:** `tasks/batch_questions.yaml`, three sweeps per arm.
-- **Results:** Pending.
+- **Problem:** The real M2 build passed 33/33, so there is no correctness failure to repair. Its nine Agent-path runs consumed all 107,257 model tokens. Every model call offered the full default tool surface; the three batch runs used 14,906, 15,264 and 15,264 tokens.
+- **Evidence:** `m2-build-batch_questions-s01-2b4b19`, `s02-05a411` and `s03-6a1129`; the build summary records 104,217 input and 3,040 output tokens, $0.038866, and no failed runs.
+- **Why this fix:** Lecture 3's definition-bill test asks whether repeatedly transmitting tools the model does not need consumes a material window share. Deferred loading is already built behind a switch and preserves Registry/policy checks; this pass measures whether its smaller initial surface offsets catalogue-search calls.
+- **Prediction:** `m2-pass2-tools-deferred` will pass at least 8/9 and use at least 10% fewer total input tokens than `m2-pass2-tools-all`. It may use more model/tool calls, but will have zero catalogue misses for a tool eventually required. `m2-pass2-tools-all` will pass at least 8/9.
+- **Arms:** `results/m2-pass2-tools-all` with `tools.loading=all`; `results/m2-pass2-tools-deferred` with `tools.loading=deferred`. Both explicitly keep `topology=single`, `plan.batch=off`, and `code_calls.batch=off`.
+- **Held constant:** Same committed code, Gemini 3.5 Flash-Lite, settings and price sheet, 32,000-token task bound, checks, task inputs, three sweeps, sequential jobs, all other switches and scripted operator behavior.
+- **Tasks and sweeps:** `tasks/ambiguous_question.yaml`, `tasks/batch_questions.yaml`, and `tasks/conceptual_question.yaml`; three sweeps per arm, nine runs each.
+- **Results:** Pending; run only after this prediction commit is pushed.
 - **Difference:** Pending.
-- **Verdict:** Pending; do not change the setting until both arms are recorded.
-- **Links:** Pending formal real-model arm directories; scripted mechanism diagnostics are explicitly excluded from this pass's evidence.
+- **Verdict:** Pending; retain `tools.loading=all` until both arms are recorded.
+- **Links:** Pending `results/m2-pass2-tools-all/` and `results/m2-pass2-tools-deferred/`.
