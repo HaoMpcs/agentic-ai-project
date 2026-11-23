@@ -196,3 +196,16 @@ Owner: Jingyu Huang (CNetID: jyhuang28).
   executor and starter test harness; harness/, channel/ and run.py are unchanged.
 - Deferred the full M2 baseline, topology branch and formal passes to integration;
   no prediction, performance improvement or measured experiment is invented.
+
+# Milestone 2 — integration
+
+- Integrated the durable Part A runtime/MCP/recovery work with Part 2 policy,
+  approvals, escalation, stop, message and disclosure controls.
+- Added per-call bounded context assembly, safe notes and later-session provenance
+  memory with contradiction/supersession tests.
+- Built the required two-role candidate on `m2-split`, including a schema-first
+  return contract, shared budget, linked traces and planted-divergence checks.
+  Equal free diagnostics passed 27/30 in both arms; the integration branch keeps
+  `topology=single` because split added latency without an observed benefit.
+- Froze the next-pass prediction in the ledger. Formal model runs are not claimed:
+  they require a pushed prediction, configured credential and retained evidence.

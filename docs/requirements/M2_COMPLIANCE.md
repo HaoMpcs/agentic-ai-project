@@ -2,7 +2,13 @@
 
 Audited November 22, 2026 (America/New_York). Source: [verbatim user-supplied requirements](M2_REQUIREMENTS.txt); provenance: [M2_SOURCE.md](M2_SOURCE.md). This audit checks the local working tree, not a final submission tag. M1's [compliance record](COMPLIANCE.md) remains historical.
 
-**Overall: Part 2 policy, per-action approval, escalation holds and stop/compensation foundations are implemented; M2 implementation and evaluation remain incomplete.** See the current [Part 2 task checklist](PART2_CHECKLIST.md). A page, callback or test helper inherited from the starter is not evidence that the corresponding M2 behavior works. No M2 completion score is asserted.
+**Integration update:** the table below is the pre-integration gap audit and is
+retained as history. Part 1 runtime/MCP/recovery, context/provenance memory,
+Part 2 controls, and the required split implementation have since been integrated
+and locally verified. Use [the current M2 report](../milestones/M2.md) for status.
+Formal real-model evaluation, two new sequential passes, whole-plan approval,
+human-review measurements and missing Assignment 2/4/5/6 figures remain open.
+No final M2 completion score is asserted.
 
 ## Requirement-by-requirement review
 

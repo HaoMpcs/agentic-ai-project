@@ -50,4 +50,4 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Results:** Pending.
 - **Difference:** Pending.
 - **Verdict:** Pending; do not change the setting until both arms are recorded.
-- **Links:** Pending `results/_free/m2-pass2-batch-agent-free/` and `results/_free/m2-pass2-batch-workflow-free/`.
+- **Links:** Pending formal real-model arm directories; scripted mechanism diagnostics are explicitly excluded from this pass's evidence.
