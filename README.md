@@ -182,6 +182,26 @@ and the verdict. Recompute with
 Use [experiments/PROTOCOL.md](experiments/PROTOCOL.md) for any new pass; retain
 the existing records and do not rerun an arm under an existing name.
 
+Milestone 2's completed real-model commands were:
+
+```bash
+# Build: ten main tasks, the M2 outside-wait task, and the required long session
+python run.py --tasks tasks/ tasks/m2/ --sweeps 3 --arm m2-build --jobs 1
+python run.py --tasks tasks/sessions/ --sweeps 3 --arm m2-build-sessions-final --jobs 1
+
+# Pass 2 (prediction commit b850bac): full versus deferred tool loading
+python run.py --tasks tasks/ambiguous_question.yaml tasks/batch_questions.yaml tasks/conceptual_question.yaml --sweeps 3 --arm m2-pass2-tools-all --set tools.loading=all topology=single plan.batch=off code_calls.batch=off --jobs 1
+python run.py --tasks tasks/ambiguous_question.yaml tasks/batch_questions.yaml tasks/conceptual_question.yaml --sweeps 3 --arm m2-pass2-tools-deferred --set tools.loading=deferred topology=single plan.batch=off code_calls.batch=off --jobs 1
+
+# Pass 3 (prediction commit a13a407): loop versus restricted code calls
+python run.py --tasks tasks/batch_questions.yaml --sweeps 3 --arm m2-pass3-code-off --set code_calls.batch=off tools.loading=all topology=single plan.batch=off --jobs 1
+python run.py --tasks tasks/batch_questions.yaml --sweeps 3 --arm m2-pass3-code-on --set code_calls.batch=on tools.loading=all topology=single plan.batch=off --jobs 1
+```
+
+Do not rerun these arm names. Pass 2 kept `tools.loading=all`; Pass 3 kept
+`code_calls.batch=off`. Analyze them with `python -m experiments.analysis.summarize`
+and the two arm directories named in [the ledger](experiments/LEDGER.md).
+
 Jingyu Huang's supplied Assignment 1-3 archives now provide historical results
 for Parts 1-3; see the [source guide](docs/requirements/ASSIGNMENT_EVIDENCE.md).
 These are separate from this project's real-model baseline and pass. Team

@@ -212,3 +212,9 @@ Owner: Jingyu Huang (CNetID: jyhuang28).
 - Added `approval.reviewed_send=plan|per_action`. Plan mode reviews the complete
   resolved read/check/send sequence once, authorizes only its exact listed calls,
   and re-gates any changed or additional send.
+- Added the required long-session fixture and independent check. Its final-code
+  real arm passed 3/3, compacted twice per run, kept every request below the
+  12,000-token context budget and verified preference provenance before use.
+- Completed M2 Passes 2 and 3. Deferred loading increased input tokens 44.9%,
+  so `tools.loading=all` remains. Code calls cut batch tokens but passed 0/3,
+  so `code_calls.batch=off` remains.
