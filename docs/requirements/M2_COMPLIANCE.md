@@ -12,7 +12,12 @@ historical Assignment 2/4/5/6 figures and provenance are recorded in
 [M2_ASSIGNMENT_EVIDENCE.md](M2_ASSIGNMENT_EVIDENCE.md).
 No final M2 completion score is asserted.
 
-## Requirement-by-requirement review
+## Historical pre-integration review — not current status
+
+The table in this section is intentionally frozen at requirements capture. Its
+`Missing`, `Pending` and `Foundation` cells describe the repository before the
+integration commits and must not be used as the final completion assessment.
+The current assessment is the build/decision tables in `docs/milestones/M2.md`.
 
 “Foundation” means related M1 behavior exists but the new acceptance tests are missing. “Missing” means the reviewed code does not implement the required behavior. “Pending” means evidence or a decision still needs to be produced.
 

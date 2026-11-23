@@ -1,6 +1,6 @@
 # Decision 0006: keep one agent on main
 
-Date: 2026-11-22. Owner: Part 3 owner to confirm. Candidate implementation:
+Date: 2026-11-22. Owner: Hao Shi (Part 3). Candidate implementation:
 branch `m2-split`, commits `0c93c0f` (build) and `cf7bd98` (clean diagnostic
 runs). Hao Shi's historical Assignment 6 source, multiplier and matched-budget
 numbers are recorded in `docs/requirements/M2_ASSIGNMENT_EVIDENCE.md`.

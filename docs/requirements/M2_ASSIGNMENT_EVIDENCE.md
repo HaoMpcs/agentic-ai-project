@@ -34,7 +34,8 @@ Hao Shi's local Assignment 5 repository was read at commit
 <haocs@uchicago.edu>`). The source report was
 `/Users/tofu/Desktop/AgentAI/hw5/AgenticAI-HW5/reports/LAB_05.md`, SHA-256
 `f75677374b8f660acb33fc8e4dce857f010ee21799ef10931d3e2e46925e204f`.
-It reports 17 human decisions: 15 `open_pr` at 16.0-second median and two
+Its replay estimated 15 prompts/day and 40 seconds/prompt from a ten-minute
+daily budget. It reports 17 human decisions: 15 `open_pr` at 16.0-second median and two
 `post_comment/human_active` at 18.8 seconds, all approved. The day contained no
 planted bad request, so 100% approval does not establish detection quality. Its
 fixed-plan review reduced the replay estimate from 15 to 12 prompts, excluding
