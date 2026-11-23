@@ -30,14 +30,17 @@ now holds failed writes for TA inspection (`/escalations`, then `/resolve <id> c
 `/replace QUESTION_ID`, optional selected rollback, `/queue TEXT`, `/reject TEXT`
 and `/messages`. Ordinary busy messages queue with an eight-slot limit.
 [Automated sends](docs/requirements/PART2_DISCLOSURE.md) use `/send EFFECT_ID`: code adds AI identity and TA contact, then the operator reviews the exact final message on Approvals. Automated drafts cannot bypass this through manual sending. [Legal scope](docs/requirements/PART2_LEGAL.md) is assessed against dated primary sources.
-General task resume remains a Part 1 integration. Whole-plan approval, general task recovery,
-MCP, durable outside waits/memory and split branch remain to be implemented and tested.
-Keep existing switches at their M1 verdicts. M2 needs two additional measured
-passes, numbered after Pass 1, with predictions pushed before either arm.
+The durable Part 1 runtime, MCP path, outside wait/reply flow, bounded context,
+provenance memory and Part 2 controls are now integrated locally. The required
+candidate split is retained on `m2-split`; the integration decision remains
+single. Fixed-plan and per-action approvals are implemented; real-human review
+measurements and formal real-model M2 experiments remain open. M2 still needs two additional measured passes,
+numbered after Pass 1, with each prediction pushed before either arm.
 
-`make serve` restarts the app without resetting the sandbox. Persisted course
-effects remain, but current in-memory task state does not resume after restart.
-The M2 report tracks the durable-session work still required.
+`make serve` restarts the app without resetting the sandbox. Persisted effects,
+run checkpoints, prepared/completed calls, waits and memory survive restart;
+recovery uses the original run and action keys. The M2 report distinguishes
+these mechanism guarantees from the still-pending formal experiment evidence.
 
 ## Run locally
 
@@ -57,7 +60,7 @@ call-triggered recovery, fixed-topic outside questions, MCP, deferred loading
 and restricted code calls. See [M2 implementation record](docs/milestones/M2.md),
 [Part A verification](docs/requirements/M2_PART_A_TEST_REPORT.md) and
 [B/C integration contracts](docs/requirements/M2_PART_A_HANDOFF.md). Context,
-memory, the full autonomy UI and M2's formal passes remain separate work.
+memory and the autonomy UI are integrated; M2's formal passes remain separate work.
 
 Try `Process SYN-Q-clarify`, then reply `deadline` on its Threads page. A
 pending source-grounded answer should appear. Stop the app while it waits and
