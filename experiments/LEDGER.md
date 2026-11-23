@@ -63,7 +63,7 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Arms:** `results/m2-pass3-code-off` with `code_calls.batch=off`; `results/m2-pass3-code-on` with `code_calls.batch=on`. Both explicitly keep `tools.loading=all`, `topology=single`, and `plan.batch=off`.
 - **Held constant:** Same committed code, Gemini 3.5 Flash-Lite, settings and price sheet, 32,000-token task bound, batch fixture/check, three sweeps, sequential jobs, all other switches and scripted operator behavior.
 - **Tasks and sweeps:** `tasks/batch_questions.yaml`, three sweeps per arm.
-- **Results:** Pending; run only after this prediction commit is pushed.
-- **Difference:** Pending.
-- **Verdict:** Pending; retain `code_calls.batch=off` until both arms are recorded.
-- **Links:** Pending `results/m2-pass3-code-off/` and `results/m2-pass3-code-on/`.
+- **Results:** Off passed 3/3 with 40,433 input + 1,473 output + 3,920 cache-read = 45,826 total tokens, $0.015930 and 2.128s median turn. On passed 0/3 with 12,473 input + 2,355 output = 14,828 total tokens, $0.009629 and 0.9945s median turn. On ended once at `agent_step_limit` and twice at `false_finish`.
+- **Difference:** On minus off: -3 passing runs, -27,960 input tokens (-69.2%), -30,998 total tokens, -$0.006301 and -1.1335s median turn. The first anomalies were program errors followed by the step limit in `s01-eea955` (first error trace line 52; terminal line 101), and completed programs that produced no effects before false finish in `s02-a77c96` line 41 and `s03-e938cc` line 36. The independent check found no current-run effect for `SYN-Q-deadline` in all three.
+- **Verdict:** Drop code-call mode for this batch and keep `code_calls.batch=off`. The predicted token saving occurred, but the predicted >=2/3 correctness did not; a 0/3 route is unusable. Keep the sandboxed mechanism for inspection and repair, not as the default.
+- **Links:** `results/m2-pass3-code-off/` and `results/m2-pass3-code-on/`.
