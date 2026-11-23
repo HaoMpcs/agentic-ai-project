@@ -51,3 +51,19 @@ it. `make check` reads every `##` section but the template: see the README's "ma
 - **Difference:** Deferred minus all: +48,125 input tokens (+44.9%), +48,630 total tokens, +$0.015700, +17 model calls, +17 tool calls and +0.3875s median turn, with no pass-rate change. The predicted 10% input reduction was wrong; catalogue turns outweighed the smaller initial surface.
 - **Verdict:** Drop deferred for this workload and keep `tools.loading=all`. Seven default model-facing tools are below the point where search pays for itself; retain the alternative and reopen only after the surface or per-call definition share grows materially.
 - **Links:** `results/m2-pass2-tools-all/` and `results/m2-pass2-tools-deferred/`.
+
+## Pass 3 · Keep batch intermediates out of model context
+
+- **Pass:** 3; compare the bounded agent loop with restricted code calls for the batch use case.
+- **Owner:** Part 3/integration owner; name pending team confirmation.
+- **Problem:** Pass 2 showed that adding catalogue model turns increased input by 44.9%. With full loading retained, `batch_questions` remains the largest Agent task: its three Pass 2 control runs used 15,265, 15,376 and 15,330 total tokens. Repeated model round trips carry tool definitions and intermediate results.
+- **Evidence:** `m2-pass2-tools-all-batch_questions-s01-ba3497`, `s02-1f6ed7`, and `s03-eb1b3f`; all passed, so the pass targets input/model-call cost without relaxing the independent sandbox check.
+- **Why this fix:** Lecture 3's code-call test applies to a bounded loop over several records. The implemented restricted program can call only the Registry, uses no imports/files/network/attributes, retains the task's shared bounds and keys, and returns only a small final result to the next model call.
+- **Prediction:** `m2-pass3-code-on` will pass at least 2/3 and use at least 20% fewer total input tokens than `m2-pass3-code-off`. `m2-pass3-code-off` will pass at least 2/3. Every on-arm domain call will still appear as a Registry/MCP tool call, and no intermediate tool result will enter the model context.
+- **Arms:** `results/m2-pass3-code-off` with `code_calls.batch=off`; `results/m2-pass3-code-on` with `code_calls.batch=on`. Both explicitly keep `tools.loading=all`, `topology=single`, and `plan.batch=off`.
+- **Held constant:** Same committed code, Gemini 3.5 Flash-Lite, settings and price sheet, 32,000-token task bound, batch fixture/check, three sweeps, sequential jobs, all other switches and scripted operator behavior.
+- **Tasks and sweeps:** `tasks/batch_questions.yaml`, three sweeps per arm.
+- **Results:** Pending; run only after this prediction commit is pushed.
+- **Difference:** Pending.
+- **Verdict:** Pending; retain `code_calls.batch=off` until both arms are recorded.
+- **Links:** Pending `results/m2-pass3-code-off/` and `results/m2-pass3-code-on/`.
