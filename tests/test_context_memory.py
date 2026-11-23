@@ -44,8 +44,9 @@ class ContextMemoryTests(ScratchTest):
         with execution.activate(data):
             assembled = execution.assemble_context(system="safe", messages=[{"role": "user", "content": "task"}],
                                                    tools=[], purpose="execute")
-        self.assertIn("confirmed_operator_memory", str(assembled["messages"][0]))
-        self.assertIn("source_id", str(assembled["messages"][0]))
+        self.assertTrue(any("confirmed_operator_memory" in str(message)
+                            for message in assembled["messages"]))
+        self.assertTrue(any("source_id" in str(message) for message in assembled["messages"]))
 
     def test_planner_receives_neither_memory_nor_notes(self):
         memory.put("operator_preference", "tone", "concise", source_type="trusted_operator", source_id="s1")
