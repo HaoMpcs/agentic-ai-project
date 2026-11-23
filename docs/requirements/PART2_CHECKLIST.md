@@ -32,7 +32,7 @@ this file records current submission status.
 - [x] Add clean synthetic approval-page captures from that human run.
 - [x] Confirm the exact Knight Institute and Interface/Ada Lovelace level names
   from the course slides; CSA Tier 2 obligations are already described.
-- [ ] Create and push the final `m2` tag after the preceding items and final
+- [x] Create and push the final `m2` tag after the preceding items and final
   clean-checkout verification.
 
 Scripted decisions remain mechanism evidence and are never reported as human
